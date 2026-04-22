@@ -11,7 +11,14 @@ interface SheetRendererProps {
 }
 
 export function SheetRenderer({ sheet }: SheetRendererProps) {
-  const showPanning = sheet.id === "electric-guitar-mixing";
+  const panningSheetIds = new Set([
+    "electric-guitar-mixing",
+    "bass-guitar-mixing",
+    "kick-drum-mixing",
+    "snare-drum-mixing",
+    "vocal-mixing"
+  ]);
+  const showPanning = panningSheetIds.has(sheet.id);
 
   return (
     <main className="sheetMain">
