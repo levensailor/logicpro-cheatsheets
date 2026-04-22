@@ -1,4 +1,6 @@
 import type { SheetTable } from "@/lib/sheet-schema";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTableColumns } from "@fortawesome/free-solid-svg-icons";
 
 interface TableSectionProps {
   title: string;
@@ -8,7 +10,10 @@ interface TableSectionProps {
 export function TableSection({ title, table }: TableSectionProps) {
   return (
     <section className="sheetSection">
-      <h2>{title}</h2>
+      <h2 className="sectionHeading">
+        <FontAwesomeIcon icon={faTableColumns} className="sectionHeadingIcon" />
+        {title}
+      </h2>
       <div className="tableWrap">
         <table>
           <thead>

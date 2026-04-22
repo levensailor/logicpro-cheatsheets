@@ -1,11 +1,11 @@
 :root {
-  color-scheme: dark;
-  --bg: #070b17;
-  --surface: #121a2a;
-  --surface-2: #1b2740;
-  --border: #33435f;
-  --text: #ebf0ff;
-  --muted: #b7c6ec;
+  color-scheme: light;
+  --bg: #eef3ff;
+  --surface: #ffffff;
+  --surface-2: #f5f8ff;
+  --border: #c8d3ea;
+  --text: #111d38;
+  --muted: #4d5d80;
   --blue: #4f83ff;
   --green: #39c270;
   --purple: #8d63ff;
@@ -23,7 +23,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at top, #14213f, var(--bg) 45%);
+  background: linear-gradient(180deg, #f5f8ff, var(--bg));
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
@@ -46,7 +46,7 @@ a {
   overflow-x: auto;
   padding: 0.75rem;
   border-bottom: 1px solid var(--border);
-  background: rgba(10, 14, 24, 0.95);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
 }
 
@@ -59,19 +59,20 @@ a {
   border-radius: 999px;
   padding: 0.45rem 0.8rem;
   font-size: 0.82rem;
-  color: var(--muted);
+  color: #324b77;
   transition: 0.2s ease;
 }
 
 .sheetTab:hover {
-  border-color: #5978bf;
+  border-color: #9bb6e8;
   color: var(--text);
+  background: #f1f6ff;
 }
 
 .sheetTab.active {
-  background: #1f3362;
-  color: #fff;
-  border-color: #6f96ff;
+  background: #e5edff;
+  color: #15366f;
+  border-color: #88a9ea;
 }
 
 .tabIcon {
@@ -91,7 +92,7 @@ a {
   gap: 1rem;
   border: 1px solid var(--border);
   border-radius: 16px;
-  background: linear-gradient(120deg, #1d2a46, #15203a);
+  background: linear-gradient(120deg, #ffffff, #eff4ff);
   padding: 1rem 1.2rem;
 }
 
@@ -103,7 +104,7 @@ a {
 
 .sheetHeader p {
   margin: 0.2rem 0 0;
-  color: var(--muted);
+  color: #3e5482;
 }
 
 .sheetIcon {
@@ -116,7 +117,7 @@ a {
   border-radius: 12px;
   padding: 0.95rem 1rem;
   background: var(--surface);
-  color: var(--muted);
+  color: #32476f;
 }
 
 .sheetSection {
@@ -131,8 +132,19 @@ a {
   font-size: clamp(1rem, 2vw, 1.25rem);
 }
 
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.sectionHeadingIcon {
+  color: #355fa8;
+  font-size: 0.95rem;
+}
+
 .sheetCard {
-  border: 1px solid #2d3d58;
+  border: 1px solid #d8e2f5;
   border-radius: 12px;
   padding: 0.75rem;
   background: var(--surface-2);
@@ -145,10 +157,23 @@ a {
 
 .sheetCard ul {
   margin: 0;
-  padding-left: 1rem;
-  color: var(--muted);
+  padding-left: 0;
+  list-style: none;
+  color: #445880;
   display: grid;
   gap: 0.35rem;
+}
+
+.sheetCard li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+.itemIcon {
+  color: #3970cc;
+  margin-top: 0.12rem;
+  font-size: 0.78rem;
 }
 
 .cardsGrid {
@@ -178,21 +203,21 @@ a {
 }
 
 .chainStepCard {
-  border: 1px solid #2d3d58;
+  border: 1px solid #d3def3;
   border-radius: 10px;
-  background: #1a2440;
+  background: #f5f8ff;
   padding: 0.7rem;
 }
 
-.chainStepNumber {
+.chainStepIcon {
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 999px;
   display: grid;
   place-content: center;
   font-size: 0.8rem;
-  font-weight: 700;
-  background: #2f4680;
+  color: #2f66bf;
+  background: #e8f0ff;
   margin-bottom: 0.5rem;
 }
 
@@ -203,7 +228,7 @@ a {
 
 .chainStepCard p {
   margin: 0.45rem 0 0;
-  color: var(--muted);
+  color: #4d5f82;
   font-size: 0.82rem;
 }
 
@@ -220,17 +245,17 @@ table {
 
 th,
 td {
-  border: 1px solid #2f3d56;
+  border: 1px solid #c9d7f0;
   text-align: left;
   padding: 0.6rem 0.55rem;
 }
 
 th {
-  background: #24314d;
+  background: #edf3ff;
 }
 
 td {
-  color: var(--muted);
+  color: #3f537c;
 }
 
 .checklist {
@@ -242,10 +267,13 @@ td {
 }
 
 .checklist li {
-  border: 1px solid #2d3d58;
+  border: 1px solid #d3def3;
   border-radius: 9px;
-  background: #1a2640;
+  background: #f5f8ff;
   padding: 0.6rem 0.7rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
 }
 
 .embeddedFigure {
@@ -257,12 +285,12 @@ td {
 .embeddedImage {
   width: 100%;
   height: auto;
-  border: 1px solid #334b7d;
+  border: 1px solid #c9d7f0;
   border-radius: 10px;
 }
 
 .embeddedFigure figcaption {
-  color: var(--muted);
+  color: #4b5d82;
   font-size: 0.85rem;
 }
 

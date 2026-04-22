@@ -1,4 +1,6 @@
 import type { ChainStep } from "@/lib/sheet-schema";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink, faWaveSquare } from "@fortawesome/free-solid-svg-icons";
 
 interface ChainSectionProps {
   title: string;
@@ -8,11 +10,16 @@ interface ChainSectionProps {
 export function ChainSection({ title, steps }: ChainSectionProps) {
   return (
     <section className="sheetSection">
-      <h2>{title}</h2>
+      <h2 className="sectionHeading">
+        <FontAwesomeIcon icon={faLink} className="sectionHeadingIcon" />
+        {title}
+      </h2>
       <ol className="chainList">
         {steps.map((step, index) => (
           <li key={`${step.name}-${index}`} className="chainStepCard">
-            <div className="chainStepNumber">{index + 1}</div>
+            <div className="chainStepIcon">
+              <FontAwesomeIcon icon={faWaveSquare} />
+            </div>
             <h3>{step.name}</h3>
             <p>{step.goal}</p>
           </li>

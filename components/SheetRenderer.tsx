@@ -4,6 +4,7 @@ import { ChainSection } from "@/components/sections/ChainSection";
 import { ChecklistSection } from "@/components/sections/ChecklistSection";
 import { ImageSection } from "@/components/sections/ImageSection";
 import { TableSection } from "@/components/sections/TableSection";
+import { cleanSectionTitle } from "@/lib/section-title";
 
 interface SheetRendererProps {
   sheet: CheatSheet;
@@ -23,15 +24,17 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
       <section className="sheetSummary">{sheet.summary}</section>
 
       {sheet.sections.map((section, index) => {
+        const title = cleanSectionTitle(section.title);
+
         if (section.type === "chain") {
-          return <ChainSection key={`${section.title}-${index}`} title={section.title} steps={section.steps} />;
+          return <ChainSection key={`${section.title}-${index}`} title={title} steps={section.steps} />;
         }
 
         if (section.type === "cards") {
           return (
             <CardsSection
               key={`${section.title}-${index}`}
-              title={section.title}
+              title={title}
               cards={section.cards}
               columns={section.columns}
             />
@@ -39,17 +42,17 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
         }
 
         if (section.type === "table") {
-          return <TableSection key={`${section.title}-${index}`} title={section.title} table={section.table} />;
+          return <TableSection key={`${section.title}-${index}`} title={title} table={section.table} />;
         }
 
         if (section.type === "checklist") {
-          return <ChecklistSection key={`${section.title}-${index}`} title={section.title} items={section.items} />;
+          return <ChecklistSection key={`${section.title}-${index}`} title={title} items={section.items} />;
         }
 
         return (
           <ImageSection
             key={`${section.title}-${index}`}
-            title={section.title}
+            title={title}
             src={section.src}
             alt={section.alt}
             caption={section.caption}
