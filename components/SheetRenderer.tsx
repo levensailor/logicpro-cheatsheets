@@ -22,6 +22,14 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
     "overheads-mixing-guide"
   ]);
   const showPanning = panningSheetIds.has(sheet.id);
+  const centerPanningSheetIds = new Set([
+    "bass-guitar-mixing",
+    "kick-drum-mixing",
+    "snare-drum-mixing",
+    "vocal-mixing",
+    "room-mic-mixing-guide"
+  ]);
+  const isCenterPanning = centerPanningSheetIds.has(sheet.id);
 
   return (
     <main className="sheetMain">
@@ -34,13 +42,23 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
         {showPanning ? (
           <aside className="headerPanning" aria-label="Stereo panning reference">
             <p className="panningLabel">Panning</p>
-            <div className="panningGraphic hardLR" role="img" aria-label="Hard left and hard right panning">
+            <div
+              className={`panningGraphic ${isCenterPanning ? "" : "hardLR"}`.trim()}
+              role="img"
+              aria-label={isCenterPanning ? "Center panning" : "Hard left and hard right panning"}
+            >
               <div className="panningAxis" />
               <span className="panMark panLeft">L</span>
               <span className="panMark panCenter">C</span>
               <span className="panMark panRight">R</span>
-              <span className="panDot panDotLeft" />
-              <span className="panDot panDotRight" />
+              {isCenterPanning ? (
+                <span className="panDot" />
+              ) : (
+                <>
+                  <span className="panDot panDotLeft" />
+                  <span className="panDot panDotRight" />
+                </>
+              )}
             </div>
           </aside>
         ) : null}
