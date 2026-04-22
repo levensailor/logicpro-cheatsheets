@@ -16,7 +16,10 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
     "bass-guitar-mixing",
     "kick-drum-mixing",
     "snare-drum-mixing",
-    "vocal-mixing"
+    "vocal-mixing",
+    "toms-mixing-guide",
+    "room-mic-mixing-guide",
+    "overheads-mixing-guide"
   ]);
   const showPanning = panningSheetIds.has(sheet.id);
 

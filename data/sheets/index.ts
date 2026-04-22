@@ -213,6 +213,84 @@ export const cheatSheets: CheatSheet[] = [
     ]
   }),
   makeMixSheet({
+    id: "toms-mixing-guide",
+    title: "Toms Mixing Guide",
+    icon: "🥁",
+    accent: "purple",
+    focus: "Tone and depth",
+    eqRows: [
+      ["80-120 Hz", "Low cut", "Remove rumble and unwanted mud"],
+      ["150-300 Hz", "Body", "Add fullness and tone"],
+      ["400-800 Hz", "Boxiness cut", "Clear muddy resonance"],
+      ["2-5 kHz", "Attack", "Bring out stick and beater definition"],
+      ["8-12 kHz", "Air", "Add openness and top detail"]
+    ],
+    plugins: [
+      ["EQ", "FabFilter Pro-Q 3, Channel EQ"],
+      ["Compression", "Studio VCA, FET compressor"],
+      ["Gate/Expander", "Noise Gate, Expander for bleed control"],
+      ["Saturation", "Tape or overdrive (subtle)"]
+    ],
+    quickTips: [
+      "Pan toms to match kit perspective.",
+      "Use less processing if overhead blend already works.",
+      "Avoid over-gating to keep natural decay.",
+      "Tune with the song key when possible."
+    ]
+  }),
+  makeMixSheet({
+    id: "room-mic-mixing-guide",
+    title: "Room Mic Mixing Guide",
+    icon: "🎙️",
+    accent: "teal",
+    focus: "Space and realism",
+    eqRows: [
+      ["80-150 Hz", "Low cut", "Remove low-end rumble"],
+      ["200-500 Hz", "Low-mid control", "Reduce boxy buildup"],
+      ["2-5 kHz", "Presence", "Add articulation if needed"],
+      ["8-12 kHz", "Air", "Add life and shimmer"],
+      ["12-16 kHz", "Shelf", "Optional brightness lift"]
+    ],
+    plugins: [
+      ["EQ", "Vintage EQ or Pro-Q 3"],
+      ["Compression", "Studio VCA, Opto/FET blend"],
+      ["Gate (Optional)", "Use lightly for spill control"],
+      ["Saturation", "Tape drive for character"]
+    ],
+    quickTips: [
+      "Room mics should support, not dominate.",
+      "Check mono and phase before level rides.",
+      "Bring room up until feel appears, then back off.",
+      "Use fader automation instead of hard muting."
+    ]
+  }),
+  makeMixSheet({
+    id: "overheads-mixing-guide",
+    title: "Overheads Mixing Guide",
+    icon: "🎧",
+    accent: "blue",
+    focus: "Kit balance",
+    eqRows: [
+      ["80-120 Hz", "Low cut", "Remove unnecessary low-end build"],
+      ["200-500 Hz", "Low-mid control", "Reduce boxiness and cloud"],
+      ["2-5 kHz", "Presence", "Add cymbal and stick definition"],
+      ["8-12 kHz", "Air", "Open the top end subtly"],
+      ["12-16 kHz", "Shelf", "Optional brilliance"]
+    ],
+    plugins: [
+      ["EQ", "Channel EQ, Pro-Q 3"],
+      ["Compression", "Gentle glue compression"],
+      ["Phase Tools", "Correlation/phase check utilities"],
+      ["Effects", "Very subtle room or saturation only"]
+    ],
+    quickTips: [
+      "Think of overheads as the full-kit picture.",
+      "Use small EQ moves and trust balance first.",
+      "Fix phase before heavy processing.",
+      "Keep cymbals natural, not hyped."
+    ]
+  }),
+  makeMixSheet({
     id: "drum-bus-mixing",
     title: "Drum Bus Mixing",
     icon: "🥁",
