@@ -76,7 +76,14 @@ a {
 }
 
 .tabIcon {
-  font-size: 1rem;
+  font-size: 0.82rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  display: grid;
+  place-content: center;
+  background: #f2f6ff;
+  border: 1px solid #d5e2fb;
 }
 
 .sheetMain {
@@ -109,7 +116,14 @@ a {
 
 .sheetIcon {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.4rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: grid;
+  place-content: center;
+  background: #edf3ff;
+  border: 1px solid #d2e0fb;
 }
 
 .sheetSummary {
@@ -140,7 +154,7 @@ a {
 
 .sectionHeadingIcon {
   color: #355fa8;
-  font-size: 0.95rem;
+  font-size: 0.72rem;
 }
 
 .sheetCard {
@@ -172,8 +186,8 @@ a {
 
 .itemIcon {
   color: #3970cc;
-  margin-top: 0.12rem;
-  font-size: 0.78rem;
+  margin-top: 0.2rem;
+  font-size: 0.6rem;
 }
 
 .cardsGrid {
@@ -210,12 +224,12 @@ a {
 }
 
 .chainStepIcon {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.2rem;
+  height: 1.2rem;
   border-radius: 999px;
   display: grid;
   place-content: center;
-  font-size: 0.8rem;
+  font-size: 0.56rem;
   color: #2f66bf;
   background: #e8f0ff;
   margin-bottom: 0.5rem;
