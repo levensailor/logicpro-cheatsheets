@@ -31,8 +31,6 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
         </aside>
       </header>
 
-      <section className="sheetSummary">{sheet.summary}</section>
-
       {sheet.sections.map((section, index) => {
         const title = cleanSectionTitle(section.title);
 
