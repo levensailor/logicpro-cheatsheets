@@ -25,6 +25,35 @@ const mixCards = (focus: string): CardItem[] => [
   }
 ];
 
+function buildPluginItems(
+  detail: string,
+  sheetId: string,
+  sheetTitle: string,
+  columnIndex: number
+): CardItem["items"] {
+  const plugins = detail
+    .split(",")
+    .map((name) => name.trim())
+    .filter(Boolean);
+
+  const columnPositions = ["12%", "37%", "61%", "84%"];
+  const x = columnPositions[columnIndex] ?? "50%";
+  const count = plugins.length || 1;
+
+  return plugins.map((pluginName, rowIndex) => {
+    const yStart = 74;
+    const yEnd = 92;
+    const y = count === 1 ? 84 : yStart + ((yEnd - yStart) * rowIndex) / (count - 1);
+
+    return {
+      text: pluginName,
+      imageSrc: `/assets/sheets/${sheetId}.png`,
+      imageAlt: `${sheetTitle} ${pluginName} screenshot`,
+      imagePosition: `${x} ${y.toFixed(1)}%`
+    };
+  });
+}
+
 function makeMixSheet(config: {
   id: string;
   title: string;
@@ -35,8 +64,6 @@ function makeMixSheet(config: {
   plugins: string[][];
   quickTips: string[];
 }): CheatSheet {
-  const pluginImagePositions = ["12% 82%", "37% 82%", "61% 82%", "84% 82%"];
-
   return {
     id: config.id,
     header: {
@@ -71,14 +98,7 @@ function makeMixSheet(config: {
         columns: 4,
         cards: config.plugins.map(([name, detail], index) => ({
           title: name,
-          items: [
-            {
-              text: detail,
-              imageSrc: `/assets/sheets/${config.id}.png`,
-              imageAlt: `${config.title} ${name} plugin photo`,
-              imagePosition: pluginImagePositions[index] ?? "50% 82%"
-            }
-          ]
+          items: buildPluginItems(detail, config.id, config.title, index)
         }))
       },
       {
