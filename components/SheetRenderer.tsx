@@ -11,6 +11,8 @@ interface SheetRendererProps {
 }
 
 export function SheetRenderer({ sheet }: SheetRendererProps) {
+  const showPanning = sheet.id === "electric-guitar-mixing";
+
   return (
     <main className="sheetMain">
       <header className={`sheetHeader tone-${sheet.header.accent}`}>
@@ -19,16 +21,19 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
           <h1>{sheet.header.title}</h1>
           <p>{sheet.header.subtitle}</p>
         </div>
-        <aside className="headerPanning" aria-label="Stereo panning reference">
-          <p className="panningLabel">Panning</p>
-          <div className="panningGraphic" role="img" aria-label="Left center right panning scale">
-            <div className="panningAxis" />
-            <span className="panMark panLeft">L</span>
-            <span className="panMark panCenter">C</span>
-            <span className="panMark panRight">R</span>
-            <span className="panDot" />
-          </div>
-        </aside>
+        {showPanning ? (
+          <aside className="headerPanning" aria-label="Stereo panning reference">
+            <p className="panningLabel">Panning</p>
+            <div className="panningGraphic hardLR" role="img" aria-label="Hard left and hard right panning">
+              <div className="panningAxis" />
+              <span className="panMark panLeft">L</span>
+              <span className="panMark panCenter">C</span>
+              <span className="panMark panRight">R</span>
+              <span className="panDot panDotLeft" />
+              <span className="panDot panDotRight" />
+            </div>
+          </aside>
+        ) : null}
       </header>
 
       {sheet.sections.map((section, index) => {

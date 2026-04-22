@@ -198,6 +198,17 @@ a {
   transform: translateX(-50%);
 }
 
+.panningGraphic.hardLR .panDotLeft {
+  left: 0.35rem;
+  transform: none;
+}
+
+.panningGraphic.hardLR .panDotRight {
+  right: 0.35rem;
+  left: auto;
+  transform: none;
+}
+
 .sheetSummary {
   border: 1px solid var(--border);
   border-radius: 12px;
