@@ -21,7 +21,15 @@ export interface ChainStep {
 
 export interface CardItem {
   title: string;
-  items: string[];
+  items: (
+    | string
+    | {
+        text: string;
+        imageSrc?: string;
+        imageAlt?: string;
+        imagePosition?: string;
+      }
+  )[];
 }
 
 export interface SheetTable {

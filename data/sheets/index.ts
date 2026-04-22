@@ -35,6 +35,8 @@ function makeMixSheet(config: {
   plugins: string[][];
   quickTips: string[];
 }): CheatSheet {
+  const pluginImagePositions = ["12% 82%", "37% 82%", "61% 82%", "84% 82%"];
+
   return {
     id: config.id,
     header: {
@@ -67,9 +69,16 @@ function makeMixSheet(config: {
         type: "cards",
         title: "Plugin Recommendations",
         columns: 4,
-        cards: config.plugins.map(([name, detail]) => ({
+        cards: config.plugins.map(([name, detail], index) => ({
           title: name,
-          items: [detail]
+          items: [
+            {
+              text: detail,
+              imageSrc: `/assets/sheets/${config.id}.png`,
+              imageAlt: `${config.title} ${name} plugin photo`,
+              imagePosition: pluginImagePositions[index] ?? "50% 82%"
+            }
+          ]
         }))
       },
       {

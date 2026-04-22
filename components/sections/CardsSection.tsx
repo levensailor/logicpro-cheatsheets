@@ -1,6 +1,7 @@
 import type { CardItem } from "@/lib/sheet-schema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLayerGroup, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 interface CardsSectionProps {
   title: string;
@@ -20,12 +21,26 @@ export function CardsSection({ title, cards, columns = 3 }: CardsSectionProps) {
           <article key={card.title} className="sheetCard">
             <h3>{card.title}</h3>
             <ul>
-              {card.items.map((item) => (
-                <li key={item}>
+              {card.items.map((item) => {
+                const entry = typeof item === "string" ? { text: item } : item;
+
+                return (
+                  <li key={entry.text} className={entry.imageSrc ? "itemWithPhoto" : ""}>
+                    {entry.imageSrc ? (
+                      <Image
+                        src={entry.imageSrc}
+                        alt={entry.imageAlt ?? `${card.title} plugin reference`}
+                        width={68}
+                        height={38}
+                        className="pluginThumb"
+                        style={entry.imagePosition ? { objectPosition: entry.imagePosition } : undefined}
+                      />
+                    ) : null}
                   <FontAwesomeIcon icon={faCircleCheck} className="itemIcon" />
-                  <span>{item}</span>
+                  <span>{entry.text}</span>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </article>
         ))}

@@ -267,6 +267,20 @@ a {
   gap: 0.45rem;
 }
 
+.sheetCard li.itemWithPhoto {
+  align-items: center;
+}
+
+.pluginThumb {
+  width: 4.25rem;
+  height: 2.35rem;
+  border-radius: 6px;
+  border: 1px solid #cfdbf2;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #eef3ff;
+}
+
 .itemIcon {
   color: #3970cc;
   margin-top: 0.2rem;
