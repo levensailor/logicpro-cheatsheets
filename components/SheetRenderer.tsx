@@ -15,10 +15,20 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
     <main className="sheetMain">
       <header className={`sheetHeader tone-${sheet.header.accent}`}>
         <p className="sheetIcon">{sheet.header.icon}</p>
-        <div>
+        <div className="sheetTitleBlock">
           <h1>{sheet.header.title}</h1>
           <p>{sheet.header.subtitle}</p>
         </div>
+        <aside className="headerPanning" aria-label="Stereo panning reference">
+          <p className="panningLabel">Panning</p>
+          <div className="panningGraphic" role="img" aria-label="Left center right panning scale">
+            <div className="panningAxis" />
+            <span className="panMark panLeft">L</span>
+            <span className="panMark panCenter">C</span>
+            <span className="panMark panRight">R</span>
+            <span className="panDot" />
+          </div>
+        </aside>
       </header>
 
       <section className="sheetSummary">{sheet.summary}</section>

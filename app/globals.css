@@ -103,6 +103,10 @@ a {
   padding: 1rem 1.2rem;
 }
 
+.sheetTitleBlock {
+  min-width: 0;
+}
+
 .sheetHeader h1 {
   margin: 0;
   font-size: clamp(1.2rem, 2.8vw, 2rem);
@@ -124,6 +128,74 @@ a {
   place-content: center;
   background: #edf3ff;
   border: 1px solid #d2e0fb;
+}
+
+.headerPanning {
+  margin-left: auto;
+  min-width: 180px;
+  max-width: 220px;
+  border: 1px solid #d3def3;
+  border-radius: 10px;
+  background: #f8fbff;
+  padding: 0.5rem 0.65rem 0.55rem;
+}
+
+.panningLabel {
+  margin: 0 0 0.32rem;
+  color: #2c4d84;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.panningGraphic {
+  position: relative;
+  height: 1.7rem;
+}
+
+.panningAxis {
+  position: absolute;
+  left: 0.35rem;
+  right: 0.35rem;
+  top: 1.05rem;
+  border-top: 2px solid #6d86b8;
+}
+
+.panMark {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #3b5688;
+}
+
+.panLeft {
+  left: 0.35rem;
+  transform: none;
+}
+
+.panCenter {
+  left: 50%;
+}
+
+.panRight {
+  right: 0.35rem;
+  left: auto;
+  transform: none;
+}
+
+.panDot {
+  position: absolute;
+  top: 0.86rem;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid #4267a8;
+  background: #ffffff;
+  transform: translateX(-50%);
 }
 
 .sheetSummary {
@@ -420,6 +492,16 @@ td {
 
   .chainList {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sheetHeader {
+    flex-wrap: wrap;
+  }
+
+  .headerPanning {
+    margin-left: 0;
+    width: 100%;
+    max-width: none;
   }
 }
 
