@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 import { TopSheetNav } from "@/components/TopSheetNav";
 import { cheatSheets } from "@/data/sheets";
+
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: "Logic Pro Cheat Sheets",
