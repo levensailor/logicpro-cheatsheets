@@ -223,6 +223,41 @@ a {
   padding: 0.7rem;
 }
 
+.chainList .chainStepCard:nth-child(1) {
+  background: #edf9ef;
+  border-color: #bfe5c6;
+}
+
+.chainList .chainStepCard:nth-child(2) {
+  background: #edf4ff;
+  border-color: #c5d9fb;
+}
+
+.chainList .chainStepCard:nth-child(3) {
+  background: #f2efff;
+  border-color: #d9ccfb;
+}
+
+.chainList .chainStepCard:nth-child(4) {
+  background: #fff5ea;
+  border-color: #f9dcc1;
+}
+
+.chainList .chainStepCard:nth-child(5) {
+  background: #ffefef;
+  border-color: #f8cccc;
+}
+
+.chainList .chainStepCard:nth-child(6) {
+  background: #ecf8f8;
+  border-color: #bfe6e6;
+}
+
+.chainList .chainStepCard:nth-child(7) {
+  background: #f4f6f8;
+  border-color: #d3dbe4;
+}
+
 .chainStepIcon {
   width: 1.2rem;
   height: 1.2rem;
@@ -233,6 +268,41 @@ a {
   color: #2f66bf;
   background: #e8f0ff;
   margin-bottom: 0.5rem;
+}
+
+.chainList .chainStepCard:nth-child(1) .chainStepIcon {
+  background: #d9f1df;
+  color: #2f8a44;
+}
+
+.chainList .chainStepCard:nth-child(2) .chainStepIcon {
+  background: #dce9ff;
+  color: #2e64bc;
+}
+
+.chainList .chainStepCard:nth-child(3) .chainStepIcon {
+  background: #e4dbff;
+  color: #6a3db5;
+}
+
+.chainList .chainStepCard:nth-child(4) .chainStepIcon {
+  background: #ffe6cd;
+  color: #b86619;
+}
+
+.chainList .chainStepCard:nth-child(5) .chainStepIcon {
+  background: #ffdcdc;
+  color: #be4646;
+}
+
+.chainList .chainStepCard:nth-child(6) .chainStepIcon {
+  background: #d7eeee;
+  color: #2a8383;
+}
+
+.chainList .chainStepCard:nth-child(7) .chainStepIcon {
+  background: #e5ebf2;
+  color: #53657d;
 }
 
 .chainStepCard h3 {
