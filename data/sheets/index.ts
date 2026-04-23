@@ -820,6 +820,140 @@ export const cheatSheets: CheatSheet[] = [
         }
       },
       {
+        type: "table",
+        title: "Dynamics and Processing Terms",
+        table: {
+          columns: ["Term", "Beginner Explanation"],
+          rows: [
+            ["Attack", "How fast a compressor starts reducing gain after passing threshold."],
+            ["Release", "How fast gain reduction stops after signal falls below threshold."],
+            ["Threshold", "The level where a dynamic processor starts to act."],
+            ["Ratio", "How strongly compression is applied once threshold is crossed."],
+            ["Knee", "How gently or abruptly compression starts near threshold."],
+            ["Makeup Gain", "Output gain added after compression to restore loudness."],
+            ["Gain Reduction", "How much level is currently being turned down."],
+            ["Transient", "The short initial hit at the start of a sound."],
+            ["Sustain", "The held body/tail of a sound after its attack."],
+            ["Transient Shaper", "Tool that boosts/cuts attack and sustain directly."],
+            ["Parallel Compression", "Blend of heavily compressed signal with dry signal."],
+            ["Saturation", "Harmonic coloration that adds density, grit, or warmth."],
+            ["Harmonics", "Extra frequency content above the fundamental pitch."],
+            ["Subharmonics", "Generated low-frequency content below the original tone."],
+            ["Resonance", "A narrow frequency that rings out more than others."],
+            ["Notch Filter", "Very narrow EQ cut used to remove a problem tone."],
+            ["Q (Bandwidth)", "Width of an EQ band: narrow vs broad."],
+            ["Mid/Side (M/S)", "Separate processing of center (mid) and edges (side)."],
+            ["True Peak", "Estimated inter-sample peak that can exceed sample peak."],
+            ["RMS", "Average signal energy used as a loudness reference."]
+          ]
+        }
+      },
+      {
+        type: "table",
+        title: "Routing and Session Workflow Terms",
+        table: {
+          columns: ["Term", "Beginner Explanation"],
+          rows: [
+            ["LRA (Loudness Range)", "How much loudness changes across a song over time."],
+            ["Dynamic Range", "Difference between quiet and loud parts."],
+            ["Noise Floor", "Base level of background hiss or room/system noise."],
+            ["Dither", "Low-level noise added when lowering bit depth."],
+            ["Bit Depth", "How detailed level values are in digital audio."],
+            ["Sample Rate", "Number of audio samples captured each second."],
+            ["Inter-sample Peaks", "Peaks between samples that can clip in playback."],
+            ["Reference Track", "Professional song used as tonal/loudness comparison."],
+            ["Bus", "Shared channel where multiple tracks are grouped."],
+            ["Aux Send", "Copied signal sent to shared effects like reverb."],
+            ["Return Track", "Channel that receives aux sends and outputs effects."],
+            ["Insert", "Processor placed directly in a track signal path."],
+            ["Pre-Fader Send", "Send level independent from fader level."],
+            ["Post-Fader Send", "Send level follows track fader changes."],
+            ["Dry/Wet", "Blend between original and processed signal."],
+            ["Automation", "Time-based control of levels, pan, and plugin settings."],
+            ["Clip Gain", "Gain change applied to an audio region before inserts."],
+            ["Gain Staging", "Setting healthy levels at every stage in the chain."],
+            ["Unity Gain", "Input and output level are effectively the same."],
+            ["Mono Compatibility", "How well a stereo mix holds up in mono."]
+          ]
+        }
+      },
+      {
+        type: "table",
+        title: "Mix Translation and Tonal Vocabulary",
+        table: {
+          columns: ["Term", "Beginner Explanation"],
+          rows: [
+            ["Crest Factor", "Difference between peaks and average loudness."],
+            ["Brickwall Limiter", "Limiter with strict ceiling that blocks overs."],
+            ["Oversampling", "Internal upsampling to reduce digital artifacts."],
+            ["Aliasing", "Unwanted mirrored high-frequency distortion artifacts."],
+            ["Sidechain", "Using one signal to control another signal’s processor."],
+            ["De-esser", "Frequency-focused compressor for vocal sibilance."],
+            ["Exciter", "Adds harmonics, often to brighten or add presence."],
+            ["Glue Compression", "Gentle bus compression to make elements feel cohesive."],
+            ["Frequency Masking", "One sound hides another in the same range."],
+            ["Masking Release", "EQ/arrangement moves that reduce masking conflicts."],
+            ["Tonal Balance", "Overall low-mid-high energy distribution in a mix."],
+            ["Sub Bass", "Lowest bass region, often around 20-60 Hz."],
+            ["Low End", "Bass range that provides weight and power."],
+            ["Low Mids", "Region often tied to body, warmth, and mud."],
+            ["Presence", "Upper-mid area affecting clarity and intelligibility."],
+            ["Air Band", "Very high frequencies that add openness and sheen."],
+            ["Harshness", "Unpleasant aggressive upper-mid or high frequencies."],
+            ["Mud", "Cloudy low-mid buildup that reduces clarity."],
+            ["Boxiness", "Closed, hollow tone usually in low-mids."],
+            ["Boominess", "Excessive low-frequency resonance."]
+          ]
+        }
+      },
+      {
+        type: "table",
+        title: "Editing, Space, and Delivery Terms",
+        table: {
+          columns: ["Term", "Beginner Explanation"],
+          rows: [
+            ["Sibilance", "Sharp 's' and 'sh' vocal sounds."],
+            ["Plosives", "Low thumps from consonants like P and B."],
+            ["Bleed", "Unwanted spill from another source into a mic."],
+            ["Spill Control", "Steps to reduce unwanted mic leakage."],
+            ["Comping", "Building one final take from multiple recordings."],
+            ["Take Folder", "Container that organizes alternate takes."],
+            ["Punch-In", "Recording over only a selected part."],
+            ["Crossfade", "Small overlap fade that smooths edits."],
+            ["Edit Point", "Exact cut/join location in an audio file."],
+            ["Phase Inversion", "Flip polarity by 180 degrees."],
+            ["Polarity", "Positive/negative orientation of waveform motion."],
+            ["Null Test", "Compare two signals by phase-cancel checking."],
+            ["Stereo Image", "Perceived width and placement of sounds."],
+            ["Depth", "Perceived front-to-back distance in a mix."],
+            ["Front-to-Back Placement", "How close or far a sound feels."],
+            ["Reverb Tail", "The decaying part of a reverb after source stops."],
+            ["Early Reflections", "First room echoes that define space cues."],
+            ["Pre-Delay", "Time between dry sound and reverb start."],
+            ["Decay Time", "How long reverb takes to fade out."],
+            ["Room Tone", "Natural ambient sound of a recording space."],
+            ["Ambience", "Perceived environmental space around a source."],
+            ["Delay Feedback", "How much delayed signal repeats again."],
+            ["Slap Delay", "Very short delay used for thickness."],
+            ["Tempo Sync", "Effect timing locked to song tempo."],
+            ["Tap Tempo", "Manual tempo entry by tapping rhythm."],
+            ["Meter Bridge", "Grouped meter view for many channels at once."],
+            ["Peak Hold", "Meter mode that keeps peak value visible."],
+            ["Headroom Margin", "Intentional level buffer before clipping."],
+            ["Ceiling", "Maximum output level set in limiter/master."],
+            ["Master Bus", "Final stereo channel carrying the full mix."],
+            ["Print", "Render processed audio to a new file."],
+            ["Bounce", "Export audio from session to file."],
+            ["Stem", "Grouped export such as drums, vocals, or music."],
+            ["Print Through", "Render audio while effects chain stays active."],
+            ["Bypass Gain Match", "Compare processed/unprocessed at equal loudness."],
+            ["A/B Testing", "Switching options for objective comparison."],
+            ["Ear Fatigue", "Reduced accuracy after long loud listening."],
+            ["Translation", "How well the mix sounds across different systems."]
+          ]
+        }
+      },
+      {
         type: "checklist",
         title: "Beginner Rules of Thumb",
         items: [
