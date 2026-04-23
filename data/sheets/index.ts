@@ -659,14 +659,14 @@ export const cheatSheets: CheatSheet[] = [
     ]
   },
   {
-    id: "logic-pro-workflow-v1",
+    id: "logic-pro-workflow",
     header: {
       title: "Logic Pro Workflow Cheat Sheet",
-      subtitle: "Organize, save, and move fast",
-      icon: "💽",
-      accent: "purple"
+      subtitle: "Organize, save often, and move fast",
+      icon: "🎹",
+      accent: "blue"
     },
-    summary: "A practical workflow for templates, folder structure, bouncing, takes, and final project cleanup.",
+    summary: "Combined workflow guide covering setup, editing, stack organization, and final export checks.",
     sections: [
       {
         type: "cards",
@@ -681,37 +681,6 @@ export const cheatSheets: CheatSheet[] = [
       },
       {
         type: "cards",
-        title: "Editing and Session Control",
-        cards: [
-          { title: "Comping", items: ["Use take folders", "Label best takes quickly"] },
-          { title: "Punch In/Out", items: ["Set locators before record", "Use cycle when needed"] },
-          { title: "Project Management", items: ["Clean project audio regularly", "Archive major milestones"] }
-        ]
-      },
-      {
-        type: "checklist",
-        title: "Final Checklist",
-        items: [
-          "Unused tracks muted or removed",
-          "Correct bounce/sample rate settings",
-          "Project renamed and backed up",
-          "Channel strips and presets exported"
-        ]
-      }
-    ]
-  },
-  {
-    id: "logic-pro-workflow-v2",
-    header: {
-      title: "Logic Pro Workflow Cheat Sheet",
-      subtitle: "Good workflow = better music",
-      icon: "🎹",
-      accent: "blue"
-    },
-    summary: "Second workflow variant with stronger emphasis on track stacks, locators, and keyboard shortcuts.",
-    sections: [
-      {
-        type: "cards",
         title: "Start Smart",
         columns: 4,
         cards: [
@@ -719,6 +688,15 @@ export const cheatSheets: CheatSheet[] = [
           { title: "Folder Setup", items: ["Create folder tree first", "Keep references and stems organized"] },
           { title: "Save Often", items: ["Use version numbers", "Back up project folder"] },
           { title: "Bounce", items: ["Project or section bounce", "Keep export naming consistent"] }
+        ]
+      },
+      {
+        type: "cards",
+        title: "Editing and Session Control",
+        cards: [
+          { title: "Comping", items: ["Use take folders", "Label best takes quickly"] },
+          { title: "Punch In/Out", items: ["Set locators before record", "Use cycle when needed"] },
+          { title: "Project Management", items: ["Clean project audio regularly", "Archive major milestones"] }
         ]
       },
       {
@@ -734,6 +712,8 @@ export const cheatSheets: CheatSheet[] = [
         type: "checklist",
         title: "Final Export Checklist",
         items: [
+          "Unused tracks muted or removed",
+          "Correct bounce/sample rate settings",
           "Right file format and sample rate",
           "No clipping on printed masters",
           "Correct naming and metadata",
