@@ -721,6 +721,117 @@ export const cheatSheets: CheatSheet[] = [
         ]
       }
     ]
+  },
+  {
+    id: "appendix-audio-terms",
+    header: {
+      title: "Appendix Audio Terms",
+      subtitle: "Beginner-friendly reference",
+      icon: "📘",
+      accent: "green"
+    },
+    summary: "Quick explanations of common mixing and mastering terms used throughout these sheets.",
+    sections: [
+      {
+        type: "cards",
+        title: "Core Dynamics Terms",
+        columns: 2,
+        cards: [
+          {
+            title: "Compressor",
+            items: [
+              "Turns down loud parts so volume is more controlled.",
+              "Can make tracks feel tighter, smoother, and more consistent."
+            ]
+          },
+          {
+            title: "Limiter",
+            items: [
+              "A very strong compressor used at the top end of volume.",
+              "Helps stop peaks from clipping and sets a ceiling."
+            ]
+          },
+          {
+            title: "Gate",
+            items: [
+              "Mutes or reduces signal when audio falls below a threshold.",
+              "Useful for reducing bleed/noise between drum hits."
+            ]
+          },
+          {
+            title: "Normalization",
+            items: [
+              "Automatically raises audio so the loudest peak hits a chosen level.",
+              "Does not improve balance by itself; just changes overall level."
+            ]
+          }
+        ]
+      },
+      {
+        type: "cards",
+        title: "EQ and Filter Terms",
+        columns: 2,
+        cards: [
+          {
+            title: "High-Pass Filter (HPF)",
+            items: [
+              "Lets high frequencies pass and cuts low frequencies.",
+              "Used to remove rumble and unnecessary low-end."
+            ]
+          },
+          {
+            title: "Low-Pass Filter (LPF)",
+            items: [
+              "Lets low frequencies pass and cuts high frequencies.",
+              "Used to tame hiss/harsh top-end or push sounds backward."
+            ]
+          },
+          {
+            title: "High Shelf",
+            items: [
+              "Boosts or cuts all frequencies above a chosen point.",
+              "Good for adding air/brightness or reducing harshness."
+            ]
+          },
+          {
+            title: "Low Shelf",
+            items: [
+              "Boosts or cuts all frequencies below a chosen point.",
+              "Used for adding weight or cleaning excessive boom."
+            ]
+          }
+        ]
+      },
+      {
+        type: "table",
+        title: "Metering and Space Terms",
+        table: {
+          columns: ["Term", "Beginner Explanation"],
+          rows: [
+            ["LUFS", "Loudness Units relative to Full Scale; a perceived loudness measurement over time."],
+            ["dBFS", "Digital level scale where 0 dBFS is max level before digital clipping."],
+            ["Stereo", "Two-channel audio (left and right) that creates width and placement."],
+            ["Mono", "Single channel centered audio; useful for checking phase and translation."],
+            ["Panning", "Placing sounds left, center, or right in the stereo field."],
+            ["Phase", "Timing relationship between similar waveforms; poor phase can make sounds thin."],
+            ["Headroom", "Safety space below 0 dBFS so peaks do not clip."],
+            ["Clipping", "Distortion from exceeding maximum level; usually harsh and unwanted."]
+          ]
+        }
+      },
+      {
+        type: "checklist",
+        title: "Beginner Rules of Thumb",
+        items: [
+          "Fix balance first, then process.",
+          "Use small EQ/compression moves before big ones.",
+          "A/B bypass often at matched loudness.",
+          "Check your mix in mono and at low volume.",
+          "Leave headroom and avoid clipping on buses.",
+          "Trust references and your ears over visuals alone."
+        ]
+      }
+    ]
   }
 ];
 
