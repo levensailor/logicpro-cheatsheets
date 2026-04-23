@@ -52,7 +52,6 @@ const pluginImageByNormalizedName: Record<string, string> = {
   valhallavintageverb: "/assets/plugins/valhalla-vintage-verb.png",
   waveshreverb: "/assets/plugins/waves-h-reverb.jpg",
   pror2: "/assets/plugins/fabfitler-pro-r-2.jpg",
-  wave l2: "/assets/plugins/waves-l2.jpg",
   wavesl2: "/assets/plugins/waves-l2.jpg",
   uadprecisionlimiter: "/assets/plugins/uad-precision-limiter.png",
   uademt140: "/assets/plugins/uad-emt-140.png",
