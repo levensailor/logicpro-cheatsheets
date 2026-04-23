@@ -25,31 +25,88 @@ const mixCards = (focus: string): CardItem[] => [
   }
 ];
 
+function normalizePluginKey(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+const pluginImageByNormalizedName: Record<string, string> = {
+  logicchanneleq: "/assets/plugins/logic-channel-eq.png",
+  channeleq: "/assets/plugins/logic-channel-eq.png",
+  wavesf6: "/assets/plugins/waves-f6.png",
+  fabfilterproq3: "/assets/plugins/fabfilter-pro-q-4.jpg",
+  fabfilterproq4: "/assets/plugins/fabfilter-pro-q-4.jpg",
+  fabfilterproc2: "/assets/plugins/fabfilter-pro-c-3.jpg",
+  fabfilterproc3: "/assets/plugins/fabfilter-pro-c-3.jpg",
+  wavescla76: "/assets/plugins/waves-cla76.png",
+  cla76: "/assets/plugins/waves-cla76.png",
+  wavesapi2500: "/assets/plugins/waves-api-2500.jpg",
+  api2500: "/assets/plugins/waves-api-2500.jpg",
+  api550a: "/assets/plugins/api-550a.png",
+  soundtoysdecapitator: "/assets/plugins/decapitator.jpg",
+  decapitator: "/assets/plugins/decapitator.jpg",
+  wavesj37: "/assets/plugins/waves-j37.png",
+  waveskramertape: "/assets/plugins/waves-kramer.jpg",
+  waveskramer: "/assets/plugins/waves-kramer.jpg",
+  fabfiltersaturn2: "/assets/plugins/fabfilter-saturn.jpg",
+  fabfiltersaturn: "/assets/plugins/fabfilter-saturn.jpg",
+  valhallavintageverb: "/assets/plugins/valhalla-vintage-verb.png",
+  waveshreverb: "/assets/plugins/waves-h-reverb.jpg",
+  pror2: "/assets/plugins/fabfitler-pro-r-2.jpg",
+  wave l2: "/assets/plugins/waves-l2.jpg",
+  wavesl2: "/assets/plugins/waves-l2.jpg",
+  uadprecisionlimiter: "/assets/plugins/uad-precision-limiter.png",
+  uademt140: "/assets/plugins/uad-emt-140.png",
+  uad1176: "/assets/plugins/uad-1176.jpg",
+  ampxatr102: "/assets/plugins/ampx-atr-102.png",
+  wavesdeesser: "/assets/plugins/waves-deesser.png",
+  fabfilterprods: "/assets/plugins/fabfilter-pro-ds.jpg",
+  prods: "/assets/plugins/fabfilter-pro-ds.jpg",
+  studiovca: "/assets/plugins/logic-studio-vca.jpg",
+  fetcompressor: "/assets/plugins/waves-cla76.png",
+  vintageeqorproq3: "/assets/plugins/fabfilter-pro-q-4.jpg",
+  optofetblend: "/assets/plugins/uad-1176.jpg",
+  tapedriveforcharacter: "/assets/plugins/waves-j37.png",
+  gentlegluecompression: "/assets/plugins/waves-ssl-g-master.jpg",
+  correlationphasecheckutilities: "/assets/plugins/waves-trans-x.png",
+  verysubtleroomorsaturationonly: "/assets/plugins/waves-h-reverb.jpg",
+  wavessslgmaster: "/assets/plugins/waves-ssl-g-master.jpg",
+  uadssl4000g: "/assets/plugins/uad-ssl-4000-g.png",
+  wavestransx: "/assets/plugins/waves-trans-x.png",
+  wavesabbeyroadtg: "/assets/plugins/waves-abbey-road-tg.png",
+  sibilance: "/assets/plugins/sibilance.jpg",
+  sslstyle: "/assets/plugins/waves-ssl-g-master.jpg",
+  api2500lightsettings: "/assets/plugins/waves-api-2500.jpg",
+  j37: "/assets/plugins/waves-j37.png",
+  saturn2subtle: "/assets/plugins/fabfilter-saturn.jpg",
+  transparentlimiterforpeakcatch: "/assets/plugins/uad-precision-limiter.png",
+  noisedgate: "/assets/plugins/waves-deesser.png",
+  noisegate: "/assets/plugins/waves-deesser.png",
+  expanderforbleedcontrol: "/assets/plugins/waves-deesser.png",
+  tapeoroverdrivesubtle: "/assets/plugins/waves-j37.png",
+  uselightlyforspillcontrol: "/assets/plugins/waves-deesser.png"
+};
+
+function resolvePluginImage(pluginName: string): string | undefined {
+  const key = normalizePluginKey(pluginName);
+  return pluginImageByNormalizedName[key];
+}
+
 function buildPluginItems(
   detail: string,
-  sheetId: string,
-  sheetTitle: string,
-  columnIndex: number
+  sheetTitle: string
 ): CardItem["items"] {
   const plugins = detail
     .split(",")
     .map((name) => name.trim())
     .filter(Boolean);
 
-  const columnPositions = ["12%", "37%", "61%", "84%"];
-  const x = columnPositions[columnIndex] ?? "50%";
-  const count = plugins.length || 1;
-
   return plugins.map((pluginName, rowIndex) => {
-    const yStart = 74;
-    const yEnd = 92;
-    const y = count === 1 ? 84 : yStart + ((yEnd - yStart) * rowIndex) / (count - 1);
+    const imageSrc = resolvePluginImage(pluginName);
 
     return {
       text: pluginName,
-      imageSrc: `/assets/sheets/${sheetId}.png`,
-      imageAlt: `${sheetTitle} ${pluginName} screenshot`,
-      imagePosition: `${x} ${y.toFixed(1)}%`
+      imageSrc,
+      imageAlt: imageSrc ? `${sheetTitle} ${pluginName} screenshot` : undefined
     };
   });
 }
@@ -98,7 +155,7 @@ function makeMixSheet(config: {
         columns: 4,
         cards: config.plugins.map(([name, detail], index) => ({
           title: name,
-          items: buildPluginItems(detail, config.id, config.title, index)
+          items: buildPluginItems(detail, config.title)
         }))
       },
       {
