@@ -5,6 +5,7 @@
 - Wants sheet content rendered as editable, component-driven pages (not full-page static images); embedded images are acceptable for chart-like or illustration content.
 - When following an attached implementation plan, do not modify the plan file itself—only implement against it.
 - For Font Awesome SVG usage in this project, import Font Awesome’s base stylesheet so icons size correctly; the user was satisfied with the pre-tuning icon scale once core styles were fixed.
+- When sheets recommend plugins, show a screenshot or product-style image next to each plugin name (not names alone).
 
 ## Learned Workspace Facts
 
