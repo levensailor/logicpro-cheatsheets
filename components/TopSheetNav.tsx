@@ -8,6 +8,17 @@ interface TopSheetNavProps {
   sheets: CheatSheet[];
 }
 
+function getTopPillLabel(sheet: CheatSheet): string {
+  if (sheet.id === "tracking-band") {
+    return "Tracking";
+  }
+
+  return sheet.header.title
+    .replace(/\b(cheat\s*sheet|guide|mixing)\b/gi, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 export function TopSheetNav({ sheets }: TopSheetNavProps) {
   const pathname = usePathname();
 
@@ -22,7 +33,7 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
             <span className="tabIcon" aria-hidden="true">
               {sheet.header.icon}
             </span>
-            <span className="tabLabel">{sheet.header.title}</span>
+            <span className="tabLabel">{getTopPillLabel(sheet)}</span>
           </Link>
         );
       })}
