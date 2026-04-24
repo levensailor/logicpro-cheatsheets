@@ -57,8 +57,8 @@ export default function HomePage() {
           </article>
           <article className="introFeatureCard">
             <span className="introFeatureIcon">🚌</span>
-            <h3>Bus and Mix Workflow</h3>
-            <p>Drum bus, vocal bus, mix bus, gain staging, and workflow pages for building a clean mix.</p>
+            <h3>Audio Routing and Buses</h3>
+            <p>Learn when to use inserts, sends, instrument buses, parallel paths, and the master bus.</p>
           </article>
           <article className="introFeatureCard">
             <span className="introFeatureIcon">🧩</span>
@@ -91,7 +91,7 @@ export default function HomePage() {
           </li>
           <li>
             <strong>Build buses after the tracks feel right.</strong>
-            <span>Glue drums, vocals, and the full mix with gentle processing instead of over-fixing.</span>
+            <span>Route instruments into buses, use sends for shared effects, and blend parallel returns carefully.</span>
           </li>
           <li>
             <strong>Use Plugins when you are choosing tools.</strong>

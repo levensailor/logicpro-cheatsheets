@@ -729,6 +729,145 @@ export const cheatSheets: CheatSheet[] = [
     ]
   },
   {
+    id: "audio-routing",
+    header: {
+      title: "Audio Routing",
+      subtitle: "Buses, sends, inserts, and parallel paths",
+      icon: "🚌",
+      accent: "green"
+    },
+    summary: "Route instruments into clean buses, use sends and inserts intentionally, and build creative parallel paths in Logic Pro.",
+    sections: [
+      {
+        type: "cards",
+        title: "Core Signal Flow",
+        columns: 4,
+        cards: [
+          {
+            title: "Track",
+            items: ["The original audio or software instrument channel.", "Use inserts here for source-specific cleanup."]
+          },
+          {
+            title: "Instrument Bus",
+            items: ["Group related tracks: drums, guitars, vocals, keys.", "Use the bus fader as one control for that family."]
+          },
+          {
+            title: "Mix / Master Bus",
+            items: ["All group buses feed the final stereo path.", "Use gentle polish, metering, and final level checks here."]
+          },
+          {
+            title: "Simple Map",
+            items: ["Kick/Snare/Toms/OH -> Drum Bus", "Guitars -> Guitar Bus", "Vocals -> Vocal Bus", "All buses -> Mix Bus -> Stereo Out"]
+          }
+        ]
+      },
+      {
+        type: "table",
+        title: "Insert vs Send",
+        table: {
+          columns: ["Choice", "What It Does", "Use It For", "Logic Pro Tip"],
+          rows: [
+            [
+              "Insert",
+              "Processes 100% of the signal directly on that track or bus.",
+              "EQ, compression, gates, de-essing, amp sims, corrective tools.",
+              "Use inserts when the sound itself needs to change before it reaches the bus."
+            ],
+            [
+              "Send",
+              "Copies part of a signal to an aux through a bus while the original keeps playing.",
+              "Reverb, delay, chorus, flanger, parallel compression, cue mixes.",
+              "Set time-based FX returns to 100% wet because the dry sound is already on the original track."
+            ],
+            [
+              "Post-Fader Send",
+              "Send level follows the track fader.",
+              "Most reverbs and delays, where the effect should fade down with the source.",
+              "This is Logic's normal choice for shared space effects."
+            ],
+            [
+              "Pre-Fader Send",
+              "Send level stays independent of the track fader.",
+              "Headphone mixes, isolated effects, and some parallel compression setups.",
+              "Use carefully so hidden or quiet tracks do not keep feeding the effect unexpectedly."
+            ]
+          ]
+        }
+      },
+      {
+        type: "cards",
+        title: "Parallel Mixing",
+        columns: 3,
+        cards: [
+          {
+            title: "What It Means",
+            items: [
+              "Split a source into two paths: dry original plus processed copy.",
+              "Blend the processed return underneath instead of replacing the original."
+            ]
+          },
+          {
+            title: "Why It Works",
+            items: [
+              "Keeps punch, clarity, and transients from the dry track.",
+              "Adds density, sustain, width, grit, or excitement from the parallel path."
+            ]
+          },
+          {
+            title: "How to Start",
+            items: [
+              "Send the source or bus to a new aux.",
+              "Compress, saturate, widen, or filter the aux hard.",
+              "Pull the aux fader down, then raise it until you miss it when muted."
+            ]
+          }
+        ]
+      },
+      {
+        type: "table",
+        title: "Creative Routing Examples",
+        table: {
+          columns: ["Idea", "Routing", "Why It Is Useful"],
+          rows: [
+            [
+              "Drum Crush Bus",
+              "Drum Bus -> Send -> Aux with fast compressor, saturation, and EQ.",
+              "Adds energy and density while the original drums keep their punch."
+            ],
+            [
+              "Dub Delay Throw",
+              "Vocal or snare -> Send -> Delay Aux -> optional Reverb Aux.",
+              "Automate send levels on select words or hits for dramatic echoes without washing out the whole track."
+            ],
+            [
+              "Parallel Bass Grit",
+              "Bass -> Send -> Aux with high-pass EQ, saturation, and compression.",
+              "Adds midrange translation on phones/laptops while the clean low-end stays stable."
+            ],
+            [
+              "Vocal Space Stack",
+              "Lead Vocal -> Sends to short room, slap delay, long delay, and plate reverb auxes.",
+              "Lets the vocal feel close, wide, and emotional by blending different spaces independently."
+            ]
+          ]
+        }
+      },
+      {
+        type: "checklist",
+        title: "Routing Rules of Thumb",
+        items: [
+          "Use buses to organize related instruments and process families together.",
+          "Use inserts when a single track needs tonal or dynamic correction.",
+          "Use sends when multiple tracks should share one space or effect.",
+          "Keep reverbs and delays on aux returns mostly or fully wet.",
+          "Name buses clearly: Drum Bus, Vocal Verb, Slap Delay, Drum Crush.",
+          "Check that every bus eventually routes to the mix bus or stereo output.",
+          "Mute parallel returns occasionally to confirm they are helping, not cluttering."
+        ]
+      }
+    ]
+  },
+  {
     id: "logic-pro-workflow",
     header: {
       title: "Logic Pro Workflow Cheat Sheet",
