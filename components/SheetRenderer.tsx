@@ -74,17 +74,6 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
         ) : null}
       </header>
 
-      <nav className="sheetToc" aria-label="On this sheet">
-        <p>On this sheet</p>
-        <div className="sheetTocLinks">
-          {sectionLinks.map((section) => (
-            <a key={section.id} href={`#${section.id}`}>
-              {section.title}
-            </a>
-          ))}
-        </div>
-      </nav>
-
       {sheet.sections.map((section, index) => {
         const { id, title } = sectionLinks[index];
 

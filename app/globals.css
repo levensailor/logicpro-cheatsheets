@@ -377,43 +377,6 @@ a {
   scroll-margin-top: 1rem;
 }
 
-.sheetToc {
-  border: 1px solid #c9d7f0;
-  border-radius: 14px;
-  padding: 0.85rem;
-  background: linear-gradient(180deg, #ffffff, #f6f9ff);
-}
-
-.sheetToc p {
-  margin: 0 0 0.6rem;
-  color: #284c85;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.sheetTocLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.sheetTocLinks a {
-  border: 1px solid #cad8f1;
-  border-radius: 999px;
-  padding: 0.42rem 0.65rem;
-  background: #f7faff;
-  color: #2e4d80;
-  font-size: 0.84rem;
-  font-weight: 700;
-}
-
-.sheetTocLinks a:hover {
-  border-color: #8fb1eb;
-  background: #edf4ff;
-}
-
 .sheetChapterNav {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
