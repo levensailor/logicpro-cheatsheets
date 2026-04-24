@@ -1,4 +1,5 @@
-import type { CardItem, CheatSheet } from "@/lib/sheet-schema";
+import type { CardItem, CheatSheet, SheetSection } from "@/lib/sheet-schema";
+import { pluginCatalog } from "@/data/plugins/catalog";
 
 const commonMixChain = [
   { name: "Gain", goal: "Set healthy peaks around -12 dBFS." },
@@ -164,6 +165,95 @@ function makeMixSheet(config: {
       }
     ]
   };
+}
+
+function buildPluginsPageSections(): SheetSection[] {
+  const chooserSection: SheetSection = {
+    type: "cards",
+    title: "How to Choose Quickly",
+    columns: 3,
+    cards: [
+      {
+        title: "By Instrument",
+        items: [
+          "Vocals: Compression, De-essing, Reverb, Channel Strip",
+          "Drums: Compression, Saturation, Transient, Limiter/Clipper",
+          "Bass: EQ, Compression, Saturation, Low-end analysis",
+          "Mix Bus: Glue compression, EQ, limiter, metering"
+        ]
+      },
+      {
+        title: "By Style",
+        items: [
+          "Pop/EDM: tight compression + modern limiting",
+          "Rock: analog-style saturation and bus glue",
+          "Hip-Hop: punchy dynamics, controlled low-end",
+          "Acoustic/Jazz: transparent EQ + gentle compression"
+        ]
+      },
+      {
+        title: "By Goal",
+        items: [
+          "More clarity: EQ + resonance control",
+          "More loudness: limiter/clipper + metering",
+          "More vibe: tape/saturation + vintage comps",
+          "Better translation: reference + loudness checks"
+        ]
+      }
+    ]
+  };
+
+  const typeOrder = [
+    "Channel Strip",
+    "EQ",
+    "Compression",
+    "Limiter & Clipping",
+    "Saturation",
+    "Reverb",
+    "Delay",
+    "Filter",
+    "Dynamics Utility",
+    "Metering & Analysis",
+    "Mix Assistant",
+    "Monitoring",
+    "Instrument",
+    "Utility"
+  ];
+
+  const grouped = new Map<string, typeof pluginCatalog>();
+  for (const item of pluginCatalog) {
+    if (!grouped.has(item.type)) {
+      grouped.set(item.type, []);
+    }
+    grouped.get(item.type)?.push(item);
+  }
+
+  const tableSections: SheetSection[] = [];
+  for (const type of typeOrder) {
+    const items = grouped.get(type);
+    if (!items || items.length === 0) {
+      continue;
+    }
+
+    const sorted = [...items].sort((a, b) => b.popularity - a.popularity || a.name.localeCompare(b.name));
+    tableSections.push({
+      type: "table",
+      title: `${type} Plugins`,
+      table: {
+        columns: ["Plugin", "Popularity (1-10)", "Hardware Emulation", "Best On", "Known For", "Cost"],
+        rows: sorted.map((plugin) => [
+          plugin.name,
+          String(plugin.popularity),
+          plugin.emulation,
+          plugin.bestOn,
+          plugin.knownFor,
+          plugin.cost
+        ])
+      }
+    });
+  }
+
+  return [chooserSection, ...tableSections];
 }
 
 export const cheatSheets: CheatSheet[] = [
@@ -721,6 +811,17 @@ export const cheatSheets: CheatSheet[] = [
         ]
       }
     ]
+  },
+  {
+    id: "plugins-reference",
+    header: {
+      title: "Plugins",
+      subtitle: "Choose by type, style, and instrument",
+      icon: "🧩",
+      accent: "teal"
+    },
+    summary: "Catalog of installed plugins with best-effort popularity, emulation, use-case, and pricing context.",
+    sections: buildPluginsPageSections()
   },
   {
     id: "appendix-audio-terms",
