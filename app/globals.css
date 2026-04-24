@@ -99,6 +99,260 @@ a {
   gap: 1rem;
 }
 
+.introMain {
+  width: min(1180px, 96vw);
+  margin: 1rem auto 2.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.introHero {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 1rem;
+  border: 1px solid #b8c9eb;
+  border-radius: 22px;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background:
+    radial-gradient(circle at top right, rgba(57, 194, 112, 0.24), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(79, 131, 255, 0.24), transparent 36%),
+    linear-gradient(135deg, #ffffff, #edf4ff);
+}
+
+.introHero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(79, 131, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 131, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.8), transparent 72%);
+  pointer-events: none;
+}
+
+.introHeroCopy,
+.introBookCard {
+  position: relative;
+  z-index: 1;
+}
+
+.introEyebrow {
+  width: fit-content;
+  margin: 0 0 0.75rem;
+  border: 1px solid #bfd1f1;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  background: rgba(255, 255, 255, 0.7);
+  color: #2f538f;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.introHero h1 {
+  max-width: 850px;
+  margin: 0;
+  color: #0f2143;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.introLead {
+  max-width: 760px;
+  margin: 1rem 0 0;
+  color: #344d7a;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.6;
+}
+
+.introActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.introPrimaryAction,
+.introSecondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.72rem 1rem;
+  font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.introPrimaryAction {
+  border: 1px solid #2f66bf;
+  background: #235fbd;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(35, 95, 189, 0.24);
+}
+
+.introSecondaryAction {
+  border: 1px solid #bfd1f1;
+  background: rgba(255, 255, 255, 0.78);
+  color: #244574;
+}
+
+.introPrimaryAction:hover,
+.introSecondaryAction:hover {
+  transform: translateY(-1px);
+}
+
+.introBookCard {
+  align-self: stretch;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.introBookCover {
+  min-height: 260px;
+  display: grid;
+  align-content: center;
+  gap: 0.7rem;
+  border: 1px solid #b8c9eb;
+  border-radius: 18px;
+  padding: 1.2rem;
+  background: linear-gradient(160deg, #173b73, #4f83ff 62%, #ffffff 62%);
+  box-shadow: 0 16px 35px rgba(23, 59, 115, 0.18);
+}
+
+.introBookCover span {
+  font-size: 3rem;
+}
+
+.introBookCover strong {
+  color: #ffffff;
+  font-size: 1.45rem;
+}
+
+.introBookCover p {
+  max-width: 18rem;
+  margin: 0;
+  color: #ecf3ff;
+  line-height: 1.45;
+}
+
+.introMiniStats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.introMiniStats span {
+  border: 1px solid #c9d7f0;
+  border-radius: 999px;
+  padding: 0.45rem 0.6rem;
+  background: rgba(255, 255, 255, 0.72);
+  color: #2e4d80;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.introSection {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1rem;
+  background: var(--surface);
+}
+
+.introSection h2 {
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+}
+
+.introGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.introFeatureCard {
+  border: 1px solid #d3def3;
+  border-radius: 14px;
+  padding: 0.85rem;
+  background: linear-gradient(180deg, #ffffff, #f5f8ff);
+}
+
+.introFeatureIcon {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-content: center;
+  border: 1px solid #d4e1f6;
+  border-radius: 999px;
+  background: #eef4ff;
+  font-size: 1.2rem;
+}
+
+.introFeatureCard h3 {
+  margin: 0.75rem 0 0.35rem;
+  font-size: 1rem;
+}
+
+.introFeatureCard p {
+  margin: 0;
+  color: #43577f;
+  line-height: 1.45;
+}
+
+.introHowTo {
+  background:
+    linear-gradient(120deg, rgba(57, 194, 112, 0.09), transparent),
+    var(--surface);
+}
+
+.introSteps {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: intro-step;
+}
+
+.introSteps li {
+  counter-increment: intro-step;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.75rem;
+  align-items: start;
+  border: 1px solid #d3def3;
+  border-radius: 12px;
+  padding: 0.75rem;
+  background: #f8fbff;
+}
+
+.introSteps li::before {
+  content: counter(intro-step);
+  width: 1.6rem;
+  height: 1.6rem;
+  display: grid;
+  place-content: center;
+  border-radius: 999px;
+  background: #e0ecff;
+  color: #245aa7;
+  font-size: 0.82rem;
+  font-weight: 800;
+  grid-row: span 2;
+}
+
+.introSteps strong {
+  color: #172b4f;
+}
+
+.introSteps span {
+  color: #4c5f83;
+}
+
 .sheetHeader {
   display: flex;
   align-items: center;
@@ -585,6 +839,15 @@ td {
     margin-left: 0;
     width: 100%;
     max-width: none;
+  }
+
+  .introHero,
+  .introGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .introBookCover {
+    min-height: 220px;
   }
 }
 

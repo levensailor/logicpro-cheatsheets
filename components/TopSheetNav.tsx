@@ -39,6 +39,12 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
 
   return (
     <nav className="topNav" aria-label="Cheat sheets">
+      <Link href="/" className={`sheetTab ${pathname === "/" ? "active" : ""}`}>
+        <span className="tabIcon" aria-hidden="true">
+          📚
+        </span>
+        <span className="tabLabel">Intro</span>
+      </Link>
       {sheets.map((sheet) => {
         const href = `/sheets/${sheet.id}`;
         const isActive = pathname === href;
