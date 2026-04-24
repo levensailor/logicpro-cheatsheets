@@ -1,5 +1,8 @@
 import type { CardItem, CheatSheet, SheetSection } from "@/lib/sheet-schema";
 import { pluginCatalog } from "@/data/plugins/catalog";
+import { buildEnhancedPluginCatalog } from "@/data/plugins/seed-catalog";
+
+const enhancedPluginCatalog = buildEnhancedPluginCatalog(pluginCatalog);
 
 const commonMixChain = [
   { name: "Gain", goal: "Set healthy peaks around -12 dBFS." },
@@ -171,7 +174,7 @@ function buildPluginsPageSections(): SheetSection[] {
   const chooserSection: SheetSection = {
     type: "plugin-chooser",
     title: "How to Choose Quickly",
-    entries: pluginCatalog.map((plugin) => ({
+    entries: enhancedPluginCatalog.map((plugin) => ({
       name: plugin.name,
       type: plugin.type,
       popularity: plugin.popularity,
@@ -198,8 +201,8 @@ function buildPluginsPageSections(): SheetSection[] {
     "Utility"
   ];
 
-  const grouped = new Map<string, typeof pluginCatalog>();
-  for (const item of pluginCatalog) {
+  const grouped = new Map<string, typeof enhancedPluginCatalog>();
+  for (const item of enhancedPluginCatalog) {
     if (!grouped.has(item.type)) {
       grouped.set(item.type, []);
     }

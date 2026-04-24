@@ -119,6 +119,7 @@ export function PluginChooserSection({ title, entries }: PluginChooserSectionPro
               <th>Plugin</th>
               <th>Type</th>
               <th>Popularity (1-10)</th>
+              <th>Hardware / Mode</th>
               <th>Best On</th>
               <th>Known For</th>
             </tr>
@@ -129,6 +130,7 @@ export function PluginChooserSection({ title, entries }: PluginChooserSectionPro
                 <td>{plugin.name}</td>
                 <td>{plugin.type}</td>
                 <td>{plugin.popularity}</td>
+                <td>{plugin.emulation}</td>
                 <td>{plugin.bestOn}</td>
                 <td>{plugin.knownFor}</td>
               </tr>
