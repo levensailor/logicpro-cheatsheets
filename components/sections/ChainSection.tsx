@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 interface ChainSectionProps {
+  id?: string;
   title: string;
   steps: ChainStep[];
 }
@@ -30,9 +31,9 @@ function getStepIcon(stepName: string) {
   return faSliders;
 }
 
-export function ChainSection({ title, steps }: ChainSectionProps) {
+export function ChainSection({ id, title, steps }: ChainSectionProps) {
   return (
-    <section className="sheetSection">
+    <section id={id} className="sheetSection">
       <h2 className="sectionHeading">
         <FontAwesomeIcon icon={faLink} className="sectionHeadingIcon" />
         {title}

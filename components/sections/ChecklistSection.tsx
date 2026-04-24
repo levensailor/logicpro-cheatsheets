@@ -2,13 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListCheck, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 interface ChecklistSectionProps {
+  id?: string;
   title: string;
   items: string[];
 }
 
-export function ChecklistSection({ title, items }: ChecklistSectionProps) {
+export function ChecklistSection({ id, title, items }: ChecklistSectionProps) {
   return (
-    <section className="sheetSection">
+    <section id={id} className="sheetSection">
       <h2 className="sectionHeading">
         <FontAwesomeIcon icon={faListCheck} className="sectionHeadingIcon" />
         {title}

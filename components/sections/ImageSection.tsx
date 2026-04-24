@@ -3,15 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 interface ImageSectionProps {
+  id?: string;
   title: string;
   src: string;
   alt: string;
   caption?: string;
 }
 
-export function ImageSection({ title, src, alt, caption }: ImageSectionProps) {
+export function ImageSection({ id, title, src, alt, caption }: ImageSectionProps) {
   return (
-    <section className="sheetSection">
+    <section id={id} className="sheetSection">
       <h2 className="sectionHeading">
         <FontAwesomeIcon icon={faImage} className="sectionHeadingIcon" />
         {title}

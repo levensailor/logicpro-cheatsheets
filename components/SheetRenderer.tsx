@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { CheatSheet } from "@/lib/sheet-schema";
 import { CardsSection } from "@/components/sections/CardsSection";
 import { ChainSection } from "@/components/sections/ChainSection";
@@ -5,13 +6,21 @@ import { ChecklistSection } from "@/components/sections/ChecklistSection";
 import { ImageSection } from "@/components/sections/ImageSection";
 import { PluginChooserSection } from "@/components/sections/PluginChooserSection";
 import { TableSection } from "@/components/sections/TableSection";
-import { cleanSectionTitle } from "@/lib/section-title";
+import { cheatSheets } from "@/data/sheets";
+import { cleanSectionTitle, slugifySectionTitle } from "@/lib/section-title";
 
 interface SheetRendererProps {
   sheet: CheatSheet;
 }
 
 export function SheetRenderer({ sheet }: SheetRendererProps) {
+  const sectionLinks = sheet.sections.map((section, index) => ({
+    id: `${slugifySectionTitle(section.title)}-${index + 1}`,
+    title: cleanSectionTitle(section.title)
+  }));
+  const currentIndex = cheatSheets.findIndex((candidate) => candidate.id === sheet.id);
+  const previousSheet = currentIndex > 0 ? cheatSheets[currentIndex - 1] : undefined;
+  const nextSheet = currentIndex >= 0 && currentIndex < cheatSheets.length - 1 ? cheatSheets[currentIndex + 1] : undefined;
   const panningSheetIds = new Set([
     "electric-guitar-mixing",
     "bass-guitar-mixing",
@@ -65,17 +74,29 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
         ) : null}
       </header>
 
+      <nav className="sheetToc" aria-label="On this sheet">
+        <p>On this sheet</p>
+        <div className="sheetTocLinks">
+          {sectionLinks.map((section) => (
+            <a key={section.id} href={`#${section.id}`}>
+              {section.title}
+            </a>
+          ))}
+        </div>
+      </nav>
+
       {sheet.sections.map((section, index) => {
-        const title = cleanSectionTitle(section.title);
+        const { id, title } = sectionLinks[index];
 
         if (section.type === "chain") {
-          return <ChainSection key={`${section.title}-${index}`} title={title} steps={section.steps} />;
+          return <ChainSection key={`${section.title}-${index}`} id={id} title={title} steps={section.steps} />;
         }
 
         if (section.type === "cards") {
           return (
             <CardsSection
               key={`${section.title}-${index}`}
+              id={id}
               title={title}
               cards={section.cards}
               columns={section.columns}
@@ -84,20 +105,21 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
         }
 
         if (section.type === "table") {
-          return <TableSection key={`${section.title}-${index}`} title={title} table={section.table} />;
+          return <TableSection key={`${section.title}-${index}`} id={id} title={title} table={section.table} />;
         }
 
         if (section.type === "checklist") {
-          return <ChecklistSection key={`${section.title}-${index}`} title={title} items={section.items} />;
+          return <ChecklistSection key={`${section.title}-${index}`} id={id} title={title} items={section.items} />;
         }
 
         if (section.type === "plugin-chooser") {
-          return <PluginChooserSection key={`${section.title}-${index}`} title={title} entries={section.entries} />;
+          return <PluginChooserSection key={`${section.title}-${index}`} id={id} title={title} entries={section.entries} />;
         }
 
         return (
           <ImageSection
             key={`${section.title}-${index}`}
+            id={id}
             title={title}
             src={section.src}
             alt={section.alt}
@@ -105,6 +127,35 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
           />
         );
       })}
+
+      <nav className="sheetChapterNav" aria-label="Chapter navigation">
+        {previousSheet ? (
+          <Link className="chapterPagerLink previous" href={`/sheets/${previousSheet.id}`}>
+            <span>Previous</span>
+            <strong>
+              {previousSheet.header.icon} {previousSheet.header.title}
+            </strong>
+          </Link>
+        ) : (
+          <Link className="chapterPagerLink previous" href="/">
+            <span>Start</span>
+            <strong>📚 Handbook Intro</strong>
+          </Link>
+        )}
+        {nextSheet ? (
+          <Link className="chapterPagerLink next" href={`/sheets/${nextSheet.id}`}>
+            <span>Next</span>
+            <strong>
+              {nextSheet.header.icon} {nextSheet.header.title}
+            </strong>
+          </Link>
+        ) : (
+          <Link className="chapterPagerLink next" href="/">
+            <span>Back to</span>
+            <strong>📚 Handbook Intro</strong>
+          </Link>
+        )}
+      </nav>
     </main>
   );
 }

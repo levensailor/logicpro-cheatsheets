@@ -4,14 +4,15 @@ import { faLayerGroup, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
 interface CardsSectionProps {
+  id?: string;
   title: string;
   cards: CardItem[];
   columns?: 2 | 3 | 4;
 }
 
-export function CardsSection({ title, cards, columns = 3 }: CardsSectionProps) {
+export function CardsSection({ id, title, cards, columns = 3 }: CardsSectionProps) {
   return (
-    <section className="sheetSection">
+    <section id={id} className="sheetSection">
       <h2 className="sectionHeading">
         <FontAwesomeIcon icon={faLayerGroup} className="sectionHeadingIcon" />
         {title}

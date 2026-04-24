@@ -6,6 +6,7 @@ import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import type { PluginChooserEntry } from "@/lib/sheet-schema";
 
 interface PluginChooserSectionProps {
+  id?: string;
   title: string;
   entries: PluginChooserEntry[];
 }
@@ -49,7 +50,7 @@ function matchesInstrument(bestOn: string, instrument: string): boolean {
   return tokens.some((token) => value.includes(token));
 }
 
-export function PluginChooserSection({ title, entries }: PluginChooserSectionProps) {
+export function PluginChooserSection({ id, title, entries }: PluginChooserSectionProps) {
   const [instrument, setInstrument] = useState("All");
   const [pluginType, setPluginType] = useState("All");
 
@@ -77,7 +78,7 @@ export function PluginChooserSection({ title, entries }: PluginChooserSectionPro
   }, [entries, instrument, pluginType]);
 
   return (
-    <section className="sheetSection">
+    <section id={id} className="sheetSection">
       <h2 className="sectionHeading">
         <FontAwesomeIcon icon={faSliders} className="sectionHeadingIcon" />
         {title}
@@ -127,12 +128,12 @@ export function PluginChooserSection({ title, entries }: PluginChooserSectionPro
           <tbody>
             {filtered.map((plugin) => (
               <tr key={plugin.name}>
-                <td>{plugin.name}</td>
-                <td>{plugin.type}</td>
-                <td>{plugin.popularity}</td>
-                <td>{plugin.emulation}</td>
-                <td>{plugin.bestOn}</td>
-                <td>{plugin.knownFor}</td>
+                <td data-label="Plugin">{plugin.name}</td>
+                <td data-label="Type">{plugin.type}</td>
+                <td data-label="Popularity (1-10)">{plugin.popularity}</td>
+                <td data-label="Hardware / Mode">{plugin.emulation}</td>
+                <td data-label="Best On">{plugin.bestOn}</td>
+                <td data-label="Known For">{plugin.knownFor}</td>
               </tr>
             ))}
           </tbody>

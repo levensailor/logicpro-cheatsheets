@@ -34,7 +34,7 @@ a {
 }
 
 .appShell {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-columns: 15.5rem minmax(0, 1fr);
 }
@@ -48,11 +48,21 @@ a {
   gap: 0.5rem;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100vh;
-  padding: 0.9rem 0.75rem;
+  height: 100dvh;
+  padding: max(0.9rem, env(safe-area-inset-top)) 0.75rem max(0.9rem, env(safe-area-inset-bottom));
   border-right: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
+}
+
+.mobileNavBar {
+  display: none;
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .sheetTab {
@@ -94,7 +104,7 @@ a {
 
 .sheetMain {
   width: min(1200px, 96vw);
-  margin: 1rem auto 2rem;
+  margin: 1rem auto max(2rem, env(safe-area-inset-bottom));
   display: grid;
   gap: 1rem;
 }
@@ -361,6 +371,78 @@ a {
   border-radius: 16px;
   background: linear-gradient(120deg, #ffffff, #eff4ff);
   padding: 1rem 1.2rem;
+}
+
+.sheetSection {
+  scroll-margin-top: 1rem;
+}
+
+.sheetToc {
+  border: 1px solid #c9d7f0;
+  border-radius: 14px;
+  padding: 0.85rem;
+  background: linear-gradient(180deg, #ffffff, #f6f9ff);
+}
+
+.sheetToc p {
+  margin: 0 0 0.6rem;
+  color: #284c85;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sheetTocLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.sheetTocLinks a {
+  border: 1px solid #cad8f1;
+  border-radius: 999px;
+  padding: 0.42rem 0.65rem;
+  background: #f7faff;
+  color: #2e4d80;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.sheetTocLinks a:hover {
+  border-color: #8fb1eb;
+  background: #edf4ff;
+}
+
+.sheetChapterNav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.chapterPagerLink {
+  border: 1px solid #c9d7f0;
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: linear-gradient(180deg, #ffffff, #f5f8ff);
+}
+
+.chapterPagerLink span {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #607194;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.chapterPagerLink strong {
+  color: #18335f;
+}
+
+.chapterPagerLink.next {
+  text-align: right;
 }
 
 .sheetTitleBlock {
@@ -675,6 +757,16 @@ a {
 
 .tableWrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 10px;
+  background:
+    linear-gradient(90deg, #ffffff 30%, rgba(255, 255, 255, 0)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0), #ffffff 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%, rgba(36, 77, 132, 0.18), transparent),
+    radial-gradient(farthest-side at 100% 50%, rgba(36, 77, 132, 0.18), transparent) 100% 0;
+  background-attachment: local, local, scroll, scroll;
+  background-repeat: no-repeat;
+  background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
 }
 
 .chooserControls {
@@ -807,19 +899,66 @@ td {
   .topNav {
     position: sticky;
     top: 0;
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: visible;
     height: auto;
-    padding: 0.75rem;
+    padding: max(0.7rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right)) 0.7rem max(0.75rem, env(safe-area-inset-left));
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
 
-  .sheetTab {
-    width: auto;
+  .mobileNavBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .mobileHomeLink,
+  .chapterMenuButton {
+    min-height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid #c9d7f0;
     border-radius: 999px;
-    white-space: nowrap;
+    padding: 0.5rem 0.75rem;
+    background: #f7faff;
+    color: #244574;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  .chapterMenuButton {
+    cursor: pointer;
+  }
+
+  .navLinks {
+    position: fixed;
+    left: max(0.75rem, env(safe-area-inset-left));
+    right: max(0.75rem, env(safe-area-inset-right));
+    top: calc(4.2rem + env(safe-area-inset-top));
+    z-index: 120;
+    max-height: min(70dvh, 34rem);
+    display: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #c2d2ed;
+    border-radius: 18px;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 24px 48px rgba(32, 59, 104, 0.2);
+  }
+
+  .navLinks.open {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sheetTab {
+    min-height: 2.65rem;
+    border-radius: 12px;
+    white-space: normal;
   }
 
   .columns4,
@@ -833,6 +972,10 @@ td {
 
   .sheetHeader {
     flex-wrap: wrap;
+  }
+
+  .sheetSection {
+    scroll-margin-top: 5.4rem;
   }
 
   .headerPanning {
@@ -859,11 +1002,66 @@ td {
     grid-template-columns: 1fr;
   }
 
-  .sheetTab .tabLabel {
-    display: none;
+  .navLinks.open {
+    grid-template-columns: 1fr;
+  }
+
+  .sheetChapterNav {
+    grid-template-columns: 1fr;
+  }
+
+  .chapterPagerLink.next {
+    text-align: left;
   }
 
   .chooserControls {
     grid-template-columns: 1fr;
+  }
+
+  table {
+    min-width: 0;
+  }
+
+  table,
+  thead,
+  tbody,
+  tr,
+  td {
+    display: block;
+  }
+
+  thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  tr {
+    border: 1px solid #c9d7f0;
+    border-radius: 10px;
+    margin-bottom: 0.65rem;
+    background: #ffffff;
+  }
+
+  td {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 38%) minmax(0, 1fr);
+    gap: 0.7rem;
+    border: 0;
+    border-bottom: 1px solid #e0e8f7;
+    overflow-wrap: anywhere;
+  }
+
+  td:last-child {
+    border-bottom: 0;
+  }
+
+  td::before {
+    content: attr(data-label);
+    color: #284c85;
+    font-weight: 800;
   }
 }
