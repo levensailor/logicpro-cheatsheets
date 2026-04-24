@@ -240,14 +240,13 @@ function buildPluginsPageSections(): SheetSection[] {
       type: "table",
       title: `${type} Plugins`,
       table: {
-        columns: ["Plugin", "Popularity (1-10)", "Hardware Emulation", "Best On", "Known For", "Cost"],
+        columns: ["Plugin", "Popularity (1-10)", "Hardware Emulation", "Best On", "Known For"],
         rows: sorted.map((plugin) => [
           plugin.name,
           String(plugin.popularity),
           plugin.emulation,
           plugin.bestOn,
-          plugin.knownFor,
-          plugin.cost
+          plugin.knownFor
         ])
       }
     });
