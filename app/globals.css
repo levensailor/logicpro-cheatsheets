@@ -35,6 +35,8 @@ a {
 
 .appShell {
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 15.5rem minmax(0, 1fr);
 }
 
 .topNav {
@@ -42,10 +44,13 @@ a {
   top: 0;
   z-index: 100;
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
-  overflow-x: auto;
-  padding: 0.75rem;
-  border-bottom: 1px solid var(--border);
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+  padding: 0.9rem 0.75rem;
+  border-right: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
 }
@@ -54,13 +59,14 @@ a {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  white-space: nowrap;
+  white-space: normal;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 12px;
   padding: 0.45rem 0.8rem;
   font-size: 0.82rem;
   color: #324b77;
   transition: 0.2s ease;
+  width: 100%;
 }
 
 .sheetTab:hover {
@@ -510,6 +516,28 @@ td {
 }
 
 @media (max-width: 900px) {
+  .appShell {
+    display: block;
+  }
+
+  .topNav {
+    position: sticky;
+    top: 0;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: auto;
+    padding: 0.75rem;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sheetTab {
+    width: auto;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
   .columns4,
   .columns3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
