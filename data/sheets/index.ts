@@ -868,6 +868,193 @@ export const cheatSheets: CheatSheet[] = [
     ]
   },
   {
+    id: "automation",
+    header: {
+      title: "Automation",
+      subtitle: "Volume rides, movement, and musical control",
+      icon: "🎛️",
+      accent: "purple"
+    },
+    summary: "Use automation to shape levels, movement, effects, and bleed decisions so the mix feels intentional instead of static.",
+    sections: [
+      {
+        type: "cards",
+        title: "What Automation Does",
+        columns: 3,
+        cards: [
+          {
+            title: "Manual Mix Moves",
+            items: [
+              "Automation records changes over time: volume, pan, sends, plugin knobs, mutes, and more.",
+              "Use it when one static setting works in the verse but fails in the chorus."
+            ]
+          },
+          {
+            title: "Why It Matters",
+            items: [
+              "A good mix moves with the song instead of staying frozen.",
+              "Automation can make a vocal feel present, a drum fill explode, or a delay appear only on one word."
+            ]
+          },
+          {
+            title: "When to Start",
+            items: [
+              "Get the rough balance first, then automate.",
+              "Do not automate around a bad static mix; fix gain, EQ, and compression first."
+            ]
+          }
+        ]
+      },
+      {
+        type: "cards",
+        title: "Transients and Volume Levels",
+        columns: 3,
+        cards: [
+          {
+            title: "What Is a Transient?",
+            items: [
+              "The transient is the first sharp hit of a sound: pick attack, drum stick, consonant, or pluck.",
+              "Transients give punch and clarity, but they can also trick meters into showing high peaks."
+            ]
+          },
+          {
+            title: "Set Levels by Body + Peak",
+            items: [
+              "Use peak level to avoid clipping, but use your ear for the body of the sound.",
+              "If the transient is loud but the note feels quiet, use compression, clip gain, or a small volume ride."
+            ]
+          },
+          {
+            title: "Volume Ride Opinion",
+            items: [
+              "Ride volume before over-compressing vocals, bass, and solos.",
+              "If a word disappears once, automate it. If every word jumps around, use a rider or compressor first."
+            ]
+          }
+        ]
+      },
+      {
+        type: "table",
+        title: "Useful Automation Targets",
+        table: {
+          columns: ["Parameter", "Use It For", "Example Move"],
+          rows: [
+            [
+              "Volume",
+              "Bring important moments forward and tuck distractions back.",
+              "Lift the lead vocal 1-2 dB in the chorus or raise a guitar lick for one bar."
+            ],
+            [
+              "Send Level",
+              "Add effects only when needed without changing the dry sound.",
+              "Send the last vocal word of a phrase to a delay throw."
+            ],
+            [
+              "Delay Feedback",
+              "Make repeats bloom, spin, or disappear musically.",
+              "Raise feedback on one transition, then pull it down before the next lyric."
+            ],
+            [
+              "Wet/Dry Mix",
+              "Make effects appear for emphasis but keep the normal mix clear.",
+              "Push a chorus, flanger, or distortion wet/dry higher for a bridge."
+            ],
+            [
+              "Filter Cutoff",
+              "Create movement, tension, or a reveal.",
+              "Low-pass guitars in a verse, then open the filter into the chorus."
+            ],
+            [
+              "Pan",
+              "Create width or motion without adding more tracks.",
+              "Move a synth ear-candy part outward during a fill."
+            ],
+            [
+              "Reverb Decay / Pre-Delay",
+              "Change depth between song sections.",
+              "Short room in the verse, longer plate in the chorus."
+            ]
+          ]
+        }
+      },
+      {
+        type: "cards",
+        title: "Riders, Gates, and Automation",
+        columns: 3,
+        cards: [
+          {
+            title: "Use Automation When",
+            items: [
+              "The fix is musical, specific, and intentional.",
+              "Examples: one loud syllable, one missing bass note, one drum fill that should leap forward."
+            ]
+          },
+          {
+            title: "Use a Rider When",
+            items: [
+              "The level needs constant small corrections across a whole performance.",
+              "Vocal riders and bass riders are great before compression because they feed the compressor more evenly."
+            ]
+          },
+          {
+            title: "Use a Gate When",
+            items: [
+              "You need automatic cleanup between hits or phrases.",
+              "Gates work best on close drums, noisy amps, and obvious silence gaps; they work poorly when the bleed is musical."
+            ]
+          }
+        ]
+      },
+      {
+        type: "table",
+        title: "Mic Bleed: Cut It or Keep It?",
+        table: {
+          columns: ["Situation", "Recommendation", "Why"],
+          rows: [
+            [
+              "Tight modern production",
+              "Cut or reduce bleed with editing, gates, expanders, and fades.",
+              "Cleaner close mics make punchy drums, edited guitars, and polished vocals easier to control."
+            ],
+            [
+              "Live band feel",
+              "Keep useful bleed if it sounds like room, kit glue, or natural performance energy.",
+              "Bleed can make a recording feel like humans playing together instead of isolated parts."
+            ],
+            [
+              "Phase problems",
+              "Cut, flip polarity, time-align, or lower the offending mic.",
+              "Bad bleed that hollows out the snare, kick, or vocal is not vibe; it is damage."
+            ],
+            [
+              "Cymbal wash in drum close mics",
+              "Reduce only as much as needed.",
+              "Over-gating toms and snare can make the kit feel fake; use fades or gentle expansion first."
+            ],
+            [
+              "Room mic character",
+              "Keep it if it flatters the band, then automate it by section.",
+              "Room mics can be low in verses and louder in choruses for size and excitement."
+            ]
+          ]
+        }
+      },
+      {
+        type: "checklist",
+        title: "Automation Workflow",
+        items: [
+          "Start with static faders, panning, and gain staging.",
+          "Use clip gain for obvious word/note fixes before plugins.",
+          "Use riders or compression for constant level control.",
+          "Use volume automation for musical emphasis and section changes.",
+          "Automate sends, feedback, wet/dry, filters, and reverb time to make transitions pop.",
+          "Mute automation lanes occasionally to confirm the song feels worse without them.",
+          "Keep bleed when it adds realism; cut it when it causes noise, phase damage, or loss of impact."
+        ]
+      }
+    ]
+  },
+  {
     id: "logic-pro-workflow",
     header: {
       title: "Logic Pro Workflow Cheat Sheet",

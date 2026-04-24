@@ -58,7 +58,7 @@ export default function HomePage() {
           <article className="introFeatureCard">
             <span className="introFeatureIcon">🚌</span>
             <h3>Audio Routing and Buses</h3>
-            <p>Learn when to use inserts, sends, instrument buses, parallel paths, and the master bus.</p>
+            <p>Learn inserts, sends, instrument buses, automation moves, parallel paths, and master bus flow.</p>
           </article>
           <article className="introFeatureCard">
             <span className="introFeatureIcon">🧩</span>
@@ -91,7 +91,7 @@ export default function HomePage() {
           </li>
           <li>
             <strong>Build buses after the tracks feel right.</strong>
-            <span>Route instruments into buses, use sends for shared effects, and blend parallel returns carefully.</span>
+            <span>Route instruments into buses, automate important moments, and blend parallel returns carefully.</span>
           </li>
           <li>
             <strong>Use Plugins when you are choosing tools.</strong>
