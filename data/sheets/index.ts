@@ -169,38 +169,16 @@ function makeMixSheet(config: {
 
 function buildPluginsPageSections(): SheetSection[] {
   const chooserSection: SheetSection = {
-    type: "cards",
+    type: "plugin-chooser",
     title: "How to Choose Quickly",
-    columns: 3,
-    cards: [
-      {
-        title: "By Instrument",
-        items: [
-          "Vocals: Compression, De-essing, Reverb, Channel Strip",
-          "Drums: Compression, Saturation, Transient, Limiter/Clipper",
-          "Bass: EQ, Compression, Saturation, Low-end analysis",
-          "Mix Bus: Glue compression, EQ, limiter, metering"
-        ]
-      },
-      {
-        title: "By Style",
-        items: [
-          "Pop/EDM: tight compression + modern limiting",
-          "Rock: analog-style saturation and bus glue",
-          "Hip-Hop: punchy dynamics, controlled low-end",
-          "Acoustic/Jazz: transparent EQ + gentle compression"
-        ]
-      },
-      {
-        title: "By Goal",
-        items: [
-          "More clarity: EQ + resonance control",
-          "More loudness: limiter/clipper + metering",
-          "More vibe: tape/saturation + vintage comps",
-          "Better translation: reference + loudness checks"
-        ]
-      }
-    ]
+    entries: pluginCatalog.map((plugin) => ({
+      name: plugin.name,
+      type: plugin.type,
+      popularity: plugin.popularity,
+      emulation: plugin.emulation,
+      bestOn: plugin.bestOn,
+      knownFor: plugin.knownFor
+    }))
   };
 
   const typeOrder = [

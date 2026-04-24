@@ -37,6 +37,15 @@ export interface SheetTable {
   rows: string[][];
 }
 
+export interface PluginChooserEntry {
+  name: string;
+  type: string;
+  popularity: number;
+  emulation: string;
+  bestOn: string;
+  knownFor: string;
+}
+
 export type SheetSection =
   | {
       type: "chain";
@@ -65,6 +74,11 @@ export type SheetSection =
       src: string;
       alt: string;
       caption?: string;
+    }
+  | {
+      type: "plugin-chooser";
+      title: string;
+      entries: PluginChooserEntry[];
     };
 
 export interface CheatSheet {

@@ -3,6 +3,7 @@ import { CardsSection } from "@/components/sections/CardsSection";
 import { ChainSection } from "@/components/sections/ChainSection";
 import { ChecklistSection } from "@/components/sections/ChecklistSection";
 import { ImageSection } from "@/components/sections/ImageSection";
+import { PluginChooserSection } from "@/components/sections/PluginChooserSection";
 import { TableSection } from "@/components/sections/TableSection";
 import { cleanSectionTitle } from "@/lib/section-title";
 
@@ -88,6 +89,10 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
 
         if (section.type === "checklist") {
           return <ChecklistSection key={`${section.title}-${index}`} title={title} items={section.items} />;
+        }
+
+        if (section.type === "plugin-chooser") {
+          return <PluginChooserSection key={`${section.title}-${index}`} title={title} entries={section.entries} />;
         }
 
         return (

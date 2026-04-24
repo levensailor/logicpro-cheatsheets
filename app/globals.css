@@ -423,6 +423,36 @@ a {
   overflow-x: auto;
 }
 
+.chooserControls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 0.75rem;
+}
+
+.chooserLabel {
+  display: grid;
+  gap: 0.35rem;
+  color: #324d7e;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.chooserLabel select {
+  border: 1px solid #c4d4ee;
+  border-radius: 9px;
+  padding: 0.45rem 0.55rem;
+  font: inherit;
+  color: #233d6c;
+  background: #f9fbff;
+}
+
+.chooserResults {
+  margin: 0 0 0.65rem;
+  font-size: 0.82rem;
+  color: #4b6087;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -568,5 +598,9 @@ td {
 
   .sheetTab .tabLabel {
     display: none;
+  }
+
+  .chooserControls {
+    grid-template-columns: 1fr;
   }
 }
