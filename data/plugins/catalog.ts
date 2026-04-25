@@ -124,10 +124,10 @@ export const pluginCatalog: PluginCatalogItem[] = [
   { name: "Logic Phaser", type: "Filter", popularity: 6, emulation: "Analog-inspired modulation", bestOn: "Guitars, keys, pads", knownFor: "Sweeping phase shift texture" },
   { name: "Logic Step FX", type: "Filter", popularity: 7, emulation: "Sequenced digital multi-FX", bestOn: "Electronic production", knownFor: "Pattern-based rhythmic modulation" },
   { name: "Logic Remix FX", type: "Filter", popularity: 6, emulation: "Performance FX suite", bestOn: "Transitions and live FX moves", knownFor: "DJ-style macro effects in one interface" },
-  { name: "Logic Pitch Shifter", type: "Dynamics Utility", popularity: 6, emulation: "Digital pitch processing", bestOn: "Creative shifts and harmonization", knownFor: "Simple pitch offset and special effects" },
+  { name: "Logic Pitch Shifter", type: "Pitch & Time", popularity: 6, emulation: "Digital pitch processing", bestOn: "Creative shifts and harmonization", knownFor: "Simple pitch offset and special effects" },
   { name: "Logic Spreader", type: "Utility", popularity: 6, emulation: "Stereo enhancement", bestOn: "Widening mono or narrow sources", knownFor: "Simple stereo image expansion" },
   { name: "Logic Stereo Spread", type: "Utility", popularity: 6, emulation: "Frequency-dependent stereo widening", bestOn: "Keys, FX returns, stacks", knownFor: "Frequency-aware stereo widening" },
-  { name: "Logic Vocal Transformer", type: "Dynamics Utility", popularity: 6, emulation: "Digital formant/pitch tool", bestOn: "Creative vocal effects", knownFor: "Formant and pitch color changes" },
+  { name: "Logic Vocal Transformer", type: "Pitch & Time", popularity: 6, emulation: "Digital formant/pitch tool", bestOn: "Creative vocal effects", knownFor: "Formant and pitch color changes" },
   { name: "Logic Wah", type: "Filter", popularity: 5, emulation: "Wah pedal style filter", bestOn: "Guitar and funk effects", knownFor: "Auto/manual wah tonal movement" },
   { name: "Logic Test Oscillator", type: "Utility", popularity: 5, emulation: "Digital signal generator", bestOn: "Calibration and troubleshooting", knownFor: "Reference tone generation" }
 ];

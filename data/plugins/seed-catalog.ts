@@ -21,6 +21,9 @@ function mapSeedTypeToAppType(seedType: string): string {
   if (normalized.includes("channel strip")) return "Channel Strip";
   if (normalized.includes("eq")) return "EQ";
   if (normalized.includes("compressor")) return "Compression";
+  if (normalized.includes("de-esser") || normalized.includes("deesser") || normalized.includes("transient")) {
+    return "Dynamics Utility";
+  }
   if (normalized.includes("limiter") || normalized.includes("clipper")) return "Limiter & Clipping";
   if (normalized.includes("saturation") || normalized.includes("tape") || normalized.includes("distortion")) {
     return "Saturation";
@@ -31,6 +34,7 @@ function mapSeedTypeToAppType(seedType: string): string {
   if (normalized.includes("meter")) return "Metering & Analysis";
   if (normalized.includes("mixing suite") || normalized.includes("mastering suite")) return "Mix Assistant";
   if (normalized.includes("synth")) return "Instrument";
+  if (normalized.includes("pitch") || normalized.includes("time")) return "Pitch & Time";
   if (normalized.includes("vocal")) return "Dynamics Utility";
   if (normalized.includes("utility")) return "Utility";
 

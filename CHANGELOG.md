@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-25 11:52 EST
+- Align mixing and mastering guide content with modular chain guidance, source-specific compression notes, nuanced LUFS delivery targets, corrected EQ ranges, and current plugin recommendations.
+
 ## 2026-04-25 11:16 EST
 - Add a DAW Interfaces chapter with converter, preamp, latency, expansion, DSP, and audio interface recommendation guidance.
 

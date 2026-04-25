@@ -4,28 +4,204 @@ import { buildEnhancedPluginCatalog } from "@/data/plugins/seed-catalog";
 
 const enhancedPluginCatalog = buildEnhancedPluginCatalog(pluginCatalog);
 
-const commonMixChain = [
-  { name: "Gain", goal: "Set healthy peaks around -12 dBFS." },
-  { name: "Surgical EQ", goal: "Remove mud and harsh resonances." },
-  { name: "Compression", goal: "Control dynamics and add consistency." },
-  { name: "Tone EQ", goal: "Shape musical balance and clarity." },
-  { name: "Saturation", goal: "Add harmonics and perceived density." },
-  { name: "Space", goal: "Use subtle reverb or delay if needed." },
-  { name: "Limiting", goal: "Catch peaks and cap final level." }
+const sourceMixChain = [
+  { name: "Clip Gain / Input Gain", goal: "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud." },
+  { name: "Cleanup / Corrective EQ", goal: "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems." },
+  { name: "Dynamics", goal: "Compress only when the source needs leveling, punch, control, or tone; leave it alone when it already sits correctly." },
+  { name: "Tone EQ", goal: "Add weight, presence, or air after the source is controlled and the part works in context." },
+  { name: "Saturation / Character", goal: "Optional color for density, harmonic interest, or perceived loudness when the arrangement benefits from it." },
+  { name: "Space / Sends", goal: "Prefer sends for shared reverbs and delays; use insert reverbs only when the effect is part of the sound." },
+  { name: "Peak Control", goal: "Use clip gain, light clipping, or limiting only when peaks are causing problems; do not limit every track by default." }
 ] as const;
 
-const mixCards = (focus: string): CardItem[] => [
+const busMixChain = [
+  { name: "Trim / Gain", goal: "Set the bus level so processing has headroom and bypass comparisons are level-matched." },
+  { name: "Corrective EQ if needed", goal: "Use broad or focused cuts only for buildup, harshness, or clutter created by the grouped tracks." },
+  { name: "Glue Compression if needed", goal: "Use light compression when it improves cohesion; leave the bus dynamic when it already moves well." },
+  { name: "Tone EQ if needed", goal: "Add broad weight, clarity, or air only after the balance works." },
+  { name: "Saturation / Console / Tape Color", goal: "Optional character for density or shared tone; level-match because color often feels louder." },
+  { name: "Width / Imaging", goal: "Use only when phase-safe and useful; check mono before trusting wide processing." },
+  { name: "Peak Control", goal: "Use clipping or limiting only if peaks are causing problems or the bus needs a deliberate effect." }
+] as const;
+
+const mainBusChain = [
+  { name: "Gain / Trim", goal: "Leave headroom and avoid using the main bus to fix poor track balances." },
+  { name: "Gentle Corrective EQ if needed", goal: "Prefer broad, subtle moves; fix obvious problems in the mix when possible." },
+  { name: "Very Light Bus Compression if useful", goal: "Use only when it improves movement or glue, usually around 0.5-2 dB of gain reduction." },
+  { name: "Subtle Tone EQ if needed", goal: "Add broad polish carefully and keep checking bypass at matched loudness." },
+  { name: "Subtle Saturation / Tape / Console Color", goal: "Optional finishing color when it helps density without shrinking the mix." },
+  { name: "Metering", goal: "Check peak, loudness, dynamic range, stereo correlation, and low-end translation." },
+  { name: "Limiter for Preview / Final Checks", goal: "Use limiting to audition loudness or create a final master, not as a mix crutch." }
+] as const;
+
+function chainForTitle(title: string) {
+  if (title.includes("Main Bus")) {
+    return mainBusChain;
+  }
+
+  if (title.includes("Bus")) {
+    return busMixChain;
+  }
+
+  return sourceMixChain;
+}
+
+function compressionCardForTitle(title: string): CardItem {
+  if (title.includes("Bass Guitar")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Leveling: 3:1 to 6:1, medium attack/release, around 3-6 dB gain reduction if notes jump around.",
+        "Use faster attack only when peaks hit too hard.",
+        "Parallel compression and saturation can add sustain/density without flattening the DI."
+      ]
+    };
+  }
+
+  if (title.includes("Kick")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Punch: 3:1 to 6:1, slower attack around 10-30 ms, release timed to the groove, 2-6 dB gain reduction.",
+        "Use faster attack only if the transient is too pokey.",
+        "Avoid compressing just because the kick exists."
+      ]
+    };
+  }
+
+  if (title.includes("Snare")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Punch/body: 3:1 to 6:1, 10-30 ms attack, 50-150 ms release as a starting point.",
+        "Use faster release or parallel compression for crack and aggression.",
+        "Preserve the transient unless the snare is too sharp."
+      ]
+    };
+  }
+
+  if (title.includes("Toms")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Use compression only if tom hits are inconsistent.",
+        "Try 3:1 to 5:1, medium attack, and medium/fast release.",
+        "Gate, edit, or automate bleed before over-compressing."
+      ]
+    };
+  }
+
+  if (title.includes("Overheads")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Compression is optional; use gentle control only if cymbals or kit image need cohesion.",
+        "Avoid pumping cymbals.",
+        "EQ, phase alignment, and level often matter more than compression."
+      ]
+    };
+  }
+
+  if (title.includes("Room Mic")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Natural room: light compression with 1-3 dB gain reduction.",
+        "Exciting room: heavy compression or limiting can be a deliberate effect.",
+        "Blend aggressive room compression underneath the dry kit."
+      ]
+    };
+  }
+
+  if (title.includes("Electric Guitar")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Distorted guitars often need little or no compression.",
+        "Use compression for clean, jangly, funk, or inconsistent parts.",
+        "For distorted guitars, EQ, double tracking, panning, and automation usually matter more."
+      ]
+    };
+  }
+
+  if (title.includes("Vocal Mixing")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Leveling: 2:1 to 4:1, moderate attack/release, around 2-5 dB gain reduction.",
+        "Modern control often works best as serial compression with light stages.",
+        "Use automation before relying on heavy compression."
+      ]
+    };
+  }
+
+  if (title.includes("Drum Bus")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Glue: 1.5:1 to 2:1, slow/medium attack, auto or tempo-based release, around 1-3 dB gain reduction.",
+        "Aggressive bus compression is a sound/effect, not the default.",
+        "Parallel compression is usually safer than crushing the main drum bus."
+      ]
+    };
+  }
+
+  if (title.includes("Vocal Bus")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Use light compression for cohesion, usually 1-3 dB gain reduction.",
+        "De-ess the bus only if stacked vocals build harshness.",
+        "Avoid crushing the bus after already compressing individual vocals."
+      ]
+    };
+  }
+
+  if (title.includes("Guitar Bus")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Use light glue compression only if multiple guitar tracks need cohesion.",
+        "Distorted guitars may not need bus compression.",
+        "EQ and automation often matter more than bus compression."
+      ]
+    };
+  }
+
+  if (title.includes("Main Bus")) {
+    return {
+      title: "Compression Starting Points",
+      items: [
+        "Gentle glue only: 1.5:1 to 2:1 is a common starting point.",
+        "Usually aim for about 0.5-2 dB gain reduction.",
+        "Use slow/medium attack and auto or tempo-aware release to preserve transients."
+      ]
+    };
+  }
+
+  return {
+    title: "Compression Starting Points",
+    items: [
+      "Compress only if the source needs leveling, punch, control, or tone.",
+      "Use light settings first, then adjust by ear in context.",
+      "If the part already sits correctly, leave the dynamics alone."
+    ]
+  };
+}
+
+const mixCards = (focus: string, title: string): CardItem[] => [
   {
     title: "EQ Targets",
-    items: ["High-pass where possible", "Cut boxiness first", "Boost for intent, not volume"]
+    items: [
+      "Filter only what the arrangement does not need.",
+      "Cut boxiness, harshness, or mud when you actually hear it.",
+      "Boost for a musical reason, not to make the track louder."
+    ]
   },
-  {
-    title: "Compression Targets",
-    items: ["Ratio 3:1 to 4:1", "Attack 10-30 ms", "Aim 2-6 dB gain reduction"]
-  },
+  compressionCardForTitle(title),
   {
     title: "Metering Targets",
-    items: ["Keep peaks below -6 dBFS", "Watch low-end buildup", `Prioritize ${focus} clarity`]
+    items: ["Leave headroom before buses", "Watch low-end buildup", `Prioritize ${focus} clarity in context`]
   }
 ];
 
@@ -132,17 +308,21 @@ function makeMixSheet(config: {
       icon: config.icon,
       accent: config.accent
     },
-    summary: `A practical ${config.focus.toLowerCase()} cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.`,
+    summary: `A practical ${config.focus.toLowerCase()} cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.`,
     sections: [
       {
         type: "chain",
-        title: "1. Chain Order (Start to Finish)",
-        steps: commonMixChain.map((step) => ({ ...step }))
+        title: config.title.includes("Main Bus")
+          ? "Main Bus / Pre-Master Chain Starting Point"
+          : config.title.includes("Bus")
+            ? "Bus Chain Starting Point"
+            : "Recommended Modular Chain",
+        steps: chainForTitle(config.title).map((step) => ({ ...step }))
       },
       {
         type: "cards",
         title: "2-4. EQ, Compression, and Metering",
-        cards: mixCards(config.focus)
+        cards: mixCards(config.focus, config.title)
       },
       {
         type: "table",
@@ -244,17 +424,18 @@ export const cheatSheets: CheatSheet[] = [
     accent: "blue",
     focus: "Low-end",
     eqRows: [
-      ["25-40 Hz", "High-pass filter", "Remove sub rumble"],
-      ["100-250 Hz", "Low-mid cut", "Clean mud and boxiness"],
-      ["700 Hz-1 kHz", "Low-mid focus", "Add body and note definition"],
-      ["2-5 kHz", "Presence boost", "Add attack and string clarity"],
-      ["8-12 kHz", "High shelf", "Add top-end sheen"]
+      ["40-60 Hz", "Sub extension", "Use carefully for deep reach if the arrangement has room"],
+      ["60-100 Hz", "Fundamental weight", "Shape the main low-end support"],
+      ["100-250 Hz", "Body / warmth", "Add fullness or cut if the bass clouds the kick"],
+      ["250-500 Hz", "Mud / boxiness", "Reduce if the bass feels cloudy or cardboard-like"],
+      ["700 Hz-1.5 kHz", "Note definition / growl", "Help bass speak on small speakers"],
+      ["2-5 kHz", "Attack / string noise", "Add articulation carefully when needed"]
     ],
     plugins: [
-      ["EQ", "FabFilter Pro-Q 3, Waves F6"],
-      ["Compression", "FabFilter Pro-C 2, Waves CLA-76"],
-      ["Saturation", "Soundtoys Decapitator, Waves J37"],
-      ["Reverb", "Valhalla VintageVerb, Waves H-Reverb"]
+      ["EQ", "Logic Channel EQ, Logic Linear Phase EQ, FabFilter Pro-Q 4, Waves F6"],
+      ["Compression", "Logic Compressor, FabFilter Pro-C 3, Waves CLA-76"],
+      ["Saturation", "Logic Phat FX, Logic Overdrive, Soundtoys Decapitator, Waves J37"],
+      ["Space (Optional)", "Logic ChromaVerb, Logic Space Designer, ValhallaRoom, Waves H-Reverb"]
     ],
     quickTips: [
       "Carve space for kick and bass relationship.",
@@ -270,17 +451,19 @@ export const cheatSheets: CheatSheet[] = [
     accent: "blue",
     focus: "Punch",
     eqRows: [
-      ["25-35 Hz", "High-pass filter", "Remove unusable sub"],
-      ["150-300 Hz", "Low cut", "Reduce mud and boxiness"],
-      ["400-800 Hz", "Body", "Add weight if thin"],
-      ["2-5 kHz", "Attack boost", "Bring out beater click"],
-      ["5-8 kHz", "Click", "Improve definition"]
+      ["40-60 Hz", "Sub / low extension", "Use carefully if the song needs deep low end"],
+      ["60-100 Hz", "Thump / fundamental punch", "Shape the main kick weight"],
+      ["100-200 Hz", "Weight / fullness", "Add or trim depending on bass relationship"],
+      ["200-500 Hz", "Boxiness / mud", "Often reduced if the kick feels cloudy"],
+      ["400-800 Hz", "Wood / hollow tone", "Useful only when the acoustic character needs it"],
+      ["1-3 kHz", "Beater attack", "Add definition for smaller speakers"],
+      ["4-8 kHz", "Click / snap", "Use for dense mixes when more cut is needed"]
     ],
     plugins: [
-      ["EQ", "Logic Channel EQ, FabFilter Pro-Q 3"],
+      ["EQ", "Logic Channel EQ, Logic Linear Phase EQ, FabFilter Pro-Q 4"],
       ["Compression", "Logic Compressor, Waves API 2500"],
-      ["Saturation", "Waves J37, Soundtoys Decapitator"],
-      ["Limiting", "Waves L2, UAD Precision Limiter"]
+      ["Saturation", "Logic Phat FX, Logic Clip Distortion, Waves J37, Soundtoys Decapitator"],
+      ["Peak Control", "Logic Adaptive Limiter, Logic Limiter, Waves L2, UAD Precision Limiter"]
     ],
     quickTips: [
       "Shape transients before adding more low-end.",
@@ -303,10 +486,10 @@ export const cheatSheets: CheatSheet[] = [
       ["7-12 kHz", "Snap shelf", "Add air and brightness"]
     ],
     plugins: [
-      ["EQ", "FabFilter Pro-Q 3, Waves F6"],
-      ["Compression", "Waves CLA-76, API 2500"],
-      ["Saturation", "Waves Kramer Tape, FabFilter Saturn 2"],
-      ["Reverb", "UAD EMT 140, Valhalla VintageVerb"]
+      ["EQ", "Logic Channel EQ, FabFilter Pro-Q 4, Waves F6"],
+      ["Compression", "Logic Compressor, Waves CLA-76, API 2500"],
+      ["Saturation", "Logic Phat FX, Waves Kramer Tape, FabFilter Saturn 2"],
+      ["Reverb", "Logic Space Designer, Logic ChromaVerb, UAD EMT 140, Valhalla VintageVerb"]
     ],
     quickTips: [
       "Use short ambience, not long tails.",
@@ -322,17 +505,19 @@ export const cheatSheets: CheatSheet[] = [
     accent: "orange",
     focus: "Tone and width",
     eqRows: [
-      ["70-120 Hz", "High-pass filter", "Remove low rumble"],
-      ["200-400 Hz", "Low-mid cut", "Clean mud and boxiness"],
-      ["600 Hz-1.5 kHz", "Mid cut", "Reduce harsh nasal tones"],
-      ["2-5 kHz", "Presence", "Add attack and definition"],
-      ["6-10 kHz", "High shelf", "Add air and sparkle"]
+      ["80-120 Hz", "High-pass range", "Remove rumble; adjust to the arrangement"],
+      ["150-300 Hz", "Warmth / body", "Add fullness or cut if guitars muddy the mix"],
+      ["300-600 Hz", "Boxiness / congestion", "Reduce if the part feels cloudy"],
+      ["1-2 kHz", "Bite / note definition", "Bring out riffs and chord movement"],
+      ["2-5 kHz", "Aggression / presence", "Use carefully because harshness builds here"],
+      ["5-8 kHz", "Fizz / pick noise", "Tame distorted guitars if they fight cymbals or vocals"],
+      ["6-10 kHz", "Clean-guitar air", "Mainly for clean guitars; often low-pass distorted guitars here"]
     ],
     plugins: [
-      ["EQ", "FabFilter Pro-Q 3, API 550A"],
-      ["Compression", "Waves CLA-76, FabFilter Pro-C 2"],
-      ["Saturation", "Waves J37, FabFilter Saturn 2"],
-      ["Space", "Waves H-Reverb, Pro-R 2"]
+      ["EQ", "Logic Channel EQ, FabFilter Pro-Q 4, API 550A"],
+      ["Compression", "Logic Compressor, Waves CLA-76, FabFilter Pro-C 3"],
+      ["Saturation", "Logic Overdrive, Logic Pedalboard, Waves J37, FabFilter Saturn 2"],
+      ["Space", "Logic ChromaVerb, Logic Space Designer, Waves H-Reverb, Pro-R 2"]
     ],
     quickTips: [
       "Pan doubles for width before adding stereo widening.",
@@ -352,17 +537,18 @@ export const cheatSheets: CheatSheet[] = [
       ["200-400 Hz", "Low-mid cut", "Reduce mud and congestion"],
       ["2-5 kHz", "Presence boost", "Improve lyric clarity"],
       ["10-16 kHz", "Air boost", "Add openness"],
-      ["6-8 kHz", "De-ess support", "Control sibilance"]
+      ["5-9 kHz", "De-ess range", "Common sibilance area; varies by singer, mic, and performance"]
     ],
     plugins: [
-      ["EQ", "Waves F6, FabFilter Pro-Q 3"],
-      ["Compression", "CLA-76, UAD 1176"],
-      ["Saturation", "Waves J37, AMPX ATR-102"],
-      ["De-essing", "Waves DeEsser, FabFilter Pro-DS"]
+      ["EQ", "Logic Channel EQ, Waves F6, FabFilter Pro-Q 4"],
+      ["Compression", "Logic Compressor, CLA-76, UAD 1176"],
+      ["Saturation", "Logic Phat FX, Logic Overdrive, Waves J37, AMPX ATR-102"],
+      ["De-essing", "Logic DeEsser 2, Waves DeEsser, FabFilter Pro-DS"]
     ],
     quickTips: [
       "Ride the vocal level before over-compressing.",
-      "Apply de-essing in stages if needed.",
+      "Use a de-esser before bright EQ if brightness exaggerates harshness.",
+      "Add another light de-esser after compression only if sibilance returns.",
       "Keep effects tucked behind the dry vocal.",
       "Reference with a commercial vocal track."
     ]
@@ -381,10 +567,10 @@ export const cheatSheets: CheatSheet[] = [
       ["8-12 kHz", "Air", "Add openness and top detail"]
     ],
     plugins: [
-      ["EQ", "FabFilter Pro-Q 3, Channel EQ"],
+      ["EQ", "Logic Channel EQ, FabFilter Pro-Q 4"],
       ["Compression", "Studio VCA, FET compressor"],
-      ["Gate/Expander", "Noise Gate, Expander for bleed control"],
-      ["Saturation", "Tape or overdrive (subtle)"]
+      ["Gate/Expander", "Logic Noise Gate, Expander for bleed control"],
+      ["Saturation", "Logic Phat FX, tape or overdrive if useful"]
     ],
     quickTips: [
       "Pan toms to match kit perspective.",
@@ -407,10 +593,10 @@ export const cheatSheets: CheatSheet[] = [
       ["12-16 kHz", "Shelf", "Optional brightness lift"]
     ],
     plugins: [
-      ["EQ", "Vintage EQ or Pro-Q 3"],
+      ["EQ", "Logic Channel EQ, vintage EQ, or FabFilter Pro-Q 4"],
       ["Compression", "Studio VCA, Opto/FET blend"],
       ["Gate (Optional)", "Use lightly for spill control"],
-      ["Saturation", "Tape drive for character"]
+      ["Saturation", "Logic Phat FX, tape drive for character"]
     ],
     quickTips: [
       "Room mics should support, not dominate.",
@@ -433,10 +619,10 @@ export const cheatSheets: CheatSheet[] = [
       ["12-16 kHz", "Shelf", "Optional brilliance"]
     ],
     plugins: [
-      ["EQ", "Channel EQ, Pro-Q 3"],
+      ["EQ", "Logic Channel EQ, FabFilter Pro-Q 4"],
       ["Compression", "Gentle glue compression"],
       ["Phase Tools", "Correlation/phase check utilities"],
-      ["Effects", "Very subtle room or saturation only"]
+      ["Effects", "Logic Space Designer, ChromaVerb, or subtle saturation only"]
     ],
     quickTips: [
       "Think of overheads as the full-kit picture.",
@@ -459,10 +645,10 @@ export const cheatSheets: CheatSheet[] = [
       ["8-12 kHz", "High shelf", "Add air and sparkle"]
     ],
     plugins: [
-      ["Bus Compression", "Waves SSL G-Master, UAD SSL 4000 G"],
-      ["Saturation", "Waves J37, FabFilter Saturn 2"],
-      ["Transient", "Waves Trans-X, FabFilter Pro-DS for control"],
-      ["Reverb", "Waves Abbey Road TG, Pro-R 2"]
+      ["Bus Compression", "Logic Compressor, Waves SSL G-Master, UAD SSL 4000 G"],
+      ["Saturation", "Logic Phat FX, Waves J37, FabFilter Saturn 2"],
+      ["Transient", "Logic Enveloper, Waves Smack Attack, SPL Transient Designer, oeksound Spiff"],
+      ["Reverb", "Logic Space Designer, Logic ChromaVerb, Waves Abbey Road Chambers, Pro-R 2"]
     ],
     quickTips: [
       "Blend parallel compression for weight.",
@@ -485,10 +671,10 @@ export const cheatSheets: CheatSheet[] = [
       ["12-16 kHz", "High shelf", "Add shine and openness"]
     ],
     plugins: [
-      ["EQ", "Waves F6, FabFilter Pro-Q 3"],
-      ["Compression", "Waves SSL G-Master, CLA-76"],
-      ["Saturation", "Waves J37, AMPX ATR-102"],
-      ["De-essing", "Sibilance, Pro-DS"]
+      ["EQ", "Logic Channel EQ, Waves F6, FabFilter Pro-Q 4"],
+      ["Compression", "Logic Compressor, Waves SSL G-Master, CLA-76"],
+      ["Saturation", "Logic Phat FX, Waves J37, AMPX ATR-102"],
+      ["De-essing", "Logic DeEsser 2, Waves Sibilance, FabFilter Pro-DS"]
     ],
     quickTips: [
       "Small bus reductions are often enough.",
@@ -511,16 +697,17 @@ export const cheatSheets: CheatSheet[] = [
       ["16-20 kHz", "Air", "Optional sparkle"]
     ],
     plugins: [
-      ["EQ", "Channel EQ, Pro-Q 3"],
+      ["EQ", "Logic Channel EQ, Logic Linear Phase EQ, FabFilter Pro-Q 4"],
       ["Glue Compression", "SSL style, API 2500 light settings"],
-      ["Saturation", "J37, Saturn 2 subtle"],
-      ["Limiting", "Transparent limiter for peak catch"]
+      ["Saturation", "Logic Phat FX, J37, Saturn 2 subtle"],
+      ["Metering / Preview Limiting", "Logic Loudness Meter, Multimeter, Adaptive Limiter for preview checks"]
     ],
     quickTips: [
       "Leave target peak around -6 dBFS.",
       "Do not normalize at mix stage.",
       "Check mono and low-volume translation.",
-      "Avoid fixing arrangement issues on bus."
+      "Avoid fixing arrangement issues on bus.",
+      "Avoid large master EQ moves unless intentional; fix mix problems at the source when possible."
     ]
   }),
   {
@@ -555,11 +742,11 @@ export const cheatSheets: CheatSheet[] = [
             ]
           },
           {
-            title: "One Main Streaming Master",
+            title: "Streaming Master Mindset",
             items: [
-              "A practical all-platform target is around -14 LUFS integrated.",
-              "Use -1.0 dBTP true peak for most services, or -2.0 dBTP for extra codec/Amazon safety.",
-              "Keep enough dynamics that the master still punches after normalization."
+              "Do not treat -14 LUFS as a universal mastering target.",
+              "Choose loudness from the song, genre, and emotional intent, then check platform normalization.",
+              "Use more true-peak safety on louder or brighter masters because codecs can create extra peaks."
             ]
           },
           {
@@ -604,51 +791,51 @@ export const cheatSheets: CheatSheet[] = [
       },
       {
         type: "table",
-        title: "Streaming Platform Targets",
+        title: "Streaming Loudness Context",
         table: {
-          columns: ["Platform", "Integrated Loudness", "True Peak", "Notes"],
+          columns: ["Context", "Integrated Loudness", "True Peak", "Notes"],
           rows: [
             [
-              "Safe all-platform master",
+              "Dynamic / acoustic / open mix",
+              "-18 to -14 LUFS",
+              "-1.0 to -2.0 dBTP",
+              "Good for natural dynamics, acoustic music, jazz, folk, and open arrangements."
+            ],
+            [
+              "Streaming-safe general reference",
               "Around -14 LUFS",
-              "-2.0 dBTP",
-              "Conservative target that gives Amazon and lossy codecs extra headroom."
+              "About -1.0 dBTP",
+              "Useful as a normalization reference, not a rule every master must chase."
             ],
             [
-              "Spotify",
-              "Around -14 LUFS",
-              "-1.0 dBTP",
-              "Normalizes playback; louder masters are turned down."
+              "Modern indie / rock / pop master",
+              "-13 to -9 LUFS",
+              "About -2.0 dBTP when loud",
+              "Common for competitive releases; preserve punch and watch codec distortion."
             ],
             [
-              "Apple Music",
-              "Around -16 LUFS",
-              "-1.0 dBTP",
-              "Sound Check is user-controlled, so the full-level master should still sound good."
+              "Short-form social clip",
+              "-12 to -9 LUFS",
+              "-1.0 to -2.0 dBTP",
+              "Can be louder, but harsh limiting becomes obvious after phone playback and platform encoding."
             ],
             [
-              "YouTube",
-              "Around -14 LUFS",
-              "-1.0 dBTP",
-              "Commonly turns loud tracks down and may not boost quiet tracks enough to feel competitive."
+              "Preview / client loudness check",
+              "Varies by reference",
+              "-1.0 to -2.0 dBTP",
+              "Use to hear limiter behavior and translation before committing the final master."
             ],
             [
-              "Amazon Music",
-              "Around -14 LUFS",
-              "-2.0 dBTP",
-              "Use the stricter true peak ceiling when Amazon or HD delivery matters."
+              "Codec-sensitive delivery",
+              "Any chosen loudness",
+              "-2.0 dBTP safer",
+              "AAC/MP3/OGG encoding can create intersample peaks; preview codec artifacts when possible."
             ],
             [
-              "Tidal / Deezer",
-              "-14 to -15 LUFS",
-              "-1.0 dBTP",
-              "Good translation usually comes from a dynamic master near the general streaming target."
-            ],
-            [
-              "TikTok / Reels",
-              "-9 to -12 LUFS",
-              "-1.0 dBTP",
-              "Short-form clips often compete louder, but avoid harsh limiting and codec distortion."
+              "Very loud master",
+              "-9 LUFS or louder",
+              "-2.0 dBTP strongly recommended",
+              "Only if the genre demands it; expect normalization and possible loss of depth."
             ]
           ]
         }
@@ -687,7 +874,7 @@ export const cheatSheets: CheatSheet[] = [
               "Club / DJ playback",
               "Often louder and denser than streaming",
               "Sub buildup, limiter pumping, and harsh highs become obvious on big systems",
-              "Check mono low end, kick/bass headroom, and references in the same genre."
+              "Check mono low end, kick/bass headroom, references in the same genre, and distortion after limiting."
             ]
           ]
         }
@@ -1279,20 +1466,21 @@ export const cheatSheets: CheatSheet[] = [
         columns: 4,
         cards: [
           { title: "1. Listen & Analyze", items: ["Check tonal balance", "Check dynamics", "Use references"] },
-          { title: "2. EQ", items: ["Correct broad issues", "Avoid over-EQ"] },
-          { title: "3. Dynamics", items: ["Use light glue", "Keep punch"] },
-          { title: "4. Limiter", items: ["Set final ceiling", "Control clipping"] }
+          { title: "2. Broad EQ Only if Needed", items: ["Prefer subtle moves", "Fix mix problems before big master EQ"] },
+          { title: "3. Dynamics if Useful", items: ["Use light glue", "Keep punch", "Avoid solving mix problems with compression"] },
+          { title: "4. Limiter / Codec Check", items: ["Set final ceiling", "Preview loudness", "Check intersample clipping"] }
         ]
       },
       {
         type: "table",
-        title: "Spotify Loudness Targets",
+        title: "Loudness Context",
         table: {
-          columns: ["Style", "Integrated LUFS", "True Peak"],
+          columns: ["Style / Intent", "Integrated LUFS", "True Peak", "How to Use It"],
           rows: [
-            ["Standard", "-14 LUFS", "-1.0 dBTP"],
-            ["Louder pop/edm", "-10 to -12 LUFS", "-1.0 dBTP"],
-            ["Dynamic genres", "-16 to -18 LUFS", "-1.0 dBTP"]
+            ["Dynamic/acoustic/open mix", "-18 to -14 LUFS", "-1.0 to -2.0 dBTP", "Preserve space, transients, and emotional movement."],
+            ["Streaming-safe reference", "Around -14 LUFS", "About -1.0 dBTP", "Use as a normalization check, not a required final target."],
+            ["Modern indie/rock/pop", "-13 to -9 LUFS", "About -2.0 dBTP if loud", "Check limiter artifacts and codec previews before delivery."],
+            ["Preview/client loudness check", "Varies by reference", "-1.0 to -2.0 dBTP", "Use temporary limiting to audition loudness without hiding mix issues."]
           ]
         }
       },
@@ -1302,6 +1490,8 @@ export const cheatSheets: CheatSheet[] = [
         items: [
           "Check in mono and stereo",
           "Confirm no inter-sample clipping",
+          "Preview AAC/MP3-style codec distortion when pushing loudness",
+          "Use broad, subtle master EQ unless a deliberate creative move calls for more",
           "Export WAV 24-bit (or project spec)",
           "Embed metadata and version naming"
         ]
@@ -1316,7 +1506,7 @@ export const cheatSheets: CheatSheet[] = [
       icon: "🎸",
       accent: "blue"
     },
-    summary: "Bring all guitar layers together with bus compression, tone shaping, and controlled stereo image.",
+    summary: "Bring guitar layers together with optional bus glue, tone shaping, and controlled stereo image.",
     sections: [
       {
         type: "cards",
@@ -1328,7 +1518,7 @@ export const cheatSheets: CheatSheet[] = [
           },
           {
             title: "Signal Flow",
-            items: ["Tracks -> Guitar Bus -> Mix Bus", "Process and glue all guitars"]
+            items: ["Tracks -> Guitar Bus -> Mix Bus", "Use bus processing only when the grouped guitars need shared tone or control"]
           },
           {
             title: "Level Targets",
@@ -1346,9 +1536,24 @@ export const cheatSheets: CheatSheet[] = [
             ["80-150 Hz", "Boom and thump", "Cut if muddy"],
             ["150-400 Hz", "Boxiness and mud", "Use broad cut"],
             ["2-5 kHz", "Presence and pick attack", "Boost carefully"],
-            ["5-10 kHz", "Air and sparkle", "Use shelf gently"]
+            ["5-8 kHz", "Fizz / pick edge", "Control distorted-guitar fizz before boosting"],
+            ["6-10 kHz", "Clean-guitar air", "Use only when clean guitars need sparkle"]
           ]
         }
+      },
+      {
+        type: "cards",
+        title: "Compression Starting Points",
+        cards: [
+          {
+            title: "Glue Only if Needed",
+            items: [
+              "Distorted rhythm guitars may not need bus compression.",
+              "Try 1.5:1 to 2:1 and 1-2 dB gain reduction when multiple guitar layers need cohesion.",
+              "Use automation or clip gain when a single part jumps out."
+            ]
+          }
+        ]
       },
       {
         type: "checklist",

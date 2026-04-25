@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "20260425T151728Z",
-  "generatedAt": "2026-04-25T15:17:28.781Z",
+  "contentVersion": "20260425T155559Z",
+  "generatedAt": "2026-04-25T15:55:59.489Z",
   "minAppVersion": "1.0.0",
   "navItems": [
     {
@@ -168,39 +168,39 @@
         "icon": "🎸",
         "accent": "blue"
       },
-      "summary": "A practical low-end cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical low-end cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Recommended Modular Chain",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Clip Gain / Input Gain",
+              "goal": "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Cleanup / Corrective EQ",
+              "goal": "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Dynamics",
+              "goal": "Compress only when the source needs leveling, punch, control, or tone; leave it alone when it already sits correctly."
             },
             {
               "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "goal": "Add weight, presence, or air after the source is controlled and the part works in context."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Character",
+              "goal": "Optional color for density, harmonic interest, or perceived loudness when the arrangement benefits from it."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Space / Sends",
+              "goal": "Prefer sends for shared reverbs and delays; use insert reverbs only when the effect is part of the sound."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clip gain, light clipping, or limiting only when peaks are causing problems; do not limit every track by default."
             }
           ]
         },
@@ -211,25 +211,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Leveling: 3:1 to 6:1, medium attack/release, around 3-6 dB gain reduction if notes jump around.",
+                "Use faster attack only when peaks hit too hard.",
+                "Parallel compression and saturation can add sustain/density without flattening the DI."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Low-end clarity"
+                "Prioritize Low-end clarity in context"
               ]
             }
           ]
@@ -245,29 +245,34 @@
             ],
             "rows": [
               [
-                "25-40 Hz",
-                "High-pass filter",
-                "Remove sub rumble"
+                "40-60 Hz",
+                "Sub extension",
+                "Use carefully for deep reach if the arrangement has room"
+              ],
+              [
+                "60-100 Hz",
+                "Fundamental weight",
+                "Shape the main low-end support"
               ],
               [
                 "100-250 Hz",
-                "Low-mid cut",
-                "Clean mud and boxiness"
+                "Body / warmth",
+                "Add fullness or cut if the bass clouds the kick"
               ],
               [
-                "700 Hz-1 kHz",
-                "Low-mid focus",
-                "Add body and note definition"
+                "250-500 Hz",
+                "Mud / boxiness",
+                "Reduce if the bass feels cloudy or cardboard-like"
+              ],
+              [
+                "700 Hz-1.5 kHz",
+                "Note definition / growl",
+                "Help bass speak on small speakers"
               ],
               [
                 "2-5 kHz",
-                "Presence boost",
-                "Add attack and string clarity"
-              ],
-              [
-                "8-12 kHz",
-                "High shelf",
-                "Add top-end sheen"
+                "Attack / string noise",
+                "Add articulation carefully when needed"
               ]
             ]
           }
@@ -281,9 +286,17 @@
               "title": "EQ",
               "items": [
                 {
-                  "text": "FabFilter Pro-Q 3",
+                  "text": "Logic Channel EQ",
+                  "imageSrc": "/assets/plugins/logic-channel-eq.png",
+                  "imageAlt": "Bass Guitar Mixing Logic Channel EQ screenshot"
+                },
+                {
+                  "text": "Logic Linear Phase EQ"
+                },
+                {
+                  "text": "FabFilter Pro-Q 4",
                   "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
-                  "imageAlt": "Bass Guitar Mixing FabFilter Pro-Q 3 screenshot"
+                  "imageAlt": "Bass Guitar Mixing FabFilter Pro-Q 4 screenshot"
                 },
                 {
                   "text": "Waves F6",
@@ -296,9 +309,12 @@
               "title": "Compression",
               "items": [
                 {
-                  "text": "FabFilter Pro-C 2",
+                  "text": "Logic Compressor"
+                },
+                {
+                  "text": "FabFilter Pro-C 3",
                   "imageSrc": "/assets/plugins/fabfilter-pro-c-3.jpg",
-                  "imageAlt": "Bass Guitar Mixing FabFilter Pro-C 2 screenshot"
+                  "imageAlt": "Bass Guitar Mixing FabFilter Pro-C 3 screenshot"
                 },
                 {
                   "text": "Waves CLA-76",
@@ -310,6 +326,12 @@
             {
               "title": "Saturation",
               "items": [
+                {
+                  "text": "Logic Phat FX"
+                },
+                {
+                  "text": "Logic Overdrive"
+                },
                 {
                   "text": "Soundtoys Decapitator",
                   "imageSrc": "/assets/plugins/decapitator.jpg",
@@ -323,12 +345,16 @@
               ]
             },
             {
-              "title": "Reverb",
+              "title": "Space (Optional)",
               "items": [
                 {
-                  "text": "Valhalla VintageVerb",
-                  "imageSrc": "/assets/plugins/valhalla-vintage-verb.png",
-                  "imageAlt": "Bass Guitar Mixing Valhalla VintageVerb screenshot"
+                  "text": "Logic ChromaVerb"
+                },
+                {
+                  "text": "Logic Space Designer"
+                },
+                {
+                  "text": "ValhallaRoom"
                 },
                 {
                   "text": "Waves H-Reverb",
@@ -359,39 +385,39 @@
         "icon": "🥁",
         "accent": "blue"
       },
-      "summary": "A practical punch cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical punch cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Recommended Modular Chain",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Clip Gain / Input Gain",
+              "goal": "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Cleanup / Corrective EQ",
+              "goal": "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Dynamics",
+              "goal": "Compress only when the source needs leveling, punch, control, or tone; leave it alone when it already sits correctly."
             },
             {
               "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "goal": "Add weight, presence, or air after the source is controlled and the part works in context."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Character",
+              "goal": "Optional color for density, harmonic interest, or perceived loudness when the arrangement benefits from it."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Space / Sends",
+              "goal": "Prefer sends for shared reverbs and delays; use insert reverbs only when the effect is part of the sound."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clip gain, light clipping, or limiting only when peaks are causing problems; do not limit every track by default."
             }
           ]
         },
@@ -402,25 +428,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Punch: 3:1 to 6:1, slower attack around 10-30 ms, release timed to the groove, 2-6 dB gain reduction.",
+                "Use faster attack only if the transient is too pokey.",
+                "Avoid compressing just because the kick exists."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Punch clarity"
+                "Prioritize Punch clarity in context"
               ]
             }
           ]
@@ -436,29 +462,39 @@
             ],
             "rows": [
               [
-                "25-35 Hz",
-                "High-pass filter",
-                "Remove unusable sub"
+                "40-60 Hz",
+                "Sub / low extension",
+                "Use carefully if the song needs deep low end"
               ],
               [
-                "150-300 Hz",
-                "Low cut",
-                "Reduce mud and boxiness"
+                "60-100 Hz",
+                "Thump / fundamental punch",
+                "Shape the main kick weight"
+              ],
+              [
+                "100-200 Hz",
+                "Weight / fullness",
+                "Add or trim depending on bass relationship"
+              ],
+              [
+                "200-500 Hz",
+                "Boxiness / mud",
+                "Often reduced if the kick feels cloudy"
               ],
               [
                 "400-800 Hz",
-                "Body",
-                "Add weight if thin"
+                "Wood / hollow tone",
+                "Useful only when the acoustic character needs it"
               ],
               [
-                "2-5 kHz",
-                "Attack boost",
-                "Bring out beater click"
+                "1-3 kHz",
+                "Beater attack",
+                "Add definition for smaller speakers"
               ],
               [
-                "5-8 kHz",
-                "Click",
-                "Improve definition"
+                "4-8 kHz",
+                "Click / snap",
+                "Use for dense mixes when more cut is needed"
               ]
             ]
           }
@@ -477,9 +513,12 @@
                   "imageAlt": "Kick Drum Mixing Logic Channel EQ screenshot"
                 },
                 {
-                  "text": "FabFilter Pro-Q 3",
+                  "text": "Logic Linear Phase EQ"
+                },
+                {
+                  "text": "FabFilter Pro-Q 4",
                   "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
-                  "imageAlt": "Kick Drum Mixing FabFilter Pro-Q 3 screenshot"
+                  "imageAlt": "Kick Drum Mixing FabFilter Pro-Q 4 screenshot"
                 }
               ]
             },
@@ -500,6 +539,12 @@
               "title": "Saturation",
               "items": [
                 {
+                  "text": "Logic Phat FX"
+                },
+                {
+                  "text": "Logic Clip Distortion"
+                },
+                {
                   "text": "Waves J37",
                   "imageSrc": "/assets/plugins/waves-j37.png",
                   "imageAlt": "Kick Drum Mixing Waves J37 screenshot"
@@ -512,8 +557,14 @@
               ]
             },
             {
-              "title": "Limiting",
+              "title": "Peak Control",
               "items": [
+                {
+                  "text": "Logic Adaptive Limiter"
+                },
+                {
+                  "text": "Logic Limiter"
+                },
                 {
                   "text": "Waves L2",
                   "imageSrc": "/assets/plugins/waves-l2.jpg",
@@ -548,39 +599,39 @@
         "icon": "🥁",
         "accent": "purple"
       },
-      "summary": "A practical crack and body cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical crack and body cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Recommended Modular Chain",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Clip Gain / Input Gain",
+              "goal": "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Cleanup / Corrective EQ",
+              "goal": "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Dynamics",
+              "goal": "Compress only when the source needs leveling, punch, control, or tone; leave it alone when it already sits correctly."
             },
             {
               "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "goal": "Add weight, presence, or air after the source is controlled and the part works in context."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Character",
+              "goal": "Optional color for density, harmonic interest, or perceived loudness when the arrangement benefits from it."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Space / Sends",
+              "goal": "Prefer sends for shared reverbs and delays; use insert reverbs only when the effect is part of the sound."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clip gain, light clipping, or limiting only when peaks are causing problems; do not limit every track by default."
             }
           ]
         },
@@ -591,25 +642,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Punch/body: 3:1 to 6:1, 10-30 ms attack, 50-150 ms release as a starting point.",
+                "Use faster release or parallel compression for crack and aggression.",
+                "Preserve the transient unless the snare is too sharp."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Crack and body clarity"
+                "Prioritize Crack and body clarity in context"
               ]
             }
           ]
@@ -661,9 +712,14 @@
               "title": "EQ",
               "items": [
                 {
-                  "text": "FabFilter Pro-Q 3",
+                  "text": "Logic Channel EQ",
+                  "imageSrc": "/assets/plugins/logic-channel-eq.png",
+                  "imageAlt": "Snare Drum Mixing Logic Channel EQ screenshot"
+                },
+                {
+                  "text": "FabFilter Pro-Q 4",
                   "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
-                  "imageAlt": "Snare Drum Mixing FabFilter Pro-Q 3 screenshot"
+                  "imageAlt": "Snare Drum Mixing FabFilter Pro-Q 4 screenshot"
                 },
                 {
                   "text": "Waves F6",
@@ -675,6 +731,9 @@
             {
               "title": "Compression",
               "items": [
+                {
+                  "text": "Logic Compressor"
+                },
                 {
                   "text": "Waves CLA-76",
                   "imageSrc": "/assets/plugins/waves-cla76.png",
@@ -691,6 +750,9 @@
               "title": "Saturation",
               "items": [
                 {
+                  "text": "Logic Phat FX"
+                },
+                {
                   "text": "Waves Kramer Tape",
                   "imageSrc": "/assets/plugins/waves-kramer.jpg",
                   "imageAlt": "Snare Drum Mixing Waves Kramer Tape screenshot"
@@ -705,6 +767,12 @@
             {
               "title": "Reverb",
               "items": [
+                {
+                  "text": "Logic Space Designer"
+                },
+                {
+                  "text": "Logic ChromaVerb"
+                },
                 {
                   "text": "UAD EMT 140",
                   "imageSrc": "/assets/plugins/uad-emt-140.png",
@@ -739,39 +807,39 @@
         "icon": "🎸",
         "accent": "orange"
       },
-      "summary": "A practical tone and width cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical tone and width cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Recommended Modular Chain",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Clip Gain / Input Gain",
+              "goal": "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Cleanup / Corrective EQ",
+              "goal": "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Dynamics",
+              "goal": "Compress only when the source needs leveling, punch, control, or tone; leave it alone when it already sits correctly."
             },
             {
               "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "goal": "Add weight, presence, or air after the source is controlled and the part works in context."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Character",
+              "goal": "Optional color for density, harmonic interest, or perceived loudness when the arrangement benefits from it."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Space / Sends",
+              "goal": "Prefer sends for shared reverbs and delays; use insert reverbs only when the effect is part of the sound."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clip gain, light clipping, or limiting only when peaks are causing problems; do not limit every track by default."
             }
           ]
         },
@@ -782,25 +850,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Distorted guitars often need little or no compression.",
+                "Use compression for clean, jangly, funk, or inconsistent parts.",
+                "For distorted guitars, EQ, double tracking, panning, and automation usually matter more."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Tone and width clarity"
+                "Prioritize Tone and width clarity in context"
               ]
             }
           ]
@@ -816,29 +884,39 @@
             ],
             "rows": [
               [
-                "70-120 Hz",
-                "High-pass filter",
-                "Remove low rumble"
+                "80-120 Hz",
+                "High-pass range",
+                "Remove rumble; adjust to the arrangement"
               ],
               [
-                "200-400 Hz",
-                "Low-mid cut",
-                "Clean mud and boxiness"
+                "150-300 Hz",
+                "Warmth / body",
+                "Add fullness or cut if guitars muddy the mix"
               ],
               [
-                "600 Hz-1.5 kHz",
-                "Mid cut",
-                "Reduce harsh nasal tones"
+                "300-600 Hz",
+                "Boxiness / congestion",
+                "Reduce if the part feels cloudy"
+              ],
+              [
+                "1-2 kHz",
+                "Bite / note definition",
+                "Bring out riffs and chord movement"
               ],
               [
                 "2-5 kHz",
-                "Presence",
-                "Add attack and definition"
+                "Aggression / presence",
+                "Use carefully because harshness builds here"
+              ],
+              [
+                "5-8 kHz",
+                "Fizz / pick noise",
+                "Tame distorted guitars if they fight cymbals or vocals"
               ],
               [
                 "6-10 kHz",
-                "High shelf",
-                "Add air and sparkle"
+                "Clean-guitar air",
+                "Mainly for clean guitars; often low-pass distorted guitars here"
               ]
             ]
           }
@@ -852,9 +930,14 @@
               "title": "EQ",
               "items": [
                 {
-                  "text": "FabFilter Pro-Q 3",
+                  "text": "Logic Channel EQ",
+                  "imageSrc": "/assets/plugins/logic-channel-eq.png",
+                  "imageAlt": "Electric Guitar Mixing Logic Channel EQ screenshot"
+                },
+                {
+                  "text": "FabFilter Pro-Q 4",
                   "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
-                  "imageAlt": "Electric Guitar Mixing FabFilter Pro-Q 3 screenshot"
+                  "imageAlt": "Electric Guitar Mixing FabFilter Pro-Q 4 screenshot"
                 },
                 {
                   "text": "API 550A",
@@ -867,20 +950,29 @@
               "title": "Compression",
               "items": [
                 {
+                  "text": "Logic Compressor"
+                },
+                {
                   "text": "Waves CLA-76",
                   "imageSrc": "/assets/plugins/waves-cla76.png",
                   "imageAlt": "Electric Guitar Mixing Waves CLA-76 screenshot"
                 },
                 {
-                  "text": "FabFilter Pro-C 2",
+                  "text": "FabFilter Pro-C 3",
                   "imageSrc": "/assets/plugins/fabfilter-pro-c-3.jpg",
-                  "imageAlt": "Electric Guitar Mixing FabFilter Pro-C 2 screenshot"
+                  "imageAlt": "Electric Guitar Mixing FabFilter Pro-C 3 screenshot"
                 }
               ]
             },
             {
               "title": "Saturation",
               "items": [
+                {
+                  "text": "Logic Overdrive"
+                },
+                {
+                  "text": "Logic Pedalboard"
+                },
                 {
                   "text": "Waves J37",
                   "imageSrc": "/assets/plugins/waves-j37.png",
@@ -896,6 +988,12 @@
             {
               "title": "Space",
               "items": [
+                {
+                  "text": "Logic ChromaVerb"
+                },
+                {
+                  "text": "Logic Space Designer"
+                },
                 {
                   "text": "Waves H-Reverb",
                   "imageSrc": "/assets/plugins/waves-h-reverb.jpg",
@@ -930,39 +1028,39 @@
         "icon": "🎤",
         "accent": "purple"
       },
-      "summary": "A practical intelligibility cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical intelligibility cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Recommended Modular Chain",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Clip Gain / Input Gain",
+              "goal": "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Cleanup / Corrective EQ",
+              "goal": "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Dynamics",
+              "goal": "Compress only when the source needs leveling, punch, control, or tone; leave it alone when it already sits correctly."
             },
             {
               "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "goal": "Add weight, presence, or air after the source is controlled and the part works in context."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Character",
+              "goal": "Optional color for density, harmonic interest, or perceived loudness when the arrangement benefits from it."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Space / Sends",
+              "goal": "Prefer sends for shared reverbs and delays; use insert reverbs only when the effect is part of the sound."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clip gain, light clipping, or limiting only when peaks are causing problems; do not limit every track by default."
             }
           ]
         },
@@ -973,25 +1071,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Leveling: 2:1 to 4:1, moderate attack/release, around 2-5 dB gain reduction.",
+                "Modern control often works best as serial compression with light stages.",
+                "Use automation before relying on heavy compression."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Intelligibility clarity"
+                "Prioritize Intelligibility clarity in context"
               ]
             }
           ]
@@ -1027,9 +1125,9 @@
                 "Add openness"
               ],
               [
-                "6-8 kHz",
-                "De-ess support",
-                "Control sibilance"
+                "5-9 kHz",
+                "De-ess range",
+                "Common sibilance area; varies by singer, mic, and performance"
               ]
             ]
           }
@@ -1043,20 +1141,28 @@
               "title": "EQ",
               "items": [
                 {
+                  "text": "Logic Channel EQ",
+                  "imageSrc": "/assets/plugins/logic-channel-eq.png",
+                  "imageAlt": "Vocal Mixing Logic Channel EQ screenshot"
+                },
+                {
                   "text": "Waves F6",
                   "imageSrc": "/assets/plugins/waves-f6.png",
                   "imageAlt": "Vocal Mixing Waves F6 screenshot"
                 },
                 {
-                  "text": "FabFilter Pro-Q 3",
+                  "text": "FabFilter Pro-Q 4",
                   "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
-                  "imageAlt": "Vocal Mixing FabFilter Pro-Q 3 screenshot"
+                  "imageAlt": "Vocal Mixing FabFilter Pro-Q 4 screenshot"
                 }
               ]
             },
             {
               "title": "Compression",
               "items": [
+                {
+                  "text": "Logic Compressor"
+                },
                 {
                   "text": "CLA-76",
                   "imageSrc": "/assets/plugins/waves-cla76.png",
@@ -1073,6 +1179,12 @@
               "title": "Saturation",
               "items": [
                 {
+                  "text": "Logic Phat FX"
+                },
+                {
+                  "text": "Logic Overdrive"
+                },
+                {
                   "text": "Waves J37",
                   "imageSrc": "/assets/plugins/waves-j37.png",
                   "imageAlt": "Vocal Mixing Waves J37 screenshot"
@@ -1087,6 +1199,9 @@
             {
               "title": "De-essing",
               "items": [
+                {
+                  "text": "Logic DeEsser 2"
+                },
                 {
                   "text": "Waves DeEsser",
                   "imageSrc": "/assets/plugins/waves-deesser.png",
@@ -1106,7 +1221,8 @@
           "title": "Quick Reminders",
           "items": [
             "Ride the vocal level before over-compressing.",
-            "Apply de-essing in stages if needed.",
+            "Use a de-esser before bright EQ if brightness exaggerates harshness.",
+            "Add another light de-esser after compression only if sibilance returns.",
             "Keep effects tucked behind the dry vocal.",
             "Reference with a commercial vocal track."
           ]
@@ -1121,39 +1237,39 @@
         "icon": "🥁",
         "accent": "purple"
       },
-      "summary": "A practical tone and depth cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical tone and depth cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Recommended Modular Chain",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Clip Gain / Input Gain",
+              "goal": "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Cleanup / Corrective EQ",
+              "goal": "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Dynamics",
+              "goal": "Compress only when the source needs leveling, punch, control, or tone; leave it alone when it already sits correctly."
             },
             {
               "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "goal": "Add weight, presence, or air after the source is controlled and the part works in context."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Character",
+              "goal": "Optional color for density, harmonic interest, or perceived loudness when the arrangement benefits from it."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Space / Sends",
+              "goal": "Prefer sends for shared reverbs and delays; use insert reverbs only when the effect is part of the sound."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clip gain, light clipping, or limiting only when peaks are causing problems; do not limit every track by default."
             }
           ]
         },
@@ -1164,25 +1280,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Use compression only if tom hits are inconsistent.",
+                "Try 3:1 to 5:1, medium attack, and medium/fast release.",
+                "Gate, edit, or automate bleed before over-compressing."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Tone and depth clarity"
+                "Prioritize Tone and depth clarity in context"
               ]
             }
           ]
@@ -1234,14 +1350,14 @@
               "title": "EQ",
               "items": [
                 {
-                  "text": "FabFilter Pro-Q 3",
-                  "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
-                  "imageAlt": "Toms Mixing Guide FabFilter Pro-Q 3 screenshot"
+                  "text": "Logic Channel EQ",
+                  "imageSrc": "/assets/plugins/logic-channel-eq.png",
+                  "imageAlt": "Toms Mixing Guide Logic Channel EQ screenshot"
                 },
                 {
-                  "text": "Channel EQ",
-                  "imageSrc": "/assets/plugins/logic-channel-eq.png",
-                  "imageAlt": "Toms Mixing Guide Channel EQ screenshot"
+                  "text": "FabFilter Pro-Q 4",
+                  "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
+                  "imageAlt": "Toms Mixing Guide FabFilter Pro-Q 4 screenshot"
                 }
               ]
             },
@@ -1264,9 +1380,7 @@
               "title": "Gate/Expander",
               "items": [
                 {
-                  "text": "Noise Gate",
-                  "imageSrc": "/assets/plugins/waves-deesser.png",
-                  "imageAlt": "Toms Mixing Guide Noise Gate screenshot"
+                  "text": "Logic Noise Gate"
                 },
                 {
                   "text": "Expander for bleed control",
@@ -1279,9 +1393,10 @@
               "title": "Saturation",
               "items": [
                 {
-                  "text": "Tape or overdrive (subtle)",
-                  "imageSrc": "/assets/plugins/waves-j37.png",
-                  "imageAlt": "Toms Mixing Guide Tape or overdrive (subtle) screenshot"
+                  "text": "Logic Phat FX"
+                },
+                {
+                  "text": "tape or overdrive if useful"
                 }
               ]
             }
@@ -1307,39 +1422,39 @@
         "icon": "🎙️",
         "accent": "teal"
       },
-      "summary": "A practical space and realism cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical space and realism cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Recommended Modular Chain",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Clip Gain / Input Gain",
+              "goal": "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Cleanup / Corrective EQ",
+              "goal": "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Dynamics",
+              "goal": "Compress only when the source needs leveling, punch, control, or tone; leave it alone when it already sits correctly."
             },
             {
               "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "goal": "Add weight, presence, or air after the source is controlled and the part works in context."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Character",
+              "goal": "Optional color for density, harmonic interest, or perceived loudness when the arrangement benefits from it."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Space / Sends",
+              "goal": "Prefer sends for shared reverbs and delays; use insert reverbs only when the effect is part of the sound."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clip gain, light clipping, or limiting only when peaks are causing problems; do not limit every track by default."
             }
           ]
         },
@@ -1350,25 +1465,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Natural room: light compression with 1-3 dB gain reduction.",
+                "Exciting room: heavy compression or limiting can be a deliberate effect.",
+                "Blend aggressive room compression underneath the dry kit."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Space and realism clarity"
+                "Prioritize Space and realism clarity in context"
               ]
             }
           ]
@@ -1420,9 +1535,15 @@
               "title": "EQ",
               "items": [
                 {
-                  "text": "Vintage EQ or Pro-Q 3",
-                  "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
-                  "imageAlt": "Room Mic Mixing Guide Vintage EQ or Pro-Q 3 screenshot"
+                  "text": "Logic Channel EQ",
+                  "imageSrc": "/assets/plugins/logic-channel-eq.png",
+                  "imageAlt": "Room Mic Mixing Guide Logic Channel EQ screenshot"
+                },
+                {
+                  "text": "vintage EQ"
+                },
+                {
+                  "text": "or FabFilter Pro-Q 4"
                 }
               ]
             },
@@ -1455,9 +1576,12 @@
               "title": "Saturation",
               "items": [
                 {
-                  "text": "Tape drive for character",
+                  "text": "Logic Phat FX"
+                },
+                {
+                  "text": "tape drive for character",
                   "imageSrc": "/assets/plugins/waves-j37.png",
-                  "imageAlt": "Room Mic Mixing Guide Tape drive for character screenshot"
+                  "imageAlt": "Room Mic Mixing Guide tape drive for character screenshot"
                 }
               ]
             }
@@ -1483,39 +1607,39 @@
         "icon": "🎧",
         "accent": "blue"
       },
-      "summary": "A practical kit balance cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical kit balance cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Recommended Modular Chain",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Clip Gain / Input Gain",
+              "goal": "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Cleanup / Corrective EQ",
+              "goal": "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Dynamics",
+              "goal": "Compress only when the source needs leveling, punch, control, or tone; leave it alone when it already sits correctly."
             },
             {
               "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "goal": "Add weight, presence, or air after the source is controlled and the part works in context."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Character",
+              "goal": "Optional color for density, harmonic interest, or perceived loudness when the arrangement benefits from it."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Space / Sends",
+              "goal": "Prefer sends for shared reverbs and delays; use insert reverbs only when the effect is part of the sound."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clip gain, light clipping, or limiting only when peaks are causing problems; do not limit every track by default."
             }
           ]
         },
@@ -1526,25 +1650,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Compression is optional; use gentle control only if cymbals or kit image need cohesion.",
+                "Avoid pumping cymbals.",
+                "EQ, phase alignment, and level often matter more than compression."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Kit balance clarity"
+                "Prioritize Kit balance clarity in context"
               ]
             }
           ]
@@ -1596,12 +1720,14 @@
               "title": "EQ",
               "items": [
                 {
-                  "text": "Channel EQ",
+                  "text": "Logic Channel EQ",
                   "imageSrc": "/assets/plugins/logic-channel-eq.png",
-                  "imageAlt": "Overheads Mixing Guide Channel EQ screenshot"
+                  "imageAlt": "Overheads Mixing Guide Logic Channel EQ screenshot"
                 },
                 {
-                  "text": "Pro-Q 3"
+                  "text": "FabFilter Pro-Q 4",
+                  "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
+                  "imageAlt": "Overheads Mixing Guide FabFilter Pro-Q 4 screenshot"
                 }
               ]
             },
@@ -1629,9 +1755,13 @@
               "title": "Effects",
               "items": [
                 {
-                  "text": "Very subtle room or saturation only",
-                  "imageSrc": "/assets/plugins/waves-h-reverb.jpg",
-                  "imageAlt": "Overheads Mixing Guide Very subtle room or saturation only screenshot"
+                  "text": "Logic Space Designer"
+                },
+                {
+                  "text": "ChromaVerb"
+                },
+                {
+                  "text": "or subtle saturation only"
                 }
               ]
             }
@@ -1657,39 +1787,39 @@
         "icon": "🥁",
         "accent": "blue"
       },
-      "summary": "A practical glue and impact cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical glue and impact cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Bus Chain Starting Point",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Trim / Gain",
+              "goal": "Set the bus level so processing has headroom and bypass comparisons are level-matched."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Corrective EQ if needed",
+              "goal": "Use broad or focused cuts only for buildup, harshness, or clutter created by the grouped tracks."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Glue Compression if needed",
+              "goal": "Use light compression when it improves cohesion; leave the bus dynamic when it already moves well."
             },
             {
-              "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "name": "Tone EQ if needed",
+              "goal": "Add broad weight, clarity, or air only after the balance works."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Console / Tape Color",
+              "goal": "Optional character for density or shared tone; level-match because color often feels louder."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Width / Imaging",
+              "goal": "Use only when phase-safe and useful; check mono before trusting wide processing."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clipping or limiting only if peaks are causing problems or the bus needs a deliberate effect."
             }
           ]
         },
@@ -1700,25 +1830,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Glue: 1.5:1 to 2:1, slow/medium attack, auto or tempo-based release, around 1-3 dB gain reduction.",
+                "Aggressive bus compression is a sound/effect, not the default.",
+                "Parallel compression is usually safer than crushing the main drum bus."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Glue and impact clarity"
+                "Prioritize Glue and impact clarity in context"
               ]
             }
           ]
@@ -1770,6 +1900,9 @@
               "title": "Bus Compression",
               "items": [
                 {
+                  "text": "Logic Compressor"
+                },
+                {
                   "text": "Waves SSL G-Master",
                   "imageSrc": "/assets/plugins/waves-ssl-g-master.jpg",
                   "imageAlt": "Drum Bus Mixing Waves SSL G-Master screenshot"
@@ -1784,6 +1917,9 @@
             {
               "title": "Saturation",
               "items": [
+                {
+                  "text": "Logic Phat FX"
+                },
                 {
                   "text": "Waves J37",
                   "imageSrc": "/assets/plugins/waves-j37.png",
@@ -1800,12 +1936,16 @@
               "title": "Transient",
               "items": [
                 {
-                  "text": "Waves Trans-X",
-                  "imageSrc": "/assets/plugins/waves-trans-x.png",
-                  "imageAlt": "Drum Bus Mixing Waves Trans-X screenshot"
+                  "text": "Logic Enveloper"
                 },
                 {
-                  "text": "FabFilter Pro-DS for control"
+                  "text": "Waves Smack Attack"
+                },
+                {
+                  "text": "SPL Transient Designer"
+                },
+                {
+                  "text": "oeksound Spiff"
                 }
               ]
             },
@@ -1813,9 +1953,13 @@
               "title": "Reverb",
               "items": [
                 {
-                  "text": "Waves Abbey Road TG",
-                  "imageSrc": "/assets/plugins/waves-abbey-road-tg.png",
-                  "imageAlt": "Drum Bus Mixing Waves Abbey Road TG screenshot"
+                  "text": "Logic Space Designer"
+                },
+                {
+                  "text": "Logic ChromaVerb"
+                },
+                {
+                  "text": "Waves Abbey Road Chambers"
                 },
                 {
                   "text": "Pro-R 2",
@@ -1846,39 +1990,39 @@
         "icon": "🎙️",
         "accent": "purple"
       },
-      "summary": "A practical cohesion cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical cohesion cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Bus Chain Starting Point",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Trim / Gain",
+              "goal": "Set the bus level so processing has headroom and bypass comparisons are level-matched."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Corrective EQ if needed",
+              "goal": "Use broad or focused cuts only for buildup, harshness, or clutter created by the grouped tracks."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Glue Compression if needed",
+              "goal": "Use light compression when it improves cohesion; leave the bus dynamic when it already moves well."
             },
             {
-              "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "name": "Tone EQ if needed",
+              "goal": "Add broad weight, clarity, or air only after the balance works."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Saturation / Console / Tape Color",
+              "goal": "Optional character for density or shared tone; level-match because color often feels louder."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Width / Imaging",
+              "goal": "Use only when phase-safe and useful; check mono before trusting wide processing."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Peak Control",
+              "goal": "Use clipping or limiting only if peaks are causing problems or the bus needs a deliberate effect."
             }
           ]
         },
@@ -1889,25 +2033,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Use light compression for cohesion, usually 1-3 dB gain reduction.",
+                "De-ess the bus only if stacked vocals build harshness.",
+                "Avoid crushing the bus after already compressing individual vocals."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Cohesion clarity"
+                "Prioritize Cohesion clarity in context"
               ]
             }
           ]
@@ -1959,20 +2103,28 @@
               "title": "EQ",
               "items": [
                 {
+                  "text": "Logic Channel EQ",
+                  "imageSrc": "/assets/plugins/logic-channel-eq.png",
+                  "imageAlt": "Vocal Bus Mixing Logic Channel EQ screenshot"
+                },
+                {
                   "text": "Waves F6",
                   "imageSrc": "/assets/plugins/waves-f6.png",
                   "imageAlt": "Vocal Bus Mixing Waves F6 screenshot"
                 },
                 {
-                  "text": "FabFilter Pro-Q 3",
+                  "text": "FabFilter Pro-Q 4",
                   "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
-                  "imageAlt": "Vocal Bus Mixing FabFilter Pro-Q 3 screenshot"
+                  "imageAlt": "Vocal Bus Mixing FabFilter Pro-Q 4 screenshot"
                 }
               ]
             },
             {
               "title": "Compression",
               "items": [
+                {
+                  "text": "Logic Compressor"
+                },
                 {
                   "text": "Waves SSL G-Master",
                   "imageSrc": "/assets/plugins/waves-ssl-g-master.jpg",
@@ -1989,6 +2141,9 @@
               "title": "Saturation",
               "items": [
                 {
+                  "text": "Logic Phat FX"
+                },
+                {
                   "text": "Waves J37",
                   "imageSrc": "/assets/plugins/waves-j37.png",
                   "imageAlt": "Vocal Bus Mixing Waves J37 screenshot"
@@ -2004,14 +2159,15 @@
               "title": "De-essing",
               "items": [
                 {
-                  "text": "Sibilance",
-                  "imageSrc": "/assets/plugins/sibilance.jpg",
-                  "imageAlt": "Vocal Bus Mixing Sibilance screenshot"
+                  "text": "Logic DeEsser 2"
                 },
                 {
-                  "text": "Pro-DS",
+                  "text": "Waves Sibilance"
+                },
+                {
+                  "text": "FabFilter Pro-DS",
                   "imageSrc": "/assets/plugins/fabfilter-pro-ds.jpg",
-                  "imageAlt": "Vocal Bus Mixing Pro-DS screenshot"
+                  "imageAlt": "Vocal Bus Mixing FabFilter Pro-DS screenshot"
                 }
               ]
             }
@@ -2037,39 +2193,39 @@
         "icon": "🔊",
         "accent": "slate"
       },
-      "summary": "A practical balance and headroom cheat sheet with chain order, tone moves, level targets, and mix decisions you can adjust later.",
+      "summary": "A practical balance and headroom cheat sheet with modular processing, tone moves, level targets, and mix decisions you can adjust later.",
       "sections": [
         {
           "type": "chain",
-          "title": "1. Chain Order (Start to Finish)",
+          "title": "Main Bus / Pre-Master Chain Starting Point",
           "steps": [
             {
-              "name": "Gain",
-              "goal": "Set healthy peaks around -12 dBFS."
+              "name": "Gain / Trim",
+              "goal": "Leave headroom and avoid using the main bus to fix poor track balances."
             },
             {
-              "name": "Surgical EQ",
-              "goal": "Remove mud and harsh resonances."
+              "name": "Gentle Corrective EQ if needed",
+              "goal": "Prefer broad, subtle moves; fix obvious problems in the mix when possible."
             },
             {
-              "name": "Compression",
-              "goal": "Control dynamics and add consistency."
+              "name": "Very Light Bus Compression if useful",
+              "goal": "Use only when it improves movement or glue, usually around 0.5-2 dB of gain reduction."
             },
             {
-              "name": "Tone EQ",
-              "goal": "Shape musical balance and clarity."
+              "name": "Subtle Tone EQ if needed",
+              "goal": "Add broad polish carefully and keep checking bypass at matched loudness."
             },
             {
-              "name": "Saturation",
-              "goal": "Add harmonics and perceived density."
+              "name": "Subtle Saturation / Tape / Console Color",
+              "goal": "Optional finishing color when it helps density without shrinking the mix."
             },
             {
-              "name": "Space",
-              "goal": "Use subtle reverb or delay if needed."
+              "name": "Metering",
+              "goal": "Check peak, loudness, dynamic range, stereo correlation, and low-end translation."
             },
             {
-              "name": "Limiting",
-              "goal": "Catch peaks and cap final level."
+              "name": "Limiter for Preview / Final Checks",
+              "goal": "Use limiting to audition loudness or create a final master, not as a mix crutch."
             }
           ]
         },
@@ -2080,25 +2236,25 @@
             {
               "title": "EQ Targets",
               "items": [
-                "High-pass where possible",
-                "Cut boxiness first",
-                "Boost for intent, not volume"
+                "Filter only what the arrangement does not need.",
+                "Cut boxiness, harshness, or mud when you actually hear it.",
+                "Boost for a musical reason, not to make the track louder."
               ]
             },
             {
-              "title": "Compression Targets",
+              "title": "Compression Starting Points",
               "items": [
-                "Ratio 3:1 to 4:1",
-                "Attack 10-30 ms",
-                "Aim 2-6 dB gain reduction"
+                "Gentle glue only: 1.5:1 to 2:1 is a common starting point.",
+                "Usually aim for about 0.5-2 dB gain reduction.",
+                "Use slow/medium attack and auto or tempo-aware release to preserve transients."
               ]
             },
             {
               "title": "Metering Targets",
               "items": [
-                "Keep peaks below -6 dBFS",
+                "Leave headroom before buses",
                 "Watch low-end buildup",
-                "Prioritize Balance and headroom clarity"
+                "Prioritize Balance and headroom clarity in context"
               ]
             }
           ]
@@ -2150,12 +2306,17 @@
               "title": "EQ",
               "items": [
                 {
-                  "text": "Channel EQ",
+                  "text": "Logic Channel EQ",
                   "imageSrc": "/assets/plugins/logic-channel-eq.png",
-                  "imageAlt": "Main Bus / Pre-Master Mixing Channel EQ screenshot"
+                  "imageAlt": "Main Bus / Pre-Master Mixing Logic Channel EQ screenshot"
                 },
                 {
-                  "text": "Pro-Q 3"
+                  "text": "Logic Linear Phase EQ"
+                },
+                {
+                  "text": "FabFilter Pro-Q 4",
+                  "imageSrc": "/assets/plugins/fabfilter-pro-q-4.jpg",
+                  "imageAlt": "Main Bus / Pre-Master Mixing FabFilter Pro-Q 4 screenshot"
                 }
               ]
             },
@@ -2178,6 +2339,9 @@
               "title": "Saturation",
               "items": [
                 {
+                  "text": "Logic Phat FX"
+                },
+                {
                   "text": "J37",
                   "imageSrc": "/assets/plugins/waves-j37.png",
                   "imageAlt": "Main Bus / Pre-Master Mixing J37 screenshot"
@@ -2190,12 +2354,16 @@
               ]
             },
             {
-              "title": "Limiting",
+              "title": "Metering / Preview Limiting",
               "items": [
                 {
-                  "text": "Transparent limiter for peak catch",
-                  "imageSrc": "/assets/plugins/uad-precision-limiter.png",
-                  "imageAlt": "Main Bus / Pre-Master Mixing Transparent limiter for peak catch screenshot"
+                  "text": "Logic Loudness Meter"
+                },
+                {
+                  "text": "Multimeter"
+                },
+                {
+                  "text": "Adaptive Limiter for preview checks"
                 }
               ]
             }
@@ -2208,7 +2376,8 @@
             "Leave target peak around -6 dBFS.",
             "Do not normalize at mix stage.",
             "Check mono and low-volume translation.",
-            "Avoid fixing arrangement issues on bus."
+            "Avoid fixing arrangement issues on bus.",
+            "Avoid large master EQ moves unless intentional; fix mix problems at the source when possible."
           ]
         }
       ]
@@ -2245,11 +2414,11 @@
               ]
             },
             {
-              "title": "One Main Streaming Master",
+              "title": "Streaming Master Mindset",
               "items": [
-                "A practical all-platform target is around -14 LUFS integrated.",
-                "Use -1.0 dBTP true peak for most services, or -2.0 dBTP for extra codec/Amazon safety.",
-                "Keep enough dynamics that the master still punches after normalization."
+                "Do not treat -14 LUFS as a universal mastering target.",
+                "Choose loudness from the song, genre, and emotional intent, then check platform normalization.",
+                "Use more true-peak safety on louder or brighter masters because codecs can create extra peaks."
               ]
             },
             {
@@ -2312,56 +2481,56 @@
         },
         {
           "type": "table",
-          "title": "Streaming Platform Targets",
+          "title": "Streaming Loudness Context",
           "table": {
             "columns": [
-              "Platform",
+              "Context",
               "Integrated Loudness",
               "True Peak",
               "Notes"
             ],
             "rows": [
               [
-                "Safe all-platform master",
+                "Dynamic / acoustic / open mix",
+                "-18 to -14 LUFS",
+                "-1.0 to -2.0 dBTP",
+                "Good for natural dynamics, acoustic music, jazz, folk, and open arrangements."
+              ],
+              [
+                "Streaming-safe general reference",
                 "Around -14 LUFS",
-                "-2.0 dBTP",
-                "Conservative target that gives Amazon and lossy codecs extra headroom."
+                "About -1.0 dBTP",
+                "Useful as a normalization reference, not a rule every master must chase."
               ],
               [
-                "Spotify",
-                "Around -14 LUFS",
-                "-1.0 dBTP",
-                "Normalizes playback; louder masters are turned down."
+                "Modern indie / rock / pop master",
+                "-13 to -9 LUFS",
+                "About -2.0 dBTP when loud",
+                "Common for competitive releases; preserve punch and watch codec distortion."
               ],
               [
-                "Apple Music",
-                "Around -16 LUFS",
-                "-1.0 dBTP",
-                "Sound Check is user-controlled, so the full-level master should still sound good."
+                "Short-form social clip",
+                "-12 to -9 LUFS",
+                "-1.0 to -2.0 dBTP",
+                "Can be louder, but harsh limiting becomes obvious after phone playback and platform encoding."
               ],
               [
-                "YouTube",
-                "Around -14 LUFS",
-                "-1.0 dBTP",
-                "Commonly turns loud tracks down and may not boost quiet tracks enough to feel competitive."
+                "Preview / client loudness check",
+                "Varies by reference",
+                "-1.0 to -2.0 dBTP",
+                "Use to hear limiter behavior and translation before committing the final master."
               ],
               [
-                "Amazon Music",
-                "Around -14 LUFS",
-                "-2.0 dBTP",
-                "Use the stricter true peak ceiling when Amazon or HD delivery matters."
+                "Codec-sensitive delivery",
+                "Any chosen loudness",
+                "-2.0 dBTP safer",
+                "AAC/MP3/OGG encoding can create intersample peaks; preview codec artifacts when possible."
               ],
               [
-                "Tidal / Deezer",
-                "-14 to -15 LUFS",
-                "-1.0 dBTP",
-                "Good translation usually comes from a dynamic master near the general streaming target."
-              ],
-              [
-                "TikTok / Reels",
-                "-9 to -12 LUFS",
-                "-1.0 dBTP",
-                "Short-form clips often compete louder, but avoid harsh limiting and codec distortion."
+                "Very loud master",
+                "-9 LUFS or louder",
+                "-2.0 dBTP strongly recommended",
+                "Only if the genre demands it; expect normalization and possible loss of depth."
               ]
             ]
           }
@@ -2405,7 +2574,7 @@
                 "Club / DJ playback",
                 "Often louder and denser than streaming",
                 "Sub buildup, limiter pumping, and harsh highs become obvious on big systems",
-                "Check mono low end, kick/bass headroom, and references in the same genre."
+                "Check mono low end, kick/bass headroom, references in the same genre, and distortion after limiting."
               ]
             ]
           }
@@ -3332,52 +3501,64 @@
               ]
             },
             {
-              "title": "2. EQ",
+              "title": "2. Broad EQ Only if Needed",
               "items": [
-                "Correct broad issues",
-                "Avoid over-EQ"
+                "Prefer subtle moves",
+                "Fix mix problems before big master EQ"
               ]
             },
             {
-              "title": "3. Dynamics",
+              "title": "3. Dynamics if Useful",
               "items": [
                 "Use light glue",
-                "Keep punch"
+                "Keep punch",
+                "Avoid solving mix problems with compression"
               ]
             },
             {
-              "title": "4. Limiter",
+              "title": "4. Limiter / Codec Check",
               "items": [
                 "Set final ceiling",
-                "Control clipping"
+                "Preview loudness",
+                "Check intersample clipping"
               ]
             }
           ]
         },
         {
           "type": "table",
-          "title": "Spotify Loudness Targets",
+          "title": "Loudness Context",
           "table": {
             "columns": [
-              "Style",
+              "Style / Intent",
               "Integrated LUFS",
-              "True Peak"
+              "True Peak",
+              "How to Use It"
             ],
             "rows": [
               [
-                "Standard",
-                "-14 LUFS",
-                "-1.0 dBTP"
+                "Dynamic/acoustic/open mix",
+                "-18 to -14 LUFS",
+                "-1.0 to -2.0 dBTP",
+                "Preserve space, transients, and emotional movement."
               ],
               [
-                "Louder pop/edm",
-                "-10 to -12 LUFS",
-                "-1.0 dBTP"
+                "Streaming-safe reference",
+                "Around -14 LUFS",
+                "About -1.0 dBTP",
+                "Use as a normalization check, not a required final target."
               ],
               [
-                "Dynamic genres",
-                "-16 to -18 LUFS",
-                "-1.0 dBTP"
+                "Modern indie/rock/pop",
+                "-13 to -9 LUFS",
+                "About -2.0 dBTP if loud",
+                "Check limiter artifacts and codec previews before delivery."
+              ],
+              [
+                "Preview/client loudness check",
+                "Varies by reference",
+                "-1.0 to -2.0 dBTP",
+                "Use temporary limiting to audition loudness without hiding mix issues."
               ]
             ]
           }
@@ -3388,6 +3569,8 @@
           "items": [
             "Check in mono and stereo",
             "Confirm no inter-sample clipping",
+            "Preview AAC/MP3-style codec distortion when pushing loudness",
+            "Use broad, subtle master EQ unless a deliberate creative move calls for more",
             "Export WAV 24-bit (or project spec)",
             "Embed metadata and version naming"
           ]
@@ -3402,7 +3585,7 @@
         "icon": "🎸",
         "accent": "blue"
       },
-      "summary": "Bring all guitar layers together with bus compression, tone shaping, and controlled stereo image.",
+      "summary": "Bring guitar layers together with optional bus glue, tone shaping, and controlled stereo image.",
       "sections": [
         {
           "type": "cards",
@@ -3420,7 +3603,7 @@
               "title": "Signal Flow",
               "items": [
                 "Tracks -> Guitar Bus -> Mix Bus",
-                "Process and glue all guitars"
+                "Use bus processing only when the grouped guitars need shared tone or control"
               ]
             },
             {
@@ -3464,12 +3647,31 @@
                 "Boost carefully"
               ],
               [
-                "5-10 kHz",
-                "Air and sparkle",
-                "Use shelf gently"
+                "5-8 kHz",
+                "Fizz / pick edge",
+                "Control distorted-guitar fizz before boosting"
+              ],
+              [
+                "6-10 kHz",
+                "Clean-guitar air",
+                "Use only when clean guitars need sparkle"
               ]
             ]
           }
+        },
+        {
+          "type": "cards",
+          "title": "Compression Starting Points",
+          "cards": [
+            {
+              "title": "Glue Only if Needed",
+              "items": [
+                "Distorted rhythm guitars may not need bus compression.",
+                "Try 1.5:1 to 2:1 and 1-2 dB gain reduction when multiple guitar layers need cohesion.",
+                "Use automation or clip gain when a single part jumps out."
+              ]
+            }
+          ]
         },
         {
           "type": "checklist",
@@ -5218,7 +5420,7 @@
             },
             {
               "name": "Logic Pitch Shifter",
-              "type": "Dynamics Utility",
+              "type": "Pitch & Time",
               "popularity": 6,
               "emulation": "Digital pitch processing",
               "bestOn": "Creative shifts and harmonization",
@@ -5242,7 +5444,7 @@
             },
             {
               "name": "Logic Vocal Transformer",
-              "type": "Dynamics Utility",
+              "type": "Pitch & Time",
               "popularity": 6,
               "emulation": "Digital formant/pitch tool",
               "bestOn": "Creative vocal effects",
@@ -5674,7 +5876,7 @@
             },
             {
               "name": "Waves Sibilance",
-              "type": "Utility",
+              "type": "Dynamics Utility",
               "popularity": 8,
               "emulation": "De-esser style",
               "bestOn": "vocals, harsh cymbals",
@@ -5698,7 +5900,7 @@
             },
             {
               "name": "Waves Smack Attack",
-              "type": "Utility",
+              "type": "Dynamics Utility",
               "popularity": 8,
               "emulation": "Transient Shaper style",
               "bestOn": "drums, loops",
@@ -5818,7 +6020,7 @@
             },
             {
               "name": "Eventide Physion Mk II",
-              "type": "Utility",
+              "type": "Dynamics Utility",
               "popularity": 8,
               "emulation": "Transient/Tonal Splitter style",
               "bestOn": "sound design, repair-like processing",
@@ -5930,7 +6132,7 @@
             },
             {
               "name": "Plugin Alliance / Brainworx SPL Transient Designer Plus",
-              "type": "Utility",
+              "type": "Dynamics Utility",
               "popularity": 9,
               "emulation": "Transient Shaper style",
               "bestOn": "drums, percussion",
@@ -6010,7 +6212,7 @@
             },
             {
               "name": "Soundtoys MicroShift",
-              "type": "Utility",
+              "type": "Pitch & Time",
               "popularity": 9,
               "emulation": "Pitch/Widener style",
               "bestOn": "vocal/guitar widening",
@@ -6074,7 +6276,7 @@
             },
             {
               "name": "oeksound Spiff",
-              "type": "Utility",
+              "type": "Dynamics Utility",
               "popularity": 8,
               "emulation": "Transient Processor style",
               "bestOn": "vocal cleanup, drum attack, de-click-like shaping",
@@ -6394,7 +6596,7 @@
             },
             {
               "name": "Native Instruments Transient Master",
-              "type": "Utility",
+              "type": "Dynamics Utility",
               "popularity": 7,
               "emulation": "Transient Shaper style",
               "bestOn": "drums, percussion",
@@ -7965,6 +8167,20 @@
                 "Transparent de-essing"
               ],
               [
+                "Plugin Alliance / Brainworx SPL Transient Designer Plus",
+                "9",
+                "Transient Shaper style",
+                "drums, percussion",
+                "simple attack/sustain shaping"
+              ],
+              [
+                "Eventide Physion Mk II",
+                "8",
+                "Transient/Tonal Splitter style",
+                "sound design, repair-like processing",
+                "transient/tonal separation effects"
+              ],
+              [
                 "FabFilter Pro-G",
                 "8",
                 "Digital (non-emulation)",
@@ -7993,6 +8209,27 @@
                 "Reliable stock sibilance control"
               ],
               [
+                "oeksound Spiff",
+                "8",
+                "Transient Processor style",
+                "vocal cleanup, drum attack, de-click-like shaping",
+                "frequency-conscious transient shaping"
+              ],
+              [
+                "Waves Sibilance",
+                "8",
+                "De-esser style",
+                "vocals, harsh cymbals",
+                "intelligent sibilance control"
+              ],
+              [
+                "Waves Smack Attack",
+                "8",
+                "Transient Shaper style",
+                "drums, loops",
+                "drum attack/sustain shaping"
+              ],
+              [
                 "Waves Vocal Rider",
                 "8",
                 "Vocal Leveler style",
@@ -8014,25 +8251,18 @@
                 "Bleed and noise suppression"
               ],
               [
+                "Native Instruments Transient Master",
+                "7",
+                "Transient Shaper style",
+                "drums, percussion",
+                "simple attack/sustain"
+              ],
+              [
                 "UAD Topline Vocal Suite",
                 "7",
                 "Digital vocal suite",
                 "Lead vocals and vocal chains",
                 "Fast modern vocal polish tools"
-              ],
-              [
-                "Logic Pitch Shifter",
-                "6",
-                "Digital pitch processing",
-                "Creative shifts and harmonization",
-                "Simple pitch offset and special effects"
-              ],
-              [
-                "Logic Vocal Transformer",
-                "6",
-                "Digital formant/pitch tool",
-                "Creative vocal effects",
-                "Formant and pitch color changes"
               ]
             ]
           }
@@ -8313,25 +8543,11 @@
                 "classic Eventide multi-effects"
               ],
               [
-                "Plugin Alliance / Brainworx SPL Transient Designer Plus",
-                "9",
-                "Transient Shaper style",
-                "drums, percussion",
-                "simple attack/sustain shaping"
-              ],
-              [
                 "Softube Weiss DS1-MK3",
                 "9",
                 "Dynamics style",
                 "mastering compression/de-essing",
                 "surgical mastering dynamics"
-              ],
-              [
-                "Soundtoys MicroShift",
-                "9",
-                "Pitch/Widener style",
-                "vocal/guitar widening",
-                "classic pitch-doubler width"
               ],
               [
                 "Baby Audio Smooth Operator Pro",
@@ -8346,13 +8562,6 @@
                 "Transition FX style",
                 "builds, risers, automation",
                 "multi-effect transition design"
-              ],
-              [
-                "Eventide Physion Mk II",
-                "8",
-                "Transient/Tonal Splitter style",
-                "sound design, repair-like processing",
-                "transient/tonal separation effects"
               ],
               [
                 "Eventide TriceraChorus",
@@ -8390,13 +8599,6 @@
                 "adaptive tone shaping"
               ],
               [
-                "oeksound Spiff",
-                "8",
-                "Transient Processor style",
-                "vocal cleanup, drum attack, de-click-like shaping",
-                "frequency-conscious transient shaping"
-              ],
-              [
                 "Soundtoys PhaseMistress",
                 "8",
                 "Phaser style",
@@ -8425,20 +8627,6 @@
                 "harmonic bass enhancement"
               ],
               [
-                "Waves Sibilance",
-                "8",
-                "De-esser style",
-                "vocals, harsh cymbals",
-                "intelligent sibilance control"
-              ],
-              [
-                "Waves Smack Attack",
-                "8",
-                "Transient Shaper style",
-                "drums, loops",
-                "drum attack/sustain shaping"
-              ],
-              [
                 "Eventide Rotary Mod",
                 "7",
                 "Modulation style",
@@ -8465,13 +8653,6 @@
                 "Resonance Suppressor style",
                 "harsh resonance cleanup",
                 "guided resonance removal"
-              ],
-              [
-                "Native Instruments Transient Master",
-                "7",
-                "Transient Shaper style",
-                "drums, percussion",
-                "simple attack/sustain"
               ],
               [
                 "Universal Audio Brigade Chorus",
