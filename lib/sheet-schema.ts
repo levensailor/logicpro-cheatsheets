@@ -87,3 +87,32 @@ export interface CheatSheet {
   summary: string;
   sections: SheetSection[];
 }
+
+export interface ContentNavItem {
+  id: string;
+  href: string;
+  label: string;
+  title: string;
+  icon: string;
+}
+
+export interface ContentBundle {
+  schemaVersion: number;
+  contentVersion: string;
+  generatedAt: string;
+  minAppVersion: string;
+  navItems: ContentNavItem[];
+  cheatSheets: CheatSheet[];
+}
+
+export interface ContentManifest {
+  schemaVersion: number;
+  contentVersion: string;
+  generatedAt: string;
+  minAppVersion: string;
+  bundle: {
+    url: string;
+    sha256: string;
+    bytes: number;
+  };
+}
