@@ -128,7 +128,7 @@ private struct MixingChapterGrid: View {
                     .padding(5)
                     .background(
                         RoundedRectangle(cornerRadius: 14)
-                            .fill(selectedSheetID == sheet.id ? Color.accentColor : Color.secondary.opacity(0.12))
+                            .fill(selectedSheetID == sheet.id ? Color.accentColor : Color.white)
                     )
                     .overlay {
                         RoundedRectangle(cornerRadius: 14)
