@@ -740,6 +740,207 @@ export const cheatSheets: CheatSheet[] = [
     ]
   },
   {
+    id: "interfaces",
+    header: {
+      title: "Interfaces",
+      subtitle: "Converters, preamps, latency, and expansion",
+      icon: "🔌",
+      accent: "slate"
+    },
+    summary: "Choose an audio interface by matching real input needs, converter quality, latency, preamps, headphone mixes, expansion standards, and DSP workflow to the sessions you actually record.",
+    sections: [
+      {
+        type: "cards",
+        title: "What an Interface Does",
+        columns: 3,
+        cards: [
+          {
+            title: "A/D Conversion",
+            items: [
+              "Analog-to-digital conversion turns mic, instrument, and line signals into audio your DAW can record.",
+              "Better A/D conversion gives cleaner headroom, lower noise, and more trustworthy transients.",
+              "Dynamic range and SNR specs are useful, but the session still depends on gain staging and source quality."
+            ]
+          },
+          {
+            title: "D/A Conversion",
+            items: [
+              "Digital-to-analog conversion feeds your monitors and headphones.",
+              "D/A quality affects what you hear while balancing, panning, and judging reverb tails.",
+              "A weak monitor output can make good speakers or headphones feel smaller than they are."
+            ]
+          },
+          {
+            title: "Preamps and Monitoring",
+            items: [
+              "Mic preamps raise quiet microphone signals to a usable recording level.",
+              "Phantom power runs condenser mics; Hi-Z inputs record direct guitar and bass.",
+              "Direct monitoring lets performers hear themselves before DAW buffer latency becomes distracting."
+            ]
+          }
+        ]
+      },
+      {
+        type: "table",
+        title: "Buying Criteria",
+        table: {
+          columns: ["Spec", "What to Look For", "Why It Matters"],
+          rows: [
+            ["Real analog inputs", "Count simultaneous mic, line, and instrument inputs, not marketing totals", "A listed 18-input interface may only have 8 physical preamps plus digital expansion"],
+            ["Mic preamp gain", "Around 56 dB is workable; 60-70 dB is better for low-output dynamics", "Quiet dynamic mics can need lots of clean gain"],
+            ["EIN / noise", "Lower equivalent input noise is better, often around -128 dBu on strong preamps", "Noisy preamps become obvious on vocals, acoustic instruments, and quiet sources"],
+            ["Dynamic range / SNR", "Look separately at A/D and D/A dynamic range when possible", "A/D affects capture; D/A affects monitoring and mastering decisions"],
+            ["Round-trip latency", "Under 10 ms is usable; lower is better for software monitoring", "Latency changes the feel for singers, guitarists, and drummers"],
+            ["Driver reliability", "Stable Core Audio/ASIO drivers matter as much as headline specs", "Bad drivers create clicks, dropouts, and session stress"],
+            ["Headphone outputs", "Check volume, clarity, and number of independent headphone mixes", "Bands often need more than one cue mix"],
+            ["Routing software", "Look for loopback, cue mixes, internal mixers, and saved scenes", "Good routing saves time for tracking, streaming, and hybrid setups"],
+            ["Power", "Bus-powered is portable; external power is often stronger for bigger I/O", "Bigger headphone amps, preamps, and DSP usually need more power"],
+            ["Computer connection", "USB-C is enough for most; Thunderbolt helps larger low-latency rigs", "Connection type affects bandwidth, latency, and compatibility"]
+          ]
+        }
+      },
+      {
+        type: "table",
+        title: "Expansion and Standards",
+        table: {
+          columns: ["Standard", "What It Does", "When It Matters"],
+          rows: [
+            ["ADAT", "Adds up to 8 channels at 44.1/48 kHz over optical", "Best affordable path for adding drum preamps or extra line inputs"],
+            ["S/PDIF", "Two-channel digital audio over coax or optical", "Useful for connecting a stereo converter, preamp, or digital processor"],
+            ["Word clock", "Synchronizes digital devices to one clock", "Important when several converters or digital devices run together"],
+            ["MIDI", "Connects keyboards, drum machines, controllers, and outboard sync", "Helpful if your interface can replace a separate MIDI box"],
+            ["USB-C", "Modern universal computer connection", "Enough for most home and project studios"],
+            ["Thunderbolt", "High-bandwidth, low-latency computer connection", "Useful for Apollo, large I/O, and real-time tracking workflows"],
+            ["AVB", "Ethernet-based audio networking used by some MOTU/PreSonus systems", "Good for expandable multi-device studio or live rigs"],
+            ["Dante", "Network audio over standard Ethernet infrastructure", "Useful for larger studios, live rooms, broadcast, and multi-room routing"],
+            ["MADI", "High-channel-count digital audio, common in broadcast and large studios", "Useful when 64+ channels need to move reliably"],
+            ["DB25 / line I/O", "Multichannel analog connectors for outboard gear", "Useful for hybrid studios with compressors, EQs, summing, or patchbays"]
+          ]
+        }
+      },
+      {
+        type: "cards",
+        title: "DSP and Plugin Processing",
+        columns: 3,
+        cards: [
+          {
+            title: "UAD Apollo",
+            items: [
+              "Apollo interfaces can run UAD DSP plugins in real time while tracking.",
+              "Unison preamps can change input impedance and gain behavior for preamp, amp, and pedal models.",
+              "DSP monitoring can save computer CPU, but each Apollo has finite DSP resources."
+            ]
+          },
+          {
+            title: "Antelope Synergy Core",
+            items: [
+              "Antelope interfaces use onboard FPGA/DSP processing for low-latency effects.",
+              "They can be attractive when you want interface-based processing without relying only on the DAW.",
+              "Check which effects are included and which require extra purchases."
+            ]
+          },
+          {
+            title: "When DSP Helps",
+            items: [
+              "Tracking vocals through compression, EQ, reverb, or amp sounds without distracting delay.",
+              "Keeping the DAW buffer higher during large sessions while performers still hear a finished cue mix.",
+              "Committing tones on the way in, if you are confident and want a faster analog-style workflow."
+            ]
+          }
+        ]
+      },
+      {
+        type: "table",
+        title: "Choose by Session Type",
+        table: {
+          columns: ["Session", "Minimum Interface Shape", "Best Upgrade"],
+          rows: [
+            ["Solo vocal or guitar", "1-2 clean preamps, Hi-Z input, strong headphone output", "Focusrite Scarlett 2i2, MOTU M2, UAD Volt, or Apollo Solo"],
+            ["Singer-songwriter", "2 mic/line inputs and low-latency monitoring", "4 inputs if you want vocal, guitar, stereo keys, or room mic options"],
+            ["Podcast / streaming", "2-4 inputs, loopback, simple routing software", "Interfaces with onboard processing or dedicated stream routing"],
+            ["Band demos", "4-8 analog inputs", "ADAT expansion so drums and scratch instruments can grow later"],
+            ["Drum tracking", "8 mic preamps or 4 preamps plus ADAT", "18i20, UMC1820 plus ADA8200, Audient EVO 16, or rack Apollo"],
+            ["Hybrid outboard studio", "Enough line I/O, inserts, DB25, word clock", "MOTU, RME, Focusrite Clarett/Red, Lynx, or Antelope rack systems"],
+            ["Live or multi-room studio", "Network audio or expandable rack I/O", "AVB, Dante, MADI, or multi-interface systems with stable clocking"]
+          ]
+        }
+      },
+      {
+        type: "table",
+        title: "Starter Interface Recommendations",
+        table: {
+          columns: ["Model", "Inputs / Expansion", "Best For", "Why Consider It"],
+          rows: [
+            ["Behringer U-Phoria UMC22", "1 mic + 1 instrument", "Cheapest simple recording", "Very low-cost entry point for one mic and one instrument."],
+            ["Behringer U-Phoria UMC204HD", "2 inputs / MIDI", "Budget stereo and MIDI", "More flexible than ultra-basic boxes while staying inexpensive."],
+            ["Focusrite Scarlett Solo 4th Gen", "1 mic + 1 instrument", "Solo vocals and guitar", "Easy setup, clean preamp, Air mode, and beginner-friendly gain help."],
+            ["Focusrite Scarlett 2i2 4th Gen", "2 combo inputs", "Most small home studios", "Reliable default pick for vocals, guitars, keys, and two-mic recording."],
+            ["Focusrite Scarlett 4i4 4th Gen", "2 preamps + extra line I/O", "Small synth or stream rigs", "Adds routing and line inputs when two inputs feel tight."],
+            ["MOTU M2", "2 inputs / 4 outputs / MIDI", "Metering and conversion value", "Excellent front-panel metering and strong converter performance for the price."],
+            ["Universal Audio Volt 2", "2 inputs", "Warm simple tracking", "UA-style vintage tone option without Apollo DSP complexity."],
+            ["Universal Audio Volt 276", "2 inputs / onboard analog compressor", "Vocals and bass with character", "Built-in 76-style compression can smooth tracking before the DAW."],
+            ["PreSonus AudioBox USB 96", "2 inputs / MIDI", "Starter Studio One setups", "Simple budget interface with MIDI and bundled workflow value."],
+            ["Audient iD4 MkII", "1 mic + JFET instrument", "Best small preamp feel", "Strong preamp and DI quality when you record one source at a time."]
+          ]
+        }
+      },
+      {
+        type: "table",
+        title: "Midrange Interface Recommendations",
+        table: {
+          columns: ["Model", "Inputs / Expansion", "Best For", "Why Consider It"],
+          rows: [
+            ["Behringer UMC1820 + ADA8200", "16 mic inputs via ADAT", "Budget drum tracking", "A practical low-cost path to full-band input counts."],
+            ["Focusrite Scarlett 18i20 4th Gen", "8 preamps / ADAT / S/PDIF", "Home studios recording drums", "Expandable, familiar, and strong value for multi-mic sessions."],
+            ["MOTU UltraLite mk5", "Flexible line I/O / DSP mixer", "Hybrid desktop rigs", "Excellent routing, conversion, and outputs in a compact box."],
+            ["MOTU 828", "Rack I/O / AVB options", "Expandable studio hub", "Good fit when you need more routing and network-style growth."],
+            ["Universal Audio Apollo Solo", "2 inputs / UAD DSP", "Entry Apollo workflow", "Realtime UAD processing and Unison in a small interface."],
+            ["Universal Audio Apollo Twin X", "2 preamps / ADAT / UAD DSP", "Vocal and guitar tracking", "Low-latency UAD plugin tracking with expandable inputs."],
+            ["Antelope Audio Zen Go Synergy Core", "2 inputs / onboard effects", "Portable DSP workflow", "Antelope conversion and Synergy Core effects in a small rig."],
+            ["Antelope Audio Zen Q Synergy Core", "More I/O / ADAT / DSP", "Growing project studios", "More expansion and processing than the portable Zen Go."],
+            ["Audient EVO 16", "8 preamps / ADAT", "Fast multi-input tracking", "Smart gain features and lots of inputs for home bands."],
+            ["SSL 12", "4 preamps / ADAT / MIDI", "Small studio with SSL flavor", "Useful routing, 4K color, and expansion in a compact format."]
+          ]
+        }
+      },
+      {
+        type: "table",
+        title: "Pro Interface Recommendations",
+        table: {
+          columns: ["Model", "Inputs / Expansion", "Best For", "Why Consider It"],
+          rows: [
+            ["Universal Audio Apollo x4 Gen 2", "4 Unison preamps / UAD DSP", "Serious desktop tracking", "More DSP and I/O than Twin while staying desktop-friendly."],
+            ["Universal Audio Apollo x8p Gen 2", "8 Unison preamps / HEXA Core DSP", "Professional drum and band tracking", "Eight Apollo preamps with realtime UAD plugin workflow."],
+            ["Universal Audio Apollo x16D", "Dante / line I/O / UAD DSP", "Networked Apollo studios", "Dante-ready Apollo option for larger routing systems."],
+            ["Antelope Audio Orion Studio Synergy Core", "High I/O / Synergy Core DSP", "Large project studios", "Lots of conversion, effects processing, and flexible studio routing."],
+            ["Antelope Audio Discrete 8 Pro", "8 preamps / Synergy Core", "Tracking with onboard effects", "Good fit for multi-mic sessions needing Antelope processing."],
+            ["Focusrite Clarett+ 8Pre", "8 preamps / ADAT", "Clean expandable recording", "Higher-tier Focusrite preamps and conversion for project studios."],
+            ["Focusrite Red 16Line", "Thunderbolt / Dante / Pro Tools", "Hybrid professional rooms", "High-end Focusrite hub for Dante, line I/O, and larger studios."],
+            ["MOTU 16A", "16 line inputs / AVB", "Synths and hybrid line-level rigs", "Excellent when you need lots of line I/O instead of mic preamps."],
+            ["RME Fireface UFX III", "Deep I/O / TotalMix / rock-solid drivers", "Reliability-first studios", "Known for stable drivers, routing depth, and long-term support."],
+            ["Lynx Aurora(n)", "Modular conversion and I/O", "Mastering or high-end hybrid studios", "High-quality conversion with configurable expansion cards."]
+          ]
+        }
+      },
+      {
+        type: "checklist",
+        title: "Interface Buying Checklist",
+        items: [
+          "Count the real simultaneous analog inputs you need before looking at total I/O marketing numbers.",
+          "Choose enough mic preamps for the sessions you record most often.",
+          "Check clean gain if you use low-output dynamic or ribbon microphones.",
+          "Look at A/D and D/A dynamic range separately when specs provide both.",
+          "Prioritize stable drivers and low round-trip latency over flashy bundles.",
+          "Make sure headphone outputs and cue mixes support the number of performers you record.",
+          "Use ADAT for affordable expansion, and consider Dante, MADI, or AVB only when the studio truly needs networked audio.",
+          "Consider Apollo, Antelope, or similar DSP interfaces if you want to track through plugins while saving computer CPU.",
+          "Confirm macOS/Windows/iPad compatibility before buying.",
+          "Buy for your next two years of sessions, not for every possible future studio fantasy."
+        ]
+      }
+    ]
+  },
+  {
     id: "monitoring",
     header: {
       title: "Monitoring",

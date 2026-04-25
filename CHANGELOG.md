@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-25 11:16 EST
+- Add a DAW Interfaces chapter with converter, preamp, latency, expansion, DSP, and audio interface recommendation guidance.
+
 ## 2026-04-25 11:09 EST
 - Add a DAW Monitoring chapter with speaker placement, room treatment, headphone, format, playback check, and gear recommendation guidance.
 
