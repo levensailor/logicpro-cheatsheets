@@ -32,18 +32,28 @@ struct SheetListView: View {
                     let sheets = sheets(for: category)
                     if !sheets.isEmpty {
                         Section(category.title) {
-                            ForEach(sheets) { sheet in
-                                NavigationLink(value: sheet.id) {
-                                    Label {
-                                        VStack(alignment: .leading, spacing: 2) {
-                                            Text(bundle.navItems.first { $0.id == sheet.id }?.label ?? sheet.header.title)
-                                                .font(.headline)
-                                            Text(sheet.header.subtitle)
-                                                .font(.caption)
-                                                .foregroundStyle(.secondary)
+                            if category == .mixing {
+                                MixingChapterGrid(
+                                    sheets: sheets,
+                                    navItems: bundle.navItems,
+                                    selectedSheetID: $selectedSheetID
+                                )
+                                .listRowInsets(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+                                .listRowBackground(Color.clear)
+                            } else {
+                                ForEach(sheets) { sheet in
+                                    NavigationLink(value: sheet.id) {
+                                        Label {
+                                            VStack(alignment: .leading, spacing: 2) {
+                                                Text(bundle.navItems.first { $0.id == sheet.id }?.label ?? sheet.header.title)
+                                                    .font(.headline)
+                                                Text(sheet.header.subtitle)
+                                                    .font(.caption)
+                                                    .foregroundStyle(.secondary)
+                                            }
+                                        } icon: {
+                                            Text(sheet.header.icon)
                                         }
-                                    } icon: {
-                                        Text(sheet.header.icon)
                                     }
                                 }
                             }
@@ -82,6 +92,51 @@ struct SheetListView: View {
         let ids = category.sheetIDs
         return ids.compactMap { id in
             bundle.cheatSheets.first { $0.id == id }
+        }
+    }
+}
+
+private struct MixingChapterGrid: View {
+    let sheets: [CheatSheet]
+    let navItems: [ContentNavItem]
+    @Binding var selectedSheetID: CheatSheet.ID?
+
+    private let columns = Array(
+        repeating: GridItem(.flexible(minimum: 58), spacing: 8),
+        count: 4
+    )
+
+    var body: some View {
+        LazyVGrid(columns: columns, spacing: 8) {
+            ForEach(sheets) { sheet in
+                Button {
+                    selectedSheetID = sheet.id
+                } label: {
+                    VStack(spacing: 6) {
+                        Text(sheet.header.icon)
+                            .font(.title2)
+                        Text(navItems.first { $0.id == sheet.id }?.label ?? sheet.header.title)
+                            .font(.caption.bold())
+                            .lineLimit(2)
+                            .multilineTextAlignment(.center)
+                            .minimumScaleFactor(0.76)
+                    }
+                    .foregroundStyle(selectedSheetID == sheet.id ? .white : .primary)
+                    .frame(maxWidth: .infinity)
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding(6)
+                    .background(
+                        RoundedRectangle(cornerRadius: 14)
+                            .fill(selectedSheetID == sheet.id ? Color.accentColor : Color.secondary.opacity(0.12))
+                    )
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(selectedSheetID == sheet.id ? Color.accentColor : Color.secondary.opacity(0.18))
+                    }
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(navItems.first { $0.id == sheet.id }?.label ?? sheet.header.title)
+            }
         }
     }
 }
