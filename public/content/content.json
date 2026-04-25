@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "20260425T150240Z",
-  "generatedAt": "2026-04-25T15:02:40.645Z",
+  "contentVersion": "20260425T150528Z",
+  "generatedAt": "2026-04-25T15:05:28.159Z",
   "minAppVersion": "1.0.0",
   "navItems": [
     {
@@ -2203,36 +2203,63 @@
       "id": "gain-staging-lufs",
       "header": {
         "title": "Gain Staging & LUFS",
-        "subtitle": "Cheat Sheet for Spotify",
+        "subtitle": "Streaming, CD, vinyl, and tape",
         "icon": "📈",
         "accent": "green"
       },
-      "summary": "Set healthy input levels from tracks to master, then target streaming loudness without destroying dynamics.",
+      "summary": "Set healthy levels from tracks to master, then choose loudness and delivery targets that fit streaming services, physical formats, and the song.",
       "sections": [
         {
           "type": "cards",
           "title": "Core Principles",
+          "columns": 3,
           "cards": [
             {
               "title": "Gain Staging Basics",
               "items": [
-                "Set proper source levels",
-                "Avoid clipping at every stage",
-                "Leave mix bus headroom"
+                "Set proper source levels before plugins.",
+                "Avoid clipping on tracks, buses, plugins, and the master.",
+                "Leave mix bus headroom so mastering can work without rescue moves."
               ]
             },
             {
-              "title": "Rule of Thumb",
+              "title": "LUFS Is a Reference",
               "items": [
-                "If it sounds good quieter, it will sound louder later",
-                "Balance first, loudness second"
+                "Streaming LUFS numbers are normalization references, not always strict creative targets.",
+                "A loud master still gets turned down, but crushed dynamics stay crushed.",
+                "Master to what serves the genre, then check how platforms will normalize it."
               ]
             },
             {
-              "title": "Master Targets",
+              "title": "One Main Streaming Master",
               "items": [
-                "Integrated: around -14 LUFS",
-                "True peak ceiling: -1.0 dBTP"
+                "A practical all-platform target is around -14 LUFS integrated.",
+                "Use -1.0 dBTP true peak for most services, or -2.0 dBTP for extra codec/Amazon safety.",
+                "Keep enough dynamics that the master still punches after normalization."
+              ]
+            },
+            {
+              "title": "Format-Specific Masters",
+              "items": [
+                "Use a separate vinyl master when pressing records.",
+                "Use a separate CD or hi-res master if you want louder or less codec-safe delivery.",
+                "Keep the premaster and stems archived so remasters are easy later."
+              ]
+            },
+            {
+              "title": "True Peak Matters",
+              "items": [
+                "True peak catches inter-sample peaks that regular peak meters can miss.",
+                "Lossy codecs can create extra peaks after upload.",
+                "Dense, bright, heavily limited masters need more true-peak safety margin."
+              ]
+            },
+            {
+              "title": "Balance First",
+              "items": [
+                "Fix harshness, boomy lows, and weak vocals before chasing loudness.",
+                "If a limiter needs more than a few dB of gain reduction, revisit the mix.",
+                "Check quiet playback; strong balances survive lower volume."
               ]
             }
           ]
@@ -2263,20 +2290,155 @@
                 "-6 dBFS max peaks"
               ],
               [
-                "Master true peak",
-                "-1.0 dBTP"
+                "Streaming master true peak",
+                "-1.0 to -2.0 dBTP"
               ]
             ]
           }
         },
         {
+          "type": "table",
+          "title": "Streaming Platform Targets",
+          "table": {
+            "columns": [
+              "Platform",
+              "Integrated Loudness",
+              "True Peak",
+              "Notes"
+            ],
+            "rows": [
+              [
+                "Safe all-platform master",
+                "Around -14 LUFS",
+                "-2.0 dBTP",
+                "Conservative target that gives Amazon and lossy codecs extra headroom."
+              ],
+              [
+                "Spotify",
+                "Around -14 LUFS",
+                "-1.0 dBTP",
+                "Normalizes playback; louder masters are turned down."
+              ],
+              [
+                "Apple Music",
+                "Around -16 LUFS",
+                "-1.0 dBTP",
+                "Sound Check is user-controlled, so the full-level master should still sound good."
+              ],
+              [
+                "YouTube",
+                "Around -14 LUFS",
+                "-1.0 dBTP",
+                "Commonly turns loud tracks down and may not boost quiet tracks enough to feel competitive."
+              ],
+              [
+                "Amazon Music",
+                "Around -14 LUFS",
+                "-2.0 dBTP",
+                "Use the stricter true peak ceiling when Amazon or HD delivery matters."
+              ],
+              [
+                "Tidal / Deezer",
+                "-14 to -15 LUFS",
+                "-1.0 dBTP",
+                "Good translation usually comes from a dynamic master near the general streaming target."
+              ],
+              [
+                "TikTok / Reels",
+                "-9 to -12 LUFS",
+                "-1.0 dBTP",
+                "Short-form clips often compete louder, but avoid harsh limiting and codec distortion."
+              ]
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "title": "Physical and Specialty Delivery",
+          "table": {
+            "columns": [
+              "Format",
+              "Typical Approach",
+              "Watch Out For",
+              "Practical Tip"
+            ],
+            "rows": [
+              [
+                "CD",
+                "16-bit / 44.1 kHz delivery, often louder than streaming",
+                "No playback normalization, so over-limiting is heard exactly as printed",
+                "Use dithering when reducing to 16-bit and avoid chasing loudness past the song's comfort zone."
+              ],
+              [
+                "Vinyl",
+                "Dedicated cutting master with preserved dynamics",
+                "Wide low bass, harsh sibilance, extreme highs, and long sides can distort or skip",
+                "Mono or narrow the deep low end and let a vinyl mastering engineer handle final cutting decisions."
+              ],
+              [
+                "Cassette / tape",
+                "Moderate level with controlled highs and lows",
+                "Noise floor, hiss, saturation, and dullness if printed too hot or too dark",
+                "Leave transient room, avoid brittle top end, and print a test pass if duplicating to tape."
+              ],
+              [
+                "Hi-res download",
+                "24-bit WAV/AIFF at native session sample rate",
+                "Too much limiting defeats the point of a high-resolution release",
+                "Keep dynamics and use a slightly higher ceiling such as -0.5 dBTP when no lossy encoding is expected."
+              ],
+              [
+                "Club / DJ playback",
+                "Often louder and denser than streaming",
+                "Sub buildup, limiter pumping, and harsh highs become obvious on big systems",
+                "Check mono low end, kick/bass headroom, and references in the same genre."
+              ]
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "title": "Vinyl and Tape Notes",
+          "columns": 3,
+          "cards": [
+            {
+              "title": "Vinyl Low End",
+              "items": [
+                "Keep very low bass centered or narrowed.",
+                "Avoid huge stereo subs and hard-panned kick/bass information.",
+                "Shorter sides allow louder, cleaner cuts than long sides."
+              ]
+            },
+            {
+              "title": "Vinyl High End",
+              "items": [
+                "De-ess vocals and cymbals before the cutting stage.",
+                "Harsh sibilance can distort on playback.",
+                "Preserve dynamics so the needle has room to track the groove."
+              ]
+            },
+            {
+              "title": "Tape Character",
+              "items": [
+                "Tape can add pleasing saturation, but it also raises noise.",
+                "Too much low end can blur; too much high end can get brittle or hissy.",
+                "Print a reference and listen before duplicating a full run."
+              ]
+            }
+          ]
+        },
+        {
           "type": "checklist",
-          "title": "Quick Checklist",
+          "title": "Delivery Checklist",
           "items": [
-            "No red clipping on tracks or buses",
-            "Peaks follow target ranges",
-            "Integrated LUFS matches genre target",
-            "Reference against pro mixes regularly"
+            "No red clipping on tracks, buses, plugins, or master.",
+            "Premaster peaks leave roughly 3-6 dB of headroom.",
+            "Integrated LUFS matches the song, genre, and destination.",
+            "True peak ceiling is safe for the platform or format.",
+            "Streaming master is checked through loudness normalization expectations.",
+            "Vinyl, CD, tape, or hi-res releases get separate masters when needed.",
+            "Low end, sibilance, mono compatibility, and quiet playback are checked.",
+            "Reference against professional releases without copying their loudness blindly."
           ]
         }
       ]
