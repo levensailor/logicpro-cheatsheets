@@ -684,46 +684,310 @@ export const cheatSheets: CheatSheet[] = [
       icon: "🎚️",
       accent: "teal"
     },
-    summary: "Capture clean, intentional performances with stable gain staging and session routing from day one.",
+    summary: "Capture clean, intentional performances by controlling the room, choosing simple mic setups, and keeping the session organized from the first take.",
     sections: [
       {
         type: "cards",
-        title: "Prepare and Track",
+        title: "Acoustics and Sound Treatment",
+        columns: 3,
         cards: [
           {
-            title: "Before Tracking",
-            items: ["Tune and check instruments", "Label channels", "Create click and scratch guide"]
+            title: "Pick the Best Room",
+            items: [
+              "Choose the largest, least boxy room you can use.",
+              "Avoid bare parallel walls, glass, tile, and sharp reflective corners near the source.",
+              "Put drums and amps away from walls when possible so early reflections are less harsh."
+            ]
           },
           {
-            title: "Tracking Order",
-            items: ["Drums first", "Bass second", "Vocals after rhythm foundation"]
+            title: "Treatment, Not Soundproofing",
+            items: [
+              "Soundproofing keeps noise in or out and usually needs construction.",
+              "Acoustic treatment controls reflections inside the room and is the better home-studio goal.",
+              "Treat first reflection points, corners, and the ceiling before buying more microphones."
+            ]
           },
           {
-            title: "Mic & Setup",
-            items: ["Use proper mic distance", "Monitor bleed", "Record room when useful"]
+            title: "DIY Panels and Bass Traps",
+            items: [
+              "Build panels from 2-4 inch Rockwool or Owens Corning 703 in simple wood frames.",
+              "Use breathable fabric, not plastic, so air and sound can reach the absorber.",
+              "Straddle room corners with thicker 4-6 inch traps to reduce low-end buildup."
+            ]
+          },
+          {
+            title: "What Works",
+            items: [
+              "Heavy rugs, curtains, couches, mattresses, bookshelves, and moving blankets can help in the right spots.",
+              "A ceiling cloud above drums or the mix position reduces ceiling slap.",
+              "Use the mirror trick to find wall spots where monitors or loud sources reflect directly."
+            ]
+          },
+          {
+            title: "What Does Not Work",
+            items: [
+              "Thin foam mostly absorbs high end and does very little for bass problems.",
+              "Egg cartons are not useful acoustic treatment.",
+              "Covering every surface can make the room dull while leaving low-frequency mud untouched."
+            ]
+          },
+          {
+            title: "Vibration Is the Enemy",
+            items: [
+              "Tighten rattling drum hardware, light fixtures, shelves, doors, and windows before recording.",
+              "Decouple amps and speakers from the floor with stands, pads, or dense foam.",
+              "Listen for buzzes during loud test passes before the band starts doing real takes."
+            ]
+          }
+        ]
+      },
+      {
+        type: "cards",
+        title: "Microphones and Mic Placement",
+        columns: 3,
+        cards: [
+          {
+            title: "Choose the Right Mic",
+            items: [
+              "Dynamic mics handle loud sources and reject more room sound.",
+              "Condenser mics capture detail on vocals, acoustic guitar, overheads, and rooms.",
+              "Ribbon mics can smooth bright guitars or cymbals, but be careful with phantom power."
+            ]
+          },
+          {
+            title: "Home-Studio Rule",
+            items: [
+              "Cardioid patterns are your friend in imperfect rooms.",
+              "Aim the back of the mic toward the noisiest bleed source.",
+              "Move the mic before reaching for EQ; one inch can change the tone dramatically."
+            ]
+          },
+          {
+            title: "Vocals",
+            items: [
+              "Start 6-8 inches from a cardioid condenser or dynamic mic with a pop filter.",
+              "Put absorption behind the singer and behind the mic if the room is bright.",
+              "Record a test phrase with the loudest chorus so peaks stay clean."
+            ]
+          },
+          {
+            title: "Electric Guitar",
+            items: [
+              "Start with a dynamic mic near the speaker edge, 1-3 inches from the grille.",
+              "Move toward the dust cap for brighter bite or toward the edge for a darker tone.",
+              "Turn the amp down if the room is making the mic sound small or harsh."
+            ]
+          },
+          {
+            title: "Acoustic Guitar",
+            items: [
+              "Start around the 12th fret, 8-12 inches back, aimed slightly toward the sound hole.",
+              "Avoid pointing straight into the sound hole unless you want boom.",
+              "Use one good mic before adding stereo complexity."
+            ]
+          },
+          {
+            title: "Phase Checks",
+            items: [
+              "When two mics hear one source, measure equal distances from the important drum or speaker.",
+              "Flip polarity and listen in mono; keep the option that sounds fuller.",
+              "If the sound gets hollow, move a mic before recording more takes."
+            ]
+          }
+        ]
+      },
+      {
+        type: "cards",
+        title: "DI and Preamps",
+        columns: 3,
+        cards: [
+          {
+            title: "Why DI Matters",
+            items: [
+              "A DI captures a clean, reliable signal before pedals, amps, and room problems.",
+              "Keep DI tracks for bass and guitar so you can reamp or use amp sims later.",
+              "A clean DI can save a great performance if the amp tone was wrong."
+            ]
+          },
+          {
+            title: "Bass",
+            items: [
+              "Record bass DI on every session.",
+              "Blend the DI for low-end solidity with an amp track for grit or air.",
+              "Use fresh strings and check tuning often; bass tuning problems are obvious in the mix."
+            ]
+          },
+          {
+            title: "Preamps and Levels",
+            items: [
+              "Use the interface preamp cleanly unless you are intentionally driving color.",
+              "At 24-bit, leave headroom instead of recording hot.",
+              "Aim loud peaks around -12 to -6 dBFS and avoid clipping anywhere in the chain."
+            ]
           }
         ]
       },
       {
         type: "table",
-        title: "Gain Staging Quick Guide",
+        title: "Tracking Drums: Choose a Mic Setup",
         table: {
-          columns: ["Metric", "Recommended"],
+          columns: ["Setup", "Mics", "What It Sounds Like", "Best For", "Home-Studio Tip"],
           rows: [
-            ["Peaks", "-12 to -6 dBFS"],
-            ["RMS", "-18 to -12 dBFS"],
-            ["Avoid", "Any clipping or over-hot stems"]
+            [
+              "One-mic mono kit",
+              "1 room or overhead mic",
+              "Raw, vintage, balanced by the drummer instead of the mixer",
+              "Demos, garage rock, simple songwriting captures",
+              "Place the mic 3-6 feet in front of the kit around chest height, then move until kick/snare/cymbals balance."
+            ],
+            [
+              "Two-mic Recorderman",
+              "2 overhead-style cardioid mics",
+              "Focused kit image with solid snare and kick if measured carefully",
+              "Small rooms, limited inputs, natural indie or folk drums",
+              "Keep both mics the same distance from the snare and kick beater, then check mono before recording."
+            ],
+            [
+              "Three-mic punch setup",
+              "Kick plus two overheads",
+              "More low-end control while overheads carry the kit",
+              "Rock demos, rehearsal-room sessions, quick live-band tracking",
+              "Treat the overheads as the main drum sound and bring the kick mic up only enough to add weight."
+            ],
+            [
+              "Four-mic Glyn Johns",
+              "Overhead, floor-tom side mic, kick, snare",
+              "Open, roomy, classic rock tone with strong kit perspective",
+              "Rock, blues, roots, punk, and bands that want live energy",
+              "Measure both main mics from the snare center so the snare stays full instead of phasey."
+            ],
+            [
+              "Five or six-mic home setup",
+              "Kick, snare, stereo overheads, one or two tom/room mics",
+              "Modern control without too many phase problems",
+              "Most home band productions",
+              "Tune drums first, keep cymbals lower in volume, and use tom mics only if they improve the overhead picture."
+            ],
+            [
+              "Full close-mic setup",
+              "Kick, snare top/bottom, toms, hat, overheads, rooms",
+              "Polished, editable, punchy, and mix-ready when phase is managed",
+              "Professional sessions, dense rock, metal, pop, and productions needing detailed edits",
+              "Label every input, check polarity as you add mics, and do a short test mix before committing."
+            ]
           ]
         }
       },
       {
+        type: "table",
+        title: "Gain Staging Quick Guide",
+        table: {
+          columns: ["Metric", "Recommended", "Why"],
+          rows: [
+            ["Bit depth", "24-bit", "Allows conservative levels without noise problems"],
+            ["Peaks", "-12 to -6 dBFS", "Leaves room for surprise hits and singer/drummer excitement"],
+            ["Average level", "Around -18 dBFS", "Keeps plugins and preamps in a comfortable operating range"],
+            ["Avoid", "Any clipping or over-hot stems", "Clipped tracking cannot be repaired cleanly later"]
+          ]
+        }
+      },
+      {
+        type: "cards",
+        title: "Overdubs",
+        columns: 3,
+        cards: [
+          {
+            title: "Start With a Foundation",
+            items: [
+              "Record a scratch vocal or guide guitar before the rhythm section.",
+              "Make sure everyone understands the arrangement before chasing tones.",
+              "Keep the guide track if it has feel, but do not let it bleed into final mics."
+            ]
+          },
+          {
+            title: "Punches and Comps",
+            items: [
+              "Record multiple complete takes before punching every small mistake.",
+              "Use playlists or take folders so good ideas do not get overwritten.",
+              "Punch in a bar early and out a bar late so edits breathe naturally."
+            ]
+          },
+          {
+            title: "Keep Tone Consistent",
+            items: [
+              "Mark mic positions with tape before breaks.",
+              "Photograph amp settings, pedal settings, and mic placement.",
+              "Retune between takes, especially bass, acoustic guitar, and doubled parts."
+            ]
+          }
+        ]
+      },
+      {
+        type: "cards",
+        title: "Studio Time and Habits",
+        columns: 3,
+        cards: [
+          {
+            title: "Headphone Mixes",
+            items: [
+              "Give each musician enough of themselves, kick/snare, bass, and guide vocal.",
+              "Use closed-back headphones to reduce click bleed.",
+              "If the take feels stiff, improve the headphone mix before blaming the player."
+            ]
+          },
+          {
+            title: "Click or No Click",
+            items: [
+              "Use a click for tight edits, tempo-based effects, and modern production.",
+              "Skip or loosen the click when the song needs natural push and pull.",
+              "Tempo-map rehearsals if the band plays best with intentional tempo changes."
+            ]
+          },
+          {
+            title: "Session Logistics",
+            items: [
+              "Name tracks before recording: Kick In, Snare Top, Bass DI, Guitar L, Vocal Lead.",
+              "Color-code instruments and route buses before the serious takes.",
+              "Keep water, spare strings, drum keys, batteries, picks, and gaff tape nearby."
+            ]
+          },
+          {
+            title: "Communication",
+            items: [
+              "Talk about feel, emotion, and arrangement before talking about gear.",
+              "Use short notes after each take so the band stays confident.",
+              "Do not over-coach during a great performance."
+            ]
+          },
+          {
+            title: "Breaks and Ears",
+            items: [
+              "Take short breaks before fatigue makes everyone chase bad decisions.",
+              "Keep control-room volume moderate so tone choices stay reliable.",
+              "Print a rough mix at the end of the day so everyone can review calmly."
+            ]
+          },
+          {
+            title: "Backup Routine",
+            items: [
+              "Save before changing setups or deleting takes.",
+              "Back up raw audio before editing or comping.",
+              "Keep a dated session copy when the tracking day ends."
+            ]
+          }
+        ]
+      },
+      {
         type: "checklist",
-        title: "After Tracking",
+        title: "Tracking Day Checklist",
         items: [
-          "Listen through all takes",
-          "Comp clean edits",
-          "Save and label sessions clearly",
-          "Back up raw audio before mixing"
+          "Tune drums, guitars, and bass before microphones go up.",
+          "Walk the room and remove rattles, buzzes, and loose hardware.",
+          "Record a 30-second test and listen in mono for phase problems.",
+          "Check the loudest section before setting final preamp gain.",
+          "Confirm the headphone mix is comfortable for the player.",
+          "Label tracks, inputs, takes, and playlists before the real pass.",
+          "Save and back up raw audio before editing."
         ]
       }
     ]

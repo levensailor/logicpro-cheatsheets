@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-25 11:01 EST
+- Expand the Tracking chapter with professional band-recording guidance for home studios.
+
 ## 2026-04-25 10:06 EST
 - Convert the handbook content into a shared static JSON layer and add a SwiftUI iOS app that fetches, verifies, caches, and renders the content offline.
 
