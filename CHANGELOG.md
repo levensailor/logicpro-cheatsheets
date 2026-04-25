@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-25 12:22 EST
+- Replace repeated detail-card table subtitles with compact icon labels on web and iOS.
+
 ## 2026-04-25 12:16 EST
 - Add compact visual table layouts for dense reference sections across the web and iOS handbook.
 

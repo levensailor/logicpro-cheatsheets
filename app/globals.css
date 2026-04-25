@@ -839,15 +839,21 @@ td {
 
 .detailTableCard div {
   display: grid;
-  gap: 0.15rem;
+  grid-template-columns: 1.7rem minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: start;
 }
 
 .detailTableCard dt {
-  color: #52678e;
-  font-size: 0.68rem;
-  font-weight: 850;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  width: 1.45rem;
+  height: 1.45rem;
+  display: grid;
+  place-content: center;
+  border: 1px solid #cfdbf2;
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 0.78rem;
+  line-height: 1;
 }
 
 .detailTableCard dd {

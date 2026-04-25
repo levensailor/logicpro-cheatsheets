@@ -8,6 +8,20 @@ interface TableSectionProps {
   table: SheetTable;
 }
 
+function detailIconForColumn(column: string): string {
+  const normalized = column.toLowerCase();
+
+  if (normalized.includes("why")) return "✨";
+  if (normalized.includes("look") || normalized.includes("does") || normalized.includes("approach")) return "🔎";
+  if (normalized.includes("use") || normalized.includes("best") || normalized.includes("fit")) return "🎯";
+  if (normalized.includes("example") || normalized.includes("tip")) return "💡";
+  if (normalized.includes("routing") || normalized.includes("standard")) return "🔀";
+  if (normalized.includes("peak") || normalized.includes("lufs") || normalized.includes("recommended")) return "📏";
+  if (normalized.includes("watch")) return "⚠️";
+
+  return "•";
+}
+
 export function TableSection({ id, title, table }: TableSectionProps) {
   const layout = table.layout === "compact" || table.layout === "detailCards" ? table.layout : "standard";
 
@@ -35,7 +49,9 @@ export function TableSection({ id, title, table }: TableSectionProps) {
               <dl>
                 {row.slice(1).map((cell, cellIndex) => (
                   <div key={`${cell}-${index}-${cellIndex}`}>
-                    <dt>{table.columns[cellIndex + 1] ?? "Detail"}</dt>
+                    <dt title={table.columns[cellIndex + 1] ?? "Detail"} aria-label={table.columns[cellIndex + 1] ?? "Detail"}>
+                      <span aria-hidden="true">{detailIconForColumn(table.columns[cellIndex + 1] ?? "Detail")}</span>
+                    </dt>
                     <dd>{cell}</dd>
                   </div>
                 ))}

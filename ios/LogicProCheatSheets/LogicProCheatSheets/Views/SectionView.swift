@@ -137,10 +137,16 @@ private struct TableSectionView: View {
                         .font(.headline)
 
                     ForEach(Array(row.dropFirst().enumerated()), id: \.offset) { columnIndex, value in
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(table.columns.indices.contains(columnIndex + 1) ? table.columns[columnIndex + 1] : "Detail")
+                        HStack(alignment: .top, spacing: 8) {
+                            let column = table.columns.indices.contains(columnIndex + 1) ? table.columns[columnIndex + 1] : "Detail"
+
+                            Image(systemName: iconName(for: column))
                                 .font(.caption.bold())
                                 .foregroundStyle(.secondary)
+                                .frame(width: 22, height: 22)
+                                .background(.background, in: Circle())
+                                .accessibilityLabel(column)
+
                             Text(value)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
@@ -152,6 +158,20 @@ private struct TableSectionView: View {
                 .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
             }
         }
+    }
+
+    private func iconName(for column: String) -> String {
+        let normalized = column.lowercased()
+
+        if normalized.contains("why") { return "sparkles" }
+        if normalized.contains("look") || normalized.contains("does") || normalized.contains("approach") { return "magnifyingglass" }
+        if normalized.contains("use") || normalized.contains("best") || normalized.contains("fit") { return "target" }
+        if normalized.contains("example") || normalized.contains("tip") { return "lightbulb" }
+        if normalized.contains("routing") || normalized.contains("standard") { return "arrow.triangle.branch" }
+        if normalized.contains("peak") || normalized.contains("lufs") || normalized.contains("recommended") { return "ruler" }
+        if normalized.contains("watch") { return "exclamationmark.triangle" }
+
+        return "circle.fill"
     }
 
     private var standardRows: some View {
