@@ -102,29 +102,30 @@ private struct MixingChapterGrid: View {
     @Binding var selectedSheetID: CheatSheet.ID?
 
     private let columns = Array(
-        repeating: GridItem(.flexible(minimum: 58), spacing: 8),
+        repeating: GridItem(.flexible(minimum: 62), spacing: 6),
         count: 4
     )
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 8) {
+        LazyVGrid(columns: columns, spacing: 6) {
             ForEach(sheets) { sheet in
                 Button {
                     selectedSheetID = sheet.id
                 } label: {
-                    VStack(spacing: 6) {
+                    VStack(spacing: 5) {
                         Text(sheet.header.icon)
                             .font(.title2)
                         Text(navItems.first { $0.id == sheet.id }?.label ?? sheet.header.title)
-                            .font(.caption.bold())
-                            .lineLimit(2)
+                            .font(.system(size: 11, weight: .bold, design: .rounded))
+                            .lineLimit(3)
                             .multilineTextAlignment(.center)
-                            .minimumScaleFactor(0.76)
+                            .minimumScaleFactor(0.68)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                     .foregroundStyle(selectedSheetID == sheet.id ? .white : .primary)
                     .frame(maxWidth: .infinity)
-                    .aspectRatio(1, contentMode: .fit)
-                    .padding(6)
+                    .frame(height: 76)
+                    .padding(5)
                     .background(
                         RoundedRectangle(cornerRadius: 14)
                             .fill(selectedSheetID == sheet.id ? Color.accentColor : Color.secondary.opacity(0.12))
