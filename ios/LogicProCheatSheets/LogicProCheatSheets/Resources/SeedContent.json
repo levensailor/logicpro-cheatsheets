@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "20260425T155559Z",
-  "generatedAt": "2026-04-25T15:55:59.489Z",
+  "contentVersion": "20260425T161901Z",
+  "generatedAt": "2026-04-25T16:19:01.974Z",
   "minAppVersion": "1.0.0",
   "navItems": [
     {
@@ -2455,6 +2455,7 @@
               "Stage",
               "Target"
             ],
+            "layout": "compact",
             "rows": [
               [
                 "Individual tracks",
@@ -2489,6 +2490,7 @@
               "True Peak",
               "Notes"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Dynamic / acoustic / open mix",
@@ -2545,6 +2547,7 @@
               "Watch Out For",
               "Practical Tip"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "CD",
@@ -2676,6 +2679,7 @@
               "What to Look For",
               "Why It Matters"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Real analog inputs",
@@ -2739,6 +2743,7 @@
               "What It Does",
               "When It Matters"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "ADAT",
@@ -2833,6 +2838,7 @@
               "Minimum Interface Shape",
               "Best Upgrade"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Solo vocal or guitar",
@@ -3286,6 +3292,7 @@
               "Best For",
               "What to Listen For"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Main monitors",
@@ -3535,6 +3542,7 @@
               "True Peak",
               "How to Use It"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Dynamic/acoustic/open mix",
@@ -3902,6 +3910,7 @@
               "Recommended",
               "Why"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Bit depth",
@@ -4084,6 +4093,7 @@
               "Use It For",
               "Logic Pro Tip"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Insert",
@@ -4150,6 +4160,7 @@
               "Routing",
               "Why It Is Useful"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Drum Crush Bus",
@@ -4264,6 +4275,7 @@
               "Use It For",
               "Example Move"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Volume",
@@ -4340,6 +4352,7 @@
               "Recommendation",
               "Why"
             ],
+            "layout": "detailCards",
             "rows": [
               [
                 "Tight modern production",

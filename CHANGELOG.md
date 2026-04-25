@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-25 12:16 EST
+- Add compact visual table layouts for dense reference sections across the web and iOS handbook.
+
 ## 2026-04-25 11:52 EST
 - Align mixing and mastering guide content with modular chain guidance, source-specific compression notes, nuanced LUFS delivery targets, corrected EQ ranges, and current plugin recommendations.
 

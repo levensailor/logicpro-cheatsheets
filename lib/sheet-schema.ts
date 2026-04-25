@@ -35,6 +35,7 @@ export interface CardItem {
 export interface SheetTable {
   columns: string[];
   rows: string[][];
+  layout?: "standard" | "compact" | "detailCards";
 }
 
 export interface PluginChooserEntry {

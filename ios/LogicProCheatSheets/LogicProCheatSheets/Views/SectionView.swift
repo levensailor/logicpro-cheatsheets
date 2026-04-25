@@ -99,22 +99,77 @@ private struct TableSectionView: View {
 
     var body: some View {
         SectionCard(title: title) {
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(Array(table.rows.enumerated()), id: \.offset) { _, row in
-                    VStack(alignment: .leading, spacing: 6) {
-                        ForEach(Array(row.enumerated()), id: \.offset) { columnIndex, value in
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(table.columns.indices.contains(columnIndex) ? table.columns[columnIndex] : "Value")
-                                    .font(.caption.bold())
-                                    .foregroundStyle(.secondary)
-                                Text(value)
-                            }
+            switch table.layout {
+            case "compact":
+                compactGrid
+            case "detailCards":
+                detailCards
+            default:
+                standardRows
+            }
+        }
+    }
+
+    private var compactGrid: some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 10)], spacing: 10) {
+            ForEach(Array(table.rows.enumerated()), id: \.offset) { _, row in
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(row.first ?? "")
+                        .font(.caption.bold())
+                        .foregroundStyle(.secondary)
+                        .textCase(.uppercase)
+                    Text(row.dropFirst().first ?? "")
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
+            }
+        }
+    }
+
+    private var detailCards: some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 240), spacing: 12)], spacing: 12) {
+            ForEach(Array(table.rows.enumerated()), id: \.offset) { _, row in
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(row.first ?? "")
+                        .font(.headline)
+
+                    ForEach(Array(row.dropFirst().enumerated()), id: \.offset) { columnIndex, value in
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(table.columns.indices.contains(columnIndex + 1) ? table.columns[columnIndex + 1] : "Detail")
+                                .font(.caption.bold())
+                                .foregroundStyle(.secondary)
+                            Text(value)
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
                         }
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                    .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
+            }
+        }
+    }
+
+    private var standardRows: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(Array(table.rows.enumerated()), id: \.offset) { _, row in
+                VStack(alignment: .leading, spacing: 6) {
+                    ForEach(Array(row.enumerated()), id: \.offset) { columnIndex, value in
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(table.columns.indices.contains(columnIndex) ? table.columns[columnIndex] : "Value")
+                                .font(.caption.bold())
+                                .foregroundStyle(.secondary)
+                            Text(value)
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
             }
         }
     }

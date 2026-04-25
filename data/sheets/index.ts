@@ -780,6 +780,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Ideal Peak Levels",
         table: {
           columns: ["Stage", "Target"],
+          layout: "compact",
           rows: [
             ["Individual tracks", "-18 dBFS"],
             ["After plugins", "-18 to -12 dBFS"],
@@ -794,6 +795,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Streaming Loudness Context",
         table: {
           columns: ["Context", "Integrated Loudness", "True Peak", "Notes"],
+          layout: "detailCards",
           rows: [
             [
               "Dynamic / acoustic / open mix",
@@ -845,6 +847,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Physical and Specialty Delivery",
         table: {
           columns: ["Format", "Typical Approach", "Watch Out For", "Practical Tip"],
+          layout: "detailCards",
           rows: [
             [
               "CD",
@@ -972,6 +975,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Buying Criteria",
         table: {
           columns: ["Spec", "What to Look For", "Why It Matters"],
+          layout: "detailCards",
           rows: [
             ["Real analog inputs", "Count simultaneous mic, line, and instrument inputs, not marketing totals", "A listed 18-input interface may only have 8 physical preamps plus digital expansion"],
             ["Mic preamp gain", "Around 56 dB is workable; 60-70 dB is better for low-output dynamics", "Quiet dynamic mics can need lots of clean gain"],
@@ -991,6 +995,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Expansion and Standards",
         table: {
           columns: ["Standard", "What It Does", "When It Matters"],
+          layout: "detailCards",
           rows: [
             ["ADAT", "Adds up to 8 channels at 44.1/48 kHz over optical", "Best affordable path for adding drum preamps or extra line inputs"],
             ["S/PDIF", "Two-channel digital audio over coax or optical", "Useful for connecting a stereo converter, preamp, or digital processor"],
@@ -1041,6 +1046,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Choose by Session Type",
         table: {
           columns: ["Session", "Minimum Interface Shape", "Best Upgrade"],
+          layout: "detailCards",
           rows: [
             ["Solo vocal or guitar", "1-2 clean preamps, Hi-Z input, strong headphone output", "Focusrite Scarlett 2i2, MOTU M2, UAD Volt, or Apollo Solo"],
             ["Singer-songwriter", "2 mic/line inputs and low-latency monitoring", "4 inputs if you want vocal, guitar, stereo keys, or room mic options"],
@@ -1297,6 +1303,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Multiple Playback Checks",
         table: {
           columns: ["System", "Best For", "What to Listen For"],
+          layout: "detailCards",
           rows: [
             ["Main monitors", "Primary balance and tone", "Vocal level, kick/bass relationship, depth, and stereo image"],
             ["Second small speaker", "Midrange truth", "Lead vocal, snare, guitars, hooks, and whether the song works small"],
@@ -1476,6 +1483,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Loudness Context",
         table: {
           columns: ["Style / Intent", "Integrated LUFS", "True Peak", "How to Use It"],
+          layout: "detailCards",
           rows: [
             ["Dynamic/acoustic/open mix", "-18 to -14 LUFS", "-1.0 to -2.0 dBTP", "Preserve space, transients, and emotional movement."],
             ["Streaming-safe reference", "Around -14 LUFS", "About -1.0 dBTP", "Use as a normalization check, not a required final target."],
@@ -1774,6 +1782,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Gain Staging Quick Guide",
         table: {
           columns: ["Metric", "Recommended", "Why"],
+          layout: "detailCards",
           rows: [
             ["Bit depth", "24-bit", "Allows conservative levels without noise problems"],
             ["Peaks", "-12 to -6 dBFS", "Leaves room for surprise hits and singer/drummer excitement"],
@@ -1921,6 +1930,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Insert vs Send",
         table: {
           columns: ["Choice", "What It Does", "Use It For", "Logic Pro Tip"],
+          layout: "detailCards",
           rows: [
             [
               "Insert",
@@ -1983,6 +1993,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Creative Routing Examples",
         table: {
           columns: ["Idea", "Routing", "Why It Is Useful"],
+          layout: "detailCards",
           rows: [
             [
               "Drum Crush Bus",
@@ -2093,6 +2104,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Useful Automation Targets",
         table: {
           columns: ["Parameter", "Use It For", "Example Move"],
+          layout: "detailCards",
           rows: [
             [
               "Volume",
@@ -2165,6 +2177,7 @@ export const cheatSheets: CheatSheet[] = [
         title: "Mic Bleed: Cut It or Keep It?",
         table: {
           columns: ["Situation", "Recommendation", "Why"],
+          layout: "detailCards",
           rows: [
             [
               "Tight modern production",

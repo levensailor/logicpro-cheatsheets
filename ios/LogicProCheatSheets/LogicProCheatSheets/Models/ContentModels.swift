@@ -109,6 +109,7 @@ struct RichCardLineItem: Codable {
 struct SheetTable: Codable {
     let columns: [String]
     let rows: [[String]]
+    let layout: String?
 }
 
 struct PluginChooserEntry: Codable, Identifiable {

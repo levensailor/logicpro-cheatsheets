@@ -784,6 +784,79 @@ td {
   color: #3f537c;
 }
 
+.compactTableGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 0.6rem;
+}
+
+.compactTableTile {
+  border: 1px solid #d3def3;
+  border-radius: 12px;
+  padding: 0.7rem;
+  background: linear-gradient(180deg, #ffffff, #f3f7ff);
+}
+
+.compactTableTile p {
+  margin: 0 0 0.3rem;
+  color: #52678e;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.compactTableTile strong {
+  color: #16396f;
+  font-size: clamp(0.98rem, 2vw, 1.25rem);
+  line-height: 1.15;
+}
+
+.detailTableGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.7rem;
+}
+
+.detailTableCard {
+  border: 1px solid #d3def3;
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: #f8fbff;
+}
+
+.detailTableCard h3 {
+  margin: 0 0 0.55rem;
+  color: #173765;
+  font-size: 0.98rem;
+}
+
+.detailTableCard dl {
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.detailTableCard div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.detailTableCard dt {
+  color: #52678e;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.detailTableCard dd {
+  margin: 0;
+  color: #3f537c;
+  font-size: 0.88rem;
+  line-height: 1.42;
+}
+
 .checklist {
   margin: 0;
   padding: 0;
