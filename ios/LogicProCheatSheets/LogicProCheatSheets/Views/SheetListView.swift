@@ -168,6 +168,7 @@ private enum ChapterCategory: String, CaseIterable, Identifiable {
         case .daw:
             return [
                 "audio-routing",
+                "monitoring",
                 "logic-pro-workflow",
                 "automation",
                 "plugins-reference",
@@ -249,7 +250,7 @@ private struct HomeView: View {
     private var categoryGrid: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 220), spacing: 12)], spacing: 12) {
             categoryCard("Tracking", icon: "🎙️", subtitle: "Capture clean performances.", target: "tracking-band")
-            categoryCard("DAW", icon: "🎛️", subtitle: "Routing, workflow, automation, plugins, and gain.", target: "audio-routing")
+            categoryCard("DAW", icon: "🎛️", subtitle: "Routing, monitoring, workflow, plugins, and gain.", target: "audio-routing")
             categoryCard("Mixing", icon: "🎚️", subtitle: "Instrument and bus cheat sheets.", target: "bass-guitar-mixing")
             categoryCard("Mastering", icon: "💿", subtitle: "Final loudness, polish, and delivery.", target: "mastering-final-mix")
             categoryCard("Reference", icon: "📘", subtitle: "Beginner audio terms and definitions.", target: "appendix-audio-terms")
@@ -288,7 +289,7 @@ private struct HomeView: View {
             Text("How to use the book")
                 .font(.title2.bold())
             Label("Start with Tracking before mixing decisions.", systemImage: "1.circle.fill")
-            Label("Use DAW chapters to set up routing, automation, plugins, and levels.", systemImage: "2.circle.fill")
+            Label("Use DAW chapters to set up routing, monitoring, automation, plugins, and levels.", systemImage: "2.circle.fill")
             Label("Open Mixing chapters for each instrument or bus.", systemImage: "3.circle.fill")
             Label("Finish with Mastering and check the Reference appendix when terms are unclear.", systemImage: "4.circle.fill")
         }

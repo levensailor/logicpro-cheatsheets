@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-25 11:09 EST
+- Add a DAW Monitoring chapter with speaker placement, room treatment, headphone, format, playback check, and gear recommendation guidance.
+
 ## 2026-04-25 11:04 EST
 - Expand the Gain Staging & LUFS chapter with streaming, CD, vinyl, tape, hi-res, and club delivery guidance.
 

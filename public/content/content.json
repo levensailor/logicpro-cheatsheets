@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "20260425T150528Z",
-  "generatedAt": "2026-04-25T15:05:28.159Z",
+  "contentVersion": "20260425T151102Z",
+  "generatedAt": "2026-04-25T15:11:02.427Z",
   "minAppVersion": "1.0.0",
   "navItems": [
     {
@@ -87,6 +87,13 @@
       "label": "Gain Staging & LUFS",
       "title": "Gain Staging & LUFS",
       "icon": "📈"
+    },
+    {
+      "id": "monitoring",
+      "href": "/sheets/monitoring",
+      "label": "Monitoring",
+      "title": "Monitoring",
+      "icon": "🎧"
     },
     {
       "id": "mastering-final-mix",
@@ -2439,6 +2446,371 @@
             "Vinyl, CD, tape, or hi-res releases get separate masters when needed.",
             "Low end, sibilance, mono compatibility, and quiet playback are checked.",
             "Reference against professional releases without copying their loudness blindly."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "monitoring",
+      "header": {
+        "title": "Monitoring",
+        "subtitle": "Speakers, headphones, rooms, and translation",
+        "icon": "🎧",
+        "accent": "blue"
+      },
+      "summary": "Build a reliable monitoring workflow using room setup, headphones, speaker checks, mono/stereo awareness, and references that reveal mix decisions clearly.",
+      "sections": [
+        {
+          "type": "cards",
+          "title": "Monitoring Mindset",
+          "columns": 3,
+          "cards": [
+            {
+              "title": "Learn One Main System",
+              "items": [
+                "Pick one primary monitor setup and learn how finished records sound on it.",
+                "Use reference tracks in the same style before making major EQ or level decisions.",
+                "Do not chase every speaker; look for problems that repeat across systems."
+              ]
+            },
+            {
+              "title": "Check Quietly",
+              "items": [
+                "Mixing quietly helps balances, vocals, snare, and harshness reveal themselves.",
+                "Turn up briefly for low-end impact checks, then return to a safe working level.",
+                "If the mix only works loud, the balance probably needs work."
+              ]
+            },
+            {
+              "title": "Protect Your Ears",
+              "items": [
+                "Take short breaks before your ears start normalizing harshness or loudness.",
+                "Keep headphone sessions especially moderate because fatigue arrives quietly.",
+                "Do not make final brightness or vocal-level calls when tired."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "cards",
+          "title": "Speaker Placement and Ear Position",
+          "columns": 3,
+          "cards": [
+            {
+              "title": "Triangle Setup",
+              "items": [
+                "Place the speakers and your head in an equilateral triangle.",
+                "Aim tweeters at ear height and angle both monitors toward the listening position.",
+                "Keep the left and right sides of the room as symmetrical as practical."
+              ]
+            },
+            {
+              "title": "Wall Distance",
+              "items": [
+                "Avoid corners because they exaggerate bass buildup.",
+                "Use the monitor's manual and rear-panel EQ if the speakers must sit near a wall.",
+                "Intermediate wall distances can create low-mid cancellations, so test placement with references."
+              ]
+            },
+            {
+              "title": "Stands and Isolation",
+              "items": [
+                "Use stands or isolation pads so the desk does not resonate with the speakers.",
+                "Raise low desktop speakers instead of aiming them at your chest.",
+                "Keep speakers stable; wobble and vibration blur transient detail."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "cards",
+          "title": "Room Dynamics",
+          "columns": 3,
+          "cards": [
+            {
+              "title": "First Reflections",
+              "items": [
+                "Treat side-wall, ceiling, and rear-wall reflection points before buying bigger speakers.",
+                "Use the mirror trick: if you can see a speaker from the mix position, treat that spot.",
+                "Broadband panels work better than thin foam for real mix decisions."
+              ]
+            },
+            {
+              "title": "Bass Problems",
+              "items": [
+                "Small rooms exaggerate some bass notes and hide others.",
+                "Corner bass traps help more than guessing with EQ.",
+                "Check kick and bass on headphones or VSX-style rooms if your room cannot reproduce sub lows."
+              ]
+            },
+            {
+              "title": "Desk and Rear Wall",
+              "items": [
+                "Desk reflections can make upper mids and stereo placement misleading.",
+                "A bare wall behind your head can smear imaging and exaggerate slap.",
+                "Use absorption, diffusion, bookshelves, or soft furniture to reduce obvious reflections."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "cards",
+          "title": "Headphones and Room Emulation",
+          "columns": 3,
+          "cards": [
+            {
+              "title": "Closed-Back Headphones",
+              "items": [
+                "Best for tracking because they reduce click bleed into microphones.",
+                "Useful for finding clicks, edits, mouth noises, and distortion.",
+                "Can feel bright or narrow, so avoid making every mix decision only on closed-backs."
+              ]
+            },
+            {
+              "title": "Open-Back Headphones",
+              "items": [
+                "Better for long mix checks and midrange detail in a quiet room.",
+                "They leak sound, so do not use them near open microphones.",
+                "Use references because the bass and stereo width differ from speakers."
+              ]
+            },
+            {
+              "title": "VSX and Space Emulators",
+              "items": [
+                "Steven Slate VSX and similar tools simulate studios, cars, clubs, and alternate speakers.",
+                "Treat them as translation checks and learn them with commercial references.",
+                "Calibrate output and take breaks; headphone room emulation still causes ear fatigue."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "cards",
+          "title": "Mono, Stereo, and Surround Checks",
+          "columns": 3,
+          "cards": [
+            {
+              "title": "Mono",
+              "items": [
+                "Check mono to catch phase problems, weak vocals, disappearing guitars, and hollow drums.",
+                "If the hook collapses in mono, fix the arrangement, phase, or stereo widening.",
+                "Small mono speakers reveal whether the song works without impressive width."
+              ]
+            },
+            {
+              "title": "Stereo",
+              "items": [
+                "Use stereo for panning, depth, reverbs, delays, and emotional width.",
+                "Make sure the center still carries kick, bass, snare, and lead vocal.",
+                "Avoid widening low bass unless the format and playback system can handle it."
+              ]
+            },
+            {
+              "title": "Surround and Immersive",
+              "items": [
+                "Treat surround, Atmos, and spatial versions as separate delivery formats.",
+                "Do not assume a stereo mix automatically becomes a good immersive mix.",
+                "Check fold-down behavior so important parts survive outside the ideal speaker layout."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Multiple Playback Checks",
+          "table": {
+            "columns": [
+              "System",
+              "Best For",
+              "What to Listen For"
+            ],
+            "rows": [
+              [
+                "Main monitors",
+                "Primary balance and tone",
+                "Vocal level, kick/bass relationship, depth, and stereo image"
+              ],
+              [
+                "Second small speaker",
+                "Midrange truth",
+                "Lead vocal, snare, guitars, hooks, and whether the song works small"
+              ],
+              [
+                "Closed-back headphones",
+                "Editing and detail",
+                "Clicks, noise, harshness, mouth sounds, and reverb tails"
+              ],
+              [
+                "Open-back headphones",
+                "Longer mix checks",
+                "Midrange tone, vocal emotion, and panning decisions"
+              ],
+              [
+                "Earbuds / phone / laptop",
+                "Real-world translation",
+                "Vocal intelligibility, low-end loss, and harsh upper mids"
+              ],
+              [
+                "Car",
+                "Consumer low end and excitement",
+                "Boomy bass, vocal level, cymbal harshness, and chorus impact"
+              ],
+              [
+                "VSX / room emulator",
+                "Alternate room perspective",
+                "Sub decisions, club impact, car translation, and mono-style checks"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "title": "Headphone Recommendations",
+          "table": {
+            "columns": [
+              "Price Range",
+              "Model",
+              "Type",
+              "Why Use It"
+            ],
+            "rows": [
+              [
+                "Starter",
+                "Sony MDR-7506",
+                "Closed-back",
+                "Classic tracking and editing headphone that reveals clicks, noise, and bright detail."
+              ],
+              [
+                "Starter",
+                "Audio-Technica ATH-M40x",
+                "Closed-back",
+                "Affordable all-purpose option for tracking, production, and rough mix checks."
+              ],
+              [
+                "Starter",
+                "Sennheiser HD 280 Pro",
+                "Closed-back",
+                "Strong isolation for vocals, loud rooms, and click-heavy tracking sessions."
+              ],
+              [
+                "Mid",
+                "Sennheiser HD 6XX",
+                "Open-back",
+                "Great value for midrange tone, long listening, and musical reference checks."
+              ],
+              [
+                "Mid",
+                "Beyerdynamic DT 770 Pro",
+                "Closed-back",
+                "Comfortable isolation with extended lows for tracking and production checks."
+              ],
+              [
+                "Mid",
+                "Sennheiser HD 560S",
+                "Open-back",
+                "Neutral, modern open-back choice for balance and stereo judgment."
+              ],
+              [
+                "Higher",
+                "Steven Slate VSX",
+                "Closed-back plus room emulation",
+                "Useful for checking studio, car, club, and alternate playback spaces from headphones."
+              ],
+              [
+                "Higher",
+                "Sony MDR-MV1",
+                "Open-back",
+                "Detailed Sony-style reference for mixing, immersive checks, and long sessions."
+              ],
+              [
+                "Higher",
+                "Sennheiser HD 600 / HD 650",
+                "Open-back",
+                "Reliable reference standards for tone, midrange, and translation when properly powered."
+              ]
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "title": "Monitor Speaker Recommendations",
+          "table": {
+            "columns": [
+              "Price Range",
+              "Model",
+              "Best Fit",
+              "Why Use It"
+            ],
+            "rows": [
+              [
+                "Starter",
+                "PreSonus Eris E5 XT",
+                "Small rooms and first monitor pair",
+                "Strong value with room tuning controls and enough size for beginner home studios."
+              ],
+              [
+                "Starter",
+                "PreSonus Eris E4.5",
+                "Desktop or very small rooms",
+                "Compact and affordable when larger speakers would overload the room."
+              ],
+              [
+                "Starter",
+                "JBL 305P MkII",
+                "Budget stereo imaging",
+                "Wide sweet spot and useful detail for the price."
+              ],
+              [
+                "Mid",
+                "Kali Audio LP-6 V2",
+                "Bass-aware home mixing",
+                "Flat, practical monitor with useful boundary EQ and more low-end reach."
+              ],
+              [
+                "Mid",
+                "Yamaha HS5",
+                "Critical midrange checks",
+                "Revealing, familiar monitor that exposes balance problems without flattering them."
+              ],
+              [
+                "Mid",
+                "ADAM Audio T5V",
+                "High-frequency detail",
+                "Clear top end and strong detail for acoustic, vocal, and guitar decisions."
+              ],
+              [
+                "Higher",
+                "Yamaha HS7 / HS8",
+                "Larger rooms needing more low end",
+                "More extension than HS5, but needs placement and treatment to avoid bass confusion."
+              ],
+              [
+                "Higher",
+                "ADAM A4V / A7V",
+                "Detailed treated-room monitoring",
+                "More refined imaging and tuning options for serious mix rooms."
+              ],
+              [
+                "Higher",
+                "Kali IN-8",
+                "Three-way monitoring on a budget",
+                "Coaxial mid/tweeter design helps imaging and gives more detail than many two-way options."
+              ]
+            ]
+          }
+        },
+        {
+          "type": "checklist",
+          "title": "Monitoring Checklist",
+          "items": [
+            "Set monitors in an equilateral triangle with tweeters aimed at ear height.",
+            "Treat first reflection points and corners before trusting bass decisions.",
+            "Use one main monitoring system for most decisions and references.",
+            "Check mono before approving wide guitars, stereo effects, or drum overheads.",
+            "Use headphones for detail, but verify low end and stereo width elsewhere.",
+            "Use VSX or room emulators as translation checks, not magic fixes.",
+            "Check the mix quietly, on earbuds, in the car, and on a small speaker before final delivery.",
+            "Take breaks before making final EQ, loudness, or vocal-level decisions."
           ]
         }
       ]
