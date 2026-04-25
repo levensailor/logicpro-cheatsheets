@@ -230,7 +230,25 @@ private struct ImageSectionView: View {
 
 private struct PluginChooserSectionView: View {
     let section: PluginChooserSection
+    @State private var selectedInstrument = "All"
     @State private var selectedType = "All"
+
+    private let instrumentOptions = [
+        "All",
+        "Bass",
+        "Guitar",
+        "Kick",
+        "Snare",
+        "Toms",
+        "Overheads",
+        "Room Mic",
+        "Vocals",
+        "Drums",
+        "Synths",
+        "Keys",
+        "Mix Bus",
+        "Master Bus"
+    ]
 
     private var pluginTypes: [String] {
         ["All"] + Array(Set(section.entries.map(\.type))).sorted()
@@ -238,6 +256,7 @@ private struct PluginChooserSectionView: View {
 
     private var filteredEntries: [PluginChooserEntry] {
         section.entries
+            .filter { selectedInstrument == "All" || matchesInstrument($0.bestOn, instrument: selectedInstrument) }
             .filter { selectedType == "All" || $0.type == selectedType }
             .sorted { lhs, rhs in
                 if lhs.popularity == rhs.popularity {
@@ -249,6 +268,13 @@ private struct PluginChooserSectionView: View {
 
     var body: some View {
         SectionCard(title: section.title) {
+            Picker("Instrument / Bus", selection: $selectedInstrument) {
+                ForEach(instrumentOptions, id: \.self) { instrument in
+                    Text(instrument).tag(instrument)
+                }
+            }
+            .pickerStyle(.menu)
+
             Picker("Plugin Type", selection: $selectedType) {
                 ForEach(pluginTypes, id: \.self) { type in
                     Text(type).tag(type)
@@ -256,15 +282,17 @@ private struct PluginChooserSectionView: View {
             }
             .pickerStyle(.menu)
 
+            Text(resultsSummary)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
             ForEach(filteredEntries) { plugin in
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         Text(plugin.name)
                             .font(.headline)
                         Spacer()
-                        Text("\(plugin.popularity)/10")
-                            .font(.caption.bold())
-                            .foregroundStyle(.secondary)
+                        StarRatingView(popularity: plugin.popularity)
                     }
                     Text(plugin.type)
                         .font(.subheadline.bold())
@@ -278,5 +306,74 @@ private struct PluginChooserSectionView: View {
                 .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
             }
         }
+    }
+
+    private var resultsSummary: String {
+        var summary = "Showing \(filteredEntries.count) recommended plugin"
+        summary += filteredEntries.count == 1 ? "" : "s"
+
+        if selectedInstrument != "All" {
+            summary += " for \(selectedInstrument)"
+        }
+
+        if selectedType != "All" {
+            summary += " in \(selectedType)"
+        }
+
+        return summary
+    }
+
+    private func matchesInstrument(_ bestOn: String, instrument: String) -> Bool {
+        let value = bestOn.lowercased()
+        let aliases: [String: [String]] = [
+            "Bass": ["bass", "sub"],
+            "Guitar": ["guitar", "guitars"],
+            "Kick": ["kick"],
+            "Snare": ["snare"],
+            "Toms": ["tom", "toms"],
+            "Overheads": ["overhead", "overheads"],
+            "Room Mic": ["room mic", "room mics", "room"],
+            "Vocals": ["vocal", "vocals", "voice", "voiceover"],
+            "Drums": ["drum", "drums"],
+            "Synths": ["synth", "synths"],
+            "Keys": ["keys", "piano", "keyboard"],
+            "Mix Bus": ["mix bus", "bus", "buses", "full mix"],
+            "Master Bus": ["master bus", "mastering"]
+        ]
+
+        return (aliases[instrument] ?? [instrument.lowercased()]).contains { value.contains($0) }
+    }
+}
+
+private struct StarRatingView: View {
+    let popularity: Int
+
+    private var rating: Double {
+        Double(popularity) / 2.0
+    }
+
+    var body: some View {
+        HStack(spacing: 1) {
+            ForEach(1...5, id: \.self) { star in
+                Image(systemName: symbolName(for: star))
+                    .foregroundStyle(Color.yellow)
+            }
+        }
+        .font(.caption)
+        .accessibilityLabel(String(format: "%.1f out of 5 stars", rating))
+    }
+
+    private func symbolName(for star: Int) -> String {
+        let value = Double(star)
+
+        if rating >= value {
+            return "star.fill"
+        }
+
+        if rating >= value - 0.5 {
+            return "star.leadinghalf.filled"
+        }
+
+        return "star"
     }
 }

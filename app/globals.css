@@ -762,6 +762,29 @@ a {
   color: #4b6087;
 }
 
+.starRating {
+  display: inline-flex;
+  gap: 0.08rem;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.starIcon {
+  color: #d8e0ef;
+}
+
+.starIcon.full {
+  color: #f4b400;
+}
+
+.starIcon.half {
+  color: transparent;
+  background: linear-gradient(90deg, #f4b400 50%, #d8e0ef 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;

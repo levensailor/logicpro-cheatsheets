@@ -50,6 +50,25 @@ function matchesInstrument(bestOn: string, instrument: string): boolean {
   return tokens.some((token) => value.includes(token));
 }
 
+function StarRating({ popularity }: { popularity: number }) {
+  const rating = popularity / 2;
+
+  return (
+    <span className="starRating" aria-label={`${rating.toFixed(1)} out of 5 stars`}>
+      {Array.from({ length: 5 }, (_, index) => {
+        const starNumber = index + 1;
+        const className = rating >= starNumber ? "full" : rating >= starNumber - 0.5 ? "half" : "empty";
+
+        return (
+          <span key={starNumber} className={`starIcon ${className}`} aria-hidden="true">
+            ★
+          </span>
+        );
+      })}
+    </span>
+  );
+}
+
 export function PluginChooserSection({ id, title, entries }: PluginChooserSectionProps) {
   const [instrument, setInstrument] = useState("All");
   const [pluginType, setPluginType] = useState("All");
@@ -110,7 +129,9 @@ export function PluginChooserSection({ id, title, entries }: PluginChooserSectio
       </div>
 
       <p className="chooserResults">
-        Showing {filtered.length} plugin{filtered.length === 1 ? "" : "s"}
+        Showing {filtered.length} recommended plugin{filtered.length === 1 ? "" : "s"}
+        {instrument !== "All" ? ` for ${instrument}` : ""}
+        {pluginType !== "All" ? ` in ${pluginType}` : ""}
       </p>
 
       <div className="tableWrap">
@@ -119,9 +140,9 @@ export function PluginChooserSection({ id, title, entries }: PluginChooserSectio
             <tr>
               <th>Plugin</th>
               <th>Type</th>
-              <th>Popularity (1-10)</th>
+              <th>Rating</th>
               <th>Hardware / Mode</th>
-              <th>Best On</th>
+              <th>{instrument === "All" ? "Best On" : `${instrument} Context`}</th>
               <th>Known For</th>
             </tr>
           </thead>
@@ -130,9 +151,11 @@ export function PluginChooserSection({ id, title, entries }: PluginChooserSectio
               <tr key={plugin.name}>
                 <td data-label="Plugin">{plugin.name}</td>
                 <td data-label="Type">{plugin.type}</td>
-                <td data-label="Popularity (1-10)">{plugin.popularity}</td>
+                <td data-label="Rating">
+                  <StarRating popularity={plugin.popularity} />
+                </td>
                 <td data-label="Hardware / Mode">{plugin.emulation}</td>
-                <td data-label="Best On">{plugin.bestOn}</td>
+                <td data-label={instrument === "All" ? "Best On" : `${instrument} Context`}>{plugin.bestOn}</td>
                 <td data-label="Known For">{plugin.knownFor}</td>
               </tr>
             ))}
