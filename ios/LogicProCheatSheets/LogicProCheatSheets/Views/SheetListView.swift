@@ -16,8 +16,16 @@ struct SheetListView: View {
                 Button {
                     selectedSheetID = nil
                 } label: {
-                    Label("Home", systemImage: "house.fill")
-                        .font(.headline)
+                    HStack(spacing: 10) {
+                        LogoMark(size: 34)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Logic Pro.Guru")
+                                .font(.headline)
+                            Text("Home")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                 }
 
                 ForEach(ChapterCategory.allCases) { category in
@@ -54,7 +62,7 @@ struct SheetListView: View {
                     Text("Content")
                 }
             }
-            .navigationTitle("Logic Pro Book")
+            .navigationTitle("Logic Pro.Guru")
             .toolbar {
                 Button("Refresh") {
                     Task { await repository.refresh() }
@@ -145,13 +153,15 @@ private struct HomeView: View {
             }
             .padding()
         }
-        .navigationTitle("Logic Pro Book")
+        .navigationTitle("Logic Pro.Guru")
     }
 
     private var hero: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("📚")
-                .font(.system(size: 56))
+            LogoMark(size: 76)
+            Text("Logic Pro.Guru")
+                .font(.title.bold())
+                .foregroundStyle(.secondary)
             Text("Record, mix, and master your band in Logic Pro.")
                 .font(.largeTitle.bold())
             Text("A native, offline-ready handbook that pulls fresh chapter content from the web and keeps the latest version cached on your device.")
@@ -240,5 +250,33 @@ private struct HomeView: View {
         case "Reference": return ChapterCategory.reference.sheetIDs.count
         default: return bundle.cheatSheets.count
         }
+    }
+}
+
+private struct LogoMark: View {
+    let size: CGFloat
+
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: size * 0.22)
+                .fill(
+                    LinearGradient(
+                        colors: [.blue, .purple, .green],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+            VStack(spacing: size * 0.02) {
+                Text("LP")
+                    .font(.system(size: size * 0.34, weight: .black, design: .rounded))
+                Text("GURU")
+                    .font(.system(size: size * 0.15, weight: .heavy, design: .rounded))
+                    .tracking(size * 0.012)
+            }
+            .foregroundStyle(.white)
+        }
+        .frame(width: size, height: size)
+        .shadow(color: .blue.opacity(0.18), radius: size * 0.12, y: size * 0.06)
+        .accessibilityLabel("Logic Pro.Guru logo")
     }
 }

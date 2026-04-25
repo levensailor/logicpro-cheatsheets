@@ -217,7 +217,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HU4EE3MB4T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Logic Pro Book";
+				INFOPLIST_KEY_CFBundleDisplayName = "Logic Pro.Guru";
 				INFOPLIST_KEY_ContentBaseURL = "https://logicpro-cheatsheets.vercel.app";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -243,7 +243,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HU4EE3MB4T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Logic Pro Book";
+				INFOPLIST_KEY_CFBundleDisplayName = "Logic Pro.Guru";
 				INFOPLIST_KEY_ContentBaseURL = "https://logicpro-cheatsheets.vercel.app";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
