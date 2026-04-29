@@ -17,6 +17,8 @@
 - Mobile/book UX includes chapter navigation, previous/next page controls, table/card responsive behavior, and PWA/iOS-readiness metadata.
 - Sheets are data-driven: routes live under `/sheets/[sheetId]`, with definitions in `data/sheets/` and shared rendering components under `components/`.
 - The app includes DAW/reference chapters beyond instrument sheets, including Audio Routing, Interfaces, Monitoring, Logic Pro Workflow, Automation, Plugins, Gain Staging & LUFS, and Appendix Audio Terms.
+- App Store support/legal surfaces are built into the site as `/privacy`, `/terms`, and `/contact` pages, with shared footer links.
 - The project originated from PNG cheat sheet assets, which were transcribed into structured data for the web app.
 - Shared content is exported as static JSON under `public/content/`, with `content.json` and `manifest.json` serving as the content source for remote clients.
 - A SwiftUI iOS app lives under `ios/LogicProCheatSheets`, is branded `Logic Pro.Guru`, and loads bundled, cached, and remote web-served content for offline use.
+- The iOS `HeaderLogo` asset uses appearance-aware light and dark banner variants through the asset catalog.
