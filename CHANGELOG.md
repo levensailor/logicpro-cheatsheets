@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-04-29 16:48 EST
+- Expand Your First Mix guide to 13 comprehensive steps with 10x more content.
+- Add concept explanations, numbered actions, settings references, pro tips, common mistakes, and verification steps.
+- Include troubleshooting section and screenshot placeholder support.
+- Create detailed screenshot specifications for 8 annotated Logic Pro demonstrations.
+
 ## 2026-04-29 15:28 EST
 - Convert the Your First Mix iOS lesson into a numbered visual step-by-step guide.
 
