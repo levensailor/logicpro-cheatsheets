@@ -142,7 +142,7 @@ a {
   margin: 0;
 }
 
-.siteFooter nav {
+.siteFooterActions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
@@ -157,6 +157,13 @@ a {
   background: #f7faff;
   color: #244574;
   font-weight: 800;
+}
+
+.siteFooter .appStoreLink {
+  border-color: #2f66bf;
+  background: #235fbd;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(35, 95, 189, 0.18);
 }
 
 .legalMain {
