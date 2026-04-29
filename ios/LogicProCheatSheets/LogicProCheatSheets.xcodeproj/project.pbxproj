@@ -22,6 +22,7 @@
 		A0000000000000000000000D /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000000D /* SectionView.swift */; };
 		A0000000000000000000000E /* SeedContent.json in Resources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000000E /* SeedContent.json */; };
 		A0000000000000000000000F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000010 /* Assets.xcassets */; };
+		A00000000000000000000010 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000011 /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		B0000000000000000000000E /* SeedContent.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SeedContent.json; sourceTree = "<group>"; };
 		B0000000000000000000000F /* LogicProCheatSheets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogicProCheatSheets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B00000000000000000000011 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		D00000000000000000000005 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B00000000000000000000011 /* MainTabView.swift */,
 				B0000000000000000000000B /* SheetListView.swift */,
 				B0000000000000000000000C /* SheetDetailView.swift */,
 				B0000000000000000000000D /* SectionView.swift */,
@@ -204,6 +207,7 @@
 				A00000000000000000000008 /* HashVerifier.swift in Sources */,
 				A00000000000000000000009 /* ContentSyncService.swift in Sources */,
 				A0000000000000000000000A /* ContentRepository.swift in Sources */,
+				A00000000000000000000010 /* MainTabView.swift in Sources */,
 				A0000000000000000000000B /* SheetListView.swift in Sources */,
 				A0000000000000000000000C /* SheetDetailView.swift in Sources */,
 				A0000000000000000000000D /* SectionView.swift in Sources */,

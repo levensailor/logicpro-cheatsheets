@@ -6,7 +6,7 @@ struct ContentView: View {
     var body: some View {
         Group {
             if let bundle = repository.bundle {
-                SheetListView(bundle: bundle)
+                MainTabView(bundle: bundle)
             } else {
                 VStack(spacing: 12) {
                     ProgressView()

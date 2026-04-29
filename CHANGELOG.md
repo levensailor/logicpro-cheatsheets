@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-29 12:30 EST
+- Add bottom tab navigation with mocked Home, Library, Train, Saved, and Settings sections to the iOS app.
+
 ## 2026-04-29 12:09 EST
 - Replace the iOS light-mode header banner artwork.
 
