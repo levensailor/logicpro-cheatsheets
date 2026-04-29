@@ -28,7 +28,7 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
             src="/brand/logic-pro-guru-header.png"
             alt="Logic Pro Guru"
             width={1024}
-            height={341}
+            height={248}
             priority
           />
         </Link>
@@ -51,7 +51,7 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
             src="/brand/logic-pro-guru-header.png"
             alt="Logic Pro Guru"
             width={1024}
-            height={341}
+            height={248}
             priority
           />
         </Link>
