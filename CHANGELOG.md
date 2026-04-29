@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-29 11:26 EST
+- Move the Logic Pro Guru banner into the persistent app headers and remove Home/Intro buttons.
+
 ## 2026-04-29 11:23 EST
 - Replace text branding on the home surfaces with the Logic Pro Guru header image.
 

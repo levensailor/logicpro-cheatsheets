@@ -71,6 +71,21 @@ a {
   gap: 0.5rem;
 }
 
+.brandHeaderLink {
+  display: block;
+  border: 1px solid #c4d4ee;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #061333;
+  box-shadow: 0 12px 24px rgba(23, 59, 115, 0.16);
+}
+
+.brandHeaderImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .sheetTab {
   display: flex;
   align-items: center;
@@ -303,16 +318,6 @@ a {
 .introBookCard {
   position: relative;
   z-index: 1;
-}
-
-.introHeaderImage {
-  width: min(100%, 760px);
-  height: auto;
-  display: block;
-  margin: 0 0 1rem;
-  border: 1px solid rgba(184, 201, 235, 0.5);
-  border-radius: 16px;
-  box-shadow: 0 16px 34px rgba(23, 59, 115, 0.2);
 }
 
 .introEyebrow {
@@ -1144,7 +1149,6 @@ td {
     gap: 0.75rem;
   }
 
-  .mobileHomeLink,
   .chapterMenuButton {
     min-height: 2.5rem;
     display: inline-flex;
@@ -1158,6 +1162,15 @@ td {
     font: inherit;
     font-size: 0.9rem;
     font-weight: 800;
+  }
+
+  .brandHeaderLink {
+    width: min(15rem, 58vw);
+    border-radius: 12px;
+  }
+
+  .desktopBrandHeader {
+    display: none;
   }
 
   .chapterMenuButton {

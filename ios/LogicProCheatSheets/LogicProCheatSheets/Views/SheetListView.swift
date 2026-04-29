@@ -13,20 +13,13 @@ struct SheetListView: View {
     var body: some View {
         NavigationSplitView {
             List(selection: $selectedSheetID) {
-                Button {
-                    selectedSheetID = nil
-                } label: {
-                    HStack(spacing: 10) {
-                        LogoMark(size: 34)
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Home")
-                                .font(.headline)
-                            Text("Band production handbook")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                }
+                Image("HeaderLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .listRowInsets(EdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12))
+                    .listRowBackground(Color.clear)
+                    .accessibilityLabel("Logic Pro Guru")
 
                 ForEach(ChapterCategory.allCases) { category in
                     let sheets = sheets(for: category)
@@ -211,7 +204,7 @@ private struct HomeView: View {
             }
             .padding()
         }
-        .navigationTitle("Home")
+        .navigationTitle("Handbook")
     }
 
     private var hero: some View {

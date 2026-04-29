@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,9 +22,15 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
   return (
     <nav className="topNav" aria-label="Cheat sheets">
       <div className="mobileNavBar">
-        <Link href="/" className="mobileHomeLink" aria-label="Open handbook introduction">
-          <span aria-hidden="true">📚</span>
-          <span>Logic Pro Book</span>
+        <Link href="/" className="brandHeaderLink" aria-label="Open handbook introduction">
+          <Image
+            className="brandHeaderImage"
+            src="/brand/logic-pro-guru-header.png"
+            alt="Logic Pro Guru"
+            width={1024}
+            height={341}
+            priority
+          />
         </Link>
         <button
           className="chapterMenuButton"
@@ -38,15 +45,15 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
       </div>
 
       <div id="chapter-navigation" className={`navLinks ${isOpen ? "open" : ""}`}>
-        <Link
-          href="/"
-          aria-label="Open handbook introduction"
-          className={`sheetTab ${pathname === "/" ? "active" : ""}`}
-        >
-          <span className="tabIcon" aria-hidden="true">
-            📚
-          </span>
-          <span className="tabLabel">Intro</span>
+        <Link href="/" className="brandHeaderLink desktopBrandHeader" aria-label="Open handbook introduction">
+          <Image
+            className="brandHeaderImage"
+            src="/brand/logic-pro-guru-header.png"
+            alt="Logic Pro Guru"
+            width={1024}
+            height={341}
+            priority
+          />
         </Link>
         {sheets.map((sheet) => {
           const href = `/sheets/${sheet.id}`;
