@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-29 12:09 EST
+- Replace the iOS light-mode header banner artwork.
+
 ## 2026-04-29 12:04 EST
 - Add light and dark iOS header banner variants.
 
