@@ -11,13 +11,13 @@ config.autoAddCss = false;
 export const metadata: Metadata = {
   metadataBase: new URL("https://logicpro.guru"),
   title: {
-    default: "Logic Pro.Guru",
-    template: "%s | Logic Pro.Guru"
+    default: "Logic Pro Band Handbook",
+    template: "%s | Logic Pro Band Handbook"
   },
   description: "Interactive Logic Pro cheat sheets for recording, mixing, and mastering a band.",
   appleWebApp: {
     capable: true,
-    title: "Logic Pro.Guru",
+    title: "Logic Pro Handbook",
     statusBarStyle: "default"
   }
 };

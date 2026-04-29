@@ -19,9 +19,9 @@ struct SheetListView: View {
                     HStack(spacing: 10) {
                         LogoMark(size: 34)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("Logic Pro.Guru")
-                                .font(.headline)
                             Text("Home")
+                                .font(.headline)
+                            Text("Band production handbook")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
@@ -72,7 +72,7 @@ struct SheetListView: View {
                     Text("Content")
                 }
             }
-            .navigationTitle("Logic Pro.Guru")
+            .navigationTitle("Chapters")
             .toolbar {
                 Button("Refresh") {
                     Task { await repository.refresh() }
@@ -211,15 +211,21 @@ private struct HomeView: View {
             }
             .padding()
         }
-        .navigationTitle("Logic Pro.Guru")
+        .navigationTitle("Home")
     }
 
     private var hero: some View {
         VStack(alignment: .leading, spacing: 12) {
-            LogoMark(size: 76)
-            Text("Logic Pro.Guru")
-                .font(.title.bold())
-                .foregroundStyle(.secondary)
+            Image("HeaderLogo")
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 18))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 18)
+                        .stroke(.white.opacity(0.18))
+                }
+                .shadow(color: .blue.opacity(0.24), radius: 18, y: 8)
+                .accessibilityLabel("Logic Pro Guru")
             Text("Record, mix, and master your band in Logic Pro.")
                 .font(.largeTitle.bold())
             Text("A native, offline-ready handbook that pulls fresh chapter content from the web and keeps the latest version cached on your device.")

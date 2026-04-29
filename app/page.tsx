@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { cheatSheets } from "@/data/sheets";
 
 export default function HomePage() {
@@ -9,6 +10,14 @@ export default function HomePage() {
       <section className="introHero">
         <div className="introHeroCopy">
           <p className="introEyebrow">🎛️ Logic Pro band production handbook</p>
+          <Image
+            className="introHeaderImage"
+            src="/brand/logic-pro-guru-header.png"
+            alt="Logic Pro Guru"
+            width={1024}
+            height={341}
+            priority
+          />
           <h1>Record, mix, and master your band with a cheat-sheet book built for Logic Pro.</h1>
           <p className="introLead">
             This site is a visual workbook for turning raw band recordings into polished mixes. Each chapter gives

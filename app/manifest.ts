@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Logic Pro.Guru",
-    short_name: "Logic Pro.Guru",
+    name: "Logic Pro Band Handbook",
+    short_name: "Logic Pro Handbook",
     description: "A mobile-friendly handbook for recording, mixing, and mastering a band in Logic Pro.",
     start_url: "/",
     scope: "/",

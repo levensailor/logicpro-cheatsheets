@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-29 11:23 EST
+- Replace text branding on the home surfaces with the Logic Pro Guru header image.
+
 ## 2026-04-29 11:10 EST
 - Add the Logic Pro.Guru iOS app icon asset catalog.
 
