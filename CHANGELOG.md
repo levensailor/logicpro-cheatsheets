@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-29 10:39 EST
+- Add App Store-ready privacy, terms, contact, ASO, and launch pricing guidance for Logic Pro.Guru.
+
 ## 2026-04-25 13:46 EST
 - Improve plugin chooser recommendations with instrument/bus context filters and five-star ratings on web and iOS.
 
