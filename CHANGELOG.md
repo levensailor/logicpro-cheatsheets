@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-29 11:10 EST
+- Add the Logic Pro.Guru iOS app icon asset catalog.
+
 ## 2026-04-29 10:39 EST
 - Add App Store-ready privacy, terms, contact, ASO, and launch pricing guidance for Logic Pro.Guru.
 
