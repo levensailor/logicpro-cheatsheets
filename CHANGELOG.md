@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-29 12:04 EST
+- Add light and dark iOS header banner variants.
+
 ## 2026-04-29 11:48 EST
 - Replace the Logic Pro Guru header banner across the web and iOS app.
 
