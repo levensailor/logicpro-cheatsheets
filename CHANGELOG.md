@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-29 12:44 EST
+- Add the Your First Mix training lesson preview and surface new popular training content on the iOS home tab.
+
 ## 2026-04-29 12:30 EST
 - Add bottom tab navigation with mocked Home, Library, Train, Saved, and Settings sections to the iOS app.
 
