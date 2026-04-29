@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-29 15:28 EST
+- Convert the Your First Mix iOS lesson into a numbered visual step-by-step guide.
+
 ## 2026-04-29 12:44 EST
 - Add clickable Your First Mix training content and surface new popular training lessons on the iOS home tab.
 

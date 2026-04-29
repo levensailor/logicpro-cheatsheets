@@ -227,21 +227,8 @@ private struct TrainingLessonDetailView: View {
             VStack(alignment: .leading, spacing: 18) {
                 lessonHeader
 
-                ForEach(lesson.sections) { section in
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(section.title)
-                            .font(.title3.bold())
-                        Text(section.body)
-                            .font(.body)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                    .background(.background, in: RoundedRectangle(cornerRadius: 18))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(.quaternary)
-                    }
+                ForEach(lesson.steps) { step in
+                    TrainingStepCard(step: step)
                 }
 
                 checklist
@@ -265,7 +252,7 @@ private struct TrainingLessonDetailView: View {
             HStack {
                 Label(lesson.duration, systemImage: "clock.fill")
                 Spacer()
-                Label("Beginner", systemImage: "person.fill.checkmark")
+                Label("\(lesson.steps.count) steps", systemImage: "list.number")
             }
             .font(.caption.bold())
             .foregroundStyle(.secondary)
@@ -293,6 +280,90 @@ private struct TrainingLessonDetailView: View {
             RoundedRectangle(cornerRadius: 18)
                 .stroke(.quaternary)
         }
+    }
+}
+
+private struct TrainingStepCard: View {
+    let step: TrainingLessonStep
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .top, spacing: 12) {
+                Text("\(step.number)")
+                    .font(.headline.bold())
+                    .foregroundStyle(.white)
+                    .frame(width: 38, height: 38)
+                    .background(
+                        LinearGradient(
+                            colors: [.blue, .purple],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        in: Circle()
+                    )
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Step \(step.number)")
+                        .font(.caption.bold())
+                        .foregroundStyle(.secondary)
+                    Text(step.title)
+                        .font(.title3.bold())
+                }
+            }
+
+            StepVisualCard(step: step)
+
+            Text(step.body)
+                .font(.body)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(.background, in: RoundedRectangle(cornerRadius: 22))
+        .overlay {
+            RoundedRectangle(cornerRadius: 22)
+                .stroke(.quaternary)
+        }
+    }
+}
+
+private struct StepVisualCard: View {
+    let step: TrainingLessonStep
+
+    var body: some View {
+        HStack(spacing: 14) {
+            Image(systemName: step.symbolName)
+                .font(.system(size: 30, weight: .bold))
+                .foregroundStyle(.white)
+                .frame(width: 64, height: 64)
+                .background(
+                    LinearGradient(
+                        colors: [.cyan, .blue, .purple],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    in: RoundedRectangle(cornerRadius: 18)
+                )
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text(step.visualTitle.uppercased())
+                    .font(.caption.bold())
+                    .foregroundStyle(.secondary)
+                Text(step.visualCaption)
+                    .font(.subheadline.bold())
+            }
+
+            Spacer()
+        }
+        .padding()
+        .background(
+            LinearGradient(
+                colors: [Color.accentColor.opacity(0.14), Color.purple.opacity(0.08)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            in: RoundedRectangle(cornerRadius: 18)
+        )
     }
 }
 
@@ -479,7 +550,7 @@ private struct TrainingLesson: Identifiable {
     let symbolName: String
     let badges: [String]
     let isFeatured: Bool
-    let sections: [TrainingLessonSection]
+    let steps: [TrainingLessonStep]
     let checklist: [String]
 
     static let featured = [
@@ -492,34 +563,62 @@ private struct TrainingLesson: Identifiable {
             symbolName: "slider.horizontal.3",
             badges: ["New", "Popular"],
             isFeatured: true,
-            sections: [
-                TrainingLessonSection(
+            steps: [
+                TrainingLessonStep(
+                    number: 1,
                     title: "Start with the session, not the plugins",
-                    body: "Your first mix is less about magical plug-ins and more about organization, levels, and restraint. Create the project correctly, import cleanly, line up the tracks, set levels, shape tone with Channel EQ, control dynamics with Compressor, monitor correctly, and bounce the finished mix."
+                    body: "Your first mix is less about magical plug-ins and more about organization, levels, and restraint. Create the project correctly, import cleanly, line up the tracks, set levels, shape tone with Channel EQ, control dynamics with Compressor, monitor correctly, and bounce the finished mix.",
+                    symbolName: "folder.fill",
+                    visualTitle: "Session map",
+                    visualCaption: "Organize first so every move has a purpose."
                 ),
-                TrainingLessonSection(
+                TrainingLessonStep(
+                    number: 2,
                     title: "Project settings: sample rate and bit depth",
-                    body: "Before importing, set the project sample rate in File > Project Settings > Audio. Match the source files when possible. For new recordings, 24-bit WAV/BWF at the source sample rate is the safest beginner default."
+                    body: "Before importing, set the project sample rate in File > Project Settings > Audio. Match the source files when possible. For new recordings, 24-bit WAV/BWF at the source sample rate is the safest beginner default.",
+                    symbolName: "waveform",
+                    visualTitle: "Project setup",
+                    visualCaption: "Match the source files before importing audio."
                 ),
-                TrainingLessonSection(
+                TrainingLessonStep(
+                    number: 3,
                     title: "Import the tracks and line them up",
-                    body: "Create audio tracks, import the whole folder together when you receive stems, and use Broadcast Wave timestamps when available. Press play before touching plugins. Confirm the song plays at the right speed, tracks start correctly, and nothing is obviously shifted."
+                    body: "Create audio tracks, import the whole folder together when you receive stems, and use Broadcast Wave timestamps when available. Press play before touching plugins. Confirm the song plays at the right speed, tracks start correctly, and nothing is obviously shifted.",
+                    symbolName: "rectangle.stack.fill",
+                    visualTitle: "Import check",
+                    visualCaption: "Name, color, and align tracks before mixing."
                 ),
-                TrainingLessonSection(
+                TrainingLessonStep(
+                    number: 4,
                     title: "Set levels before inserting plugins",
-                    body: "Pull all faders down, then bring up the anchors: kick, snare, bass, main guitar or keys, and vocal. Check in mono for a few minutes. Aim for individual tracks peaking around -12 to -6 dBFS and the Stereo Out peaking around -6 dBFS before mastering."
+                    body: "Pull all faders down, then bring up the anchors: kick, snare, bass, main guitar or keys, and vocal. Check in mono for a few minutes. Aim for individual tracks peaking around -12 to -6 dBFS and the Stereo Out peaking around -6 dBFS before mastering.",
+                    symbolName: "slider.horizontal.3",
+                    visualTitle: "Fader balance",
+                    visualCaption: "Make the song work before adding processors."
                 ),
-                TrainingLessonSection(
+                TrainingLessonStep(
+                    number: 5,
                     title: "Clean tone and control dynamics",
-                    body: "Use Logic Pro Channel EQ to remove obvious problems before boosting tone. Try gentle high-pass filters, cut muddiness around 200-400 Hz, and watch harshness around 2-5 kHz. After EQ, use Logic Compressor with modest ratios and a few dB of gain reduction."
+                    body: "Use Logic Pro Channel EQ to remove obvious problems before boosting tone. Try gentle high-pass filters, cut muddiness around 200-400 Hz, and watch harshness around 2-5 kHz. After EQ, use Logic Compressor with modest ratios and a few dB of gain reduction.",
+                    symbolName: "waveform.path.ecg",
+                    visualTitle: "EQ + compressor",
+                    visualCaption: "Small corrective moves beat dramatic plugin chains."
                 ),
-                TrainingLessonSection(
+                TrainingLessonStep(
+                    number: 6,
                     title: "Monitoring, routing, and automation habits",
-                    body: "Use a small buffer while recording and a larger buffer while mixing. Use sends for shared reverb and delay, buses for groups, and automation for musical balance changes instead of over-processing the whole track."
+                    body: "Use a small buffer while recording and a larger buffer while mixing. Use sends for shared reverb and delay, buses for groups, and automation for musical balance changes instead of over-processing the whole track.",
+                    symbolName: "arrow.triangle.2.circlepath",
+                    visualTitle: "Workflow lanes",
+                    visualCaption: "Route groups, share effects, and ride important moments."
                 ),
-                TrainingLessonSection(
+                TrainingLessonStep(
+                    number: 7,
                     title: "Bounce the finished mix properly",
-                    body: "Set the cycle range to the full song, including the reverb or delay tail. Export PCM as WAV or AIFF, 24-bit, at the project sample rate. Re-import or play the bounce afterward and verify it is not clipped, silent, cut off, or incorrectly named."
+                    body: "Set the cycle range to the full song, including the reverb or delay tail. Export PCM as WAV or AIFF, 24-bit, at the project sample rate. Re-import or play the bounce afterward and verify it is not clipped, silent, cut off, or incorrectly named.",
+                    symbolName: "square.and.arrow.up",
+                    visualTitle: "Bounce check",
+                    visualCaption: "Export the mix, then verify the file like a pro."
                 )
             ],
             checklist: [
@@ -536,8 +635,12 @@ private struct TrainingLesson: Identifiable {
     ]
 }
 
-private struct TrainingLessonSection: Identifiable {
-    var id: String { title }
+private struct TrainingLessonStep: Identifiable {
+    var id: Int { number }
+    let number: Int
     let title: String
     let body: String
+    let symbolName: String
+    let visualTitle: String
+    let visualCaption: String
 }
