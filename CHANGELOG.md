@@ -6,6 +6,7 @@
 - Switch iOS Train and Home lesson cards to source training data from synced content bundles.
 - Add on-device cached remote image rendering for sheet media and training screenshots.
 - Publish regenerated content/manifest payloads and bundle training screenshots for Vercel delivery.
+- Refresh Your First Mix screenshot assets for updated training visuals.
 
 ## 2026-04-29 16:48 EST
 - Expand Your First Mix guide to 13 comprehensive steps with 10x more content.
