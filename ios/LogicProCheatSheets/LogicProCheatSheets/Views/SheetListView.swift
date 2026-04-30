@@ -65,13 +65,6 @@ struct SheetListView: View {
                     Text("Content")
                 }
             }
-            .navigationTitle("Chapters")
-            .toolbar {
-                Button("Refresh") {
-                    Task { await repository.refresh() }
-                }
-                .disabled(repository.isRefreshing)
-            }
         } detail: {
             if let selectedSheet {
                 SheetDetailView(sheet: selectedSheet, sheets: bundle.cheatSheets, selectedSheetID: $selectedSheetID)
