@@ -97,6 +97,39 @@ export interface ContentNavItem {
   icon: string;
 }
 
+export interface TrainingLessonStep {
+  number: number;
+  title: string;
+  concept: string;
+  actions: string[];
+  body: string;
+  symbolName: string;
+  visualTitle: string;
+  visualCaption: string;
+  settings?: Record<string, string> | null;
+  proTip?: string | null;
+  avoidThis?: string | null;
+  checkYourWork: string;
+  stepScreenshot?: string | null;
+}
+
+export interface TrainingLesson {
+  id: string;
+  title: string;
+  series: string;
+  summary: string;
+  duration: string;
+  symbolName: string;
+  badges: string[];
+  isFeatured: boolean;
+  steps: TrainingLessonStep[];
+  checklist: string[];
+}
+
+export interface TrainingContent {
+  lessons: TrainingLesson[];
+}
+
 export interface ContentBundle {
   schemaVersion: number;
   contentVersion: string;
@@ -104,6 +137,7 @@ export interface ContentBundle {
   minAppVersion: string;
   navItems: ContentNavItem[];
   cheatSheets: CheatSheet[];
+  training: TrainingContent;
 }
 
 export interface ContentManifest {

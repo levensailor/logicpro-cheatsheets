@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-04-30 07:20 EST
+- Add training lesson content to the shared Vercel-exported content bundle schema.
+
 ## 2026-04-29 16:48 EST
 - Expand Your First Mix guide to 13 comprehensive steps with 10x more content.
 - Add concept explanations, numbered actions, settings references, pro tips, common mistakes, and verification steps.
