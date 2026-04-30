@@ -45,7 +45,7 @@ export const trainingLessons: TrainingLesson[] = [
           "Do not judge your first mix against mastered commercial references at matched loudness.",
         checkYourWork:
           "You can clearly explain what you are optimizing for before touching plugins.",
-        stepScreenshot: "/assets/training/your-first-mix/step1-goal-setting.png"
+        stepScreenshot: "/assets/training/your-first-mix/step1_goal_setting.png"
       },
       {
         number: 2,
@@ -70,7 +70,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Pick one sample rate per project and stay consistent through the session.",
         avoidThis: "Avoid upsampling recordings purely for bigger numbers.",
         checkYourWork: "No sample-rate mismatch warnings appear in the session.",
-        stepScreenshot: "/assets/training/your-first-mix/step2-project-settings.png"
+        stepScreenshot: "/assets/training/your-first-mix/step2_project_settings.png"
       },
       {
         number: 3,
@@ -96,7 +96,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Use group naming prefixes when sessions get large.",
         avoidThis: "Avoid generic names like 'Audio 14' in finished sessions.",
         checkYourWork: "Another person can quickly identify each track family by name/color.",
-        stepScreenshot: "/assets/training/your-first-mix/step3-organize-tracks.png"
+        stepScreenshot: "/assets/training/your-first-mix/step3_organized_tracks.png"
       },
       {
         number: 4,
@@ -120,7 +120,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Fix level problems early with region gain before adding processors.",
         avoidThis: "Do not rely on the master fader to hide clipping on channel strips.",
         checkYourWork: "No red overload indicators appear during the loudest section.",
-        stepScreenshot: "/assets/training/your-first-mix/step4-gain-staging.png"
+        stepScreenshot: "/assets/training/your-first-mix/step4_gain_staging.png"
       },
       {
         number: 5,
@@ -141,7 +141,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Balance in context; avoid solo-based level decisions.",
         avoidThis: "Do not polish individual tracks before the whole mix works together.",
         checkYourWork: "Core elements remain audible and musical when all tracks play.",
-        stepScreenshot: "/assets/training/your-first-mix/step5-anchor-balance.png"
+        stepScreenshot: "/assets/training/your-first-mix/step5_anchor_mixing.png"
       },
       {
         number: 6,
@@ -165,7 +165,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Use narrower panning first, then widen only where needed.",
         avoidThis: "Avoid extreme panning as a default choice.",
         checkYourWork: "Mono fold-down remains balanced and intelligible.",
-        stepScreenshot: "/assets/training/your-first-mix/step6-panning.png"
+        stepScreenshot: "/assets/training/your-first-mix/step6_panning.png"
       },
       {
         number: 7,
@@ -189,7 +189,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Start with two reverbs max; expand only if the arrangement requires it.",
         avoidThis: "Avoid inserting separate reverbs on every channel by default.",
         checkYourWork: "Shared FX buses contain signal from multiple relevant sources.",
-        stepScreenshot: "/assets/training/your-first-mix/step7-buses-sends.png"
+        stepScreenshot: null
       },
       {
         number: 8,
@@ -210,7 +210,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Use one reference track in the same genre as a tonal compass.",
         avoidThis: "Do not add processing without a specific listening reason.",
         checkYourWork: "You have a short list of concrete issues to address next.",
-        stepScreenshot: "/assets/training/your-first-mix/step8-critical-listening.png"
+        stepScreenshot: null
       },
       {
         number: 9,
@@ -234,7 +234,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Sweep with a temporary narrow boost to find harsh frequencies, then cut gently.",
         avoidThis: "Avoid large boosts on every track as a default move.",
         checkYourWork: "Bypass comparison confirms increased clarity, not just loudness change.",
-        stepScreenshot: "/assets/training/your-first-mix/step9-eq.png"
+        stepScreenshot: "/assets/training/your-first-mix/step9_channel_eq.png"
       },
       {
         number: 10,
@@ -258,7 +258,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Watch the gain-reduction meter move with phrasing, not constantly pinned.",
         avoidThis: "Avoid heavy compression on every track.",
         checkYourWork: "Track feels more consistent while retaining punch and movement.",
-        stepScreenshot: "/assets/training/your-first-mix/step10-compression.png"
+        stepScreenshot: "/assets/training/your-first-mix/step10_compressor.png"
       },
       {
         number: 11,
@@ -282,7 +282,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "If large EQ moves fail, revisit arrangement overlap and automation first.",
         avoidThis: "Do not over-process to hide arrangement conflicts.",
         checkYourWork: "Problem sections improve without introducing new artifacts.",
-        stepScreenshot: "/assets/training/your-first-mix/step11-fixes.png"
+        stepScreenshot: null
       },
       {
         number: 12,
@@ -305,7 +305,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Test a short bounce on phone earbuds before full delivery export.",
         avoidThis: "Avoid final decisions on a single playback system only.",
         checkYourWork: "Mix translates across at least two playback contexts before final bounce.",
-        stepScreenshot: "/assets/training/your-first-mix/step12-verify.png"
+        stepScreenshot: "/assets/training/your-first-mix/step12_final_check.png"
       },
       {
         number: 13,
@@ -329,7 +329,7 @@ export const trainingLessons: TrainingLesson[] = [
         proTip: "Keep master archives in lossless format; create MP3/AAC only for distribution needs.",
         avoidThis: "Do not archive only compressed formats.",
         checkYourWork: "Start/middle/end playback confirms no clipping, truncation, or routing mistakes.",
-        stepScreenshot: "/assets/training/your-first-mix/step13-bounce.png"
+        stepScreenshot: "/assets/training/your-first-mix/step13_bounce.png"
       }
     ]
   }
