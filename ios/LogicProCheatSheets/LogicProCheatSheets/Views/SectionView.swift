@@ -1,4 +1,6 @@
 import SwiftUI
+import UIKit
+import CryptoKit
 
 struct SectionView: View {
     let section: SheetSection
@@ -79,15 +81,37 @@ private struct CardsSectionView: View {
                         Text(card.title)
                             .font(.headline)
                         ForEach(card.items) { item in
-                            Label(item.displayText, systemImage: "checkmark.circle.fill")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
+                            cardLineItemView(item)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
                 }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func cardLineItemView(_ item: CardLineItem) -> some View {
+        switch item {
+        case .text(let value):
+            Label(value, systemImage: "checkmark.circle.fill")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        case .rich(let value):
+            VStack(alignment: .leading, spacing: 8) {
+                if let imageSrc = value.imageSrc, !imageSrc.isEmpty {
+                    CachedRemoteImage(
+                        source: imageSrc,
+                        altText: value.imageAlt ?? value.text,
+                        height: 130
+                    )
+                }
+
+                Label(value.text, systemImage: "checkmark.circle.fill")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
         }
     }
@@ -216,6 +240,11 @@ private struct ImageSectionView: View {
     var body: some View {
         SectionCard(title: section.title) {
             VStack(alignment: .leading, spacing: 8) {
+                CachedRemoteImage(
+                    source: section.src,
+                    altText: section.alt,
+                    height: 220
+                )
                 Text(section.alt)
                     .foregroundStyle(.secondary)
                 if let caption = section.caption {
@@ -375,5 +404,137 @@ private struct StarRatingView: View {
         }
 
         return "star"
+    }
+}
+
+struct CachedRemoteImage: View {
+    let source: String
+    let altText: String
+    var height: CGFloat = 180
+
+    @StateObject private var loader = CachedRemoteImageLoader()
+
+    var body: some View {
+        Group {
+            if let image = loader.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+            } else if loader.isLoading {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.secondary.opacity(0.12))
+                    .overlay {
+                        ProgressView()
+                    }
+            } else {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.secondary.opacity(0.12))
+                    .overlay(alignment: .center) {
+                        VStack(spacing: 6) {
+                            Image(systemName: "photo")
+                                .font(.title3)
+                                .foregroundStyle(.secondary)
+                            Text(altText)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 10)
+                        }
+                    }
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: height)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .task(id: source) {
+            await loader.load(source: source)
+        }
+    }
+}
+
+@MainActor
+private final class CachedRemoteImageLoader: ObservableObject {
+    @Published var image: UIImage?
+    @Published var isLoading = false
+
+    func load(source: String) async {
+        guard !source.isEmpty else {
+            image = nil
+            isLoading = false
+            return
+        }
+
+        isLoading = true
+        image = await RemoteImageCache.shared.image(for: source)
+        isLoading = false
+    }
+}
+
+private actor RemoteImageCache {
+    static let shared = RemoteImageCache()
+    private let fileManager = FileManager.default
+
+    func image(for source: String) async -> UIImage? {
+        guard let url = resolveURL(from: source) else {
+            return nil
+        }
+
+        let cacheURL = cacheFileURL(for: url)
+
+        if let cachedData = try? Data(contentsOf: cacheURL),
+           let cachedImage = UIImage(data: cachedData) {
+            print("Image cache hit: \(url.absoluteString)")
+            return cachedImage
+        }
+
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode),
+                  let image = UIImage(data: data) else {
+                print("Image fetch failed (status/data): \(url.absoluteString)")
+                return nil
+            }
+
+            try prepareImageCacheDirectoryIfNeeded()
+            try data.write(to: cacheURL, options: .atomic)
+            print("Image cache store: \(url.absoluteString)")
+            return image
+        } catch {
+            print("Image fetch error: \(url.absoluteString) (\(error.localizedDescription))")
+            return nil
+        }
+    }
+
+    private func resolveURL(from source: String) -> URL? {
+        if let absolute = URL(string: source), absolute.scheme != nil {
+            return absolute
+        }
+
+        return URL(string: source, relativeTo: ContentConfiguration.remoteBaseURL)
+    }
+
+    private func cacheFileURL(for url: URL) -> URL {
+        let ext = url.pathExtension.isEmpty ? "img" : url.pathExtension
+        return imageCacheDirectory().appendingPathComponent("\(hashedFileName(url.absoluteString)).\(ext)")
+    }
+
+    private func imageCacheDirectory() -> URL {
+        let applicationSupport = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        return applicationSupport
+            .appendingPathComponent("ContentCache", isDirectory: true)
+            .appendingPathComponent("images", isDirectory: true)
+    }
+
+    private func prepareImageCacheDirectoryIfNeeded() throws {
+        try fileManager.createDirectory(
+            at: imageCacheDirectory(),
+            withIntermediateDirectories: true
+        )
+    }
+
+    private func hashedFileName(_ value: String) -> String {
+        let digest = SHA256.hash(data: Data(value.utf8))
+        return digest.map { String(format: "%02x", $0) }.joined()
     }
 }

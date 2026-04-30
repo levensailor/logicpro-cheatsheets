@@ -223,7 +223,6 @@ private struct TrainingTabView: View {
 
 private struct TrainingLessonDetailView: View {
     let lesson: TrainingLesson
-    @State private var selectedImage: String? = nil
 
     var body: some View {
         ScrollView {
@@ -231,7 +230,7 @@ private struct TrainingLessonDetailView: View {
                 lessonHeader
 
                 ForEach(lesson.steps) { step in
-                    TrainingStepCard(step: step, selectedImage: $selectedImage)
+                    TrainingStepCard(step: step)
                 }
 
                 troubleshootingSection
@@ -241,9 +240,6 @@ private struct TrainingLessonDetailView: View {
         }
         .navigationTitle(lesson.title)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(item: $selectedImage) { imageName in
-            ScreenshotViewer(imageName: imageName)
-        }
     }
 
     private var lessonHeader: some View {
@@ -321,7 +317,6 @@ private struct TrainingLessonDetailView: View {
 
 private struct TrainingStepCard: View {
     let step: TrainingLessonStep
-    @Binding var selectedImage: String?
     @State private var isExpanded = false
 
     var body: some View {
@@ -473,34 +468,23 @@ private struct TrainingStepCard: View {
         }
     }
 
-    private func screenshotThumbnail(_ name: String) -> some View {
-        Button {
-            selectedImage = name
-        } label: {
-            VStack(alignment: .leading, spacing: 6) {
-                HStack {
-                    Image(systemName: "photo.fill")
-                        .foregroundStyle(.tint)
-                    Text("View Screenshot")
-                        .font(.caption.bold())
-                        .foregroundStyle(.tint)
-                    Spacer()
-                    Image(systemName: "arrow.up.right")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.secondary.opacity(0.12))
-                    .frame(height: 80)
-                    .overlay {
-                        Image(systemName: "photo")
-                            .font(.title2)
-                            .foregroundStyle(.secondary.opacity(0.5))
-                    }
+    private func screenshotThumbnail(_ source: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Image(systemName: "photo.fill")
+                    .foregroundStyle(.tint)
+                Text("Step Screenshot")
+                    .font(.caption.bold())
+                    .foregroundStyle(.tint)
+                Spacer()
             }
+
+            CachedRemoteImage(
+                source: source,
+                altText: "Screenshot for \(step.title)",
+                height: 170
+            )
         }
-        .buttonStyle(.plain)
     }
 
     private var checkYourWorkSection: some View {
@@ -617,44 +601,6 @@ private struct TroubleshootingRow: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .padding(.leading, 22)
-        }
-    }
-}
-
-private struct ScreenshotViewer: View {
-    let imageName: String
-    @Environment(\.dismiss) private var dismiss
-
-    var body: some View {
-        NavigationStack {
-            ZStack {
-                Color.black.opacity(0.9).ignoresSafeArea()
-
-                VStack {
-                    Image(systemName: "photo")
-                        .font(.system(size: 60))
-                        .foregroundStyle(.white.opacity(0.5))
-
-                    Text("Screenshot: \(imageName)")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-
-                    Text("Add the annotated screenshot to assets with this name")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
-            }
-            .navigationTitle("Step Screenshot")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                    .foregroundStyle(.white)
-                }
-            }
         }
     }
 }
@@ -831,8 +777,4 @@ private struct MockTabCard: Identifiable {
     var id: String { title }
     let title: String
     let detail: String
-}
-
-extension String: Identifiable {
-    public var id: String { self }
 }

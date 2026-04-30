@@ -4,6 +4,7 @@
 - Add training lesson content to the shared Vercel-exported content bundle schema.
 - Add backward-compatible iOS bundle decoding for remote training content.
 - Switch iOS Train and Home lesson cards to source training data from synced content bundles.
+- Add on-device cached remote image rendering for sheet media and training screenshots.
 
 ## 2026-04-29 16:48 EST
 - Expand Your First Mix guide to 13 comprehensive steps with 10x more content.
