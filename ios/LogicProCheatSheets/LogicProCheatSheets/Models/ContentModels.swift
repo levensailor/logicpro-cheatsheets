@@ -21,6 +21,83 @@ struct ContentBundle: Codable {
     let minAppVersion: String
     let navItems: [ContentNavItem]
     let cheatSheets: [CheatSheet]
+    let training: TrainingContent
+
+    private enum CodingKeys: String, CodingKey {
+        case schemaVersion
+        case contentVersion
+        case generatedAt
+        case minAppVersion
+        case navItems
+        case cheatSheets
+        case training
+    }
+
+    init(
+        schemaVersion: Int,
+        contentVersion: String,
+        generatedAt: String,
+        minAppVersion: String,
+        navItems: [ContentNavItem],
+        cheatSheets: [CheatSheet],
+        training: TrainingContent
+    ) {
+        self.schemaVersion = schemaVersion
+        self.contentVersion = contentVersion
+        self.generatedAt = generatedAt
+        self.minAppVersion = minAppVersion
+        self.navItems = navItems
+        self.cheatSheets = cheatSheets
+        self.training = training
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        schemaVersion = try container.decode(Int.self, forKey: .schemaVersion)
+        contentVersion = try container.decode(String.self, forKey: .contentVersion)
+        generatedAt = try container.decode(String.self, forKey: .generatedAt)
+        minAppVersion = try container.decode(String.self, forKey: .minAppVersion)
+        navItems = try container.decode([ContentNavItem].self, forKey: .navItems)
+        cheatSheets = try container.decode([CheatSheet].self, forKey: .cheatSheets)
+        training = try container.decodeIfPresent(TrainingContent.self, forKey: .training) ?? .empty
+    }
+}
+
+struct TrainingContent: Codable {
+    let lessons: [TrainingLesson]
+
+    static let empty = TrainingContent(lessons: [])
+}
+
+struct TrainingLesson: Codable, Identifiable {
+    let id: String
+    let title: String
+    let series: String
+    let summary: String
+    let duration: String
+    let symbolName: String
+    let badges: [String]
+    let isFeatured: Bool
+    let steps: [TrainingLessonStep]
+    let checklist: [String]
+}
+
+struct TrainingLessonStep: Codable, Identifiable {
+    var id: Int { number }
+
+    let number: Int
+    let title: String
+    let concept: String
+    let actions: [String]
+    let body: String
+    let symbolName: String
+    let visualTitle: String
+    let visualCaption: String
+    let settings: [String: String]?
+    let proTip: String?
+    let avoidThis: String?
+    let checkYourWork: String
+    let stepScreenshot: String?
 }
 
 struct ContentNavItem: Codable, Identifiable {
