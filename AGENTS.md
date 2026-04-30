@@ -21,4 +21,5 @@
 - The project originated from PNG cheat sheet assets, which were transcribed into structured data for the web app.
 - Shared content is exported as static JSON under `public/content/`, with `content.json` and `manifest.json` serving as the content source for remote clients.
 - A SwiftUI iOS app lives under `ios/LogicProCheatSheets`, is branded `Logic Pro.Guru`, and loads bundled, cached, and remote web-served content for offline use.
+- The iOS app uses a bottom tab navigation with Home, Library, Train, Saved, and Settings sections; the Library tab preserves the handbook chapter navigation, while other tabs host focused features like structured training lessons.
 - The iOS `HeaderLogo` asset uses appearance-aware light and dark banner variants through the asset catalog.
