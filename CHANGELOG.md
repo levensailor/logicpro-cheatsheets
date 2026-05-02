@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-05-02 10:02 EST
+- Add locale-aware content delivery for iOS with full-locale to language fallback and English default fallback.
+- Refactor content export to generate per-locale manifest/content artifacts while preserving legacy `/content/manifest.json` and `/content/content.json` compatibility.
+- Add locale-scoped iOS cache and bundled seed resolution plus localization QA and content integrity verification scripts.
+
 ## 2026-04-30 07:20 EST
 - Add training lesson content to the shared Vercel-exported content bundle schema.
 - Add backward-compatible iOS bundle decoding for remote training content.

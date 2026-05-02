@@ -23,6 +23,7 @@
 		A0000000000000000000000E /* SeedContent.json in Resources */ = {isa = PBXBuildFile; fileRef = B0000000000000000000000E /* SeedContent.json */; };
 		A0000000000000000000000F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000010 /* Assets.xcassets */; };
 		A00000000000000000000010 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000011 /* MainTabView.swift */; };
+		A00000000000000000000012 /* ContentLocaleResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000012 /* ContentLocaleResolver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		B0000000000000000000000F /* LogicProCheatSheets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogicProCheatSheets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B00000000000000000000011 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		B00000000000000000000012 /* ContentLocaleResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLocaleResolver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				B00000000000000000000008 /* HashVerifier.swift */,
 				B00000000000000000000009 /* ContentSyncService.swift */,
 				B0000000000000000000000A /* ContentRepository.swift */,
+				B00000000000000000000012 /* ContentLocaleResolver.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				A00000000000000000000008 /* HashVerifier.swift in Sources */,
 				A00000000000000000000009 /* ContentSyncService.swift in Sources */,
 				A0000000000000000000000A /* ContentRepository.swift in Sources */,
+				A00000000000000000000012 /* ContentLocaleResolver.swift in Sources */,
 				A00000000000000000000010 /* MainTabView.swift in Sources */,
 				A0000000000000000000000B /* SheetListView.swift in Sources */,
 				A0000000000000000000000C /* SheetDetailView.swift in Sources */,
@@ -238,6 +242,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.logicprobook.cheatsheets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -265,6 +272,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.logicprobook.cheatsheets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

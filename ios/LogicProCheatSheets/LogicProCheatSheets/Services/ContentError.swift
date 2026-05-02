@@ -3,6 +3,7 @@ import Foundation
 enum ContentError: LocalizedError {
     case missingBundledContent
     case invalidRemoteURL
+    case network(String)
     case incompatibleSchema(Int)
     case unsupportedAppVersion(String)
     case hashMismatch
@@ -13,6 +14,8 @@ enum ContentError: LocalizedError {
             return "Bundled seed content is missing."
         case .invalidRemoteURL:
             return "The remote content URL is invalid."
+        case .network(let message):
+            return message
         case .incompatibleSchema(let version):
             return "Content schema \(version) is not supported by this app."
         case .unsupportedAppVersion(let minVersion):

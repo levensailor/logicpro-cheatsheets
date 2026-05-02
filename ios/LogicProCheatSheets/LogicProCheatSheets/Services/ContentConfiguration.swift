@@ -3,6 +3,7 @@ import Foundation
 enum ContentConfiguration {
     static let supportedSchemaVersion = 1
     static let appVersion = "1.0.0"
+    static let defaultContentLocale = "en"
 
     static var remoteBaseURL: URL {
         if let value = Bundle.main.object(forInfoDictionaryKey: "ContentBaseURL") as? String,

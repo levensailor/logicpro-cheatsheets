@@ -2,11 +2,15 @@ import type { ContentBundle, ContentNavItem } from "@/lib/sheet-schema";
 import { cheatSheets } from "@/data/sheets";
 import { trainingLessons } from "@/data/training/lessons";
 import { getTopPillLabel } from "@/lib/nav-label";
+import { defaultContentLocale } from "@/config/content-locales";
 
 export const contentSchemaVersion = 1;
 export const minContentAppVersion = "1.0.0";
 
-export function buildContentBundle(generatedAt = new Date().toISOString()): ContentBundle {
+export function buildContentBundle(
+  generatedAt = new Date().toISOString(),
+  _locale = defaultContentLocale
+): ContentBundle {
   const contentVersion = generatedAt.replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
   const navItems: ContentNavItem[] = cheatSheets.map((sheet) => ({
     id: sheet.id,
