@@ -15,6 +15,23 @@
   --slate: #8ca4c8;
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a1628;
+  --surface: #162236;
+  --surface-2: #1a2842;
+  --border: #2d3f5a;
+  --text: #e8eef7;
+  --muted: #8fa3c0;
+  --blue: #5a8fff;
+  --green: #4bd185;
+  --purple: #9d75ff;
+  --orange: #ffaa52;
+  --red: #ff6b6b;
+  --teal: #45dbd1;
+  --slate: #a0b5d3;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -1309,4 +1326,174 @@ td {
     color: #284c85;
     font-weight: 800;
   }
+}
+
+/* Font Size Settings */
+[data-font-size="small"] {
+  font-size: 14px;
+}
+
+[data-font-size="medium"] {
+  font-size: 16px;
+}
+
+[data-font-size="large"] {
+  font-size: 18px;
+}
+
+/* Settings Page Styles */
+.settingsSection {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.settingsSection:last-child {
+  border-bottom: none;
+}
+
+.settingsSection h3 {
+  margin: 0 0 0.4rem;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.settingsDescription {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.settingsOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.settingOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 5.5rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.settingOption:hover {
+  border-color: var(--blue);
+  background: var(--surface);
+  transform: translateY(-1px);
+}
+
+.settingOption.active {
+  border-color: var(--blue);
+  background: var(--blue);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(79, 131, 255, 0.3);
+}
+
+.optionIcon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.optionLabel {
+  font-size: 0.88rem;
+}
+
+.optionPreview {
+  font-weight: 700;
+  line-height: 1;
+}
+
+[data-theme="dark"] .settingOption.active {
+  box-shadow: 0 8px 20px rgba(90, 143, 255, 0.4);
+}
+
+[data-theme="dark"] .brandHeaderLink {
+  background: #0a1628;
+  border-color: #2d3f5a;
+  box-shadow: 0 12px 24px rgba(10, 22, 40, 0.4);
+}
+
+[data-theme="dark"] .topNav {
+  background: rgba(22, 34, 54, 0.95);
+  border-right-color: var(--border);
+}
+
+[data-theme="dark"] .sheetTab {
+  color: #7a90b5;
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .sheetTab:hover {
+  border-color: #4a6a9a;
+  color: var(--text);
+  background: #1a2842;
+}
+
+[data-theme="dark"] .sheetTab.active {
+  background: #243752;
+  color: #e8eef7;
+  border-color: #4a6a9a;
+}
+
+[data-theme="dark"] .tabIcon {
+  background: #1a2842;
+  border-color: #2d3f5a;
+}
+
+[data-theme="dark"] .introHero,
+[data-theme="dark"] .legalHero {
+  background:
+    radial-gradient(circle at top right, rgba(90, 143, 255, 0.15), transparent 36%),
+    linear-gradient(135deg, #162236, #0a1628);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .introBookCover {
+  background: linear-gradient(160deg, #0f2447, #5a8fff 62%, #1a2842 62%);
+  border-color: var(--border);
+  box-shadow: 0 16px 35px rgba(10, 22, 40, 0.5);
+}
+
+[data-theme="dark"] .siteFooter {
+  background: rgba(22, 34, 54, 0.85);
+  color: #8fa3c0;
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .siteFooter a,
+[data-theme="dark"] .legalLinkList a,
+[data-theme="dark"] .legalBackLink a {
+  border-color: #2d3f5a;
+  background: #1a2842;
+  color: #7a90b5;
+}
+
+[data-theme="dark"] .siteFooter .appStoreLink {
+  border-color: #4a6fb8;
+  background: #3b5fa0;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(59, 95, 160, 0.3);
+}
+
+[data-theme="dark"] .chapterMenuButton {
+  border-color: var(--border);
+  background: #1a2842;
+  color: #8fa3c0;
+}
+
+[data-theme="dark"] .navLinks {
+  background: rgba(22, 34, 54, 0.98);
+  border-color: var(--border);
+  box-shadow: 0 24px 48px rgba(10, 22, 40, 0.6);
 }

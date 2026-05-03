@@ -3,6 +3,7 @@ import Link from "next/link";
 const APP_STORE_URL = "https://apps.apple.com/app/id0000000000";
 
 const SUPPORT_LINKS = [
+  { href: "/settings", label: "Settings" },
   { href: "/privacy", label: "Privacy" },
   { href: "/contact", label: "Support" },
   { href: "/terms", label: "Terms" }
