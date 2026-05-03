@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-02 20:21 EST
+- Finish the iOS user settings page with saved appearance and font size controls.
+
 ## 2026-05-02 10:02 EST
 - Add locale-aware content delivery for iOS with full-locale to language fallback and English default fallback.
 - Refactor content export to generate per-locale manifest/content artifacts while preserving legacy `/content/manifest.json` and `/content/content.json` compatibility.

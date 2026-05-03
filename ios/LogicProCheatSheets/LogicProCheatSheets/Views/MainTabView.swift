@@ -3,6 +3,7 @@ import SwiftUI
 struct MainTabView: View {
     let bundle: ContentBundle
     @State private var selectedTab: AppTab = .home
+
     private var trainingLessons: [TrainingLesson] {
         bundle.training.lessons
     }
@@ -42,16 +43,7 @@ struct MainTabView: View {
             }
             .tag(AppTab.saved)
 
-            MockTabView(
-                title: "Settings",
-                subtitle: "Tune the app for your studio workflow.",
-                symbolName: "gearshape.fill",
-                cards: [
-                    MockTabCard(title: "Content updates", detail: "Manage cached handbook content and refresh behavior."),
-                    MockTabCard(title: "Display", detail: "Adjust reading preferences for light and dark sessions."),
-                    MockTabCard(title: "Support", detail: "Find privacy, terms, contact, and app support links.")
-                ]
-            )
+            SettingsTabView()
             .tabItem {
                 Label("Settings", systemImage: "gearshape.fill")
             }
@@ -665,6 +657,212 @@ private struct MockTabView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 24))
+    }
+}
+
+private struct SettingsTabView: View {
+    @AppStorage(AppPreferenceKeys.appearance) private var appearance = AppAppearance.system.rawValue
+    @AppStorage(AppPreferenceKeys.fontSize) private var fontSize = AppFontSize.system.rawValue
+
+    private var selectedAppearance: AppAppearance {
+        AppAppearance(rawValue: appearance) ?? .system
+    }
+
+    private var selectedFontSize: AppFontSize {
+        AppFontSize(rawValue: fontSize) ?? .system
+    }
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
+                    header
+                    appearanceSection
+                    fontSizeSection
+                    persistenceNote
+                }
+                .padding()
+            }
+            .navigationTitle("Settings")
+        }
+    }
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Image(systemName: "gearshape.fill")
+                .font(.system(size: 36, weight: .bold))
+                .foregroundStyle(.tint)
+                .frame(width: 64, height: 64)
+                .background(Color.accentColor.opacity(0.12), in: RoundedRectangle(cornerRadius: 18))
+
+            Text("Settings")
+                .font(.largeTitle.bold())
+
+            Text("Tune the app for bright control rooms, late-night sessions, and the way you read in the studio.")
+                .font(.headline)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 24))
+    }
+
+    private var appearanceSection: some View {
+        SettingsCard(title: "Appearance", subtitle: "Choose the color theme used across the handbook.") {
+            Picker("Appearance", selection: $appearance) {
+                ForEach(AppAppearance.allCases) { option in
+                    Label(option.title, systemImage: option.symbolName)
+                        .tag(option.rawValue)
+                }
+            }
+            .pickerStyle(.segmented)
+            .accessibilityLabel("Appearance")
+
+            SettingsSummaryRow(
+                symbolName: selectedAppearance.symbolName,
+                title: selectedAppearance.title,
+                detail: selectedAppearance == .system
+                    ? "The app follows your iPhone or iPad appearance."
+                    : "The app stays in \(selectedAppearance.title.lowercased()) mode."
+            )
+        }
+    }
+
+    private var fontSizeSection: some View {
+        SettingsCard(title: "Font Size", subtitle: "Set an in-app reading size for chapter text and lesson cards.") {
+            VStack(spacing: 10) {
+                ForEach(AppFontSize.allCases) { option in
+                    Button {
+                        fontSize = option.rawValue
+                    } label: {
+                        FontSizeOptionRow(
+                            option: option,
+                            isSelected: selectedFontSize == option
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityAddTraits(selectedFontSize == option ? .isSelected : [])
+                }
+            }
+
+            Text("Preview: Use high-pass filters only when they solve a real mix problem.")
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14))
+        }
+    }
+
+    private var persistenceNote: some View {
+        Label("Preferences save automatically on this device.", systemImage: "checkmark.seal.fill")
+            .font(.caption.bold())
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(.secondary.opacity(0.12), in: Capsule())
+    }
+}
+
+private struct SettingsCard<Content: View>: View {
+    let title: String
+    let subtitle: String
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.title3.bold())
+                Text(subtitle)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+
+            content
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(.background, in: RoundedRectangle(cornerRadius: 18))
+        .overlay {
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(.quaternary)
+        }
+    }
+}
+
+private struct SettingsSummaryRow: View {
+    let symbolName: String
+    let title: String
+    let detail: String
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: symbolName)
+                .font(.headline)
+                .foregroundStyle(.tint)
+                .frame(width: 32, height: 32)
+                .background(Color.accentColor.opacity(0.12), in: Circle())
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text(title)
+                    .font(.headline)
+                Text(detail)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+}
+
+private struct FontSizeOptionRow: View {
+    let option: AppFontSize
+    let isSelected: Bool
+
+    private var previewFont: Font {
+        switch option {
+        case .system, .standard: return .headline
+        case .compact: return .subheadline
+        case .large: return .title3.bold()
+        case .extraLarge: return .title2.bold()
+        }
+    }
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Text(option.previewText)
+                .font(previewFont)
+                .foregroundStyle(isSelected ? .white : .tint)
+                .frame(width: 48, height: 48)
+                .background(
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(isSelected ? Color.accentColor : Color.accentColor.opacity(0.12))
+                )
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text(option.title)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                Text(option.detail)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                .font(.headline)
+                .foregroundStyle(isSelected ? .tint : .secondary)
+        }
+        .padding(10)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(isSelected ? Color.accentColor.opacity(0.10) : Color.secondary.opacity(0.06))
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(isSelected ? Color.accentColor.opacity(0.45) : Color.clear)
+        }
     }
 }
 
