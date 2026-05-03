@@ -741,7 +741,7 @@ private struct SettingsTabView: View {
                         )
                     }
                     .buttonStyle(.plain)
-                    .accessibilityAddTraits(selectedFontSize == option ? .isSelected : [])
+                    .accessibilityValue(selectedFontSize == option ? "Selected" : "Not selected")
                 }
             }
 
