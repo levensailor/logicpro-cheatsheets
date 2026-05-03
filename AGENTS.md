@@ -23,3 +23,12 @@
 - A SwiftUI iOS app lives under `ios/LogicProCheatSheets`, is branded `Logic Pro.Guru`, and loads bundled, cached, and remote web-served content for offline use.
 - The iOS app uses a bottom tab navigation with Home, Library, Train, Saved, and Settings sections; the Library tab preserves the handbook chapter navigation, while other tabs host focused features like structured training lessons.
 - The iOS `HeaderLogo` asset uses appearance-aware light and dark banner variants through the asset catalog.
+
+## Cursor Cloud specific instructions
+
+- **Dev server**: `npm run dev` starts the Next.js 16 Turbopack dev server on port 3000. No environment variables or external services are required.
+- **Lint**: Next.js 16 removed the `next lint` CLI command. Run `npx eslint .` directly instead of `npm run lint`. The `eslint.config.mjs` flat config uses `eslint-config-next/core-web-vitals`.
+- **Build**: `npm run build` runs the content export script (`prebuild`) then `next build`. All content is statically generated.
+- **Content export**: `npm run export:content` writes `public/content/content.json` and `manifest.json` for the iOS client. Runs automatically before builds but is not needed for local dev.
+- **No database, no API keys, no `.env`**: The app is entirely static/SSG. All sheet data lives in `data/sheets/`, `data/plugins/`, and `data/training/`.
+- **Node.js 22**: Required (Next.js 16 needs Node 18.18+; Node 22 LTS is installed via nodesource).
