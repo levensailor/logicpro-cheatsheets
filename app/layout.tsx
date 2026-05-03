@@ -4,6 +4,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 import { TopSheetNav } from "@/components/TopSheetNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SettingsProvider } from "@/lib/settings-context";
 import { cheatSheets } from "@/data/sheets";
 
 config.autoAddCss = false;
@@ -33,13 +34,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <div className="appShell">
-          <TopSheetNav sheets={cheatSheets} />
-          <div className="appContent">
-            {children}
-            <SiteFooter />
+        <SettingsProvider>
+          <div className="appShell">
+            <TopSheetNav sheets={cheatSheets} />
+            <div className="appContent">
+              {children}
+              <SiteFooter />
+            </div>
           </div>
-        </div>
+        </SettingsProvider>
       </body>
     </html>
   );

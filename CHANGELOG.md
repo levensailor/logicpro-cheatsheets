@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-03 02:15 EST
+- Add user settings page with font size and light/dark mode support.
+- Implement global theme system with Light, Dark, and System preferences.
+- Add font size controls (Small, Medium, Large) with global application.
+- Create settings context provider for persistent user preferences.
+- Add comprehensive dark theme CSS with 18+ component overrides.
+- Include settings link in site footer navigation.
+
 ## 2026-05-02 10:02 EST
 - Add locale-aware content delivery for iOS with full-locale to language fallback and English default fallback.
 - Refactor content export to generate per-locale manifest/content artifacts while preserving legacy `/content/manifest.json` and `/content/content.json` compatibility.
