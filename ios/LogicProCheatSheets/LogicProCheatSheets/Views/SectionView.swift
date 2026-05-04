@@ -19,6 +19,8 @@ struct SectionView: View {
             ImageSectionView(section: section)
         case .pluginChooser(let section):
             PluginChooserSectionView(section: section)
+        case .article(let section):
+            ArticleSectionView(section: section)
         case .unknown(let section):
             ContentUnavailableView(
                 "Update Required",
@@ -251,6 +253,56 @@ private struct ImageSectionView: View {
                     Text(caption)
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                }
+            }
+        }
+    }
+}
+
+private struct ArticleSectionView: View {
+    let section: ArticleSection
+
+    var body: some View {
+        SectionCard(title: section.title) {
+            VStack(alignment: .leading, spacing: 16) {
+                if let dek = section.dek {
+                    Text(dek)
+                        .font(.callout.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                }
+
+                if let visualReferences = section.visualReferences, !visualReferences.isEmpty {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 10)], spacing: 10) {
+                        ForEach(visualReferences) { reference in
+                            VStack(alignment: .leading, spacing: 8) {
+                                CachedRemoteImage(
+                                    source: reference.src,
+                                    altText: reference.alt,
+                                    height: 90
+                                )
+                                Text(reference.title)
+                                    .font(.caption.bold())
+                                Text(reference.caption)
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(10)
+                            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
+                        }
+                    }
+                }
+
+                ForEach(section.blocks) { block in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(block.heading)
+                            .font(.headline)
+                        ForEach(block.paragraphs, id: \.self) { paragraph in
+                            Text(paragraph)
+                                .font(.body)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                 }
             }
         }

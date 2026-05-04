@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CheatSheet } from "@/lib/sheet-schema";
+import { ArticleSection } from "@/components/sections/ArticleSection";
 import { CardsSection } from "@/components/sections/CardsSection";
 import { ChainSection } from "@/components/sections/ChainSection";
 import { ChecklistSection } from "@/components/sections/ChecklistSection";
@@ -103,6 +104,19 @@ export function SheetRenderer({ sheet }: SheetRendererProps) {
 
         if (section.type === "plugin-chooser") {
           return <PluginChooserSection key={`${section.title}-${index}`} id={id} title={title} entries={section.entries} />;
+        }
+
+        if (section.type === "article") {
+          return (
+            <ArticleSection
+              key={`${section.title}-${index}`}
+              id={id}
+              title={title}
+              dek={section.dek}
+              blocks={section.blocks}
+              visualReferences={section.visualReferences}
+            />
+          );
         }
 
         return (

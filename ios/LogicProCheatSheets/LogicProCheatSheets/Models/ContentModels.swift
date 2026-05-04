@@ -206,6 +206,7 @@ enum SheetSection: Codable, Identifiable {
     case checklist(ChecklistSection)
     case image(ImageSection)
     case pluginChooser(PluginChooserSection)
+    case article(ArticleSection)
     case unknown(UnknownSection)
 
     var id: String { "\(type)-\(title)" }
@@ -218,6 +219,7 @@ enum SheetSection: Codable, Identifiable {
         case .checklist(let section): return section.title
         case .image(let section): return section.title
         case .pluginChooser(let section): return section.title
+        case .article(let section): return section.title
         case .unknown(let section): return section.title
         }
     }
@@ -230,6 +232,7 @@ enum SheetSection: Codable, Identifiable {
         case .checklist: return "checklist"
         case .image: return "image"
         case .pluginChooser: return "plugin-chooser"
+        case .article: return "article"
         case .unknown(let section): return section.type
         }
     }
@@ -255,6 +258,8 @@ enum SheetSection: Codable, Identifiable {
             self = .image(try ImageSection(from: decoder))
         case "plugin-chooser":
             self = .pluginChooser(try PluginChooserSection(from: decoder))
+        case "article":
+            self = .article(try ArticleSection(from: decoder))
         default:
             self = .unknown(try UnknownSection(from: decoder))
         }
@@ -268,6 +273,7 @@ enum SheetSection: Codable, Identifiable {
         case .checklist(let section): try section.encode(to: encoder)
         case .image(let section): try section.encode(to: encoder)
         case .pluginChooser(let section): try section.encode(to: encoder)
+        case .article(let section): try section.encode(to: encoder)
         case .unknown(let section): try section.encode(to: encoder)
         }
     }
@@ -310,6 +316,28 @@ struct PluginChooserSection: Codable {
     let type: String
     let title: String
     let entries: [PluginChooserEntry]
+}
+
+struct ArticleSection: Codable {
+    let type: String
+    let title: String
+    let dek: String?
+    let blocks: [ArticleBlock]
+    let visualReferences: [ArticleVisualReference]?
+}
+
+struct ArticleBlock: Codable, Identifiable {
+    var id: String { heading }
+    let heading: String
+    let paragraphs: [String]
+}
+
+struct ArticleVisualReference: Codable, Identifiable {
+    var id: String { title }
+    let title: String
+    let src: String
+    let alt: String
+    let caption: String
 }
 
 struct UnknownSection: Codable {

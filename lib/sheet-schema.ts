@@ -47,6 +47,18 @@ export interface PluginChooserEntry {
   knownFor: string;
 }
 
+export interface ArticleBlock {
+  heading: string;
+  paragraphs: string[];
+}
+
+export interface ArticleVisualReference {
+  title: string;
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export type SheetSection =
   | {
       type: "chain";
@@ -80,6 +92,13 @@ export type SheetSection =
       type: "plugin-chooser";
       title: string;
       entries: PluginChooserEntry[];
+    }
+  | {
+      type: "article";
+      title: string;
+      dek?: string;
+      blocks: ArticleBlock[];
+      visualReferences?: ArticleVisualReference[];
     };
 
 export interface CheatSheet {
