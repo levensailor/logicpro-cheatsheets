@@ -612,7 +612,7 @@ export default function CompressionArticlePage() {
             reducing dynamic range from below rather than above. This can create dense, forward mixes without the squashed 
             sound of heavy downward compression. Modern plugins like Waves MV2 and expanders in reverse mode offer upward 
             compression capabilities.
-          </h3>
+          </p>
         </section>
 
         <section className="articleSection">
