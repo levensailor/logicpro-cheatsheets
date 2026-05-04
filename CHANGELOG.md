@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-04 01:35 EST
+- Add comprehensive compression article with 3,781 words covering attack, release, knee, ratio, threshold, dynamic range, makeup gain, and transients.
+- Include 15 visual references featuring popular compression plugins (FabFilter Pro-C 3, UAD 1176, Waves CLA-76, API 2500, SSL compressors).
+- Provide hardware emulation vs. digital comparison across FET, optical, VCA, variable-mu, and modern hybrid topologies.
+- Document common compression settings per instrument (vocals, bass, kick, snare, drums, guitars, mix bus).
+- Feature expert opinions from Butch Vig, Andrew Scheps, Chris Lord-Alge, Bob Clearmountain, and Sylvia Massy.
+- Add article styling with responsive design and dark mode support.
+- Integrate in-depth articles section into home page feature grid.
+
 ## 2026-05-03 02:15 EST
 - Add user settings page with font size and light/dark mode support.
 - Implement global theme system with Light, Dark, and System preferences.
