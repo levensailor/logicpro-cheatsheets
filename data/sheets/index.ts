@@ -1,6 +1,7 @@
 import type { CardItem, CheatSheet, SheetSection } from "@/lib/sheet-schema";
 import { pluginCatalog } from "@/data/plugins/catalog";
 import { buildEnhancedPluginCatalog } from "@/data/plugins/seed-catalog";
+import { compressionArticleSheet } from "@/data/sheets/compression-article";
 
 const enhancedPluginCatalog = buildEnhancedPluginCatalog(pluginCatalog);
 
@@ -2297,6 +2298,7 @@ export const cheatSheets: CheatSheet[] = [
     summary: "Catalog of installed plugins with best-effort popularity, emulation, use-case, and pricing context.",
     sections: buildPluginsPageSections()
   },
+  compressionArticleSheet,
   {
     id: "appendix-audio-terms",
     header: {

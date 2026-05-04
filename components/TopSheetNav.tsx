@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { CheatSheet } from "@/lib/sheet-schema";
 import { getTopPillLabel } from "@/lib/nav-label";
 
@@ -13,11 +13,8 @@ interface TopSheetNavProps {
 
 export function TopSheetNav({ sheets }: TopSheetNavProps) {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  const [openPathname, setOpenPathname] = useState<string | null>(null);
+  const isOpen = openPathname === pathname;
 
   return (
     <nav className="topNav" aria-label="Cheat sheets">
@@ -37,7 +34,7 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
           type="button"
           aria-controls="chapter-navigation"
           aria-expanded={isOpen}
-          onClick={() => setIsOpen((current) => !current)}
+          onClick={() => setOpenPathname((current) => (current === pathname ? null : pathname))}
         >
           <span aria-hidden="true">☰</span>
           Chapters

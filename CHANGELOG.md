@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-03 21:31 EST
+- Add Everything to Know About Compression article chapter with visual references, instrument settings, plugin family guidance, and engineer perspective notes.
+
 ## 2026-05-03 02:15 EST
 - Add user settings page with font size and light/dark mode support.
 - Implement global theme system with Light, Dark, and System preferences.

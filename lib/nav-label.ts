@@ -19,6 +19,9 @@ export function getTopPillLabel(sheet: CheatSheet): string {
   if (sheet.id === "mastering-final-mix") {
     return "Mastering";
   }
+  if (sheet.id === "compression-everything-to-know") {
+    return "Compression";
+  }
 
   return sheet.header.title
     .replace(/\b(cheat\s*sheet|guide|mixing)\b/gi, "")
