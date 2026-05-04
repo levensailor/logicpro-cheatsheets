@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { CheatSheet } from "@/lib/sheet-schema";
 import { getTopPillLabel } from "@/lib/nav-label";
 
@@ -15,14 +15,10 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
   return (
     <nav className="topNav" aria-label="Cheat sheets">
       <div className="mobileNavBar">
-        <Link href="/" className="brandHeaderLink" aria-label="Open handbook introduction">
+        <Link href="/" className="brandHeaderLink" aria-label="Open handbook introduction" onClick={() => setIsOpen(false)}>
           <Image
             className="brandHeaderImage"
             src="/brand/logic-pro-guru-header.png"
@@ -45,7 +41,12 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
       </div>
 
       <div id="chapter-navigation" className={`navLinks ${isOpen ? "open" : ""}`}>
-        <Link href="/" className="brandHeaderLink desktopBrandHeader" aria-label="Open handbook introduction">
+        <Link
+          href="/"
+          className="brandHeaderLink desktopBrandHeader"
+          aria-label="Open handbook introduction"
+          onClick={() => setIsOpen(false)}
+        >
           <Image
             className="brandHeaderImage"
             src="/brand/logic-pro-guru-header.png"
@@ -66,6 +67,7 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
               href={href}
               aria-label={`Open ${sheet.header.title}`}
               className={`sheetTab ${isActive ? "active" : ""}`}
+              onClick={() => setIsOpen(false)}
             >
               <span className="tabIcon" aria-hidden="true">
                 {sheet.header.icon}
