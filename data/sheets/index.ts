@@ -4,6 +4,49 @@ import { buildEnhancedPluginCatalog } from "@/data/plugins/seed-catalog";
 
 const enhancedPluginCatalog = buildEnhancedPluginCatalog(pluginCatalog);
 
+const automationArticleIllustrations = [
+  { slug: "rider-before-dynamics", title: "Illustration 1. Rider Before Dynamics", alt: "Automation curve showing a vocal rider smoothing phrase level before compression.", caption: "A rider is best when the performance needs many small corrections before the compressor, not when one dramatic moment needs a hand-drawn lift." },
+  { slug: "gate-vs-rider", title: "Illustration 2. Gate vs Rider", alt: "Diagram comparing gate cleanup with rider level control.", caption: "Gates decide open or closed; riders decide how loud. Treat them as different tools instead of competing fixes." },
+  { slug: "delay-throw-feedback", title: "Illustration 3. Delay Throw Feedback", alt: "Delay feedback automation rising for a final word and falling before the next lyric.", caption: "Automating feedback turns a normal send into a performance event that blooms and then gets out of the way." },
+  { slug: "delay-threshold-ducking", title: "Illustration 4. Delay Threshold Ducking", alt: "Threshold automation controlling when delay repeats duck behind a vocal.", caption: "Threshold and ducking moves keep repeats musical while the singer is active, then let the space appear in the gap." },
+  { slug: "parallel-bus-lift", title: "Illustration 5. Parallel Bus Lift", alt: "Parallel bus with one automated channel lifting intensity for a chorus.", caption: "A parallel bus can carry the movement while the dry track remains stable, making automation safer and easier to audition." },
+  { slug: "chorus-vocal-ride", title: "Illustration 6. Chorus Vocal Ride", alt: "Small vocal volume ride from verse to chorus.", caption: "A one or two dB chorus lift often sounds more natural than pushing the compressor harder for the entire song." },
+  { slug: "bass-note-correction", title: "Illustration 7. Bass Note Correction", alt: "Bass note clip gain and fader automation correcting one weak note.", caption: "Single notes can be repaired before dynamics so the compressor reacts to intent instead of surprise." },
+  { slug: "snare-fill-spotlight", title: "Illustration 8. Snare Fill Spotlight", alt: "Drum fill automation briefly raising snare and tom energy.", caption: "Spotlighting a fill is a musical decision; it should return to the normal groove before the next downbeat." },
+  { slug: "room-mic-section", title: "Illustration 9. Room Mic Section Ride", alt: "Room mic automation lower in verse and higher in chorus.", caption: "Room microphones are emotional size controls. Automate them by section before adding more reverb." },
+  { slug: "guitar-filter-open", title: "Illustration 10. Guitar Filter Open", alt: "Filter cutoff automation opening from verse into chorus guitars.", caption: "Opening a filter can create lift without adding new parts or making the chorus permanently brighter." },
+  { slug: "reverb-pre-delay-shift", title: "Illustration 11. Reverb Pre-Delay Shift", alt: "Pre-delay automation separating a vocal from reverb wash.", caption: "More pre-delay can keep a vocal upfront while still allowing the space to feel larger." },
+  { slug: "plate-decay-tail", title: "Illustration 12. Plate Decay Tail", alt: "Plate reverb decay automation adapting to sparse and dense sections.", caption: "Decay time should respect arrangement density: long tails need space, short tails keep busy parts readable." },
+  { slug: "pan-ear-candy", title: "Illustration 13. Pan Ear Candy", alt: "Pan automation moving a small ear-candy part around a static band image.", caption: "Move decorative parts while keeping kick, snare, bass, and lead vocal anchored." },
+  { slug: "mute-automation", title: "Illustration 14. Mute Automation", alt: "Mute automation clearing a transition before a downbeat.", caption: "Mute automation is useful when a clean stop communicates the arrangement better than a fade." },
+  { slug: "distortion-send", title: "Illustration 15. Distortion Send Bloom", alt: "Distortion send automation appearing for selected vocal phrases.", caption: "Automated grit feels intentional when it arrives on a phrase, not when it coats every word by default." },
+  { slug: "compressor-threshold", title: "Illustration 16. Compressor Threshold Ride", alt: "Compressor threshold automation keeping gain reduction consistent.", caption: "Threshold automation can protect the groove when a section changes level but should be checked against bypassed dynamics." },
+  { slug: "deesser-focus", title: "Illustration 17. De-Esser Focus", alt: "De-esser threshold automation increasing control on harsh words.", caption: "Automate de-essing only where harshness appears so the rest of the performance keeps its air." },
+  { slug: "eq-presence-lift", title: "Illustration 18. Presence Lift", alt: "EQ presence band automation highlighting a lyric.", caption: "A temporary presence lift can make one lyric intelligible without making the whole vocal sharp." },
+  { slug: "low-end-tighten", title: "Illustration 19. Low-End Tighten", alt: "Low shelf automation reducing buildup before a dense chorus.", caption: "Automated low-end cleanup can make a chorus hit harder because the downbeat arrives into headroom." },
+  { slug: "sidechain-intensity", title: "Illustration 20. Sidechain Intensity", alt: "Sidechain depth automation increasing rhythmic pumping.", caption: "Sidechain movement can be an arrangement effect; automate intensity when the groove wants to exaggerate or relax." },
+  { slug: "tremolo-depth", title: "Illustration 21. Tremolo Depth", alt: "Tremolo depth automation growing during a bridge.", caption: "Modulation depth can build tension while the source level stays controlled." },
+  { slug: "auto-filter-sweep", title: "Illustration 22. Auto-Filter Sweep", alt: "Auto-filter cutoff automation sweeping into a transition.", caption: "Filter sweeps work best when they serve a transition instead of constantly announcing themselves." },
+  { slug: "master-bus-caution", title: "Illustration 23. Master Bus Caution", alt: "Subtle master bus automation warning against large final-output rides.", caption: "Master bus moves affect every downstream decision, so keep them rare, small, and easy to undo." },
+  { slug: "stem-print-safety", title: "Illustration 24. Stem Print Safety", alt: "Printed stems showing automation committed to exported files.", caption: "Before printing stems, confirm the automation is intentional because collaborators may not see your lanes later." },
+  { slug: "latch-touch-write", title: "Illustration 25. Touch, Latch, and Write", alt: "Logic Pro automation modes represented as different write behaviors.", caption: "Touch is for temporary gestures, Latch is for holding a new value, and Write should be used carefully." },
+  { slug: "snapshot-sections", title: "Illustration 26. Section Snapshots", alt: "Verse chorus and bridge automation baselines shown as snapshots.", caption: "Section snapshots keep the song organized before you draw detailed phrase-by-phrase moves." },
+  { slug: "automation-trim", title: "Illustration 27. Automation Trim", alt: "Trim automation raising an existing curve without flattening it.", caption: "Trim changes the overall offset while preserving the musical contour you already wrote." },
+  { slug: "send-return-flow", title: "Illustration 28. Send Return Flow", alt: "Shared send and return path carrying automated effect levels.", caption: "Automating sends into a shared return keeps space consistent while each track gets its own entrance and exit." },
+  { slug: "human-performance-map", title: "Illustration 29. Human Performance Map", alt: "Automation curve following emotional intensity in a performance.", caption: "The best rides trace the singer, player, and arrangement rather than chasing the meter alone." },
+  { slug: "final-bypass-check", title: "Illustration 30. Final Bypass Check", alt: "Automation lanes being bypassed to verify the song gets worse without them.", caption: "Every automation pass should survive a bypass check: if the song does not miss it, simplify the mix." }
+] as const;
+
+function automationArticleImageSections(): SheetSection[] {
+  return automationArticleIllustrations.map((illustration) => ({
+    type: "image",
+    title: illustration.title,
+    src: `/assets/articles/automation-beyond-volume/${illustration.slug}.svg`,
+    alt: illustration.alt,
+    caption: illustration.caption
+  }));
+}
+
 const sourceMixChain = [
   { name: "Clip Gain / Input Gain", goal: "Set a workable level before plugins, avoid clipping, and do not use gain staging just to make the track loud." },
   { name: "Cleanup / Corrective EQ", goal: "Remove rumble, harsh resonances, boxiness, or mud only if needed; use narrow cuts for real problems." },
@@ -2036,190 +2079,227 @@ export const cheatSheets: CheatSheet[] = [
   {
     id: "automation",
     header: {
-      title: "Automation",
-      subtitle: "Volume rides, movement, and musical control",
+      title: "Automation: Beyond Volume",
+      subtitle: "Riders, gates, delay throws, parallel motion, and musical mix decisions",
       icon: "🎛️",
       accent: "purple"
     },
-    summary: "Use automation to shape levels, movement, effects, and bleed decisions so the mix feels intentional instead of static.",
+    summary:
+      "A long-form Logic Pro automation article with practical moves for riders, gates, delay feedback, parallel buses, and twenty additional automation targets that make a static mix feel performed.",
     sections: [
       {
         type: "cards",
-        title: "What Automation Does",
+        title: "Article Thesis: Automation Is Arrangement",
         columns: 3,
         cards: [
           {
-            title: "Manual Mix Moves",
+            title: "Beyond Fader Chasing",
             items: [
-              "Automation records changes over time: volume, pan, sends, plugin knobs, mutes, and more.",
-              "Use it when one static setting works in the verse but fails in the chorus."
+              "Automation is not just a late-stage rescue pass where you chase every word that feels too quiet. In Logic Pro it is a second arrangement layer: a way to decide which parts lead, which parts answer, and which parts disappear so the listener can follow the song without thinking about the mix.",
+              "Volume rides are still the foundation, but the most exciting moves often happen on sends, feedback, thresholds, filters, mutes, parallel returns, and plugin intensity. Those lanes turn static processing into musical performance."
             ]
           },
           {
-            title: "Why It Matters",
+            title: "Write Moves With Intent",
             items: [
-              "A good mix moves with the song instead of staying frozen.",
-              "Automation can make a vocal feel present, a drum fill explode, or a delay appear only on one word."
+              "A useful automation move has a reason that can be spoken in musical language: the lyric needs to land, the fill should answer the vocal, the chorus needs to widen, or the bridge should feel like it is leaning forward. If the reason is only that a meter looked uneven, listen again before drawing more data.",
+              "The best workflow is static mix first, clip gain second, dynamics third, automation fourth, and trim or simplify last. That order keeps automation expressive instead of turning it into a complicated workaround for avoidable balance problems."
             ]
           },
           {
-            title: "When to Start",
+            title: "Logic Pro Mindset",
             items: [
-              "Get the rough balance first, then automate.",
-              "Do not automate around a bad static mix; fix gain, EQ, and compression first."
+              "Use Track Automation for normal mix movement, Region Automation when the move belongs to an edited audio region, and Automation Trim when the shape is good but the whole curve needs to move up or down. Touch mode is safe for short gestures, Latch is useful when a new value should remain, and Write should be treated carefully because it can overwrite lanes quickly.",
+              "Name buses clearly, color important returns, and show only the lanes you are editing. Automation becomes easier when the session makes the signal flow obvious."
             ]
           }
         ]
       },
       {
         type: "cards",
-        title: "Transients and Volume Levels",
+        title: "Using Riders to Automate Levels vs Gates",
         columns: 3,
         cards: [
           {
-            title: "What Is a Transient?",
+            title: "Riders Solve Continuous Level Drift",
             items: [
-              "The transient is the first sharp hit of a sound: pick attack, drum stick, consonant, or pluck.",
-              "Transients give punch and clarity, but they can also trick meters into showing high peaks."
+              "A rider is best when the performance constantly moves around: a singer changes distance from the mic, a bass player hits some notes harder, or a room mic swells with the band. Put the rider before the compressor when possible so the compressor receives a steadier performance and does less obvious work.",
+              "In practice, set the rider to make small corrections, then listen to whether the compressor breathes more naturally. If the rider is moving several dB all the time, the part may need clip gain editing or a better static balance first."
             ]
           },
           {
-            title: "Set Levels by Body + Peak",
+            title: "Gates Solve Open-or-Closed Problems",
             items: [
-              "Use peak level to avoid clipping, but use your ear for the body of the sound.",
-              "If the transient is loud but the note feels quiet, use compression, clip gain, or a small volume ride."
+              "A gate is not a leveler. It is a cleanup decision: open when the wanted signal arrives, close or reduce when the wanted signal is gone. Gates work well on toms, noisy guitar gaps, and certain close drum mics, but they can make cymbals chatter and room tone vanish if the threshold is too aggressive.",
+              "Use a gate when silence or bleed reduction is the goal. Use a rider when the part should remain audible but needs to be steadier. If you are trying to make a vocal phrase more emotional, a gate is almost never the right first tool."
             ]
           },
           {
-            title: "Volume Ride Opinion",
+            title: "Automation Beats Both for One-Off Moments",
             items: [
-              "Ride volume before over-compressing vocals, bass, and solos.",
-              "If a word disappears once, automate it. If every word jumps around, use a rider or compressor first."
+              "If only one syllable jumps out, one snare ghost note is too loud, or one bass note disappears, write a manual move instead of asking an automatic tool to reinterpret the whole track. One hand-drawn point can be more transparent than another plugin reacting for three minutes.",
+              "Think in tiers: clip gain for obvious source-level repairs, rider for constant small leveling, gate or expander for cleanup, and manual automation for musical moments that need human judgment."
+            ]
+          }
+        ]
+      },
+      {
+        type: "cards",
+        title: "Automating Delay Feedback and Threshold",
+        columns: 3,
+        cards: [
+          {
+            title: "Feedback Creates the Throw",
+            items: [
+              "A delay throw is more than turning up a send. The send decides which word enters the delay, but feedback decides how long the idea repeats and how dramatic the tail feels. Automate feedback upward only for the word or phrase that should bloom, then bring it down before the next lyric so the mix does not smear.",
+              "In Logic Pro, keep the delay on an aux return, automate the send on the source track, and automate feedback on the delay plugin. This separates the entrance from the tail, which makes cleanup much faster."
+            ]
+          },
+          {
+            title: "Threshold Controls Ducking and Spill",
+            items: [
+              "When a delay or reverb return has ducking, compression, or gating, threshold automation can be the difference between a tasteful throw and a cloudy wash. Lower the threshold when the vocal should push the effect away, then relax it when the vocal stops so repeats rise into the gap.",
+              "This works especially well when the arrangement is dense. The listener hears the lyric clearly while it happens and still gets the excitement of the repeat after the phrase ends."
+            ]
+          },
+          {
+            title: "Filter the Return Too",
+            items: [
+              "Automate a high-pass, low-pass, or tone control on the delay return so the throw occupies a deliberate pocket. Darker repeats can sit behind a vocal; brighter repeats can announce a transition; narrower filtered repeats can create motion without masking guitars and cymbals.",
+              "The safest habit is to automate the return back to a boring default after the moment. Unreset feedback, wet mix, or filter lanes are common reasons the next section feels messy."
+            ]
+          }
+        ]
+      },
+      {
+        type: "cards",
+        title: "Using a Parallel Bus With Automation on One Channel",
+        columns: 3,
+        cards: [
+          {
+            title: "Keep the Dry Channel Honest",
+            items: [
+              "A parallel bus lets you automate intensity without rewriting the dry sound. Send a vocal, drum bus, bass, or guitar group to an aux with compression, saturation, distortion, widening, or ambience, then automate the aux fader or send level only where the song needs extra attitude.",
+              "Because the original track stays stable, it is easy to bypass the parallel return and hear whether the move actually helps. This is safer than automating five plugins on the primary channel for every chorus."
+            ]
+          },
+          {
+            title: "Choose One Job Per Parallel Return",
+            items: [
+              "Give the bus a clear purpose: vocal excitement, drum smash, bass grit, guitar width, room size, or filtered transition. If the return is trying to add punch, tone, width, and reverb at once, automation decisions become confusing and the bypass test becomes meaningless.",
+              "Print or freeze complex parallel effects when CPU gets heavy, but keep the automation visible and labeled so later stem exports still make sense."
+            ]
+          },
+          {
+            title: "Automate the Blend, Not the Whole Mix",
+            items: [
+              "For a rock chorus, a compressed drum parallel can rise half a dB to two dB while the main drum bus remains unchanged. For a lead vocal, a distorted parallel can appear on the last line of each chorus. For bass, a midrange grit bus can rise on small speakers without changing sub weight.",
+              "Small moves are often enough because parallel processing is already exaggerated. If the return has to be loud to be noticed, revisit the processing tone before drawing bigger automation."
             ]
           }
         ]
       },
       {
         type: "table",
-        title: "Useful Automation Targets",
+        title: "20 More Logic Pro Automation Topics",
         table: {
-          columns: ["Parameter", "Use It For", "Example Move"],
+          columns: ["Topic", "Automation Move", "Why It Works"],
           layout: "detailCards",
           rows: [
-            [
-              "Volume",
-              "Bring important moments forward and tuck distractions back.",
-              "Lift the lead vocal 1-2 dB in the chorus or raise a guitar lick for one bar."
-            ],
-            [
-              "Send Level",
-              "Add effects only when needed without changing the dry sound.",
-              "Send the last vocal word of a phrase to a delay throw."
-            ],
-            [
-              "Delay Feedback",
-              "Make repeats bloom, spin, or disappear musically.",
-              "Raise feedback on one transition, then pull it down before the next lyric."
-            ],
-            [
-              "Wet/Dry Mix",
-              "Make effects appear for emphasis but keep the normal mix clear.",
-              "Push a chorus, flanger, or distortion wet/dry higher for a bridge."
-            ],
-            [
-              "Filter Cutoff",
-              "Create movement, tension, or a reveal.",
-              "Low-pass guitars in a verse, then open the filter into the chorus."
-            ],
-            [
-              "Pan",
-              "Create width or motion without adding more tracks.",
-              "Move a synth ear-candy part outward during a fill."
-            ],
-            [
-              "Reverb Decay / Pre-Delay",
-              "Change depth between song sections.",
-              "Short room in the verse, longer plate in the chorus."
-            ]
+            ["1. Vocal phrase rides", "Lift only the words carrying meaning, then return to the normal line level before the next breath.", "The vocal feels emotionally present without compressing every phrase into the same shape."],
+            ["2. Bass note support", "Raise weak notes with clip gain or track automation before the bass compressor, especially around arrangement changes.", "The groove becomes steadier while the low end keeps its natural attack and decay."],
+            ["3. Drum fill emphasis", "Push snare, tom, overhead, or drum-bus level briefly for fills that introduce a chorus or bridge.", "The fill behaves like a musical cue rather than a background detail."],
+            ["4. Room mic drama", "Ride room mics down in verses and up in choruses, breakdowns, or final hits.", "The band sounds bigger by section without washing out the entire performance."],
+            ["5. Guitar bus width", "Automate a width plugin or doubled-guitar bus only when the arrangement opens up.", "The chorus expands while verses keep focus and mono compatibility remains easier to manage."],
+            ["6. Reverb send entrances", "Send only selected words, snare hits, or guitar stabs into a shared reverb return.", "Space becomes an accent instead of a constant fog around the mix."],
+            ["7. Reverb decay time", "Shorten decay in dense sections and lengthen it when the arrangement becomes sparse.", "The same reverb can feel intimate or cinematic without changing presets."],
+            ["8. Pre-delay shifts", "Increase pre-delay when the vocal needs to stay forward; reduce it when the part should blend into the room.", "Depth changes without sacrificing lyric intelligibility."],
+            ["9. Distortion sends", "Automate a grit aux on choruses, screams, bass fills, or guitar answers.", "The source gains attitude for a moment while the clean track remains dependable."],
+            ["10. EQ presence lifts", "Boost a narrow or broad presence band for one lyric, solo line, or melodic answer.", "Important information cuts through without making the whole track harsh."],
+            ["11. Low-end cleanup", "Automate a low shelf, high-pass, or dynamic EQ threshold before dense downbeats.", "The chorus or drop hits into cleaner headroom, which makes impact feel larger."],
+            ["12. De-esser intensity", "Lower the threshold only for harsh words or stacked background vocals.", "Sibilance is controlled where it hurts while air remains intact elsewhere."],
+            ["13. Compressor threshold", "Adjust threshold between verse and chorus when input level changes but the desired compression character should stay similar.", "Gain reduction remains musical instead of over-clamping the loudest section."],
+            ["14. Sidechain amount", "Increase sidechain depth for dance-like pumping, then relax it for natural band sections.", "The groove can exaggerate or breathe depending on the arrangement."],
+            ["15. Mute automation", "Cut noise, breaths, guitar squeaks, or effect returns exactly where silence is part of the arrangement.", "A clean stop can create more energy than another fade or plugin."],
+            ["16. Pan motion", "Move small ear-candy parts, delay returns, or transitional percussion while the core band remains anchored.", "Width becomes playful without destabilizing the song's center."],
+            ["17. Tremolo and modulation depth", "Increase depth through bridges or breakdowns, then reduce it before the full band returns.", "Movement builds tension without requiring another recorded layer."],
+            ["18. Filter cutoff sweeps", "Open or close AutoFilter, Channel EQ, or plugin cutoff around transitions.", "The listener feels lift and release even before new instruments enter."],
+            ["19. Master bus restraint", "Use tiny trim or bypass automation only for special transitions, never to fix ordinary balance problems.", "The final bus stays trustworthy, and individual tracks remain responsible for the mix."],
+            ["20. Stem export checks", "After printing stems, reimport or spot-check sections where automation is dense.", "Automation written into audio must translate for collaborators, mastering, and future revisions."]
           ]
         }
       },
       {
         type: "cards",
-        title: "Riders, Gates, and Automation",
+        title: "Logic Pro Workflow for Writing Automation",
         columns: 3,
         cards: [
           {
-            title: "Use Automation When",
+            title: "1. Build a Static Pass",
             items: [
-              "The fix is musical, specific, and intentional.",
-              "Examples: one loud syllable, one missing bass note, one drum fill that should leap forward."
+              "Start with faders, pan, gain staging, and broad processing until the song works without automation. If the static mix collapses, automation will become a maze of compensation moves instead of a musical layer.",
+              "Mark the sections with Arrangement Markers or clearly named markers so verse, chorus, bridge, solo, and outro decisions are easy to compare."
             ]
           },
           {
-            title: "Use a Rider When",
+            title: "2. Fix Sources First",
             items: [
-              "The level needs constant small corrections across a whole performance.",
-              "Vocal riders and bass riders are great before compression because they feed the compressor more evenly."
+              "Use clip gain, region gain, fades, and edits for obvious source issues. Then set riders, gates, expanders, or compressors for repeated behavior. Only after that should you draw expressive moves across lanes.",
+              "This keeps the visible automation meaningful. When every point is an emergency repair, it becomes hard to see the emotional contour of the mix."
             ]
           },
           {
-            title: "Use a Gate When",
+            title: "3. Write in Passes",
             items: [
-              "You need automatic cleanup between hits or phrases.",
-              "Gates work best on close drums, noisy amps, and obvious silence gaps; they work poorly when the bleed is musical."
+              "Do one pass for lead vocal, one for rhythm section impact, one for effects throws, and one for transitions. Focused passes prevent you from changing the snare, vocal, delay, and master bus every time something feels slightly wrong.",
+              "After each pass, listen from before the move into after the move. Automation should make the transition feel inevitable, not like a button was pushed."
+            ]
+          },
+          {
+            title: "4. Use Trim and Simplify",
+            items: [
+              "When the curve shape works but the whole move is too much, use trim or select the automation points and offset them together. Do not redraw a musical curve just because it is one dB too high.",
+              "Delete unnecessary points. Smooth curves are easier to understand later and less likely to create zippery or nervous movement."
+            ]
+          },
+          {
+            title: "5. Bypass the Story",
+            items: [
+              "Bypass or disable automation lanes in groups: vocal rides, effects throws, room moves, parallel returns. The song should miss each group when it is gone. If it does not, the moves are probably clutter.",
+              "Level-match when comparing parallel buses and automated effects. Louder usually sounds exciting for a moment, so judge the musical role rather than the temporary loudness."
+            ]
+          },
+          {
+            title: "6. Print With Labels",
+            items: [
+              "Before bouncing stems, confirm that automation is included, effect returns are routed correctly, and printed files start at the same bar. Dense automation is part of the arrangement, so exports must preserve it.",
+              "Keep a version before destructive printing. Future edits are easier when the automation lanes remain available in the session."
             ]
           }
         ]
-      },
-      {
-        type: "table",
-        title: "Mic Bleed: Cut It or Keep It?",
-        table: {
-          columns: ["Situation", "Recommendation", "Why"],
-          layout: "detailCards",
-          rows: [
-            [
-              "Tight modern production",
-              "Cut or reduce bleed with editing, gates, expanders, and fades.",
-              "Cleaner close mics make punchy drums, edited guitars, and polished vocals easier to control."
-            ],
-            [
-              "Live band feel",
-              "Keep useful bleed if it sounds like room, kit glue, or natural performance energy.",
-              "Bleed can make a recording feel like humans playing together instead of isolated parts."
-            ],
-            [
-              "Phase problems",
-              "Cut, flip polarity, time-align, or lower the offending mic.",
-              "Bad bleed that hollows out the snare, kick, or vocal is not vibe; it is damage."
-            ],
-            [
-              "Cymbal wash in drum close mics",
-              "Reduce only as much as needed.",
-              "Over-gating toms and snare can make the kit feel fake; use fades or gentle expansion first."
-            ],
-            [
-              "Room mic character",
-              "Keep it if it flatters the band, then automate it by section.",
-              "Room mics can be low in verses and louder in choruses for size and excitement."
-            ]
-          ]
-        }
       },
       {
         type: "checklist",
-        title: "Automation Workflow",
+        title: "Automation: Beyond Volume Checklist",
         items: [
-          "Start with static faders, panning, and gain staging.",
-          "Use clip gain for obvious word/note fixes before plugins.",
-          "Use riders or compression for constant level control.",
-          "Use volume automation for musical emphasis and section changes.",
-          "Automate sends, feedback, wet/dry, filters, and reverb time to make transitions pop.",
-          "Mute automation lanes occasionally to confirm the song feels worse without them.",
-          "Keep bleed when it adds realism; cut it when it causes noise, phase damage, or loss of impact."
+          "Can you explain each automation move as a musical decision rather than a meter correction?",
+          "Did you fix obvious source-level issues with clip gain or region gain before drawing long fader curves?",
+          "Is a rider handling constant small level drift before compression where appropriate?",
+          "Is a gate or expander used only when open-or-closed cleanup is truly the goal?",
+          "Do delay throws reset feedback, wet level, and filters before the next lyric or section?",
+          "Are ducking or threshold moves keeping effects out of the way while the lead part is active?",
+          "Does each parallel bus have one clear job, such as grit, smash, width, or room size?",
+          "Have you automated the parallel blend instead of disturbing the dry channel unnecessarily?",
+          "Are room mics, reverb decay, and pre-delay changing by arrangement density?",
+          "Have you kept kick, snare, bass, and lead vocal stable while moving decorative elements?",
+          "Did you use trim or grouped offsets when the curve shape was right but the level was wrong?",
+          "Have you removed extra automation points that no longer change the emotional result?",
+          "Can the mix survive a pass with all automation bypassed, proving the static mix is still healthy?",
+          "Does the song clearly get worse when important automation groups are bypassed?",
+          "Before export, did you check that stems and effect returns include the intended automation?"
         ]
-      }
+      },
+      ...automationArticleImageSections()
     ]
   },
   {

@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-03 21:31 EST
+- Add Automation: Beyond Volume long-form article with rider, gate, delay feedback, threshold, parallel bus, and 20 additional Logic Pro automation topics plus 30 illustrations.
+
 ## 2026-05-03 02:15 EST
 - Add user settings page with font size and light/dark mode support.
 - Implement global theme system with Light, Dark, and System preferences.

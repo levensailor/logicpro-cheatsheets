@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Delay Throw Feedback</title>
+  <desc id="desc">Feedback rises for the last word, then resets before the next line.</desc>
+  <rect width="1200" height="700" rx="44" fill="#fffaf2"/>
+  <rect x="42" y="42" width="1116" height="616" rx="36" fill="#ffedd5" stroke="#b45309" stroke-width="4"/>
+  <text x="84" y="112" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" fill="#b45309">03. Delay Throw Feedback</text>
+  <text x="84" y="158" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#334155">Feedback rises for the last word, then resets before the next line.</text>
+  <rect x="84" y="212" width="1032" height="342" rx="28" fill="#ffffff" opacity="0.86"/>
+  <line x1="124" y1="492" x2="1076" y2="492" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="124" y1="252" x2="124" y2="510" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <polyline points="120,209 240,349 360,309 480,269 600,229 720,189 840,329 960,289 1080,249" fill="none" stroke="#b45309" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M170 452 C260 416 335 408 430 435 S620 487 730 420 S905 304 1030 330" fill="none" stroke="#fdba74" stroke-width="18" stroke-linecap="round" opacity="0.72"/>
+  <circle cx="257" cy="399" r="24" fill="#b45309" opacity="0.9"/>
+  <rect x="148" y="575" width="240" height="38" rx="19" fill="#ffffff" opacity="0.85"/>
+  <rect x="420" y="575" width="240" height="38" rx="19" fill="#ffffff" opacity="0.85"/>
+  <rect x="692" y="575" width="240" height="38" rx="19" fill="#ffffff" opacity="0.85"/>
+  <text x="176" y="601" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#b45309">WRITE MOVE</text>
+  <text x="448" y="601" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#b45309">LISTEN IN SONG</text>
+  <text x="720" y="601" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#b45309">TRIM OR BYPASS</text>
+  <text x="84" y="640" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#475569">Automation: Beyond Volume / delay throw feedback</text>
+</svg>
