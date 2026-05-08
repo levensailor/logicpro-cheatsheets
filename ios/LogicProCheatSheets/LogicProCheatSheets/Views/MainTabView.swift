@@ -3,6 +3,8 @@ import SwiftUI
 struct MainTabView: View {
     let bundle: ContentBundle
     @State private var selectedTab: AppTab = .home
+    @AppStorage(SettingsPreferences.themeStorageKey) private var preferredTheme: String = SettingsPreferences.systemTheme
+    @AppStorage(SettingsPreferences.textSizeStorageKey) private var preferredTextSize: String = SettingsPreferences.mediumTextSize
     private var trainingLessons: [TrainingLesson] {
         bundle.training.lessons
     }
@@ -42,21 +44,14 @@ struct MainTabView: View {
             }
             .tag(AppTab.saved)
 
-            MockTabView(
-                title: "Settings",
-                subtitle: "Tune the app for your studio workflow.",
-                symbolName: "gearshape.fill",
-                cards: [
-                    MockTabCard(title: "Content updates", detail: "Manage cached handbook content and refresh behavior."),
-                    MockTabCard(title: "Display", detail: "Adjust reading preferences for light and dark sessions."),
-                    MockTabCard(title: "Support", detail: "Find privacy, terms, contact, and app support links.")
-                ]
-            )
+            SettingsTabView()
             .tabItem {
                 Label("Settings", systemImage: "gearshape.fill")
             }
             .tag(AppTab.settings)
         }
+        .preferredColorScheme(SettingsPreferences.colorScheme(for: preferredTheme))
+        .dynamicTypeSize(SettingsPreferences.dynamicTypeSize(for: preferredTextSize))
     }
 }
 
@@ -665,6 +660,159 @@ private struct MockTabView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 24))
+    }
+}
+
+private enum SettingsPreferences {
+    static let themeStorageKey = "settings.preferredTheme"
+    static let textSizeStorageKey = "settings.preferredTextSize"
+
+    static let systemTheme = "system"
+    static let lightTheme = "light"
+    static let darkTheme = "dark"
+
+    static let smallTextSize = "small"
+    static let mediumTextSize = "medium"
+    static let largeTextSize = "large"
+
+    static func colorScheme(for theme: String) -> ColorScheme? {
+        switch theme {
+        case lightTheme:
+            return .light
+        case darkTheme:
+            return .dark
+        default:
+            return nil
+        }
+    }
+
+    static func dynamicTypeSize(for textSize: String) -> DynamicTypeSize {
+        switch textSize {
+        case smallTextSize:
+            return .small
+        case largeTextSize:
+            return .large
+        default:
+            return .medium
+        }
+    }
+}
+
+private struct SettingsTabView: View {
+    private let privacyURL = URL(string: "https://logicpro.guru/privacy")
+    private let termsURL = URL(string: "https://logicpro.guru/terms")
+    private let contactURL = URL(string: "https://logicpro.guru/contact")
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section("Preferences") {
+                    NavigationLink {
+                        DisplaySettingsView()
+                    } label: {
+                        SettingsRow(
+                            title: "Display",
+                            detail: "Adjust theme and reading size for studio sessions.",
+                            symbolName: "textformat.size"
+                        )
+                    }
+                }
+
+                Section("Support") {
+                    if let privacyURL {
+                        Link(destination: privacyURL) {
+                            SettingsRow(
+                                title: "Privacy",
+                                detail: "Review how the app handles data and syncing.",
+                                symbolName: "hand.raised.fill"
+                            )
+                        }
+                    }
+                    if let termsURL {
+                        Link(destination: termsURL) {
+                            SettingsRow(
+                                title: "Terms",
+                                detail: "Read the app terms of use.",
+                                symbolName: "doc.text.fill"
+                            )
+                        }
+                    }
+                    if let contactURL {
+                        Link(destination: contactURL) {
+                            SettingsRow(
+                                title: "Support",
+                                detail: "Contact support for app and content questions.",
+                                symbolName: "questionmark.bubble.fill"
+                            )
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Settings")
+            .listStyle(.insetGrouped)
+        }
+    }
+}
+
+private struct DisplaySettingsView: View {
+    @AppStorage(SettingsPreferences.themeStorageKey) private var preferredTheme: String = SettingsPreferences.systemTheme
+    @AppStorage(SettingsPreferences.textSizeStorageKey) private var preferredTextSize: String = SettingsPreferences.mediumTextSize
+
+    var body: some View {
+        List {
+            Section("Theme") {
+                Picker("Appearance", selection: $preferredTheme) {
+                    Label("System", systemImage: "gearshape.fill")
+                        .tag(SettingsPreferences.systemTheme)
+                    Label("Light", systemImage: "sun.max.fill")
+                        .tag(SettingsPreferences.lightTheme)
+                    Label("Dark", systemImage: "moon.fill")
+                        .tag(SettingsPreferences.darkTheme)
+                }
+                .pickerStyle(.segmented)
+            }
+
+            Section("Text size") {
+                Picker("Reading size", selection: $preferredTextSize) {
+                    Text("Small").tag(SettingsPreferences.smallTextSize)
+                    Text("Medium").tag(SettingsPreferences.mediumTextSize)
+                    Text("Large").tag(SettingsPreferences.largeTextSize)
+                }
+                .pickerStyle(.segmented)
+
+                Text("Display changes are applied immediately across the app.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .navigationTitle("Display")
+        .navigationBarTitleDisplayMode(.inline)
+        .listStyle(.insetGrouped)
+    }
+}
+
+private struct SettingsRow: View {
+    let title: String
+    let detail: String
+    let symbolName: String
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: symbolName)
+                .foregroundStyle(.tint)
+                .font(.headline)
+                .frame(width: 24, alignment: .center)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                Text(detail)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(.vertical, 4)
     }
 }
 

@@ -4,7 +4,7 @@
 - Wants the cheat sheet web app styled like a light flyer, including a white or near-white background and readable layout.
 - Wants sheet content rendered as editable, component-driven pages (not full-page static images); embedded images are acceptable for chart-like or illustration content.
 - Thinks of the app as a book/manual-style compilation that helps users record, mix, and master a band in Logic Pro; navigation and page structure should support chapter-style reading.
-- When following an attached implementation plan, do not modify the plan file itself—only implement against it.
+- When following an attached implementation plan, do not modify the plan file itself; execute it directly against existing todos without recreating them.
 - For Font Awesome SVG usage in this project, import Font Awesome’s base stylesheet so icons size correctly; the user was satisfied with the pre-tuning icon scale once core styles were fixed.
 - When sheets recommend plugins, show a screenshot or product-style image next to each plugin name (not names alone); local plugin image filenames may not exactly match plugin names, so fuzzy-match when clearly intended and ask the user to confirm when ambiguous.
 - Prefers compact, visually appealing reference layouts over verbose repeated-label tables; use compact tiles or detail-card layouts for dense cheat-sheet data when possible.
@@ -19,16 +19,7 @@
 - The app includes DAW/reference chapters beyond instrument sheets, including Audio Routing, Interfaces, Monitoring, Logic Pro Workflow, Automation, Plugins, Gain Staging & LUFS, and Appendix Audio Terms.
 - App Store support/legal surfaces are built into the site as `/privacy`, `/terms`, and `/contact` pages, with shared footer links.
 - The project originated from PNG cheat sheet assets, which were transcribed into structured data for the web app.
-- Shared content is exported as static JSON under `public/content/`, with `content.json` and `manifest.json` serving as the content source for remote clients.
+- Shared content is exported as static JSON under `public/content/`, with locale-aware bundles for iOS fallback and legacy `content.json`/`manifest.json` paths retained for compatibility.
 - A SwiftUI iOS app lives under `ios/LogicProCheatSheets`, is branded `Logic Pro.Guru`, and loads bundled, cached, and remote web-served content for offline use.
 - The iOS app uses a bottom tab navigation with Home, Library, Train, Saved, and Settings sections; the Library tab preserves the handbook chapter navigation, while other tabs host focused features like structured training lessons.
 - The iOS `HeaderLogo` asset uses appearance-aware light and dark banner variants through the asset catalog.
-
-## Cursor Cloud specific instructions
-
-- **Dev server**: `npm run dev` starts the Next.js 16 Turbopack dev server on port 3000. No environment variables or external services are required.
-- **Lint**: Next.js 16 removed the `next lint` CLI command. Run `npx eslint .` directly instead of `npm run lint`. The `eslint.config.mjs` flat config uses `eslint-config-next/core-web-vitals`.
-- **Build**: `npm run build` runs the content export script (`prebuild`) then `next build`. All content is statically generated.
-- **Content export**: `npm run export:content` writes `public/content/content.json` and `manifest.json` for the iOS client. Runs automatically before builds but is not needed for local dev.
-- **No database, no API keys, no `.env`**: The app is entirely static/SSG. All sheet data lives in `data/sheets/`, `data/plugins/`, and `data/training/`.
-- **Node.js 22**: Required (Next.js 16 needs Node 18.18+; Node 22 LTS is installed via nodesource).

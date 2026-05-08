@@ -74,6 +74,16 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
             </Link>
           );
         })}
+        <Link
+          href="/settings"
+          aria-label="Open settings"
+          className={`sheetTab ${pathname === "/settings" ? "active" : ""}`}
+        >
+          <span className="tabIcon" aria-hidden="true">
+            ⚙️
+          </span>
+          <span className="tabLabel">Settings</span>
+        </Link>
       </div>
     </nav>
   );

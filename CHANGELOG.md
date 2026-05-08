@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-05-03 13:04 EST
+- Replace mocked iOS Settings tab with a real Settings screen and a functional Display preferences page.
+- Add persistent iOS appearance (System/Light/Dark) and text size controls that apply app-wide.
+- Add iOS Settings support links for Privacy, Terms, and Contact.
+
 ## 2026-05-03 02:15 EST
 - Add user settings page with font size and light/dark mode support.
 - Implement global theme system with Light, Dark, and System preferences.
