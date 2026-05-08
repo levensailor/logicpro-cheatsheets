@@ -75,6 +75,11 @@ export default function HomePage() {
             <h3>Beginner Glossary</h3>
             <p>Plain-English definitions for gates, limiters, LUFS, shelves, filters, stereo, and other terms.</p>
           </article>
+          <Link href="/articles/compression" className="introFeatureCard">
+            <span className="introFeatureIcon">📖</span>
+            <h3>In-Depth Articles</h3>
+            <p>Comprehensive guides covering compression, EQ techniques, and advanced mixing concepts.</p>
+          </Link>
         </div>
       </section>
 
