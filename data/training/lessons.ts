@@ -674,6 +674,591 @@ export const trainingLessons: TrainingLesson[] = [
     ]
   },
   {
+    id: "stereo-tricks",
+    title: "Stereo Tricks",
+    series: "Spatial Mixing Series",
+    summary:
+      "A practical, mono-safe guide to creating width, movement, and depth in Logic Pro without phase problems or weak translation.",
+    duration: "38 min read",
+    symbolName: "arrow.left.arrow.right",
+    badges: ["New", "Stereo", "Intermediate"],
+    isFeatured: true,
+    checklist: [
+      "Keep kick, bass, snare focus, and lead vocal power anchored in the center.",
+      "Map the stereo field before adding widening tools.",
+      "Use arrangement, panning, and true double-tracking before artificial width.",
+      "Treat Haas, micro-pitch, chorus, and wideners as effects that require mono checks.",
+      "Keep sub-bass and low fundamentals controlled in mono.",
+      "Use mid/side EQ to clear edges without hollowing out the center.",
+      "Automate width so choruses and transitions feel larger than verses.",
+      "Watch correlation and toggle mono after every major stereo move.",
+      "Fix phase or polarity problems at the source before adding more processing.",
+      "Print a reference bounce and test it on speakers, headphones, phone, and mono playback."
+    ],
+    steps: [
+      {
+        number: 1,
+        title: "Start With a Mono-Safe Center",
+        concept:
+          "Stereo tricks only work when the core mix survives without them. The center carries power, groove, and lyric focus.",
+        actions: [
+          "Place kick, bass fundamentals, snare focus, and lead vocal near the center.",
+          "Build the first balance with no widening plugins active.",
+          "Toggle mono early so the song still feels complete before you create width."
+        ],
+        body:
+          "Width is exciting, but the listener usually judges the song by what happens in the middle. The kick and bass define weight, the snare often defines backbeat, and the lead vocal or lead melody tells the story. If those elements are unstable, no stereo effect will make the mix feel professional. Start by creating a strong center image with simple levels, EQ, compression, and panning. Then collapse the mix to mono with Logic's Gain plugin or your monitor controller. The mix should become narrower, not smaller in an alarming way. If the vocal vanishes, the bass thins out, or drums lose punch, solve that before adding width. This habit prevents the classic beginner mistake of building an impressive headphone image that falls apart on phones, club systems, laptops, and social media playback.",
+        symbolName: "scope",
+        visualTitle: "Center Anchor",
+        visualCaption: "Power in the middle, color on the sides.",
+        settings: {
+          "Center Elements": "Kick, bass, snare focus, lead vocal",
+          "First Check": "Mono before width",
+          "Goal": "Narrower in mono, not weaker"
+        },
+        proTip:
+          "Use a reference track and listen only to its center image for 20 seconds. Notice how much important information lives there even in very wide mixes.",
+        avoidThis:
+          "Do not widen the lead vocal, bass, or master bus just because the mix feels small. The arrangement or balance may be the real issue.",
+        checkYourWork:
+          "When summed to mono, the groove, lyric, and song identity remain clear and emotionally convincing.",
+        stepScreenshot: "/assets/training/stereo-tricks/step01_center_anchor.png"
+      },
+      {
+        number: 2,
+        title: "Read the Stereo Field Before You Widen",
+        concept:
+          "A stereo field is a map of musical roles. Diagnose empty areas and crowded areas before reaching for a stereo plugin.",
+        actions: [
+          "Listen once for left, center, and right placement without touching controls.",
+          "Write down which elements feel too narrow, too wide, or disconnected.",
+          "Use Logic's Multimeter or a correlation meter to watch the stereo relationship."
+        ],
+        body:
+          "Before making stereo changes, learn what the existing recording is already doing. Some sources are naturally wide, such as overheads, room mics, stereo synths, piano, and doubled guitars. Others are naturally focused, such as bass DI, kick, snare close mic, lead vocal, or a mono guitar amp. A common mistake is adding width to everything because the mix feels flat. That often creates a blurry ring around a weak center. Instead, play the chorus and make a quick stereo map: what owns the center, what supports the left side, what supports the right side, and what creates depth behind the lead. If one side feels heavy, fix arrangement or panning first. If the whole mix is narrow but balanced, choose one or two supporting elements to widen. Stereo work becomes cleaner when each move has a location and purpose.",
+        symbolName: "map",
+        visualTitle: "Stereo Map",
+        visualCaption: "Diagnose placement before processing.",
+        settings: {
+          "Meter": "Logic Multimeter correlation",
+          "Map Zones": "Left / Center / Right / Depth",
+          "Decision": "Widen only sources with a job"
+        },
+        proTip:
+          "Close your eyes and point to each important part while the mix plays. If you cannot locate it, the image may be too blurry or masked.",
+        avoidThis:
+          "Avoid judging width from soloed tracks. A beautiful solo image can become a phasey mess once the full arrangement returns.",
+        checkYourWork:
+          "You can describe where every main instrument lives before adding a new stereo processor.",
+        stepScreenshot: "/assets/training/stereo-tricks/step02_stereo_map.png"
+      },
+      {
+        number: 3,
+        title: "Pan With Arrangement Pairs",
+        concept:
+          "Panning is the safest stereo trick because it separates parts without changing their phase relationship.",
+        actions: [
+          "Pair similar supporting parts across left and right positions.",
+          "Keep important one-of-one elements closer to center unless the arrangement needs a special effect.",
+          "Balance the left and right energy by musical role, not by identical pan numbers."
+        ],
+        body:
+          "The most reliable width often comes from old-fashioned panning. When two complementary parts answer each other, panning them apart can create a wide image that still folds to mono cleanly. Rhythm guitars, percussion layers, backing vocals, keys, and ear-candy parts are good candidates. The trick is to pan arrangement roles, not random tracks. If a guitar chord part lives left, give the right side another part with similar energy or a delay/reverb return that balances it. If a shaker is bright on one side, maybe a tambourine, acoustic guitar texture, or short ambience supports the other side. Avoid making pan decisions only by symmetry; a sparse arrangement may need 25 percent left and 45 percent right instead of hard left and hard right. Panning should make the song easier to understand, not merely wider.",
+        symbolName: "slider.horizontal.3",
+        visualTitle: "Pan Pairs",
+        visualCaption: "Separate roles while balancing energy.",
+        settings: {
+          "Core": "Center or near-center",
+          "Support": "Complementary left/right positions",
+          "Hard Pan": "Use for confident pairs"
+        },
+        proTip:
+          "If one side feels louder after panning, adjust level before changing pan. The problem may be energy balance rather than location.",
+        avoidThis:
+          "Do not hard-pan a single important part with no counterweight unless that imbalance is an intentional production choice.",
+        checkYourWork:
+          "The mix feels wider in stereo, but every part remains audible and balanced when mono collapses the pan positions.",
+        stepScreenshot: "/assets/training/stereo-tricks/step03_panning_pairs.png"
+      },
+      {
+        number: 4,
+        title: "Use Real Double-Tracking First",
+        concept:
+          "Two genuine performances create width with fewer phase problems than copied tracks or artificial spreaders.",
+        actions: [
+          "Record a second performance instead of duplicating the same audio when possible.",
+          "Pan true doubles apart and level them as one combined arrangement layer.",
+          "Edit timing enough for tightness, but leave small human differences for width."
+        ],
+        body:
+          "Real double-tracking is one of the best stereo tricks because it uses performance variation instead of phase manipulation. Two guitar takes playing the same part are never perfectly identical. Tiny timing, pick attack, tuning, and tone differences make the left and right sides feel wide while remaining musically related. The same approach works for backing vocals, gang vocals, claps, percussion, and some synth layers. In Logic, record the second take on a separate track, choose complementary tones if needed, and pan the pair apart. Tighten obvious mistakes, but do not edit every transient until both sides are identical; the differences are the width. If you only duplicate one region and pan the copies left and right, you have not created stereo. You have made louder mono unless you add delay, pitch, or processing, and those tools bring phase risks.",
+        symbolName: "rectangle.stack",
+        visualTitle: "True Doubles",
+        visualCaption: "Performance differences create natural width.",
+        settings: {
+          "Best Sources": "Guitars, BGVs, claps, percussion",
+          "Pan Starting Point": "50-100% apart",
+          "Edit Goal": "Tight but not identical"
+        },
+        proTip:
+          "For heavy guitars, try one brighter amp tone on one side and a slightly darker tone on the other. The contrast can sound bigger than identical tones.",
+        avoidThis:
+          "Avoid copying a mono take, panning it left and right, and expecting width. Identical copies still sum as mono.",
+        checkYourWork:
+          "The doubled part sounds wide in stereo and remains strong, though naturally denser, when checked in mono.",
+        stepScreenshot: "/assets/training/stereo-tricks/step04_true_double_tracking.png"
+      },
+      {
+        number: 5,
+        title: "Build Haas Width Carefully",
+        concept:
+          "Very short left/right delays can create apparent width, but they can also cause comb filtering in mono.",
+        actions: [
+          "Duplicate or send a mono source to a short delay path.",
+          "Delay one side roughly 8-20 ms and keep feedback off.",
+          "Check mono immediately and reduce delay level if tone becomes hollow."
+        ],
+        body:
+          "The Haas effect uses tiny timing differences to make a sound feel wide or shifted to one side. In Logic, you can experiment with Sample Delay, Delay Designer, Sample Delay on one side, or a short stereo delay with no feedback. Start conservatively: a delay between about 8 and 20 ms can widen a guitar, percussion hit, or background vocal without sounding like an obvious echo. The danger is mono compatibility. When the delayed side folds together with the dry side, the timing difference creates peaks and dips called comb filtering. The source may become nasal, hollow, or weaker. For that reason, Haas width works best on supporting parts that can tolerate tonal change. Keep important anchors dry, blend the effect low, and bypass it often. If the source sounds worse in mono, narrow the effect or choose true doubling instead.",
+        symbolName: "timer",
+        visualTitle: "Haas Delay",
+        visualCaption: "Tiny delays create width with tradeoffs.",
+        settings: {
+          "Delay Range": "8-20 ms",
+          "Feedback": "0%",
+          "Risk": "Comb filtering in mono"
+        },
+        proTip:
+          "Filter the delayed side slightly darker than the dry side. A softer delayed copy often widens without drawing attention to phase artifacts.",
+        avoidThis:
+          "Do not use Haas widening on bass fundamentals, kick, lead vocal, or the full mix unless you have a very specific effect in mind.",
+        checkYourWork:
+          "The widened source still supports the song in mono and does not sound hollow, nasal, or dramatically quieter.",
+        stepScreenshot: "/assets/training/stereo-tricks/step05_haas_delay.png"
+      },
+      {
+        number: 6,
+        title: "Widen With Micro-Pitch, Not Guesswork",
+        concept:
+          "Small pitch differences between sides can create lush width when blended behind the dry signal.",
+        actions: [
+          "Create a stereo aux or duplicate return for the widening effect.",
+          "Shift one side slightly up and the other slightly down, usually under 10 cents.",
+          "Blend quietly under the dry track and check for chorus-like wobble."
+        ],
+        body:
+          "Micro-pitch widening is common on vocals, synths, guitars, and effects returns because it creates width without relying only on timing delay. The classic idea is simple: one side is pitched a few cents up, the other a few cents down, sometimes with a very short delay. In Logic, you can approach this with Pitch Shifter, Vocal Transformer used subtly, or third-party pitch/doubler tools if available. The dry signal should usually remain centered and emotionally stable while the pitch-shifted return adds a halo around it. Keep the blend lower than you think. If the lead starts to sound seasick, detached, or out of tune, the effect is too loud or the pitch spread is too wide. Micro-pitch is a color, not a replacement for a good take. It works best when the listener feels size but does not notice the machine.",
+        symbolName: "waveform.path",
+        visualTitle: "Micro-Pitch Halo",
+        visualCaption: "Small cents, low blend, stable dry center.",
+        settings: {
+          "Pitch Offset": "+/- 3 to 9 cents",
+          "Blend": "Low under dry source",
+          "Best Use": "Vocals, synths, guitars, FX"
+        },
+        proTip:
+          "High-pass the pitch return so low mids do not smear the lead. Often the shine above 200-300 Hz is all you need.",
+        avoidThis:
+          "Do not tune the widened return so aggressively that it becomes a second melody fighting the original.",
+        checkYourWork:
+          "The source feels larger in stereo while pitch center, lyric focus, and mono tone remain reliable.",
+        stepScreenshot: "/assets/training/stereo-tricks/step06_micropitch.png"
+      },
+      {
+        number: 7,
+        title: "Create Width With Short Stereo Delays",
+        concept:
+          "Tempo-aware left/right delays add size and rhythm while staying easier to manage than random widening.",
+        actions: [
+          "Set up a stereo delay aux instead of inserting delay directly on every track.",
+          "Use different note values or milliseconds left and right.",
+          "Filter the return so repeats leave room for the dry center."
+        ],
+        body:
+          "Short stereo delays can make a mono source feel wide without moving the dry source away from the center. Instead of a static widening plugin, use a send to a delay aux and design the return like an arrangement part. A vocal might use a quiet 1/16 note on one side and a dotted 1/8 on the other. A guitar might use 70 ms left and 110 ms right with no obvious feedback. A synth hook might get ping-pong movement only at phrase endings. Logic's Stereo Delay, Tape Delay, and Delay Designer are all useful here. Filter lows out of the return and roll off some highs if the delay distracts from the lead. The advantage of a send is control: you can automate throws, mute the return in dense sections, and keep the original track solid. Delay width should create space and groove, not clutter.",
+        symbolName: "metronome",
+        visualTitle: "Stereo Delays",
+        visualCaption: "Asymmetrical repeats widen with rhythm.",
+        settings: {
+          "Short Delay": "60-120 ms",
+          "Tempo Throws": "1/16, 1/8, dotted 1/8",
+          "Return EQ": "High-pass and soften highs"
+        },
+        proTip:
+          "Automate send level for the last word of a vocal phrase. The mix feels wide during gaps while the lyric stays dry and clear.",
+        avoidThis:
+          "Avoid full-range stereo delays on every phrase. Repeats that fight consonants and transients reduce clarity.",
+        checkYourWork:
+          "The dry source remains focused while the delay return creates width, rhythm, or transition energy around it.",
+        stepScreenshot: "/assets/training/stereo-tricks/step07_stereo_delays.png"
+      },
+      {
+        number: 8,
+        title: "Shape Reverb Width and Depth",
+        concept:
+          "Reverb can create a wide environment, but uncontrolled low end and long tails can wash out the mix.",
+        actions: [
+          "Use shared reverb auxes so multiple elements live in related spaces.",
+          "Narrow or filter low-frequency reverb content.",
+          "Use pre-delay to keep the dry source forward while the reverb blooms behind it."
+        ],
+        body:
+          "Reverb is a stereo trick because it tells the ear where the source exists in a space. A dry vocal can stay centered while a plate or chamber return spreads around it. A snare can remain punchy while a short room gives it shoulders. A guitar can sit wide because its ambience reaches beyond the speaker positions. The key is shaping the return. In Logic, ChromaVerb, Space Designer, and SilverVerb-style tools can all work, but the return should be filtered and placed intentionally. High-pass the reverb so kick, bass, and low vocal chest do not smear. Use pre-delay, often 20-80 ms depending on tempo, so the dry attack speaks before the wash. If the reverb is too wide, use Direction Mixer or panning on the return. Reverb width should frame the song, not cover it with fog.",
+        symbolName: "sparkles",
+        visualTitle: "Wide Reverb",
+        visualCaption: "Dry center, spacious sides, filtered lows.",
+        settings: {
+          "Pre-Delay": "20-80 ms",
+          "Return HPF": "150-300 Hz starting point",
+          "Width": "Adjust return, not dry anchor"
+        },
+        proTip:
+          "Try a narrower verse reverb and a wider chorus reverb. The chorus can feel bigger without changing the lead vocal level.",
+        avoidThis:
+          "Do not leave huge stereo reverbs full-range by default. Low-frequency ambience can make a mix feel late and unfocused.",
+        checkYourWork:
+          "The reverb creates depth and width while the dry source remains intelligible at low listening volume.",
+        stepScreenshot: "/assets/training/stereo-tricks/step08_wide_reverb.png"
+      },
+      {
+        number: 9,
+        title: "Use Mid/Side EQ for Separation",
+        concept:
+          "Mid/side EQ lets you treat the center and edges differently, which can add clarity without pushing faders.",
+        actions: [
+          "Use mid/side processing only after the basic balance works.",
+          "Cut low-mid buildup from the sides when the mix feels cloudy.",
+          "Add small side brightness only to sources or buses that can support it."
+        ],
+        body:
+          "Mid/side processing separates the center information from the side information. The mid channel contains what is common to left and right; the side channel contains differences between them. This is powerful because many width problems are really frequency problems. A wide keyboard may sound impressive but crowd the vocal with side low mids. A reverb return may be beautiful but too dark and heavy around the edges. With a mid/side-capable EQ, you can reduce 200-500 Hz on the sides, brighten the side air slightly, or keep low frequencies stronger in the mid. Logic's stock Channel EQ is not always the most direct mid/side interface, so use available mid/side-capable tools when you have them, or use routing carefully. Make small moves. Mid/side EQ can quickly make a mix sound hollow if the center and sides stop feeling connected.",
+        symbolName: "waveform.path.ecg",
+        visualTitle: "Mid / Side EQ",
+        visualCaption: "Clean the edges while protecting the center.",
+        settings: {
+          "Side Mud": "Cut 200-500 Hz gently",
+          "Side Air": "Small shelf, if needed",
+          "Low End": "Prefer mid stability"
+        },
+        proTip:
+          "If a side boost sounds exciting, level-match it before deciding. Extra side brightness often feels better only because it got louder.",
+        avoidThis:
+          "Do not carve the mid channel so deeply that the mix loses vocal, snare, bass, or mono identity.",
+        checkYourWork:
+          "The stereo edges feel cleaner, but the mix still sounds natural and full when switched back to standard stereo or mono.",
+        stepScreenshot: "/assets/training/stereo-tricks/step09_mid_side_eq.png"
+      },
+      {
+        number: 10,
+        title: "Keep Low End Focused",
+        concept:
+          "Sub and bass fundamentals usually translate best when they are centered and phase-stable.",
+        actions: [
+          "Keep kick and bass fundamentals mono or very narrow.",
+          "Widen harmonics above the low end instead of widening sub frequencies.",
+          "Check low-end translation on headphones, speakers, and mono playback."
+        ],
+        body:
+          "Low-frequency stereo can feel impressive on headphones, but it often causes weak translation. Club systems, phones, Bluetooth speakers, and many playback paths sum or partially sum low end. If the bass fundamentals are wide and phasey, they can disappear or hit unevenly. A safer trick is to keep the low band centered while widening upper harmonics. For bass guitar, synth bass, or 808-style sounds, split the idea mentally: the sub and fundamental provide stable weight; saturation, chorus, room, or parallel distortion above the low band provide size. You can high-pass a stereo effect return so it adds character without touching the bottom. On the mix bus, avoid stereo widening that expands the entire frequency range. If you use Direction Mixer or other imaging tools, protect lows first. A wide mix with weak bass rarely feels finished.",
+        symbolName: "speaker.wave.2",
+        visualTitle: "Mono Low End",
+        visualCaption: "Center the weight, widen upper harmonics.",
+        settings: {
+          "Mono Focus": "Below 80-150 Hz",
+          "Widen": "Harmonics above low band",
+          "Check": "Mono and small speakers"
+        },
+        proTip:
+          "If bass feels too narrow, add a distorted parallel track high-passed around 150 Hz and spread that instead of the clean low track.",
+        avoidThis:
+          "Avoid chorus or stereo spread directly on sub-heavy bass unless you filter or split the effect.",
+        checkYourWork:
+          "The low end stays punchy and even when mono, while upper harmonics can still feel wide in stereo.",
+        stepScreenshot: "/assets/training/stereo-tricks/step10_mono_low_end.png"
+      },
+      {
+        number: 11,
+        title: "Make Drums Wide Without Losing Punch",
+        concept:
+          "Drum width comes from overheads, rooms, percussion, and ambience while close-mic punch stays centered.",
+        actions: [
+          "Anchor kick, snare close mic, and main drum bus impact near center.",
+          "Pan overheads from the drummer or audience perspective and keep the kit believable.",
+          "Use room and parallel returns to add shoulder width behind the close mics."
+        ],
+        body:
+          "Drums are a perfect place to separate punch from image. The kick, snare close mic, and low tom power usually need a strong center so the groove hits consistently. Width can come from overheads, stereo rooms, cymbal spread, percussion overdubs, short ambience, and parallel compression returns. Start by choosing a perspective: drummer perspective places hi-hat usually left from the drummer's seat, audience perspective flips it. Either is valid; consistency matters more than dogma. Check overhead polarity against the snare close mic before processing because phase problems here can destroy punch. If the kit feels narrow, do not immediately widen the whole drum bus. Try raising room mics, panning percussion, or adding a short stereo room reverb. A drum image should feel like a kit in a space, not a collection of unrelated wide objects.",
+        symbolName: "circle.grid.cross",
+        visualTitle: "Drum Image",
+        visualCaption: "Center punch, wide rooms and cymbals.",
+        settings: {
+          "Center": "Kick, snare close, main punch",
+          "Width": "Overheads, rooms, percussion",
+          "First Fix": "Check polarity and phase"
+        },
+        proTip:
+          "Listen to the snare while toggling overheads in mono. If snare body gets smaller, phase alignment may need attention before mixing.",
+        avoidThis:
+          "Do not widen the entire drum bus to fix narrow cymbals. You may smear kick and snare transients.",
+        checkYourWork:
+          "The kit feels wide and realistic in stereo while kick and snare punch remain strong in mono.",
+        stepScreenshot: "/assets/training/stereo-tricks/step11_drum_image.png"
+      },
+      {
+        number: 12,
+        title: "Spread Guitars and Keys Without Masking",
+        concept:
+          "Wide harmonic beds can make a chorus huge, but they must leave space for vocal and snare focus.",
+        actions: [
+          "Use panning and complementary tones before adding stereo spread.",
+          "High-pass or low-mid cut wide beds that cloud the center.",
+          "Automate support layers down when the lead vocal or solo needs attention."
+        ],
+        body:
+          "Guitars, keys, pads, and synth layers often become the width of a production. They also create some of the worst masking problems because they fill the same midrange that vocals, snare crack, and lead instruments need. Treat wide harmonic parts like scenery around the actor. Double-track guitars when possible, pan keyboard layers by register, and avoid stacking every pad in full stereo. If the chorus needs size, choose which layer owns the far edges and which layer supports closer to center. Use EQ to remove unnecessary low mids from wide beds, especially around 150-400 Hz, and use automation when lyrics are dense. Stereo Spread or chorus can be useful on keys, but check the center after applying it. A wide bed should make the mix feel expensive while leaving a clear hole for the lead.",
+        symbolName: "guitars",
+        visualTitle: "Harmonic Beds",
+        visualCaption: "Wide support around a clear lead lane.",
+        settings: {
+          "Mask Zone": "150-400 Hz and 2-5 kHz",
+          "Best Width": "Doubles, panning, layered registers",
+          "Automation": "Tuck under dense vocals"
+        },
+        proTip:
+          "Mute the lead vocal and make the instrumental feel wide, then unmute the vocal and carve only what blocks the lyric.",
+        avoidThis:
+          "Avoid making every keyboard patch maximum stereo. Multiple ultra-wide parts can collapse into an undefined wash.",
+        checkYourWork:
+          "The chorus feels wide, but vocal words and snare attack remain easy to locate.",
+        stepScreenshot: "/assets/training/stereo-tricks/step12_harmonic_beds.png"
+      },
+      {
+        number: 13,
+        title: "Give Lead Vocals Width While Staying Centered",
+        concept:
+          "A lead vocal can feel large through side information while its dry body remains locked in the middle.",
+        actions: [
+          "Keep the main lead vocal dry signal centered.",
+          "Use stereo doubles, micro-pitch, slap, delay throws, or reverb returns around it.",
+          "Filter and automate vocal effects so words stay intelligible."
+        ],
+        body:
+          "Lead vocal width is a balancing act. The singer should feel present in the center, but the production may need a larger-than-life halo. The safest approach is parallel width. Keep the main vocal track centered and use sends or doubles for the sides. Real double-tracked chorus vocals can be panned wide. Micro-pitch can add a glossy outline. A stereo slap can thicken without obvious repeats. Reverb can frame the voice behind the lead. Delay throws can expand selected words at the ends of lines. Each effect should be filtered so consonants and low-mid body do not smear. Automate effect sends: drier during fast lyrics, wider during held notes, ad-libs, and transitions. If the lead vocal becomes hard to understand, the width is stealing attention. The listener should hear the vocal first and the stereo magic second.",
+        symbolName: "waveform.and.mic",
+        visualTitle: "Vocal Halo",
+        visualCaption: "Centered lead with controlled side effects.",
+        settings: {
+          "Dry Lead": "Center",
+          "Width Sources": "Doubles, pitch, slap, reverb, throws",
+          "Automation": "More width in gaps and hooks"
+        },
+        proTip:
+          "Use separate effects for thickness and space. A short slap can widen the vocal while a longer reverb handles depth.",
+        avoidThis:
+          "Do not make the dry lead itself phasey just to chase width. If the lyric blurs, the mix loses its anchor.",
+        checkYourWork:
+          "The vocal feels larger in stereo, but the main performance stays centered, intelligible, and strong in mono.",
+        stepScreenshot: "/assets/training/stereo-tricks/step13_vocal_width.png"
+      },
+      {
+        number: 14,
+        title: "Use Stereo Modulation as Texture",
+        concept:
+          "Chorus, flanging, phasing, tremolo, and rotary effects can add movement when they serve the arrangement.",
+        actions: [
+          "Choose one modulation job: shimmer, wobble, motion, or transition.",
+          "Blend modulation on an aux or parallel layer when the dry track needs stability.",
+          "Sync rate or movement to the song when rhythmic pulsing matters."
+        ],
+        body:
+          "Stereo modulation can make a part feel alive. Chorus spreads guitars and synths. Tremolo can move a keyboard pulse between speakers. Phaser or flanger can create a psychedelic sweep. Rotary speaker effects can make organs and guitars feel three-dimensional. These sounds are powerful because they move over time, not just because they are wide. The risk is listener fatigue and mono unpredictability. If every layer is modulating, the mix stops feeling grounded. Use modulation as a texture assigned to specific parts or moments. In Logic, Modulation Delay, Chorus, Ensemble, Phaser, Tremolo, and Rotor-style effects can all contribute. Put them on an aux when you want the dry source stable, or insert them directly when the effect defines the sound. Always test the busiest section because modulation that works in a verse may become seasick in a chorus.",
+        symbolName: "dial.medium",
+        visualTitle: "Modulation Texture",
+        visualCaption: "Movement should support the song.",
+        settings: {
+          "Rate": "Tempo-aware if rhythmic",
+          "Blend": "Parallel for stability",
+          "Use": "Specific part or moment"
+        },
+        proTip:
+          "Automate modulation depth up for a transition, then pull it back once the next section lands.",
+        avoidThis:
+          "Avoid stacking chorus, flanger, phaser, and stereo widening on the same source unless the obvious effect is intentional.",
+        checkYourWork:
+          "The modulation adds movement or identity without making the whole mix drift, wobble, or lose mono clarity.",
+        stepScreenshot: "/assets/training/stereo-tricks/step14_modulation_texture.png"
+      },
+      {
+        number: 15,
+        title: "Automate Width by Song Section",
+        concept:
+          "Contrast makes width feel bigger. A chorus sounds wider when the verse leaves room for expansion.",
+        actions: [
+          "Make a section map before automating width.",
+          "Narrow some verse effects and widen selected chorus or bridge layers.",
+          "Use transition throws, reverb blooms, and widening automation to create lift."
+        ],
+        body:
+          "If everything is wide all the time, nothing feels wide. Width is most effective when it changes with the song's emotional arc. A verse might keep guitars closer, reverbs shorter, and delays tucked. The pre-chorus might introduce a filtered stereo delay or a widening pad. The chorus can open doubled guitars, backing vocals, cymbal spread, and a wider reverb return. Logic automation makes this easy: write send levels, plugin bypass, Direction Mixer spread, delay feedback, reverb size, or aux return volume by section. Start with big moves before drawing tiny details. The listener should feel the chorus open, not notice a technical trick. Also consider narrowing breakdowns or bridges so the final chorus feels huge. Stereo automation turns width into arrangement storytelling instead of a static setting.",
+        symbolName: "point.3.filled.connected.trianglepath.dotted",
+        visualTitle: "Width Automation",
+        visualCaption: "Narrower verses make wider hooks.",
+        settings: {
+          "Verse": "Focused and controlled",
+          "Chorus": "Open selected layers",
+          "Transitions": "Throws, blooms, spread changes"
+        },
+        proTip:
+          "Automate width down for the bar before a chorus drop. The sudden expansion can feel bigger than boosting the chorus level.",
+        avoidThis:
+          "Do not automate every stereo parameter at once. Too many moving edges can make the mix feel unstable.",
+        checkYourWork:
+          "The song feels like it expands and contracts naturally across sections without losing balance.",
+        stepScreenshot: "/assets/training/stereo-tricks/step15_width_automation.png"
+      },
+      {
+        number: 16,
+        title: "Use Binaural Panning Only for Headphone Moments",
+        concept:
+          "Binaural placement can be dramatic on headphones, but it is less predictable on speakers and in mono.",
+        actions: [
+          "Reserve binaural effects for ear candy, intros, transitions, and headphone-focused productions.",
+          "Keep essential musical information in standard stereo or mono-safe paths.",
+          "Check the result on speakers because headphone illusions may not translate."
+        ],
+        body:
+          "Binaural panning uses head-related cues to make sound appear around or behind the listener, especially on headphones. Logic includes binaural panning options that can be inspiring for ad-libs, sound design, percussion, whispers, risers, and immersive moments. The important word is moments. Binaural effects can collapse strangely on speakers because the left and right channels interact acoustically in the room. They can also lose impact when a platform or device sums playback. Keep the main song information safe: lead vocal meaning, groove, bass, and key hooks should not depend on a headphone-only illusion. Use binaural placement like lighting in a stage show. It can make a transition memorable or place a texture outside the normal speaker line, but the song should still work when the trick disappears. Print and check these effects carefully before delivery.",
+        symbolName: "headphones",
+        visualTitle: "Binaural Moments",
+        visualCaption: "Great for headphones, risky as a foundation.",
+        settings: {
+          "Best Use": "Ear candy, transitions, sound design",
+          "Keep Safe": "Lead, groove, bass, hooks",
+          "Verify": "Headphones, speakers, mono"
+        },
+        proTip:
+          "Place a quiet binaural detail before a hook to make headphone listeners lean in, while the main hook remains standard stereo.",
+        avoidThis:
+          "Avoid building the entire lead vocal or core rhythm around binaural cues unless the release format is specifically headphone-first.",
+        checkYourWork:
+          "The binaural effect is exciting on headphones but the song still communicates clearly on normal speakers.",
+        stepScreenshot: "/assets/training/stereo-tricks/step16_binaural_panner.png"
+      },
+      {
+        number: 17,
+        title: "Layer Mono and Stereo Copies Safely",
+        concept:
+          "A stable mono layer plus a filtered stereo layer can create size without sacrificing focus.",
+        actions: [
+          "Keep one clean version centered for definition.",
+          "Create a stereo parallel layer for width, distortion, ambience, or modulation.",
+          "Filter the parallel layer so it supports rather than masks the main source."
+        ],
+        body:
+          "One advanced but practical trick is to separate definition from width. The mono or narrow layer provides attack, pitch, lyric, or groove. The stereo layer provides size, color, and air. This works on bass, vocals, synth leads, percussion loops, and even some drums. For example, a mono bass DI can hold the low end while a distorted stereo aux adds growl above 200 Hz. A centered vocal can stay dry while a filtered stereo slap provides width. A mono synth lead can cut through while a chorus return surrounds it. The parallel layer should usually be filtered, compressed, saturated, or automated differently from the main source. Do not just duplicate full-range audio and make it wide; that often masks the original. Think of the stereo copy as a shadow or glow, not a second competing instrument.",
+        symbolName: "square.stack.3d.up",
+        visualTitle: "Parallel Width",
+        visualCaption: "Mono definition plus stereo glow.",
+        settings: {
+          "Main Layer": "Clean, centered, defined",
+          "Stereo Layer": "Filtered and blended",
+          "Use Cases": "Bass growl, vocal slap, synth halo"
+        },
+        proTip:
+          "If the stereo layer makes the main source quieter, invert bypass comparisons at matched level and check whether masking increased.",
+        avoidThis:
+          "Do not leave the parallel layer full-range by default. It should occupy only the frequencies that add useful size.",
+        checkYourWork:
+          "The combined sound is bigger than the mono layer, but muting the stereo layer does not reveal that the core part depended on it.",
+        stepScreenshot: "/assets/training/stereo-tricks/step17_parallel_width.png"
+      },
+      {
+        number: 18,
+        title: "Use Correlation and Mono Checks",
+        concept:
+          "Meters do not mix for you, but they reveal stereo moves that may fail outside your room.",
+        actions: [
+          "Place Logic's Multimeter or a correlation meter on the stereo output.",
+          "Watch for sustained negative correlation during important sections.",
+          "Toggle mono after every major width, delay, modulation, or mid/side change."
+        ],
+        body:
+          "A correlation meter shows how similar or different the left and right channels are. A reading near +1 means highly mono or in phase. Around 0 means wide or decorrelated. Sustained negative values suggest the sides are out of phase and may cancel when summed. Do not panic over a quick dip during a cymbal wash or special effect. Do pay attention when the chorus, vocal, bass, or full mix spends a long time negative. Logic's Multimeter is useful here because it pairs visual feedback with your mono button. The workflow is simple: make a stereo move, listen in stereo, glance at correlation, switch to mono, and listen again. Trust your ears first, but let the meter warn you when excitement may be coming from cancellation. The goal is not a perfectly mono mix; the goal is width that survives real playback.",
+        symbolName: "waveform.and.magnifyingglass",
+        visualTitle: "Correlation Check",
+        visualCaption: "Use meters as warning lights.",
+        settings: {
+          "+1": "Mono / strongly in phase",
+          "0": "Wide / decorrelated",
+          "-1": "Likely mono cancellation"
+        },
+        proTip:
+          "Put a mono Gain plugin and Multimeter near the end of your stereo output while mixing, then bypass them before bouncing if they are only utilities.",
+        avoidThis:
+          "Do not chase meter perfection at the expense of the song. Short negative moments can be fine when the musical result translates.",
+        checkYourWork:
+          "Major stereo moves keep important sections mostly stable and the mono button reveals no disappearing anchors.",
+        stepScreenshot: "/assets/training/stereo-tricks/step18_correlation_check.png"
+      },
+      {
+        number: 19,
+        title: "Fix Phase Problems Before Adding More Width",
+        concept:
+          "Phase issues are source problems. Widening a broken source usually makes the damage louder.",
+        actions: [
+          "Check polarity and timing between multi-mic sources before processing.",
+          "Nudge or delay close and distant mics only when it improves the combined tone.",
+          "Bypass wideners while diagnosing phase so the cause is clear."
+        ],
+        body:
+          "Some stereo problems begin long before the mix bus. Drum overheads may fight the snare close mic. A bass DI and amp mic may arrive at different times. A stereo keyboard patch may include phasey modulation. A guitar recorded with two microphones may sound huge in solo and thin in the track. If you add widening to those sources, you exaggerate the confusion. Diagnose first. Flip polarity where appropriate, compare timing, and listen for low-end weight, transient punch, and tonal fullness. In Logic, region nudging, Sample Delay, and polarity controls in Gain can help, but use them with ears rather than a grid obsession. Perfect visual alignment is not always the best sound; the best alignment is the one that supports the mix. Once the source is healthy, width tools become optional polish instead of emergency medicine.",
+        symbolName: "wrench.and.screwdriver.fill",
+        visualTitle: "Phase Repair",
+        visualCaption: "Correct the source before widening.",
+        settings: {
+          "Tools": "Gain polarity, Sample Delay, region nudge",
+          "Listen For": "Punch, body, stable tone",
+          "Rule": "Fix first, widen second"
+        },
+        proTip:
+          "Loop the loudest downbeat and switch between polarity states at matched level. The better choice usually sounds fuller immediately.",
+        avoidThis:
+          "Do not keep adding stereo spread to a source that already gets smaller when summed to mono.",
+        checkYourWork:
+          "Multi-mic sources sound fuller and more focused before any width effect is reintroduced.",
+        stepScreenshot: "/assets/training/stereo-tricks/step19_phase_repair.png"
+      },
+      {
+        number: 20,
+        title: "Print, Reference, and Translate",
+        concept:
+          "The final stereo test is not how impressive the mix sounds in one sweet spot; it is how well it survives everywhere.",
+        actions: [
+          "Bounce a short reference after major stereo decisions.",
+          "Check headphones, monitors, phone speaker, car or small Bluetooth, and mono.",
+          "Write one fix list and adjust only the problems that repeat across systems."
+        ],
+        body:
+          "Stereo decisions can fool you because they are highly dependent on monitoring. Headphones exaggerate left/right separation because each ear receives only one channel. Speakers create acoustic crossfeed because both ears hear both speakers. Phone speakers may be mono or nearly mono. Cars can hype width with reflective cabins. This is why printing a short reference is part of the stereo process. Bounce the loudest chorus and a sparse verse, then listen in several contexts. Do not chase every tiny difference; look for repeatable problems. Does the chorus lose bass in mono? Does the vocal feel detached on headphones? Do guitars dominate one side in the car? Does the reverb blur lyrics on the phone? Make a short fix list, return to Logic, and solve the highest-impact items. A finished stereo image feels wide, intentional, and emotionally stable across imperfect playback.",
+        symbolName: "checkmark.seal",
+        visualTitle: "Translation Pass",
+        visualCaption: "Great width survives real playback.",
+        settings: {
+          "Bounce": "Short verse + loud chorus",
+          "Systems": "Monitors, headphones, phone, car, mono",
+          "Fix List": "Only repeated translation issues"
+        },
+        proTip:
+          "Keep a folder of quick stereo reference bounces. Comparing versions prevents you from undoing a strong earlier image by over-processing later.",
+        avoidThis:
+          "Avoid changing the whole mix after one bad playback impression. Confirm the issue repeats before making big stereo moves.",
+        checkYourWork:
+          "The final reference feels wide in stereo, dependable in mono, and balanced across normal listener devices.",
+        stepScreenshot: "/assets/training/stereo-tricks/step20_translation_check.png"
+      }
+    ]
+  },
+  {
     id: "frequently-asked-questions",
     title: "Frequently Asked Questions",
     series: "Essential Knowledge Series",
