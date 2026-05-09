@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "20260509T171259Z",
-  "generatedAt": "2026-05-09T17:12:59.561Z",
+  "contentVersion": "20260509T171357Z",
+  "generatedAt": "2026-05-09T17:13:57.499Z",
   "minAppVersion": "1.0.0",
   "navItems": [
     {
@@ -11145,7 +11145,7 @@
               "Toggle mono early so the song still feels complete before you create width."
             ],
             "body": "Width is exciting, but the listener usually judges the song by what happens in the middle. The kick and bass define weight, the snare often defines backbeat, and the lead vocal or lead melody tells the story. If those elements are unstable, no stereo effect will make the mix feel professional. Start by creating a strong center image with simple levels, EQ, compression, and panning. Then collapse the mix to mono with Logic's Gain plugin or your monitor controller. The mix should become narrower, not smaller in an alarming way. If the vocal vanishes, the bass thins out, or drums lose punch, solve that before adding width. This habit prevents the classic beginner mistake of building an impressive headphone image that falls apart on phones, club systems, laptops, and social media playback.",
-            "symbolName": "scope",
+            "symbolName": "target",
             "visualTitle": "Center Anchor",
             "visualCaption": "Power in the middle, color on the sides.",
             "settings": {
@@ -11375,7 +11375,7 @@
               "Use room and parallel returns to add shoulder width behind the close mics."
             ],
             "body": "Drums are a perfect place to separate punch from image. The kick, snare close mic, and low tom power usually need a strong center so the groove hits consistently. Width can come from overheads, stereo rooms, cymbal spread, percussion overdubs, short ambience, and parallel compression returns. Start by choosing a perspective: drummer perspective places hi-hat usually left from the drummer's seat, audience perspective flips it. Either is valid; consistency matters more than dogma. Check overhead polarity against the snare close mic before processing because phase problems here can destroy punch. If the kit feels narrow, do not immediately widen the whole drum bus. Try raising room mics, panning percussion, or adding a short stereo room reverb. A drum image should feel like a kit in a space, not a collection of unrelated wide objects.",
-            "symbolName": "circle.grid.cross",
+            "symbolName": "waveform",
             "visualTitle": "Drum Image",
             "visualCaption": "Center punch, wide rooms and cymbals.",
             "settings": {
@@ -11398,7 +11398,7 @@
               "Automate support layers down when the lead vocal or solo needs attention."
             ],
             "body": "Guitars, keys, pads, and synth layers often become the width of a production. They also create some of the worst masking problems because they fill the same midrange that vocals, snare crack, and lead instruments need. Treat wide harmonic parts like scenery around the actor. Double-track guitars when possible, pan keyboard layers by register, and avoid stacking every pad in full stereo. If the chorus needs size, choose which layer owns the far edges and which layer supports closer to center. Use EQ to remove unnecessary low mids from wide beds, especially around 150-400 Hz, and use automation when lyrics are dense. Stereo Spread or chorus can be useful on keys, but check the center after applying it. A wide bed should make the mix feel expensive while leaving a clear hole for the lead.",
-            "symbolName": "guitars",
+            "symbolName": "music.note",
             "visualTitle": "Harmonic Beds",
             "visualCaption": "Wide support around a clear lead lane.",
             "settings": {
