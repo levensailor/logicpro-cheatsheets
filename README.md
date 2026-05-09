@@ -40,6 +40,7 @@ The iOS app loads bundled seed content first, then checks `/content/manifest.jso
 - Main app: `https://logicpro.guru`
 - Default sheet route: `https://logicpro.guru/sheets/bass-guitar-mixing`
 - Additional routes: `/sheets/<sheet-id>` for each sheet ID in `data/sheets/index.ts`
+- Frequently Asked Questions article: `https://logicpro.guru/articles/frequently-asked-questions`
 - Shared content manifest: `https://logicpro.guru/content/manifest.json`
 - Shared content bundle: `https://logicpro.guru/content/content.json`
 - Privacy policy: `https://logicpro.guru/privacy`

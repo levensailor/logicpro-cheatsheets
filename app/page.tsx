@@ -80,6 +80,11 @@ export default function HomePage() {
             <h3>In-Depth Articles</h3>
             <p>Comprehensive guides covering compression, EQ techniques, and advanced mixing concepts.</p>
           </Link>
+          <Link href="/articles/frequently-asked-questions" className="introFeatureCard">
+            <span className="introFeatureIcon">❓</span>
+            <h3>Frequently Asked Questions</h3>
+            <p>Fast answers for saving projects, buffers, exports, waveforms, take folders, bouncing, and mono checks.</p>
+          </Link>
         </div>
       </section>
 

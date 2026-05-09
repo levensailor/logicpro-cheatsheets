@@ -1,6 +1,53 @@
 import type { TrainingLesson } from "@/lib/sheet-schema";
+import { logicProFaqSections } from "@/data/articles/frequently-asked-questions";
+
+const frequentlyAskedQuestionsLessonSteps = logicProFaqSections
+  .flatMap((section) =>
+    section.blocks.map((block) => ({
+      title: block.title,
+      concept: section.answer,
+      actions: [...block.takeaways],
+      body: block.paragraphs.join(" "),
+      symbolName: block.symbolName,
+      visualTitle: section.shortTitle,
+      visualCaption: block.visualCaption,
+      settings: block.settings ? { ...block.settings } : null,
+      proTip: block.proTip,
+      avoidThis: block.avoidThis,
+      checkYourWork: block.checkYourWork,
+      stepScreenshot: block.image.src
+    }))
+  )
+  .map((step, index) => ({
+    number: index + 1,
+    ...step
+  }));
 
 export const trainingLessons: TrainingLesson[] = [
+  {
+    id: "frequently-asked-questions",
+    title: "Frequently Asked Questions",
+    series: "Logic Pro Fundamentals",
+    summary:
+      "A practical FAQ lesson for saving projects, storage choices, buffer settings, stock plugins, exporting songs, waveform levels, take folders, bounce safety, mono checks, and waveform zoom.",
+    duration: "28 min read",
+    symbolName: "questionmark.circle",
+    badges: ["New", "FAQ", "Beginner"],
+    isFeatured: true,
+    checklist: [
+      "Save serious recording projects as folders so media is visible and portable.",
+      "Record active sessions to a stable internal SSD or fast external SSD.",
+      "Keep plugins installed normally and relocate sample libraries only through supported tools.",
+      "Use a low buffer for recording and a higher buffer for mixing.",
+      "Learn Logic stock plugins before buying third-party processors.",
+      "Bounce a 24-bit WAV or AIFF master and verify the exported file.",
+      "Record with headroom and judge waveform levels with meters, not only visuals.",
+      "Use take folders and swipe comping for multiple performances.",
+      "Bounce in Place safely by keeping the original source track until approval.",
+      "Mix in stereo while checking mono, then use waveform zoom for editing visibility."
+    ],
+    steps: frequentlyAskedQuestionsLessonSteps
+  },
   {
     id: "your-first-mix",
     title: "Your First Mix",

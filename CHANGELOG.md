@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-09 12:28 EST
+- Add Frequently Asked Questions article and training lesson with illustrated Logic Pro workflow guidance.
+
 ## 2026-05-03 13:04 EST
 - Replace mocked iOS Settings tab with a real Settings screen and a functional Display preferences page.
 - Add persistent iOS appearance (System/Light/Dark) and text size controls that apply app-wide.
