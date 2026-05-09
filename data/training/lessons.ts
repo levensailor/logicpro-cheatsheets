@@ -1863,7 +1863,7 @@ export const trainingLessons: TrainingLesson[] = [
           "Don't set up dozens of parallel chains 'just in case.' Start with essentials (drums, reverbs), add more only when genuinely needed. Simplicity keeps sessions fast and focused.",
         checkYourWork:
           "You have a repeatable parallel processing workflow that you can apply to any mix, complete with template setup, routing strategies, and validation steps.",
-        stepScreenshot: "/assets/training/parallel-busses/step10_complete_workflow.png"
+        stepScreenshot: "/assets/training/parallel-busses/step6_blending_comparison.png"
       },
       {
         number: 12,
@@ -1977,7 +1977,7 @@ export const trainingLessons: TrainingLesson[] = [
           "Don't push Spread above 150% on bass-heavy material—extreme widening at low frequencies causes phase cancellation and weak mono translation.",
         checkYourWork:
           "Your stereo sources have the exact width and position you intend, and they maintain clarity and power both in stereo and when checked in mono.",
-        stepScreenshot: "/assets/training/stereo-tricks/step4_direction_mixer.png"
+        stepScreenshot: "/assets/training/stereo-tricks/step5_spread_comparison.png"
       },
       {
         number: 5,
@@ -3056,7 +3056,7 @@ export const trainingLessons: TrainingLesson[] = [
           "Don't assume your sidechaining is correct without testing—bypass and compare, check in mono, and verify on multiple systems before calling a mix finished.",
         checkYourWork:
           "Your sidechaining is clean, musical, genre-appropriate, and translates well across playback systems. It solves real problems without introducing new ones.",
-        stepScreenshot: "/assets/training/sidechaining-complete-guide/step20_final_checklist.png"
+        stepScreenshot: "/assets/training/sidechaining-complete-guide/step16_genre_comparison.png"
       }
     ]
   },
