@@ -1,6 +1,8 @@
+import { midiDeepDiveLesson } from "@/data/training/midi-deep-dive";
 import type { TrainingLesson } from "@/lib/sheet-schema";
 
 export const trainingLessons: TrainingLesson[] = [
+  midiDeepDiveLesson,
   {
     id: "your-first-mix",
     title: "Your First Mix",

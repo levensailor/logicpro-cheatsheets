@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-09 13:13 EST
+- Add a 40-step Deep Dive on MIDI training lesson covering Logic Pro MIDI workflows, protocol fundamentals, controllers, control surfaces, MCU setup, remapping, and troubleshooting.
+
 ## 2026-05-03 13:04 EST
 - Replace mocked iOS Settings tab with a real Settings screen and a functional Display preferences page.
 - Add persistent iOS appearance (System/Light/Dark) and text size controls that apply app-wide.
