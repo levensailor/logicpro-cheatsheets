@@ -3059,5 +3059,369 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/sidechaining-complete-guide/step20_final_checklist.png"
       }
     ]
+  },
+  {
+    id: "parallel-busses",
+    title: "Parallel Busses: Advanced Mixing Technique",
+    series: "Advanced Mixing Series",
+    summary:
+      "Learn practical parallel routing in Logic Pro for compression, saturation, and time-based effects while preserving transient clarity and musical dynamics.",
+    duration: "28 min read",
+    symbolName: "arrow.triangle.branch",
+    badges: ["Advanced", "Creative", "Technique"],
+    isFeatured: true,
+    checklist: [
+      "Create dedicated parallel aux buses and name them clearly.",
+      "Use pre-fader sends when you need independent blend control.",
+      "Set up parallel compression to add density without flattening transients.",
+      "Use EQ on returns to keep low-end and harshness controlled.",
+      "Level-match and A/B returns against the dry signal.",
+      "Check phase and mono compatibility before finalizing."
+    ],
+    steps: [
+      {
+        number: 1,
+        title: "Understand the Parallel Workflow",
+        concept:
+          "Parallel processing blends a heavily processed duplicate with the original to gain impact without sacrificing natural tone.",
+        actions: [
+          "Keep your dry source intact.",
+          "Route a send to a dedicated aux return.",
+          "Blend processed return until it supports the source."
+        ],
+        body:
+          "This approach lets you use aggressive settings (compression, distortion, filtering) while preserving clarity from the dry path.",
+        symbolName: "arrow.triangle.branch",
+        visualTitle: "Dry + Processed Blend",
+        visualCaption: "Power and control without destroying source detail.",
+        settings: {
+          "Starting Blend": "10-30% return level",
+          "Signal Flow": "Dry track + aux return"
+        },
+        proTip: "Set up reusable parallel aux templates for speed across sessions.",
+        avoidThis: "Do not over-blend returns until the dry source disappears.",
+        checkYourWork:
+          "Bypassing the return reduces impact, but the mix still sounds natural.",
+        stepScreenshot: "/assets/training/parallel-busses/step1_concept_diagram.png"
+      },
+      {
+        number: 2,
+        title: "Route Parallel Compression",
+        concept:
+          "Parallel compression adds body and sustain while leaving transient attack intact.",
+        actions: [
+          "Send drum or vocal bus to an aux with a compressor.",
+          "Use higher ratio and deeper gain reduction than you would in serial mode.",
+          "Blend the return under the dry signal."
+        ],
+        body:
+          "On drums, this increases perceived power. On vocals, it can improve consistency and intelligibility in dense sections.",
+        symbolName: "arrow.down.circle.fill",
+        visualTitle: "Crush Then Blend",
+        visualCaption: "Aggressive return, subtle mix contribution.",
+        settings: {
+          "Typical Ratio": "6:1 to 12:1",
+          "Gain Reduction": "8-15 dB on return path"
+        },
+        proTip: "Shape return tone with EQ after compression to avoid mud.",
+        avoidThis: "Avoid stacking multiple parallel compressors without purpose.",
+        checkYourWork:
+          "The return adds energy and sustain without pumping artifacts.",
+        stepScreenshot: "/assets/training/parallel-busses/step3_drum_parallel_compression.png"
+      },
+      {
+        number: 3,
+        title: "Use Parallel Reverb and Saturation",
+        concept:
+          "Parallel time and harmonic effects create size and color while maintaining source focus.",
+        actions: [
+          "Use separate aux returns for short room, plate, and saturation.",
+          "Filter reverb returns to control low-end wash.",
+          "Automate return levels for transitions and choruses."
+        ],
+        body:
+          "Parallel reverbs improve depth without clouding the center. Parallel saturation improves perceived loudness and texture.",
+        symbolName: "sparkles",
+        visualTitle: "Depth and Harmonics",
+        visualCaption: "Space and color under the dry signal.",
+        settings: {
+          "HPF on Reverb Return": "150-300 Hz",
+          "Return Strategy": "Separate aux by effect type"
+        },
+        proTip: "Short reverbs often read cleaner than long tails in busy arrangements.",
+        avoidThis: "Do not feed every track into every return bus.",
+        checkYourWork:
+          "Mix feels wider and richer while lead elements stay clear.",
+        stepScreenshot: "/assets/training/parallel-busses/step5_parallel_reverb.png"
+      },
+      {
+        number: 4,
+        title: "Validate Phase and Translation",
+        concept:
+          "Parallel chains can introduce phase and masking if unchecked.",
+        actions: [
+          "A/B dry-only vs blend at matched loudness.",
+          "Check mono fold-down for cancellations.",
+          "Trim return timing/phase if low-end weakens."
+        ],
+        body:
+          "Final checks ensure parallel benefits survive across speakers, headphones, and mono playback.",
+        symbolName: "checkmark.seal.fill",
+        visualTitle: "Final Safety Pass",
+        visualCaption: "Phase-safe, mono-safe, mix-safe.",
+        settings: {
+          "A/B Method": "Matched loudness comparison",
+          "Mono Check": "No major center collapse"
+        },
+        proTip: "Keep one reference snapshot with all returns bypassed.",
+        avoidThis: "Avoid judging return tone in solo for final decisions.",
+        checkYourWork:
+          "Parallel processing improves excitement and still translates cleanly.",
+        stepScreenshot: "/assets/training/parallel-busses/step10_complete_workflow.png"
+      }
+    ]
+  },
+  {
+    id: "stereo-tricks",
+    title: "Stereo Tricks",
+    series: "Advanced Mixing Techniques",
+    summary:
+      "Build width and depth with panning, mid-side decisions, Haas concepts, and stereo automation while keeping mono compatibility intact.",
+    duration: "35 min read",
+    symbolName: "speaker.wave.3.fill",
+    badges: ["Advanced", "Professional", "Mixing"],
+    isFeatured: true,
+    checklist: [
+      "Keep foundational elements anchored in the center.",
+      "Use panning symmetry to balance competing parts.",
+      "Apply width tools in controlled ranges.",
+      "Use stereo effects to support arrangement roles.",
+      "Automate width by section for energy changes.",
+      "Verify correlation and mono playback before bounce."
+    ],
+    steps: [
+      {
+        number: 1,
+        title: "Map the Stereo Field",
+        concept:
+          "Intentional placement reduces masking and improves focus.",
+        actions: [
+          "Center kick, bass, snare, and lead vocal.",
+          "Place support elements in balanced left/right positions.",
+          "Use fewer hard-pan choices than you think."
+        ],
+        body:
+          "A disciplined layout keeps the center stable while creating width from supporting instruments.",
+        symbolName: "scope",
+        visualTitle: "Stereo Layout",
+        visualCaption: "Anchor core, spread support.",
+        settings: {
+          "Core Elements": "Center",
+          "Support Range": "Moderate L/R offsets first"
+        },
+        proTip: "Decide panning in context, not in solo.",
+        avoidThis: "Do not leave both sides crowded with similar timbres.",
+        checkYourWork:
+          "Center remains strong while sides provide clear separation.",
+        stepScreenshot: "/assets/training/stereo-tricks/step1_stereo_field_basics.png"
+      },
+      {
+        number: 2,
+        title: "Use Width Tools Carefully",
+        concept:
+          "Stereo widening can help size, but overuse causes phase issues and weak mono translation.",
+        actions: [
+          "Apply Direction Mixer or equivalent to non-foundational layers.",
+          "Increase width in small increments.",
+          "Monitor correlation while widening."
+        ],
+        body:
+          "Widening works best on pads, FX, doubles, and ambience, not bass-heavy or lead-anchor tracks.",
+        symbolName: "arrow.left.and.right.righttriangle.left.righttriangle.right",
+        visualTitle: "Controlled Widening",
+        visualCaption: "Small moves, safer translation.",
+        settings: {
+          "Typical Spread Range": "100-130%",
+          "Correlation Goal": "Stay safely above negative values"
+        },
+        proTip: "If mono loses punch, pull width back before adding more EQ.",
+        avoidThis: "Avoid widening everything in the same frequency range.",
+        checkYourWork:
+          "Stereo image feels larger, and mono still sounds solid.",
+        stepScreenshot: "/assets/training/stereo-tricks/step6_direction_mixer.png"
+      },
+      {
+        number: 3,
+        title: "Create Depth With Stereo FX",
+        concept:
+          "Short delays, subtle modulation, and filtered reverbs add depth without blurring articulation.",
+        actions: [
+          "Use short stereo delays for spatial separation.",
+          "Filter returns to avoid low-end smear.",
+          "Balance wet effects by section density."
+        ],
+        body:
+          "Time-based stereo effects should support arrangement roles rather than compete with the center.",
+        symbolName: "timelapse",
+        visualTitle: "Depth Through Time",
+        visualCaption: "Stereo space with articulation preserved.",
+        settings: {
+          "Delay Use": "Short and level-controlled",
+          "Return EQ": "HPF/LPF to fit the mix"
+        },
+        proTip: "Keep vocal clarity by ducking FX returns around key phrases.",
+        avoidThis: "Do not use long, bright tails on every prominent element.",
+        checkYourWork:
+          "Mix sounds deeper and wider without turning hazy.",
+        stepScreenshot: "/assets/training/stereo-tricks/step15_stereo_delay_patterns.png"
+      },
+      {
+        number: 4,
+        title: "Automate Width by Section",
+        concept:
+          "Width contrast between verse and chorus increases perceived impact.",
+        actions: [
+          "Start verses narrower for intimacy.",
+          "Open choruses wider for lift and release.",
+          "Use smooth automation ramps at transitions."
+        ],
+        body:
+          "Dynamic width feels more musical than static maximum spread across the entire song.",
+        symbolName: "waveform.path.badge.plus",
+        visualTitle: "Section Contrast",
+        visualCaption: "Narrow-to-wide movement adds energy.",
+        settings: {
+          "Verse Spread": "80-100%",
+          "Chorus Spread": "120-140%"
+        },
+        proTip: "Automate supporting buses, not every individual track first.",
+        avoidThis: "Avoid abrupt width jumps that distract the listener.",
+        checkYourWork:
+          "Section changes feel larger while center remains stable.",
+        stepScreenshot: "/assets/training/stereo-tricks/step22_stereo_automation.png"
+      }
+    ]
+  },
+  {
+    id: "sidechaining-complete-guide",
+    title: "Sidechaining: Complete Guide",
+    series: "Advanced Mixing Techniques",
+    summary:
+      "From transparent ducking to creative pumping, learn practical sidechain workflows for clarity, groove, and mix control.",
+    duration: "28 min read",
+    symbolName: "arrow.triangle.2.circlepath",
+    badges: ["Advanced", "Essential", "Production"],
+    isFeatured: true,
+    checklist: [
+      "Route the correct trigger source and target processor.",
+      "Set attack/release to musical timing, not extremes by default.",
+      "Use subtle ratios for transparency and higher ratios for effects.",
+      "Try sidechain EQ/dynamic EQ for frequency-specific control.",
+      "Apply sidechain on FX returns to improve intelligibility.",
+      "A/B sidechain decisions at matched loudness and in mono."
+    ],
+    steps: [
+      {
+        number: 1,
+        title: "Understand Sidechain Signal Flow",
+        concept:
+          "One source signal controls processing on another track to create dynamic space.",
+        actions: [
+          "Identify trigger and target clearly.",
+          "Insert compressor on target track.",
+          "Select trigger source in sidechain menu."
+        ],
+        body:
+          "Clear routing is the foundation: without the right trigger, sidechain settings are meaningless.",
+        symbolName: "point.3.filled.connected.trianglepath.dotted",
+        visualTitle: "Trigger -> Target",
+        visualCaption: "External signal drives gain reduction.",
+        settings: {
+          "Transparent Range": "2:1 to 4:1",
+          "Creative Range": "8:1+"
+        },
+        proTip: "Start exaggerated so you can hear it, then dial back.",
+        avoidThis: "Do not sidechain multiple layers blindly with identical settings.",
+        checkYourWork:
+          "Gain reduction responds to the intended trigger, not random sources.",
+        stepScreenshot: "/assets/training/sidechaining-complete-guide/step1_sidechain_concept.png"
+      },
+      {
+        number: 2,
+        title: "Set Up Kick-Bass Ducking",
+        concept:
+          "Ducking bass when kick hits improves low-end clarity and punch.",
+        actions: [
+          "Use fast attack and tempo-aware release.",
+          "Target moderate gain reduction per kick hit.",
+          "Tune release so bass recovers musically."
+        ],
+        body:
+          "Good kick-bass sidechaining sounds tight and controlled rather than obviously pumping (unless stylistically desired).",
+        symbolName: "waveform.path",
+        visualTitle: "Low-End Separation",
+        visualCaption: "Kick leads, bass makes room.",
+        settings: {
+          "Attack": "0.1-5 ms",
+          "Release": "50-150 ms",
+          "GR Target": "3-6 dB"
+        },
+        proTip: "Adjust release in full mix context, not solo bass.",
+        avoidThis: "Avoid over-ducking that removes groove and note definition.",
+        checkYourWork:
+          "Kick stays defined and bass remains full between hits.",
+        stepScreenshot: "/assets/training/sidechaining-complete-guide/step2_kick_bass_ducking.png"
+      },
+      {
+        number: 3,
+        title: "Use Sidechain for Vocal Clarity",
+        concept:
+          "Ducking competing instruments around lead vocal phrases improves intelligibility in dense mixes.",
+        actions: [
+          "Sidechain music bus from lead vocal.",
+          "Use gentle ratio and soft knee for transparent movement.",
+          "Limit ducking to critical frequency areas when possible."
+        ],
+        body:
+          "This approach reduces masking without static EQ cuts that permanently thin the arrangement.",
+        symbolName: "music.mic",
+        visualTitle: "Speech Space",
+        visualCaption: "Music yields when vocals speak.",
+        settings: {
+          "Typical Ratio": "1.5:1 to 3:1",
+          "GR Target": "1-3 dB"
+        },
+        proTip: "Dynamic EQ sidechain often sounds cleaner than broadband ducking.",
+        avoidThis: "Do not over-duck full-range music bus during every syllable.",
+        checkYourWork:
+          "Vocals read clearly while arrangement still feels full.",
+        stepScreenshot: "/assets/training/sidechaining-complete-guide/step5_vocal_clarity_ducking.png"
+      },
+      {
+        number: 4,
+        title: "Apply Creative and Utility Sidechain",
+        concept:
+          "Sidechain can be both a utility tool (clarity) and a creative effect (rhythmic movement).",
+        actions: [
+          "Use obvious pumping for EDM-style energy when desired.",
+          "Duck reverb/delay returns from dry signal for cleaner mixes.",
+          "Validate with mono and multi-device playback."
+        ],
+        body:
+          "Creative sidechain should be intentional and genre-appropriate; utility sidechain should stay subtle and transparent.",
+        symbolName: "dial.high.fill",
+        visualTitle: "Creative vs Transparent",
+        visualCaption: "Choose style to match the song.",
+        settings: {
+          "Creative Pumping": "Higher ratio, faster timing",
+          "FX Ducking": "Moderate settings on return buses"
+        },
+        proTip: "Automate sidechain intensity by section for better arrangement dynamics.",
+        avoidThis: "Avoid one-size-fits-all settings across all sidechain instances.",
+        checkYourWork:
+          "Each sidechain instance has a clear purpose and audible benefit.",
+        stepScreenshot: "/assets/training/sidechaining-complete-guide/step20_final_checklist.png"
+      }
+    ]
   }
 ];
