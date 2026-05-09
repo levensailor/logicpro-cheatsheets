@@ -481,7 +481,8 @@ private actor RemoteImageCache {
 
         let cacheURL = cacheFileURL(for: url)
 
-        if let cachedData = try? Data(contentsOf: cacheURL),
+        if fileManager.fileExists(atPath: cacheURL.path),
+           let cachedData = try? Data(contentsOf: cacheURL),
            let cachedImage = UIImage(data: cachedData) {
             print("Image cache hit: \(url.absoluteString)")
             return cachedImage
