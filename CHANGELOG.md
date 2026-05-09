@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-09 13:10 EDT
+- Add a Parallel Busses training lesson with 10 step visuals covering wet/dry reverb, drum crush compression, saturation, automation, stems, and troubleshooting.
+
 ## 2026-05-03 13:04 EST
 - Replace mocked iOS Settings tab with a real Settings screen and a functional Display preferences page.
 - Add persistent iOS appearance (System/Light/Dark) and text size controls that apply app-wide.

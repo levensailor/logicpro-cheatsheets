@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "20260509T163843Z",
-  "generatedAt": "2026-05-09T16:38:43.951Z",
+  "contentVersion": "20260509T171616Z",
+  "generatedAt": "2026-05-09T17:16:16.062Z",
   "minAppVersion": "1.0.0",
   "bundle": {
     "url": "/content/en/content.json",
-    "sha256": "fcb2de0aaaf51df64d2ebc518e91f309a5f4be94d9fc0c1c230444c239ec3f6c",
-    "bytes": 482662
+    "sha256": "9991e63e1537fe516af45b57345c14c9ade6c3d470229b5449e84941bba14f92",
+    "bytes": 515055
   }
 }
