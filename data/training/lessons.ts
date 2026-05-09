@@ -1271,70 +1271,6 @@ export const trainingLessons: TrainingLesson[] = [
       "Troubleshoot common MIDI issues: timing, note-off problems, and conflicts.",
       "Use MIDI to control virtual instruments, effects, and DAW functions.",
       "Implement advanced MIDI workflows: MPE, MIDI 2.0, and scripting."
-    id: "parallel-busses",
-    title: "Parallel Busses: Advanced Mixing Technique",
-    series: "Advanced Mixing Series",
-    summary:
-      "Master the art of parallel processing to add thickness, control, and dimension to your mixes while preserving the natural character of your original sounds.",
-    duration: "28 min read",
-    symbolName: "arrow.triangle.branch",
-    badges: ["Advanced", "Creative", "Technique"],
-    isFeatured: true,
-    checklist: [
-      "Understand the fundamental concept of parallel processing and why it works.",
-      "Create parallel reverb chains for wet/dry control.",
-      "Set up parallel compression for drum density without killing transients.",
-      "Use parallel saturation to add harmonic richness.",
-      "Balance wet and dry signals for optimal blend.",
-      "Apply parallel processing to vocals, drums, bass, and mix buses.",
-      "Avoid phase issues and maintain mono compatibility.",
-      "Use sends vs aux tracks effectively for different scenarios.",
-      "Combine multiple parallel chains for complex textures.",
-      "Master automation of parallel blend for dynamic mixing."
-    id: "stereo-tricks",
-    title: "Stereo Tricks",
-    series: "Advanced Mixing Techniques",
-    summary:
-      "Master professional stereo imaging techniques to create width, depth, and space in your mixes. Learn panning strategies, mid-side processing, the Haas effect, double tracking, and advanced Logic Pro stereo tools for mono-compatible, immersive productions.",
-    duration: "35 min read",
-    symbolName: "speaker.wave.3.fill",
-    badges: ["Advanced", "Professional", "Mixing"],
-    isFeatured: true,
-    checklist: [
-      "Understand the stereo field and placement zones for different instruments.",
-      "Master Logic Pro's pan controls and pan law settings.",
-      "Use the Direction Mixer for precise stereo width control.",
-      "Apply mid-side processing for independent center and side channel shaping.",
-      "Implement the Haas effect correctly for stereo width.",
-      "Record effective double-tracked parts for natural width.",
-      "Create complex stereo delay patterns with Logic's Stereo Delay.",
-      "Monitor phase correlation to ensure mono compatibility.",
-      "Use frequency-dependent stereo processing with Split mode.",
-      "Apply stereo automation for dynamic width changes.",
-      "Avoid common stereo mistakes that cause phase issues.",
-      "Verify mixes in both mono and stereo playback."
-    id: "sidechaining-complete-guide",
-    title: "Sidechaining: Complete Guide",
-    series: "Advanced Mixing Techniques",
-    summary:
-      "Master the art of sidechaining in Logic Pro—from fundamental kick-bass ducking to advanced vocal clarity, creative effects, and surgical frequency control. Learn 12 practical applications with transparent and creative approaches.",
-    duration: "28 min read",
-    symbolName: "arrow.triangle.2.circlepath",
-    badges: ["Advanced", "Essential", "Production"],
-    isFeatured: true,
-    checklist: [
-      "Understand what sidechaining is and how signal routing works.",
-      "Set up basic sidechain compression for kick-bass ducking.",
-      "Apply vocal clarity techniques using music bus sidechaining.",
-      "Use sidechain compression on reverb and delay for cleaner mixes.",
-      "Create creative pumping effects for electronic music.",
-      "Master dynamic EQ sidechaining for surgical frequency control.",
-      "Implement podcast and voiceover ducking workflows.",
-      "Use multiband sidechain for frequency-specific ducking.",
-      "Apply gate sidechaining for rhythmic and gating effects.",
-      "Explore auto-filter and creative sidechaining beyond compression.",
-      "Use sidechain EQ filtering for transparent control.",
-      "Troubleshoot common sidechaining problems and artifacts."
     ],
     steps: [
       {
@@ -1628,6 +1564,9 @@ export const trainingLessons: TrainingLesson[] = [
         checkYourWork:
           "You understand the concept of MPE (per-note expression) and can describe at least one use case for Scripter or MIDI FX plugins in your workflow.",
         stepScreenshot: "/assets/training/deep-dive-on-midi/step10_advanced_midi.png"
+      },
+      {
+        number: 11,
         title: "Understanding Parallel Processing",
         concept:
           "Parallel processing splits your signal into two paths: one remains dry and natural, the other is heavily processed, then both are blended together. This allows extreme processing without destroying the source material.",
@@ -1925,6 +1864,9 @@ export const trainingLessons: TrainingLesson[] = [
         checkYourWork:
           "You have a repeatable parallel processing workflow that you can apply to any mix, complete with template setup, routing strategies, and validation steps.",
         stepScreenshot: "/assets/training/parallel-busses/step10_complete_workflow.png"
+      },
+      {
+        number: 12,
         title: "Understanding the Stereo Field",
         concept:
           "The stereo field is the perceived horizontal space between left and right speakers where you position sounds in your mix.",
@@ -2516,6 +2458,9 @@ export const trainingLessons: TrainingLesson[] = [
         checkYourWork:
           "Your width automation creates noticeable energy and contrast between sections, transitions smoothly without artifacts, and maintains mono compatibility at all automation points.",
         stepScreenshot: "/assets/training/stereo-tricks/step22_stereo_automation.png"
+      },
+      {
+        number: 23,
         title: "Understanding Sidechaining Fundamentals",
         concept:
           "Sidechaining uses one audio signal to control the behavior of a processor on another track, creating dynamic space and movement in your mix.",
