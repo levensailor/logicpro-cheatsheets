@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" style="background: #f8f9fa;">
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">
+    Mackie Control Universal (MCU) Setup
+  </text>
+  <text x="500" y="70" text-anchor="middle" font-size="14" fill="#7f8c8d">
+    Industry-Standard Bidirectional DAW Control Protocol
+  </text>
+  
+  <!-- Control Surface Hardware -->
+  <rect x="50" y="120" width="400" height="250" rx="15" fill="#34495e" stroke="#2c3e50" stroke-width="3"/>
+  <text x="250" y="155" text-anchor="middle" font-size="16" font-weight="bold" fill="white">
+    MCU-Compatible Control Surface
+  </text>
+  
+  <!-- Scribble Strips -->
+  <rect x="70" y="170" width="50" height="30" fill="#16a085"/>
+  <text x="95" y="190" text-anchor="middle" font-size="8" fill="white">
+    Track 1
+  </text>
+  <rect x="130" y="170" width="50" height="30" fill="#16a085"/>
+  <text x="155" y="190" text-anchor="middle" font-size="8" fill="white">
+    Track 2
+  </text>
+  <rect x="190" y="170" width="50" height="30" fill="#16a085"/>
+  <text x="215" y="190" text-anchor="middle" font-size="8" fill="white">
+    Track 3
+  </text>
+  <rect x="250" y="170" width="50" height="30" fill="#16a085"/>
+  <text x="275" y="190" text-anchor="middle" font-size="8" fill="white">
+    Track 4
+  </text>
+  <rect x="310" y="170" width="50" height="30" fill="#16a085"/>
+  <text x="335" y="190" text-anchor="middle" font-size="8" fill="white">
+    Track 5
+  </text>
+  <rect x="370" y="170" width="50" height="30" fill="#16a085"/>
+  <text x="395" y="190" text-anchor="middle" font-size="8" fill="white">
+    Track 6
+  </text>
+  
+  <!-- V-Pots (Encoders) -->
+  <circle cx="95" cy="220" r="12" fill="#3498db" stroke="white" stroke-width="2"/>
+  <circle cx="155" cy="220" r="12" fill="#3498db" stroke="white" stroke-width="2"/>
+  <circle cx="215" cy="220" r="12" fill="#3498db" stroke="white" stroke-width="2"/>
+  <circle cx="275" cy="220" r="12" fill="#3498db" stroke="white" stroke-width="2"/>
+  <circle cx="335" cy="220" r="12" fill="#3498db" stroke="white" stroke-width="2"/>
+  <circle cx="395" cy="220" r="12" fill="#3498db" stroke="white" stroke-width="2"/>
+  
+  <!-- Faders -->
+  <line x1="95" y1="250" x2="95" y2="320" stroke="#ecf0f1" stroke-width="6"/>
+  <rect x="85" y="285" width="20" height="25" fill="#e74c3c"/>
+  
+  <line x1="155" y1="250" x2="155" y2="320" stroke="#ecf0f1" stroke-width="6"/>
+  <rect x="145" y="270" width="20" height="25" fill="#27ae60"/>
+  
+  <line x1="215" y1="250" x2="215" y2="320" stroke="#ecf0f1" stroke-width="6"/>
+  <rect x="205" y="295" width="20" height="25" fill="#3498db"/>
+  
+  <line x1="275" y1="250" x2="275" y2="320" stroke="#ecf0f1" stroke-width="6"/>
+  <rect x="265" y="260" width="20" height="25" fill="#f39c12"/>
+  
+  <line x1="335" y1="250" x2="335" y2="320" stroke="#ecf0f1" stroke-width="6"/>
+  <rect x="325" y="280" width="20" height="25" fill="#9b59b6"/>
+  
+  <line x1="395" y1="250" x2="395" y2="320" stroke="#ecf0f1" stroke-width="6"/>
+  <rect x="385" y="275" width="20" height="25" fill="#1abc9c"/>
+  
+  <!-- Transport Controls -->
+  <circle cx="100" cy="350" r="15" fill="#27ae60"/>
+  <text x="100" y="356" text-anchor="middle" font-size="12" fill="white">∂</text>
+  
+  <circle cx="150" cy="350" r="15" fill="#e74c3c"/>
+  <text x="150" y="356" text-anchor="middle" font-size="12" fill="white">œ</text>
+  
+  <circle cx="200" cy="350" r="15" fill="#f39c12"/>
+  <text x="200" y="356" text-anchor="middle" font-size="12" fill="white">†</text>
+  
+  <rect x="260" y="335" width="80" height="30" rx="5" fill="#3498db"/>
+  <text x="300" y="355" text-anchor="middle" font-size="11" fill="white">Bank êí</text>
+  
+  <rect x="350" y="335" width="80" height="30" rx="5" fill="#9b59b6"/>
+  <text x="390" y="355" text-anchor="middle" font-size="11" fill="white">Automation</text>
+  
+  <!-- Bidirectional Arrows -->
+  <path d="M 250 400 L 250 420 L 500 420 L 500 400" stroke="#e74c3c" stroke-width="4" fill="none" marker-end="url(#arrowUp)" marker-start="url(#arrowDown)"/>
+  <text x="375" y="415" text-anchor="middle" font-size="13" font-weight="bold" fill="#e74c3c">
+    MIDI Communication
+  </text>
+  
+  <!-- Logic Pro DAW -->
+  <rect x="500" y="120" width="450" height="250" rx="15" fill="white" stroke="#2c3e50" stroke-width="3"/>
+  <rect x="500" y="120" width="450" height="40" rx="15" fill="#2c3e50"/>
+  <text x="725" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="white">
+    Logic Pro
+  </text>
+  
+  <!-- Logic Mixer -->
+  <text x="725" y="185" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c3e50">
+    Mixer View
+  </text>
+  
+  <rect x="520" y="200" width="60" height="150" rx="5" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1"/>
+  <text x="550" y="220" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Track 1
+  </text>
+  <line x1="550" y1="230" x2="550" y2="320" stroke="#3498db" stroke-width="4"/>
+  <rect x="540" y="275" width="20" height="15" fill="#e74c3c"/>
+  <rect x="525" y="330" width="50" height="15" fill="#27ae60"/>
+  <text x="550" y="342" text-anchor="middle" font-size="8" fill="white">
+    Mute
+  </text>
+  
+  <rect x="590" y="200" width="60" height="150" rx="5" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1"/>
+  <text x="620" y="220" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Track 2
+  </text>
+  <line x1="620" y1="230" x2="620" y2="320" stroke="#3498db" stroke-width="4"/>
+  <rect x="610" y="260" width="20" height="15" fill="#27ae60"/>
+  
+  <rect x="660" y="200" width="60" height="150" rx="5" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1"/>
+  <text x="690" y="220" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Track 3
+  </text>
+  <line x1="690" y1="230" x2="690" y2="320" stroke="#3498db" stroke-width="4"/>
+  <rect x="680" y="285" width="20" height="15" fill="#3498db"/>
+  
+  <rect x="730" y="200" width="60" height="150" rx="5" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1"/>
+  <text x="760" y="220" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Track 4
+  </text>
+  <line x1="760" y1="230" x2="760" y2="320" stroke="#3498db" stroke-width="4"/>
+  <rect x="750" y="250" width="20" height="15" fill="#f39c12"/>
+  
+  <rect x="800" y="200" width="60" height="150" rx="5" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1"/>
+  <text x="830" y="220" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Track 5
+  </text>
+  <line x1="830" y1="230" x2="830" y2="320" stroke="#3498db" stroke-width="4"/>
+  <rect x="820" y="270" width="20" height="15" fill="#9b59b6"/>
+  
+  <rect x="870" y="200" width="60" height="150" rx="5" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1"/>
+  <text x="900" y="220" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Track 6
+  </text>
+  <line x1="900" y1="230" x2="900" y2="320" stroke="#3498db" stroke-width="4"/>
+  <rect x="890" y="265" width="20" height="15" fill="#1abc9c"/>
+  
+  <!-- Setup Instructions -->
+  <rect x="50" y="420" width="900" height="250" rx="10" fill="white" stroke="#2c3e50" stroke-width="2"/>
+  <text x="500" y="455" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">
+    MCU Setup Steps in Logic Pro
+  </text>
+  
+  <text x="80" y="490" font-size="14" font-weight="bold" fill="#e74c3c">
+    Step 1: Connect Hardware
+  </text>
+  <text x="80" y="510" font-size="12" fill="#2c3e50">
+    " Plug control surface into Mac via USB or MIDI interface
+  </text>
+  <text x="80" y="527" font-size="12" fill="#2c3e50">
+    " Install drivers if required (check manufacturer website)
+  </text>
+  
+  <text x="80" y="560" font-size="14" font-weight="bold" fill="#27ae60">
+    Step 2: Open Control Surface Setup
+  </text>
+  <text x="80" y="580" font-size="12" fill="#2c3e50">
+    " Logic Pro > Control Surfaces > Setup
+  </text>
+  <text x="80" y="597" font-size="12" fill="#2c3e50">
+    " Click "Install" and select your device from the list
+  </text>
+  
+  <text x="520" y="490" font-size="14" font-weight="bold" fill="#3498db">
+    Step 3: Configure MIDI Ports
+  </text>
+  <text x="520" y="510" font-size="12" fill="#2c3e50">
+    " Logic auto-detects MIDI ports (or assign manually)
+  </text>
+  <text x="520" y="527" font-size="12" fill="#2c3e50">
+    " Set Input Port to controller's MIDI Out
+  </text>
+  <text x="520" y="544" font-size="12" fill="#2c3e50">
+    " Set Output Port to controller's MIDI In
+  </text>
+  
+  <text x="520" y="577" font-size="14" font-weight="bold" fill="#9b59b6">
+    Step 4: Test Communication
+  </text>
+  <text x="520" y="597" font-size="12" fill="#2c3e50">
+    " Move hardware fader í Logic fader should move
+  </text>
+  <text x="520" y="614" font-size="12" fill="#2c3e50">
+    " Move Logic fader í Hardware fader should follow
+  </text>
+  <text x="520" y="631" font-size="12" fill="#2c3e50">
+    " Press transport buttons í Logic responds
+  </text>
+  
+  <rect x="80" y="640" width="840" height="20" fill="#f39c12" opacity="0.3"/>
+  <text x="500" y="655" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3e50">
+     MCU provides: Motorized faders, scribble strips, LED feedback, transport control, automation modes
+  </text>
+  
+  <!-- Markers -->
+  <defs>
+    <marker id="arrowUp" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#e74c3c" />
+    </marker>
+    <marker id="arrowDown" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="10 0, 0 5, 10 10" fill="#e74c3c" />
+    </marker>
+  </defs>
+</svg>

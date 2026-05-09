@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" style="background: #f8f9fa;">
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#2c3e50">
+    MIDI Protocol Overview
+  </text>
+  <text x="400" y="65" text-anchor="middle" font-size="14" fill="#7f8c8d">
+    Data Communication, Not Audio
+  </text>
+  
+  <!-- Controller -->
+  <rect x="50" y="100" width="180" height="120" rx="10" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
+  <text x="140" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="white">
+    MIDI Controller
+  </text>
+  <text x="140" y="155" text-anchor="middle" font-size="12" fill="white">
+    (Keyboard, Pads)
+  </text>
+  <rect x="70" y="170" width="50" height="30" fill="white" opacity="0.3"/>
+  <rect x="130" y="170" width="50" height="30" fill="white" opacity="0.3"/>
+  <text x="140" y="225" text-anchor="middle" font-size="11" fill="white">
+    Sends Performance Data
+  </text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 230 160 L 350 160" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="290" y="145" text-anchor="middle" font-size="11" font-weight="bold" fill="#e74c3c">
+    MIDI Messages
+  </text>
+  
+  <!-- MIDI Data Box -->
+  <rect x="350" y="100" width="200" height="280" rx="10" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2"/>
+  <text x="450" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+    MIDI Data Types
+  </text>
+  
+  <rect x="370" y="150" width="160" height="35" rx="5" fill="#e67e22" stroke="#d35400" stroke-width="1"/>
+  <text x="450" y="172" text-anchor="middle" font-size="12" fill="white">
+    Note On/Off (Pitch, Velocity)
+  </text>
+  
+  <rect x="370" y="195" width="160" height="35" rx="5" fill="#16a085" stroke="#138d75" stroke-width="1"/>
+  <text x="450" y="217" text-anchor="middle" font-size="12" fill="white">
+    Control Change (CC 0-127)
+  </text>
+  
+  <rect x="370" y="240" width="160" height="35" rx="5" fill="#8e44ad" stroke="#7d3c98" stroke-width="1"/>
+  <text x="450" y="262" text-anchor="middle" font-size="12" fill="white">
+    Pitch Bend
+  </text>
+  
+  <rect x="370" y="285" width="160" height="35" rx="5" fill="#c0392b" stroke="#a93226" stroke-width="1"/>
+  <text x="450" y="307" text-anchor="middle" font-size="12" fill="white">
+    Program Change
+  </text>
+  
+  <rect x="370" y="330" width="160" height="35" rx="5" fill="#f39c12" stroke="#d68910" stroke-width="1"/>
+  <text x="450" y="352" text-anchor="middle" font-size="12" fill="white">
+    Aftertouch / System
+  </text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 550 160 L 570 160" stroke="#27ae60" stroke-width="3" fill="none" marker-end="url(#arrowhead2)"/>
+  
+  <!-- Sound Source -->
+  <rect x="570" y="100" width="180" height="120" rx="10" fill="#27ae60" stroke="#2c3e50" stroke-width="2"/>
+  <text x="660" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="white">
+    Sound Source
+  </text>
+  <text x="660" y="155" text-anchor="middle" font-size="12" fill="white">
+    (Synth, Sampler, DAW)
+  </text>
+  <circle cx="640" cy="185" r="15" fill="white" opacity="0.3"/>
+  <circle cx="680" cy="185" r="15" fill="white" opacity="0.3"/>
+  <text x="660" y="225" text-anchor="middle" font-size="11" fill="white">
+    Generates Audio
+  </text>
+  
+  <!-- Properties -->
+  <rect x="100" y="270" width="600" height="120" rx="10" fill="white" stroke="#2c3e50" stroke-width="2"/>
+  <text x="400" y="295" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c3e50">
+    Key Properties
+  </text>
+  
+  <text x="120" y="320" font-size="12" fill="#2c3e50">
+    " 16 MIDI Channels per port
+  </text>
+  <text x="120" y="340" font-size="12" fill="#2c3e50">
+    " 31,250 bits/sec transmission speed
+  </text>
+  <text x="120" y="360" font-size="12" fill="#2c3e50">
+    " Sample-accurate timing in modern DAWs
+  </text>
+  <text x="120" y="380" font-size="12" fill="#2c3e50">
+    " USB, 5-pin DIN, Bluetooth, Network connectivity
+  </text>
+  
+  <text x="400" y="415" font-size="11" fill="#7f8c8d">
+    Performance instructions onlyno audio signal
+  </text>
+  
+  <!-- Bottom Info -->
+  <rect x="50" y="420" width="700" height="150" rx="10" fill="#dfe6e9" stroke="#2c3e50" stroke-width="2"/>
+  <text x="400" y="445" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c3e50">
+    Example: Playing Middle C
+  </text>
+  
+  <text x="100" y="475" font-size="12" fill="#2c3e50" font-weight="bold">
+    1. Controller sends:
+  </text>
+  <text x="100" y="495" font-size="11" fill="#2c3e50">
+    "Note On, Channel 1, Note 60 (C4), Velocity 90"
+  </text>
+  
+  <text x="100" y="520" font-size="12" fill="#2c3e50" font-weight="bold">
+    2. Sound source receives message and:
+  </text>
+  <text x="100" y="540" font-size="11" fill="#2c3e50">
+    Triggers its internal sound engine (piano, synth, etc.)
+  </text>
+  <text x="100" y="555" font-size="11" fill="#2c3e50">
+    Generates audio based on velocity and patch settings
+  </text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#e74c3c" />
+    </marker>
+    <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#27ae60" />
+    </marker>
+  </defs>
+</svg>

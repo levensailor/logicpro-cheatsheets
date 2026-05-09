@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style="background: #f8f9fa;">
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">
+    MIDI Controller Types
+  </text>
+  <text x="500" y="70" text-anchor="middle" font-size="14" fill="#7f8c8d">
+    Choose the right controller for your workflow
+  </text>
+  
+  <!-- Keyboard Controllers Section -->
+  <text x="50" y="110" font-size="18" font-weight="bold" fill="#2c3e50">
+    Keyboard Controllers
+  </text>
+  
+  <!-- 25-37 Keys -->
+  <rect x="50" y="130" width="280" height="140" rx="10" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
+  <text x="190" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="white">
+    25-37 Keys (Portable)
+  </text>
+  <rect x="70" y="175" width="25" height="60" fill="white" opacity="0.8"/>
+  <rect x="98" y="175" width="25" height="60" fill="white" opacity="0.8"/>
+  <rect x="126" y="175" width="25" height="60" fill="white" opacity="0.8"/>
+  <rect x="154" y="175" width="25" height="60" fill="white" opacity="0.8"/>
+  <rect x="182" y="175" width="25" height="60" fill="white" opacity="0.8"/>
+  <text x="190" y="255" text-anchor="middle" font-size="11" fill="white">
+     Travel-friendly " Beatmaking
+  </text>
+  
+  <!-- 49-61 Keys -->
+  <rect x="360" y="130" width="280" height="140" rx="10" fill="#2ecc71" stroke="#2c3e50" stroke-width="2"/>
+  <text x="500" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="white">
+    49-61 Keys (Standard)
+  </text>
+  <rect x="380" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <rect x="403" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <rect x="426" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <rect x="449" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <rect x="472" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <rect x="495" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <rect x="518" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <rect x="541" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <rect x="564" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <rect x="587" y="175" width="20" height="60" fill="white" opacity="0.8"/>
+  <text x="500" y="255" text-anchor="middle" font-size="11" fill="white">
+     Versatile " Most Popular " DAW Control
+  </text>
+  
+  <!-- 88 Keys -->
+  <rect x="670" y="130" width="280" height="140" rx="10" fill="#e67e22" stroke="#2c3e50" stroke-width="2"/>
+  <text x="810" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="white">
+    88 Keys (Piano)
+  </text>
+  <rect x="690" y="175" width="15" height="60" fill="white" opacity="0.8"/>
+  <rect x="708" y="175" width="15" height="60" fill="white" opacity="0.8"/>
+  <rect x="726" y="175" width="15" height="60" fill="white" opacity="0.8"/>
+  <rect x="744" y="175" width="15" height="60" fill="white" opacity="0.8"/>
+  <rect x="762" y="175" width="15" height="60" fill="white" opacity="0.8"/>
+  <rect x="780" y="175" width="15" height="60" fill="white" opacity="0.8"/>
+  <rect x="798" y="175" width="15" height="60" fill="white" opacity="0.8"/>
+  <rect x="816" y="175" width="15" height="60" fill="white" opacity="0.8"/>
+  <text x="810" y="255" text-anchor="middle" font-size="11" fill="white">
+     Full Range " Weighted Action " Piano Performance
+  </text>
+  
+  <!-- Pad Controllers Section -->
+  <text x="50" y="310" font-size="18" font-weight="bold" fill="#2c3e50">
+    Pad Controllers
+  </text>
+  
+  <rect x="50" y="330" width="280" height="140" rx="10" fill="#9b59b6" stroke="#2c3e50" stroke-width="2"/>
+  <text x="190" y="360" text-anchor="middle" font-size="14" font-weight="bold" fill="white">
+    Drum Pads / Beat Production
+  </text>
+  <!-- Draw grid of pads -->
+  <rect x="100" y="380" width="40" height="40" rx="3" fill="#e74c3c"/>
+  <rect x="145" y="380" width="40" height="40" rx="3" fill="#f39c12"/>
+  <rect x="190" y="380" width="40" height="40" rx="3" fill="#27ae60"/>
+  <rect x="235" y="380" width="40" height="40" rx="3" fill="#3498db"/>
+  <rect x="100" y="425" width="40" height="40" rx="3" fill="#9b59b6"/>
+  <rect x="145" y="425" width="40" height="40" rx="3" fill="#1abc9c"/>
+  <rect x="190" y="425" width="40" height="40" rx="3" fill="#e67e22"/>
+  <rect x="235" y="425" width="40" height="40" rx="3" fill="#2c3e50"/>
+  <text x="190" y="455" text-anchor="middle" font-size="11" fill="white">
+     Finger Drumming " Samples " One-Shot Triggering
+  </text>
+  
+  <!-- Control Surfaces Section -->
+  <text x="360" y="310" font-size="18" font-weight="bold" fill="#2c3e50">
+    Control Surfaces
+  </text>
+  
+  <rect x="360" y="330" width="280" height="140" rx="10" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+  <text x="500" y="360" text-anchor="middle" font-size="14" font-weight="bold" fill="white">
+    Faders & Knobs (Mixing)
+  </text>
+  <!-- Draw faders and knobs -->
+  <line x1="400" y1="390" x2="400" y2="440" stroke="white" stroke-width="4"/>
+  <rect x="390" y="415" width="20" height="15" fill="#e74c3c"/>
+  
+  <line x1="450" y1="390" x2="450" y2="440" stroke="white" stroke-width="4"/>
+  <rect x="440" y="405" width="20" height="15" fill="#27ae60"/>
+  
+  <line x1="500" y1="390" x2="500" y2="440" stroke="white" stroke-width="4"/>
+  <rect x="490" y="425" width="20" height="15" fill="#3498db"/>
+  
+  <line x1="550" y1="390" x2="550" y2="440" stroke="white" stroke-width="4"/>
+  <rect x="540" y="410" width="20" height="15" fill="#f39c12"/>
+  
+  <line x1="600" y1="390" x2="600" y2="440" stroke="white" stroke-width="4"/>
+  <rect x="590" y="420" width="20" height="15" fill="#9b59b6"/>
+  
+  <text x="500" y="455" text-anchor="middle" font-size="11" fill="white">
+     Hands-On Mixing " Transport " DAW Automation
+  </text>
+  
+  <!-- Alternative Controllers -->
+  <text x="670" y="310" font-size="18" font-weight="bold" fill="#2c3e50">
+    Alternative Controllers
+  </text>
+  
+  <rect x="670" y="330" width="280" height="140" rx="10" fill="#16a085" stroke="#2c3e50" stroke-width="2"/>
+  <text x="810" y="360" text-anchor="middle" font-size="14" font-weight="bold" fill="white">
+    MPE / Wind / Grid Controllers
+  </text>
+  <text x="810" y="390" text-anchor="middle" font-size="12" fill="white">
+    ROLI Seaboard " Akai EWI
+  </text>
+  <text x="810" y="410" text-anchor="middle" font-size="12" fill="white">
+    LinnStrument " Roland Aerophone
+  </text>
+  <text x="810" y="430" text-anchor="middle" font-size="12" fill="white">
+    Novation Launchpad
+  </text>
+  <text x="810" y="455" text-anchor="middle" font-size="11" fill="white">
+     Expressive " Specialized " Per-Note Control
+  </text>
+  
+  <!-- Decision Matrix -->
+  <rect x="50" y="500" width="900" height="270" rx="10" fill="white" stroke="#2c3e50" stroke-width="2"/>
+  <text x="500" y="535" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">
+    Choosing Your Controller: Decision Matrix
+  </text>
+  
+  <!-- Column Headers -->
+  <rect x="70" y="550" width="180" height="40" fill="#3498db"/>
+  <text x="160" y="575" text-anchor="middle" font-size="13" font-weight="bold" fill="white">
+    Primary Task
+  </text>
+  
+  <rect x="260" y="550" width="180" height="40" fill="#2ecc71"/>
+  <text x="350" y="575" text-anchor="middle" font-size="13" font-weight="bold" fill="white">
+    Recommended Controller
+  </text>
+  
+  <rect x="450" y="550" width="180" height="40" fill="#e67e22"/>
+  <text x="540" y="575" text-anchor="middle" font-size="13" font-weight="bold" fill="white">
+    Key Features
+  </text>
+  
+  <rect x="640" y="550" width="180" height="40" fill="#9b59b6"/>
+  <text x="730" y="575" text-anchor="middle" font-size="13" font-weight="bold" fill="white">
+    Budget Range
+  </text>
+  
+  <!-- Row 1: Beat Making -->
+  <rect x="70" y="590" width="180" height="35" fill="#ecf0f1"/>
+  <text x="160" y="612" text-anchor="middle" font-size="12" fill="#2c3e50">
+    Beat Making / Hip-Hop
+  </text>
+  
+  <rect x="260" y="590" width="180" height="35" fill="#ecf0f1"/>
+  <text x="350" y="612" text-anchor="middle" font-size="12" fill="#2c3e50">
+    Pad Controller + 25 Keys
+  </text>
+  
+  <rect x="450" y="590" width="180" height="35" fill="#ecf0f1"/>
+  <text x="540" y="612" text-anchor="middle" font-size="11" fill="#2c3e50">
+    16 Pads, Velocity Sens.
+  </text>
+  
+  <rect x="640" y="590" width="180" height="35" fill="#ecf0f1"/>
+  <text x="730" y="612" text-anchor="middle" font-size="12" fill="#27ae60">
+    $100-$300
+  </text>
+  
+  <!-- Row 2: Piano / Composition -->
+  <rect x="70" y="625" width="180" height="35" fill="#ecf0f1"/>
+  <text x="160" y="647" text-anchor="middle" font-size="12" fill="#2c3e50">
+    Piano / Composition
+  </text>
+  
+  <rect x="260" y="625" width="180" height="35" fill="#ecf0f1"/>
+  <text x="350" y="647" text-anchor="middle" font-size="12" fill="#2c3e50">
+    88-Key Weighted
+  </text>
+  
+  <rect x="450" y="625" width="180" height="35" fill="#ecf0f1"/>
+  <text x="540" y="647" text-anchor="middle" font-size="11" fill="#2c3e50">
+    Hammer Action, Full Range
+  </text>
+  
+  <rect x="640" y="625" width="180" height="35" fill="#ecf0f1"/>
+  <text x="730" y="647" text-anchor="middle" font-size="12" fill="#e74c3c">
+    $500-$2000+
+  </text>
+  
+  <!-- Row 3: Electronic Production -->
+  <rect x="70" y="660" width="180" height="35" fill="#ecf0f1"/>
+  <text x="160" y="682" text-anchor="middle" font-size="12" fill="#2c3e50">
+    Electronic / Synth
+  </text>
+  
+  <rect x="260" y="660" width="180" height="35" fill="#ecf0f1"/>
+  <text x="350" y="682" text-anchor="middle" font-size="12" fill="#2c3e50">
+    49-61 Keys + Pads
+  </text>
+  
+  <rect x="450" y="660" width="180" height="35" fill="#ecf0f1"/>
+  <text x="540" y="682" text-anchor="middle" font-size="11" fill="#2c3e50">
+    Semi-Weighted, DAW Ctrl
+  </text>
+  
+  <rect x="640" y="660" width="180" height="35" fill="#ecf0f1"/>
+  <text x="730" y="682" text-anchor="middle" font-size="12" fill="#27ae60">
+    $200-$600
+  </text>
+  
+  <!-- Row 4: Mixing / Engineering -->
+  <rect x="70" y="695" width="180" height="35" fill="#ecf0f1"/>
+  <text x="160" y="717" text-anchor="middle" font-size="12" fill="#2c3e50">
+    Mixing / Engineering
+  </text>
+  
+  <rect x="260" y="695" width="180" height="35" fill="#ecf0f1"/>
+  <text x="350" y="717" text-anchor="middle" font-size="12" fill="#2c3e50">
+    MCU Control Surface
+  </text>
+  
+  <rect x="450" y="695" width="180" height="35" fill="#ecf0f1"/>
+  <text x="540" y="717" text-anchor="middle" font-size="11" fill="#2c3e50">
+    8+ Faders, Motorized
+  </text>
+  
+  <rect x="640" y="695" width="180" height="35" fill="#ecf0f1"/>
+  <text x="730" y="717" text-anchor="middle" font-size="12" fill="#f39c12">
+    $300-$1500
+  </text>
+  
+  <!-- Row 5: Expressive Performance -->
+  <rect x="70" y="730" width="180" height="35" fill="#ecf0f1"/>
+  <text x="160" y="752" text-anchor="middle" font-size="12" fill="#2c3e50">
+    Expressive / MPE
+  </text>
+  
+  <rect x="260" y="730" width="180" height="35" fill="#ecf0f1"/>
+  <text x="350" y="752" text-anchor="middle" font-size="12" fill="#2c3e50">
+    MPE Controller
+  </text>
+  
+  <rect x="450" y="730" width="180" height="35" fill="#ecf0f1"/>
+  <text x="540" y="752" text-anchor="middle" font-size="11" fill="#2c3e50">
+    Per-Note Expression
+  </text>
+  
+  <rect x="640" y="730" width="180" height="35" fill="#ecf0f1"/>
+  <text x="730" y="752" text-anchor="middle" font-size="12" fill="#e74c3c">
+    $500-$3000+
+  </text>
+</svg>
