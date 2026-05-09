@@ -7,5 +7,12 @@
     "url": "/content/en/content.json",
     "sha256": "5e0f4bf524d2116320dbc546140bc0bb18f09b3ba1145a73e8dae63d4ef6c4dd",
     "bytes": 545551
+  "contentVersion": "20260509T172234Z",
+  "generatedAt": "2026-05-09T17:22:34.177Z",
+  "minAppVersion": "1.0.0",
+  "bundle": {
+    "url": "/content/en/content.json",
+    "sha256": "c129af2ce024e925beab4d9a30af2867a1ed2299acbf25b0a860fda21747c40b",
+    "bytes": 585021
   }
 }
