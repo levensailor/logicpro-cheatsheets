@@ -1,0 +1,306 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" style="background: #f8f9fa;">
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">
+    MIDI Latency Optimization
+  </text>
+  <text x="450" y="70" text-anchor="middle" font-size="14" fill="#7f8c8d">
+    Low Latency for Responsive MIDI Performance
+  </text>
+  
+  <!-- Latency Journey Diagram -->
+  <text x="450" y="110" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+    Round-Trip Latency Components
+  </text>
+  
+  <!-- MIDI Controller -->
+  <rect x="50" y="130" width="120" height="80" rx="10" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
+  <text x="110" y="165" text-anchor="middle" font-size="13" font-weight="bold" fill="white">
+    MIDI Controller
+  </text>
+  <text x="110" y="185" text-anchor="middle" font-size="11" fill="white">
+    Key Press
+  </text>
+  <text x="110" y="205" text-anchor="middle" font-size="9" fill="white">
+    &lt;1ms
+  </text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 170 170 L 220 170" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrow1)"/>
+  <text x="195" y="165" text-anchor="middle" font-size="9" fill="#e74c3c">
+    USB MIDI
+  </text>
+  
+  <!-- Computer Input -->
+  <rect x="220" y="130" width="120" height="80" rx="10" fill="#27ae60" stroke="#2c3e50" stroke-width="2"/>
+  <text x="280" y="165" text-anchor="middle" font-size="13" font-weight="bold" fill="white">
+    Computer
+  </text>
+  <text x="280" y="185" text-anchor="middle" font-size="11" fill="white">
+    MIDI Input
+  </text>
+  <text x="280" y="205" text-anchor="middle" font-size="9" fill="white">
+    ~0.5ms
+  </text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 340 170 L 390 170" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrow1)"/>
+  <text x="365" y="165" text-anchor="middle" font-size="9" fill="#e74c3c">
+    Processing
+  </text>
+  
+  <!-- Audio Buffer -->
+  <rect x="390" y="130" width="120" height="80" rx="10" fill="#f39c12" stroke="#2c3e50" stroke-width="2"/>
+  <text x="450" y="160" text-anchor="middle" font-size="13" font-weight="bold" fill="white">
+    Audio Buffer
+  </text>
+  <text x="450" y="180" text-anchor="middle" font-size="11" fill="white">
+    Processing
+  </text>
+  <text x="450" y="195" text-anchor="middle" font-size="9" fill="white">
+      Main latency
+  </text>
+  <text x="450" y="207" text-anchor="middle" font-size="9" font-weight="bold" fill="white">
+    Variable
+  </text>
+  
+  <!-- Arrow 3 -->
+  <path d="M 510 170 L 560 170" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrow1)"/>
+  
+  <!-- Audio Output -->
+  <rect x="560" y="130" width="120" height="80" rx="10" fill="#9b59b6" stroke="#2c3e50" stroke-width="2"/>
+  <text x="620" y="165" text-anchor="middle" font-size="13" font-weight="bold" fill="white">
+    Audio Output
+  </text>
+  <text x="620" y="185" text-anchor="middle" font-size="11" fill="white">
+    DAC + Speakers
+  </text>
+  <text x="620" y="205" text-anchor="middle" font-size="9" fill="white">
+    1-3ms
+  </text>
+  
+  <!-- Arrow 4 -->
+  <path d="M 680 170 L 730 170" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrow1)"/>
+  
+  <!-- Ears -->
+  <ellipse cx="780" cy="170" rx="40" ry="35" fill="#e74c3c" stroke="#2c3e50" stroke-width="2"/>
+  <text x="780" y="175" text-anchor="middle" font-size="13" font-weight="bold" fill="white">
+    Ears
+  </text>
+  <text x="780" y="190" text-anchor="middle" font-size="9" fill="white">
+    Perceived
+  </text>
+  
+  <!-- Buffer Size Table -->
+  <rect x="50" y="250" width="800" height="270" rx="10" fill="white" stroke="#2c3e50" stroke-width="2"/>
+  <text x="450" y="285" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">
+    Buffer Size vs Latency @ 44.1kHz
+  </text>
+  
+  <!-- Table Headers -->
+  <rect x="70" y="300" width="120" height="35" fill="#3498db"/>
+  <text x="130" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="white">
+    Buffer Size
+  </text>
+  
+  <rect x="200" y="300" width="120" height="35" fill="#27ae60"/>
+  <text x="260" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="white">
+    Latency (ms)
+  </text>
+  
+  <rect x="330" y="300" width="180" height="35" fill="#f39c12"/>
+  <text x="420" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="white">
+    Use Case
+  </text>
+  
+  <rect x="520" y="300" width="140" height="35" fill="#e74c3c"/>
+  <text x="590" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="white">
+    CPU Load
+  </text>
+  
+  <rect x="670" y="300" width="160" height="35" fill="#9b59b6"/>
+  <text x="750" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="white">
+    Recommendation
+  </text>
+  
+  <!-- Row 1: 32 samples -->
+  <rect x="70" y="335" width="120" height="30" fill="#ecf0f1"/>
+  <text x="130" y="355" text-anchor="middle" font-size="11" fill="#2c3e50">
+    32 samples
+  </text>
+  
+  <rect x="200" y="335" width="120" height="30" fill="#ecf0f1"/>
+  <text x="260" y="355" text-anchor="middle" font-size="11" fill="#27ae60">
+    ~0.7ms
+  </text>
+  
+  <rect x="330" y="335" width="180" height="30" fill="#ecf0f1"/>
+  <text x="420" y="355" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Ultra-low latency
+  </text>
+  
+  <rect x="520" y="335" width="140" height="30" fill="#ecf0f1"/>
+  <text x="590" y="355" text-anchor="middle" font-size="11" fill="#e74c3c">
+    Very High
+  </text>
+  
+  <rect x="670" y="335" width="160" height="30" fill="#ecf0f1"/>
+  <text x="750" y="355" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Rarely needed
+  </text>
+  
+  <!-- Row 2: 64 samples -->
+  <rect x="70" y="365" width="120" height="30" fill="#ecf0f1"/>
+  <text x="130" y="385" text-anchor="middle" font-size="11" fill="#2c3e50">
+    64 samples
+  </text>
+  
+  <rect x="200" y="365" width="120" height="30" fill="#ecf0f1"/>
+  <text x="260" y="385" text-anchor="middle" font-size="11" fill="#27ae60">
+    ~1.5ms
+  </text>
+  
+  <rect x="330" y="365" width="180" height="30" fill="#d5f4e6"/>
+  <text x="420" y="385" text-anchor="middle" font-size="10" fill="#2c3e50">
+     MIDI Recording
+  </text>
+  
+  <rect x="520" y="365" width="140" height="30" fill="#ecf0f1"/>
+  <text x="590" y="385" text-anchor="middle" font-size="11" fill="#f39c12">
+    High
+  </text>
+  
+  <rect x="670" y="365" width="160" height="30" fill="#d5f4e6"/>
+  <text x="750" y="385" text-anchor="middle" font-size="10" font-weight="bold" fill="#27ae60">
+     Best for recording
+  </text>
+  
+  <!-- Row 3: 128 samples -->
+  <rect x="70" y="395" width="120" height="30" fill="#ecf0f1"/>
+  <text x="130" y="415" text-anchor="middle" font-size="11" fill="#2c3e50">
+    128 samples
+  </text>
+  
+  <rect x="200" y="395" width="120" height="30" fill="#ecf0f1"/>
+  <text x="260" y="415" text-anchor="middle" font-size="11" fill="#27ae60">
+    ~3ms
+  </text>
+  
+  <rect x="330" y="395" width="180" height="30" fill="#d5f4e6"/>
+  <text x="420" y="415" text-anchor="middle" font-size="10" fill="#2c3e50">
+     MIDI Recording
+  </text>
+  
+  <rect x="520" y="395" width="140" height="30" fill="#ecf0f1"/>
+  <text x="590" y="415" text-anchor="middle" font-size="11" fill="#f39c12">
+    Moderate
+  </text>
+  
+  <rect x="670" y="395" width="160" height="30" fill="#d5f4e6"/>
+  <text x="750" y="415" text-anchor="middle" font-size="10" font-weight="bold" fill="#27ae60">
+     Good balance
+  </text>
+  
+  <!-- Row 4: 256 samples -->
+  <rect x="70" y="425" width="120" height="30" fill="#ecf0f1"/>
+  <text x="130" y="445" text-anchor="middle" font-size="11" fill="#2c3e50">
+    256 samples
+  </text>
+  
+  <rect x="200" y="425" width="120" height="30" fill="#ecf0f1"/>
+  <text x="260" y="445" text-anchor="middle" font-size="11" fill="#f39c12">
+    ~6ms
+  </text>
+  
+  <rect x="330" y="425" width="180" height="30" fill="#ecf0f1"/>
+  <text x="420" y="445" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Mixing / Light plugins
+  </text>
+  
+  <rect x="520" y="425" width="140" height="30" fill="#ecf0f1"/>
+  <text x="590" y="445" text-anchor="middle" font-size="11" fill="#27ae60">
+    Low
+  </text>
+  
+  <rect x="670" y="425" width="160" height="30" fill="#ecf0f1"/>
+  <text x="750" y="445" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Usable for tracking
+  </text>
+  
+  <!-- Row 5: 512 samples -->
+  <rect x="70" y="455" width="120" height="30" fill="#ecf0f1"/>
+  <text x="130" y="475" text-anchor="middle" font-size="11" fill="#2c3e50">
+    512 samples
+  </text>
+  
+  <rect x="200" y="455" width="120" height="30" fill="#ecf0f1"/>
+  <text x="260" y="475" text-anchor="middle" font-size="11" fill="#e74c3c">
+    ~12ms
+  </text>
+  
+  <rect x="330" y="455" width="180" height="30" fill="#ffeaa7"/>
+  <text x="420" y="475" text-anchor="middle" font-size="10" fill="#2c3e50">
+     Mixing only
+  </text>
+  
+  <rect x="520" y="455" width="140" height="30" fill="#ecf0f1"/>
+  <text x="590" y="475" text-anchor="middle" font-size="11" fill="#27ae60">
+    Very Low
+  </text>
+  
+  <rect x="670" y="455" width="160" height="30" fill="#ecf0f1"/>
+  <text x="750" y="475" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Heavy plugin work
+  </text>
+  
+  <!-- Row 6: 1024 samples -->
+  <rect x="70" y="485" width="120" height="30" fill="#ecf0f1"/>
+  <text x="130" y="505" text-anchor="middle" font-size="11" fill="#2c3e50">
+    1024 samples
+  </text>
+  
+  <rect x="200" y="485" width="120" height="30" fill="#ecf0f1"/>
+  <text x="260" y="505" text-anchor="middle" font-size="11" fill="#e74c3c">
+    ~23ms
+  </text>
+  
+  <rect x="330" y="485" width="180" height="30" fill="#ffcccc"/>
+  <text x="420" y="505" text-anchor="middle" font-size="10" fill="#e74c3c">
+     Too slow for tracking
+  </text>
+  
+  <rect x="520" y="485" width="140" height="30" fill="#ecf0f1"/>
+  <text x="590" y="505" text-anchor="middle" font-size="11" fill="#27ae60">
+    Minimal
+  </text>
+  
+  <rect x="670" y="485" width="160" height="30" fill="#ecf0f1"/>
+  <text x="750" y="505" text-anchor="middle" font-size="10" fill="#2c3e50">
+    Max CPU efficiency
+  </text>
+  
+  <!-- Optimization Tips -->
+  <rect x="50" y="545" width="800" height="135" rx="10" fill="#dfe6e9" stroke="#2c3e50" stroke-width="2"/>
+  <text x="450" y="575" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+    Optimization Tips for Low Latency
+  </text>
+  
+  <text x="80" y="600" font-size="12" fill="#2c3e50">
+    <tspan font-weight="bold" fill="#27ae60"></tspan> Use 64-128 samples buffer during MIDI recording
+  </text>
+  <text x="80" y="620" font-size="12" fill="#2c3e50">
+    <tspan font-weight="bold" fill="#27ae60"></tspan> Enable Low Latency Mode in Logic (bypasses high-latency plugins)
+  </text>
+  <text x="80" y="640" font-size="12" fill="#2c3e50">
+    <tspan font-weight="bold" fill="#27ae60"></tspan> Use Direct Hardware Monitoring on audio interface (zero-latency)
+  </text>
+  <text x="80" y="660" font-size="12" fill="#2c3e50">
+    <tspan font-weight="bold" fill="#e74c3c"></tspan> Avoid buffer &gt;256 during real-time MIDI inputfeels sluggish
+  </text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#e74c3c" />
+    </marker>
+  </defs>
+</svg>
