@@ -443,7 +443,7 @@ private struct TrainingStepCard: View {
         } label: {
             HStack {
                 Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                Text(isExpanded ? "Show Less" : "Pro Tips & Common Mistakes")
+                Text(isExpanded ? "Show Less" : "Read Deep Dive & Tips")
                     .font(.caption.bold())
             }
             .foregroundStyle(.tint)
@@ -453,6 +453,8 @@ private struct TrainingStepCard: View {
 
     private var expandedContent: some View {
         VStack(alignment: .leading, spacing: 12) {
+            lessonBody
+
             if let proTip = step.proTip {
                 ProTipCard(text: proTip)
             }
@@ -461,6 +463,21 @@ private struct TrainingStepCard: View {
                 WarningCard(text: avoidThis)
             }
         }
+    }
+
+    private var lessonBody: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Deep Dive")
+                .font(.caption.bold())
+                .foregroundStyle(.tint)
+            Text(step.body)
+                .font(.callout)
+                .lineSpacing(4)
+                .foregroundStyle(.primary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(10)
+        .background(Color.accentColor.opacity(0.07), in: RoundedRectangle(cornerRadius: 12))
     }
 
     private func screenshotThumbnail(_ source: String) -> some View {
