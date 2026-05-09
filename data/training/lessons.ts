@@ -3127,7 +3127,7 @@ export const trainingLessons: TrainingLesson[] = [
         avoidThis: "Avoid stacking multiple parallel compressors without purpose.",
         checkYourWork:
           "The return adds energy and sustain without pumping artifacts.",
-        stepScreenshot: "/assets/training/parallel-busses/step3_drum_parallel_compression.png"
+        stepScreenshot: "/assets/training/parallel-busses/step3_drum_compression.png"
       },
       {
         number: 3,
@@ -3152,7 +3152,7 @@ export const trainingLessons: TrainingLesson[] = [
         avoidThis: "Do not feed every track into every return bus.",
         checkYourWork:
           "Mix feels wider and richer while lead elements stay clear.",
-        stepScreenshot: "/assets/training/parallel-busses/step5_parallel_reverb.png"
+        stepScreenshot: "/assets/training/parallel-busses/step4_reverb_routing.png"
       },
       {
         number: 4,
@@ -3248,7 +3248,7 @@ export const trainingLessons: TrainingLesson[] = [
         avoidThis: "Avoid widening everything in the same frequency range.",
         checkYourWork:
           "Stereo image feels larger, and mono still sounds solid.",
-        stepScreenshot: "/assets/training/stereo-tricks/step6_direction_mixer.png"
+        stepScreenshot: "/assets/training/stereo-tricks/step4_direction_mixer.png"
       },
       {
         number: 3,
@@ -3273,7 +3273,7 @@ export const trainingLessons: TrainingLesson[] = [
         avoidThis: "Do not use long, bright tails on every prominent element.",
         checkYourWork:
           "Mix sounds deeper and wider without turning hazy.",
-        stepScreenshot: "/assets/training/stereo-tricks/step15_stereo_delay_patterns.png"
+        stepScreenshot: "/assets/training/stereo-tricks/step10_stereo_delay.png"
       },
       {
         number: 4,
@@ -3370,7 +3370,7 @@ export const trainingLessons: TrainingLesson[] = [
         avoidThis: "Avoid over-ducking that removes groove and note definition.",
         checkYourWork:
           "Kick stays defined and bass remains full between hits.",
-        stepScreenshot: "/assets/training/sidechaining-complete-guide/step2_kick_bass_ducking.png"
+        stepScreenshot: "/assets/training/sidechaining-complete-guide/step2_kick_bass_compressor.png"
       },
       {
         number: 3,
@@ -3395,7 +3395,7 @@ export const trainingLessons: TrainingLesson[] = [
         avoidThis: "Do not over-duck full-range music bus during every syllable.",
         checkYourWork:
           "Vocals read clearly while arrangement still feels full.",
-        stepScreenshot: "/assets/training/sidechaining-complete-guide/step5_vocal_clarity_ducking.png"
+        stepScreenshot: "/assets/training/sidechaining-complete-guide/step4_music_bus_routing.png"
       },
       {
         number: 4,
