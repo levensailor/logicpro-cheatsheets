@@ -1,6 +1,8 @@
 import type { TrainingLesson } from "@/lib/sheet-schema";
+import { sidechainingLesson } from "@/data/training/sidechaining";
 
 export const trainingLessons: TrainingLesson[] = [
+  sidechainingLesson,
   {
     id: "your-first-mix",
     title: "Your First Mix",

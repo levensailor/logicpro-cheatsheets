@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "20260509T141139Z",
-  "generatedAt": "2026-05-09T14:11:39.907Z",
+  "contentVersion": "20260509T171556Z",
+  "generatedAt": "2026-05-09T17:15:56.925Z",
   "minAppVersion": "1.0.0",
   "navItems": [
     {
@@ -10495,6 +10495,493 @@
   "training": {
     "lessons": [
       {
+        "id": "sidechaining-practical-uses",
+        "title": "Sidechaining in Logic Pro",
+        "series": "Dynamics Mastery Series",
+        "summary": "A practical sidechaining lesson for creating space, controlling masking, and building musical movement with compressors, gates, dynamic EQ, delays, reverbs, and buses.",
+        "duration": "45 min read",
+        "symbolName": "point.3.filled.connected.trianglepath.dotted",
+        "badges": [
+          "New",
+          "Intermediate",
+          "Dynamics"
+        ],
+        "isFeatured": true,
+        "checklist": [
+          "Understand trigger, target, detector, and gain-reduction paths before inserting plugins.",
+          "Set up Logic Pro Compressor sidechain input from the target processor menu.",
+          "Use the sidechain Listen and filter controls to shape what the detector hears.",
+          "Apply kick-to-bass ducking without deleting the bass sustain.",
+          "Use dynamic EQ or multiband sidechaining for frequency-specific masking.",
+          "Duck vocal reverbs and delays so ambience blooms after phrases.",
+          "Use gates and keyed effects creatively without confusing them with cleanup.",
+          "Level-match, bypass, and print important sidechain moves for reliable recall.",
+          "Check every sidechain move in context, at low volume, and in mono."
+        ],
+        "steps": [
+          {
+            "number": 1,
+            "title": "Understand the Sidechain Signal Flow",
+            "concept": "Sidechaining means one signal controls how a processor reacts to another signal.",
+            "actions": [
+              "Name the trigger source: the sound that controls the movement.",
+              "Name the target: the sound being compressed, gated, filtered, or ducked.",
+              "Decide whether the move should be transparent problem-solving or an obvious groove effect."
+            ],
+            "body": "A normal compressor listens to the same channel it is processing. A sidechained compressor listens to another signal instead. If the kick is the trigger and the bass is the target, the compressor lives on the bass track but listens to the kick. Every time the kick crosses the threshold, the bass turns down for a moment. That simple rerouting is the foundation for much more than dance-music pumping. The same idea can make a vocal push guitars out of the way, make a delay disappear during lyrics and return between phrases, make a gate open only when a drum hits, or make a dynamic EQ remove just one masking band. Think in three pieces: trigger, detector, and target. The detector is the part of the processor that decides when to act. The target is what the audience hears being changed. When those roles are clear, sidechaining becomes predictable instead of mysterious.",
+            "symbolName": "point.3.connected.trianglepath.dotted",
+            "visualTitle": "Trigger Controls Target",
+            "visualCaption": "The sidechain signal drives the detector while the target audio is processed.",
+            "settings": {
+              "Trigger": "The control source",
+              "Target": "The processed sound",
+              "Detector": "What the plugin listens to"
+            },
+            "proTip": "Say the routing out loud before patching it: 'Kick controls bass compressor' or 'Lead vocal controls reverb return compressor.'",
+            "avoidThis": "Do not call every ducking move sidechain compression. Sidechain gates, dynamic EQ, multiband compressors, and keyed effects use the same control idea in different processors.",
+            "checkYourWork": "You can identify trigger, target, and audible result for the sidechain move before choosing settings.",
+            "stepScreenshot": "/assets/training/sidechaining/01-sidechain-signal-flow.png"
+          },
+          {
+            "number": 2,
+            "title": "Patch a Sidechain in Logic Pro",
+            "concept": "Logic Pro exposes sidechain input selection at the top of compatible plugins, including Compressor.",
+            "actions": [
+              "Insert Compressor on the target channel, not the trigger channel.",
+              "Open the Side Chain input menu at the top of the plugin window.",
+              "Choose the trigger track or bus, then confirm the gain-reduction meter moves only when the trigger plays."
+            ],
+            "body": "The most common setup mistake is inserting the compressor on the wrong channel. If you want the bass to duck when the kick hits, place Compressor on the bass channel strip. Then use the plugin header Side Chain menu to select the kick track or a kick bus as the external input. The kick now feeds the detector while the bass remains the processed audio path. Start with Auto Gain off so loudness does not fool you. Use a moderate ratio, lower the threshold until gain reduction appears on kick hits, then tune attack and release. Fast attack catches the bass immediately, while slower attack lets a little bass transient through. Release decides whether the bass returns quickly, breathes with the groove, or stays reduced too long. If the trigger is a bus, name it clearly so you can understand the patch months later.",
+            "symbolName": "slider.horizontal.3",
+            "visualTitle": "Logic Pro Patch Point",
+            "visualCaption": "Insert on target, choose trigger in the plugin Side Chain menu.",
+            "settings": {
+              "Insert": "Target channel",
+              "Sidechain": "Trigger track or bus",
+              "Auto Gain": "Off while learning"
+            },
+            "proTip": "Use a dedicated trigger bus if the audible kick track has fills, edits, or effects that make the detector react inconsistently.",
+            "avoidThis": "Do not put the compressor on the kick if the goal is ducking the bass. The plugin must sit on the sound you want to reduce.",
+            "checkYourWork": "Muting the trigger should stop gain reduction; bypassing the compressor should restore the un-ducked target.",
+            "stepScreenshot": "/assets/training/sidechaining/02-logic-pro-sidechain-patch.png"
+          },
+          {
+            "number": 3,
+            "title": "Shape What the Detector Hears",
+            "concept": "Sidechain filtering lets the processor react to the useful part of the trigger instead of the entire trigger signal.",
+            "actions": [
+              "Enable the sidechain filter or advanced sidechain controls when available.",
+              "Use Listen to monitor the filtered detector signal.",
+              "Filter out trigger frequencies that cause false or exaggerated gain reduction."
+            ],
+            "body": "Logic Pro Compressor includes sidechain controls that change detector behavior. Peak detection reacts to short transients, RMS detection follows average energy, and stereo detection modes decide how left and right inputs trigger compression. The filter section is often the difference between professional control and distracting pumping. A low-frequency kick can over-trigger bus compression, so a high-pass filter in the detector can make the compressor respond more to snare and body than sub thump. A vocal can trigger dynamic EQ on guitars more cleanly if the detector focuses on the presence range instead of plosives. Use Listen to hear what the compressor hears. You are not filtering the audible target with this section; you are filtering the control signal. That distinction matters. A filtered detector can be surgical while the target audio still keeps its full tone.",
+            "symbolName": "line.3.horizontal.decrease.circle",
+            "visualTitle": "Detector Filter",
+            "visualCaption": "Sidechain filters focus the trigger before it reaches the detector.",
+            "settings": {
+              "Peak": "Transient-sensitive movement",
+              "RMS": "Smoother average movement",
+              "Listen": "Monitor detector input"
+            },
+            "proTip": "If compression is rhythmically correct but too exaggerated, try detector filtering before changing every main compressor setting.",
+            "avoidThis": "Do not confuse the sidechain filter with EQ on the audible signal. It usually changes trigger behavior, not target tone.",
+            "checkYourWork": "The gain-reduction meter follows the intended part of the trigger rather than random lows, cymbals, breaths, or bleed.",
+            "stepScreenshot": "/assets/training/sidechaining/03-sidechain-detector-filter.png"
+          },
+          {
+            "number": 4,
+            "title": "Example 1: Duck Bass When the Kick Hits",
+            "concept": "Kick-to-bass ducking creates low-end space without permanently EQ-cutting the bass.",
+            "actions": [
+              "Insert Compressor on the bass track or bass bus.",
+              "Select the kick as the sidechain input.",
+              "Aim for 1-4 dB of gain reduction for natural mixes or more for an audible pumping style."
+            ],
+            "body": "Kick and bass often fight because both occupy the lowest octaves. Static EQ can help, but it removes bass tone all the time. Sidechain ducking only moves the bass when the kick needs space. In rock, pop, worship, and singer-songwriter mixes, keep the move subtle: fast enough attack to make room for the kick transient, release timed so the bass returns before the groove feels empty, and gain reduction that you miss when muted but do not notice as an effect. In EDM, hip-hop, synth-pop, or heavy modern productions, the same patch can become a rhythmic pulse. The important decision is musical intent. If the kick should sound solid but the bass should still feel continuous, use light reduction. If the whole track should breathe around the kick, push ratio, threshold, and release until the pumping becomes part of the arrangement.",
+            "symbolName": "speaker.wave.2.fill",
+            "visualTitle": "Kick Opens Low-End Space",
+            "visualCaption": "The kick transient briefly lowers bass so both elements translate.",
+            "settings": {
+              "Ratio": "2:1 to 6:1",
+              "Attack": "0-10 ms",
+              "Release": "40-180 ms by groove"
+            },
+            "proTip": "Set release while the full groove plays. The correct release usually feels connected to tempo more than to the compressor display.",
+            "avoidThis": "Do not remove so much bass that the song loses sustain between kick hits unless pumping is the desired sound.",
+            "checkYourWork": "The kick becomes clearer at the same master level and the bass still feels like a continuous musical part.",
+            "stepScreenshot": "/assets/training/sidechaining/04-kick-ducks-bass.png"
+          },
+          {
+            "number": 5,
+            "title": "Example 2: Let the Acoustic Kick Beat the 808",
+            "concept": "Short 808 or sub ducking prevents low-frequency pileups while preserving the long sub note.",
+            "actions": [
+              "Put a compressor or volume shaper on the 808, sub bass, or synth low layer.",
+              "Use the kick, ghost kick, or clean trigger bus as the sidechain source.",
+              "Use fast attack and a release that recovers before the next bass pitch change."
+            ],
+            "body": "An 808, sub synth, or long bass drop can mask the physical click and thump of an acoustic kick. The goal is not always to make the sub obviously pulse; often it is to remove the first 40-120 ms of sub energy so the kick transient owns the speaker cone. If the kick has fills, use a ghost trigger MIDI track or muted audio trigger that plays only the pattern you want the 808 to follow. This keeps the ducking consistent even if the audible kick has rolls, flam hits, or sample layers. For trap, pop, and rock productions with added sub support, this move can preserve power without clipping the mix bus. Watch the release carefully. Too short creates distortion or clicks; too long makes the low end vanish after every hit. The best setting usually sounds louder and cleaner even though the sub is being turned down momentarily.",
+            "symbolName": "waveform",
+            "visualTitle": "Kick vs 808",
+            "visualCaption": "A short duck clears speaker excursion at the exact kick transient.",
+            "settings": {
+              "Duck": "40-120 ms window",
+              "Trigger": "Kick or ghost kick bus",
+              "Goal": "Transient clarity without sub dropout"
+            },
+            "proTip": "A muted ghost kick trigger can be more reliable than the audible kick if the production has fills or changing kick samples.",
+            "avoidThis": "Avoid using a long release just because the meter looks smooth. If the 808 note disappears, the release is too slow.",
+            "checkYourWork": "The combined kick and 808 feel stronger, not smaller, when the sidechain is active.",
+            "stepScreenshot": "/assets/training/sidechaining/05-kick-ducks-808.png"
+          },
+          {
+            "number": 6,
+            "title": "Example 3: Duck Low Synths Under Bass Guitar",
+            "concept": "A bass guitar can trigger dynamic control on supporting synth lows so the played part remains articulate.",
+            "actions": [
+              "Route the synth low layer through a compressor or dynamic EQ.",
+              "Use the bass guitar DI or bass bus as the sidechain trigger.",
+              "Reduce only the low-mid or sub band if full-band compression makes the synth pump."
+            ],
+            "body": "Layered bass arrangements are common: a real bass guitar supplies performance and midrange identity while a synth or sub layer adds weight. The problem appears when both layers sustain through the same notes and blur the rhythm. Instead of muting the synth or cutting huge EQ holes, let the bass guitar control the synth layer. Full-band compression works if the synth is only a support pad. Dynamic EQ or multiband compression is better when you want to duck only the 60-180 Hz area while preserving top-end texture. This technique is useful in rock choruses with added synth bass, pop tracks with live bass plus sub, and worship arrangements where pads fill the low octave. The musical result is authority: the performed bass line remains readable and the synth reinforces it without swallowing the groove.",
+            "symbolName": "gauge.with.dots.needle.50percent",
+            "visualTitle": "Bass Leads the Low Layer",
+            "visualCaption": "The played bass can carve temporary room in a supporting synth.",
+            "settings": {
+              "Target": "Synth low layer",
+              "Trigger": "Bass DI or bass bus",
+              "Band": "60-180 Hz if using dynamic EQ"
+            },
+            "proTip": "If the synth has stereo width, keep sub frequencies centered before sidechaining so mono playback stays stable.",
+            "avoidThis": "Do not let the synth become louder after each duck because makeup gain or release overshoot can create low-end surges.",
+            "checkYourWork": "Bass notes are easier to follow while the synth layer still adds weight when the bass leaves space.",
+            "stepScreenshot": "/assets/training/sidechaining/06-bass-ducks-synth-low.png"
+          },
+          {
+            "number": 7,
+            "title": "Example 4: Let Vocals Duck Guitars or Keys",
+            "concept": "Vocal-triggered dynamic EQ can reduce masking only when the singer is present.",
+            "actions": [
+              "Place a dynamic EQ or multiband compressor on the guitar, keys, or music bus.",
+              "Use the lead vocal as the external sidechain trigger.",
+              "Target the masking zone, often 1.5-5 kHz for intelligibility conflicts."
+            ],
+            "body": "Dense guitars, piano, organ, and synths can occupy the same presence range that carries lyric intelligibility. Static cuts may make the track feel dull in instrumental sections. A vocal-triggered dynamic EQ is more elegant: when the singer enters, the music bus dips a narrow or medium band; when the singer stops, the instruments return to full tone. This is one of the most practical non-EDM sidechain uses. It works for rock guitars under lead vocal, piano under ballad vocal, synth pads under pop hooks, and stacked backing tracks under spoken lines. Start small, often 1-3 dB of dynamic reduction. Use a sidechain detector that follows the vocal after basic cleanup and de-essing, not a raw noisy track. The goal is not to hear the guitars duck. The goal is to understand the vocal with less fader riding and fewer permanent tonal compromises.",
+            "symbolName": "mic.fill",
+            "visualTitle": "Vocal Clears Presence",
+            "visualCaption": "Dynamic EQ moves a masking band only during vocal phrases.",
+            "settings": {
+              "Common Band": "1.5-5 kHz",
+              "Reduction": "1-3 dB",
+              "Width": "Medium Q for natural tone"
+            },
+            "proTip": "Sidechain the music bus for broad support, or individual guitars/keys when only one instrument masks the vocal.",
+            "avoidThis": "Avoid wide heavy dips that make the band sound like it folds backward every time the vocal starts.",
+            "checkYourWork": "Lyrics become easier to understand without the instruments sounding darker in instrumental gaps.",
+            "stepScreenshot": "/assets/training/sidechaining/07-vocal-ducks-guitars-keys.png"
+          },
+          {
+            "number": 8,
+            "title": "Example 5: Duck Vocal Reverb",
+            "concept": "Sidechaining the reverb return keeps the dry vocal forward while letting space bloom after phrases.",
+            "actions": [
+              "Send the vocal to a reverb aux set fully wet.",
+              "Insert Compressor after the reverb on the aux return.",
+              "Select the dry lead vocal as the compressor sidechain input."
+            ],
+            "body": "Big vocal reverb can sound beautiful in gaps and messy during lyrics. Instead of lowering the reverb send for the whole song, place a compressor on the reverb return and trigger it from the dry vocal. When the singer is active, the reverb return ducks. When the phrase ends, release time lets the tail rise into the space. This keeps the vocal intimate and intelligible while still making the production feel wide and emotional. It is useful for lead vocals, background stacks, snare plates, guitar ambience, and even room mics. Attack can be fast because you want the reverb to move out of the way quickly. Release is the creative control: short release keeps the tail lively; longer release makes a smoother swell after each phrase. Adjust threshold until the reverb supports the vocal instead of wrapping around every consonant.",
+            "symbolName": "sparkles",
+            "visualTitle": "Reverb Moves Behind the Voice",
+            "visualCaption": "The dry vocal ducks its own ambience while phrases are present.",
+            "settings": {
+              "Insert": "Compressor after reverb",
+              "Trigger": "Dry vocal",
+              "Release": "150-600 ms by phrase"
+            },
+            "proTip": "Filter the reverb return before the compressor if low reverb rumble makes the ducking feel cloudy.",
+            "avoidThis": "Do not sidechain the dry vocal itself when the goal is reverb clarity. Compress the return, not the source.",
+            "checkYourWork": "The vocal reads clearly during lines and the reverb tail becomes more audible between lines.",
+            "stepScreenshot": "/assets/training/sidechaining/08-vocal-ducks-reverb.png"
+          },
+          {
+            "number": 9,
+            "title": "Example 6: Duck Delay Throws During Lyrics",
+            "concept": "A vocal can control delay level so repeats stay exciting without covering new words.",
+            "actions": [
+              "Create a delay aux and keep it mostly or fully wet.",
+              "Insert Compressor after the delay.",
+              "Use the dry vocal as sidechain input and tune release to the tempo."
+            ],
+            "body": "Delay throws are exciting because repeats answer the vocal. They become distracting when repeats collide with the next line. Sidechain compression on the delay return solves this by reducing the delay while the singer continues, then releasing the repeats into gaps. It is especially effective on quarter-note, dotted-eighth, slap, and tape delays. You can automate the send for special words and still sidechain the return for automatic cleanup. Use tempo-aware thinking: if the song is fast, release may need to recover within an eighth or quarter note. If the song is slow and spacious, a longer release can make the delay swell musically. For a more controlled result, insert EQ before compression to remove lows and harsh highs from the return. The ducked delay should feel like arrangement polish, not like a gate chopping off every repeat.",
+            "symbolName": "repeat",
+            "visualTitle": "Delay Answers, Then Tucks",
+            "visualCaption": "The vocal keeps repeats out of the way until there is space.",
+            "settings": {
+              "Delay": "Slap, 1/8, dotted 1/8, or 1/4",
+              "Trigger": "Dry vocal",
+              "Release Feel": "Tempo-matched"
+            },
+            "proTip": "Automate send level for which words get delay; use sidechain ducking for how the return behaves afterward.",
+            "avoidThis": "Do not set release so fast that the delay chatters between syllables unless that stutter is the intended effect.",
+            "checkYourWork": "Delay repeats are obvious in gaps but lyrics remain clean when the next phrase starts.",
+            "stepScreenshot": "/assets/training/sidechaining/09-vocal-ducks-delay.png"
+          },
+          {
+            "number": 10,
+            "title": "Example 7: Snare Ducks Room or Plate Reverb",
+            "concept": "A snare can trigger control on its ambience so the attack stays crisp and the decay stays large.",
+            "actions": [
+              "Send snare to a room or plate aux.",
+              "Compress the reverb return using the dry snare as sidechain input.",
+              "Tune release so the ambience rises after the transient instead of masking it."
+            ],
+            "body": "Snare reverb often creates a conflict: the mix needs size, but the transient needs to stay sharp. Sidechaining the snare reverb return gives you both. When the dry snare hits, the reverb dips. As the compressor releases, the tail blooms and fills the space after the crack. This works on natural room mics, artificial plates, gated-style rooms, and parallel snare ambience. The technique is not limited to snare. Toms can duck their room return so fills stay articulate, and percussion can duck short ambience so grooves remain tight. Start with more reduction than needed so you can hear the timing, then back off until the move feels natural. If the return has too much low-mid buildup, EQ it before the compressor. That way the sidechain move enhances depth without turning the drum bus into a boxy wash.",
+            "symbolName": "circle.grid.cross",
+            "visualTitle": "Snare Space Without Smear",
+            "visualCaption": "A ducked room return preserves crack while keeping size.",
+            "settings": {
+              "Target": "Snare room or plate",
+              "Trigger": "Dry snare",
+              "Release": "Recover with decay"
+            },
+            "proTip": "Use the same trigger bus for snare samples and live snare if both should control the shared ambience.",
+            "avoidThis": "Avoid ducking so hard that the reverb tail sounds disconnected from the snare hit.",
+            "checkYourWork": "The snare attack is clearer and the drum still feels larger when the return is active.",
+            "stepScreenshot": "/assets/training/sidechaining/10-snare-ducks-room.png"
+          },
+          {
+            "number": 11,
+            "title": "Example 8: Lead Guitar Ducks Rhythm Layers",
+            "concept": "Sidechaining can create a temporary feature pocket without muting supporting parts.",
+            "actions": [
+              "Place dynamic EQ or a compressor on the rhythm guitar bus.",
+              "Use the lead guitar as the external sidechain trigger.",
+              "Target the midrange band where the lead needs focus, then reduce gently."
+            ],
+            "body": "A guitar solo, melodic hook, or featured synth line often competes with rhythm layers that are important everywhere else. Manual automation is still valuable, but sidechaining can make the pocket respond to the performance. Put dynamic EQ on the rhythm guitar bus and use the lead guitar as trigger. Reduce a band around the lead's bite or body only when the lead plays. The rhythm guitars remain wide and powerful in rests, then step back during featured phrases. This is useful for rock guitar solos, harmony lead lines, keyboard hooks, fiddle or violin features, and call-and-response parts. Keep the sidechain subtle because listeners are sensitive to rhythm guitars collapsing. If the lead needs a dramatic spotlight, combine light sidechain reduction with a small lead fader ride instead of forcing the sidechain to do all the work.",
+            "symbolName": "music.note",
+            "visualTitle": "Feature Pocket",
+            "visualCaption": "The lead instrument asks the support layer to step back temporarily.",
+            "settings": {
+              "Target": "Rhythm bus",
+              "Trigger": "Lead instrument",
+              "Reduction": "1-3 dB dynamic band"
+            },
+            "proTip": "Sidechain the bus when both left and right rhythm layers should move together; sidechain one track when only one side masks the feature.",
+            "avoidThis": "Do not create a hole so wide that the track loses energy every time the lead plays.",
+            "checkYourWork": "The featured line reads clearly while the rhythm bed still feels continuous.",
+            "stepScreenshot": "/assets/training/sidechaining/11-lead-ducks-rhythm.png"
+          },
+          {
+            "number": 12,
+            "title": "Example 9: Voice Ducks a Music Bed",
+            "concept": "Sidechain ducking can automate narration, podcast, livestream, or announcement mixes.",
+            "actions": [
+              "Insert a compressor on the music bed or background bus.",
+              "Use the voice, narration, or announcement mic as the sidechain trigger.",
+              "Set attack fast enough for intelligibility and release slow enough to avoid pumping between words."
+            ],
+            "body": "Sidechaining is not only for songs. Voiceover, podcast, worship service playback, livestream intros, and spoken interludes often need music to lower automatically when someone talks. The setup is simple: compressor on music, voice as trigger. The taste is in the timing. Fast attack protects consonants at the start of words. Release should be slower than a syllable gap so the music does not rise and fall between every word. For natural narration, use lower ratios and a few dB of reduction. For radio-style announcements, heavier ducking may be appropriate. Use a filtered detector if plosives or breath noise trigger the compressor too hard. This approach saves automation time, but you should still listen through the entire piece. A speaker who pauses for effect may need manual automation so the music does not jump up at the wrong emotional moment.",
+            "symbolName": "mic.circle.fill",
+            "visualTitle": "Narration Priority",
+            "visualCaption": "Voiceover can automatically lower the supporting music bed.",
+            "settings": {
+              "Ratio": "2:1 to 5:1",
+              "Attack": "Fast",
+              "Release": "300 ms to 1 s"
+            },
+            "proTip": "For podcasts, combine gentle sidechain ducking with clip gain or vocal riding so the compressor receives a consistent trigger.",
+            "avoidThis": "Do not let the music pump up between every word. Smooth release is usually more important than dramatic reduction.",
+            "checkYourWork": "Every word remains intelligible while the bed still feels present under the voice.",
+            "stepScreenshot": "/assets/training/sidechaining/12-voice-ducks-music-bed.png"
+          },
+          {
+            "number": 13,
+            "title": "Example 10: De-Ess with an Internal Sidechain",
+            "concept": "A de-esser is a frequency-aware compressor whose detector listens hardest to sibilance.",
+            "actions": [
+              "Insert DeEsser 2 or a compressor/dynamic EQ on the vocal.",
+              "Focus the detector around the harsh S range, often 5-10 kHz.",
+              "Reduce only enough to soften sibilance without dulling the vocal."
+            ],
+            "body": "Not every sidechain uses a different external track. Many processors use an internal sidechain: the same vocal feeds the detector, but the detector is filtered so it reacts mostly to sibilance. That is the core idea behind de-essing. The audible vocal is reduced, split-band reduced, or dynamically filtered when S, T, SH, or CH energy crosses the threshold. Understanding this makes de-essing easier. You are not simply turning down treble. You are asking the detector to identify a problem band and act only when that band spikes. Logic DeEsser 2 is built for this, but dynamic EQ can do similar work with more control. Use Listen or monitoring modes to find the harsh band, then reduce conservatively. Over-de-essing creates lispy vocals and removes excitement. Good de-essing makes the compressor and vocal effects behave better downstream because the vocal no longer triggers them with sharp sibilant bursts.",
+            "symbolName": "waveform.path.ecg",
+            "visualTitle": "Filtered Internal Sidechain",
+            "visualCaption": "The vocal controls its own high-frequency problem band.",
+            "settings": {
+              "S Range": "5-10 kHz",
+              "Mode": "Wideband or split-band",
+              "Goal": "Softer sibilance, same vocal energy"
+            },
+            "proTip": "De-ess before bright reverbs and delays so sibilance does not splash through every effect return.",
+            "avoidThis": "Do not chase every bright consonant. Some brightness is articulation, not a defect.",
+            "checkYourWork": "Sibilance is less painful while the vocal still sounds clear and natural.",
+            "stepScreenshot": "/assets/training/sidechaining/13-de-ess-internal-sidechain.png"
+          },
+          {
+            "number": 14,
+            "title": "Example 11: Key a Gate from a Drum Trigger",
+            "concept": "A sidechain gate opens a target only when the trigger crosses threshold.",
+            "actions": [
+              "Insert a gate on the sound you want to open, such as room noise, a sine tone, or a parallel effect.",
+              "Choose the drum trigger as the sidechain input.",
+              "Set attack, hold, and release to follow the drum envelope musically."
+            ],
+            "body": "Sidechain gates are the inverse of common ducking. Instead of turning a target down when the trigger appears, a gate can open the target only when the trigger appears. This is useful for reinforcing drums. A kick can open a low sine tone for added sub weight. A snare can open a noise burst or gated room for impact. A tom close mic can key a gate more accurately from a cleaner trigger track than from a noisy mic with cymbal bleed. The target might be audible audio, a parallel return, or a printed sample. Keep the gate musical: attack too slow misses the transient, hold too short chops the body, release too long smears into the next hit. This technique can be transparent reinforcement or a deliberately artificial 1980s-style gated effect. The key is remembering that the trigger does not need to be heard; it only needs to control the gate reliably.",
+            "symbolName": "rectangle.compress.vertical",
+            "visualTitle": "Gate Opens on Trigger",
+            "visualCaption": "A drum hit can reveal reinforcement only when needed.",
+            "settings": {
+              "Trigger": "Kick, snare, or tom",
+              "Target": "Tone, room, or sample layer",
+              "Controls": "Attack, hold, release"
+            },
+            "proTip": "Duplicate or print a clean trigger if bleed makes the gate open on the wrong hits.",
+            "avoidThis": "Do not use a keyed gate to hide bad timing between layers. Align timing first, then gate.",
+            "checkYourWork": "The added layer appears only on intended hits and decays in time with the drum.",
+            "stepScreenshot": "/assets/training/sidechaining/14-keyed-gate-drum-trigger.png"
+          },
+          {
+            "number": 15,
+            "title": "Example 12: Stop Drum Bus Pumping with a Sidechain Filter",
+            "concept": "Filtering a compressor detector can keep low-end hits from over-controlling a bus.",
+            "actions": [
+              "Insert gentle compression on the drum bus or mix bus only if it improves glue.",
+              "Enable the sidechain filter in the compressor.",
+              "High-pass or shape the detector so kick lows do not dominate the gain reduction."
+            ],
+            "body": "Bus compression can glue a kit or mix, but low-frequency hits often make the whole bus lurch. A loud kick can pull down cymbals, guitars, and vocal ambience in a way that feels smaller rather than punchier. The solution may be a sidechain filter, even without an external sidechain source. In many compressors, the detector normally listens to the processed signal. By high-passing or shaping the detector path, you tell the compressor to respond less to sub energy and more to the overall musical envelope. Logic Pro Compressor sidechain parameters stay useful in this internal mode. Use Listen to confirm you are not simply ignoring the entire groove. This move is subtle but important: it lets compression add cohesion without turning the kick into the boss of the whole mix. It is a professional way to get glue while keeping low-end stability.",
+            "symbolName": "dial.medium",
+            "visualTitle": "Filtered Bus Detector",
+            "visualCaption": "Internal sidechain filtering prevents kick lows from over-triggering glue compression.",
+            "settings": {
+              "Detector HPF": "60-150 Hz starting zone",
+              "Gain Reduction": "0.5-2 dB on mix bus",
+              "Goal": "Glue without lurching"
+            },
+            "proTip": "If bus compression feels worse only when the kick enters, adjust detector filtering before abandoning the compressor.",
+            "avoidThis": "Do not use heavy bus compression to fix an unbalanced low end. Fix the kick and bass balance first.",
+            "checkYourWork": "The bus feels cohesive while cymbals, ambience, and vocals stop dipping with every kick hit.",
+            "stepScreenshot": "/assets/training/sidechaining/15-bus-sidechain-filter.png"
+          },
+          {
+            "number": 16,
+            "title": "Example 13: Sidechain Dynamic EQ for Frequency Pockets",
+            "concept": "Dynamic EQ can duck only the overlapping frequency range instead of the entire target.",
+            "actions": [
+              "Choose a dynamic EQ or multiband processor that supports external sidechain.",
+              "Place it on the target that masks another part.",
+              "Set the sidechain trigger and reduce only the masking band."
+            ],
+            "body": "Full-band ducking is not always the cleanest solution. If a vocal only conflicts with guitars around 3 kHz, turning down the entire guitar bus may make the arrangement shrink. Dynamic EQ creates a smaller pocket. The vocal triggers one band on the guitar bus. The bass triggers only the low band of a synth. The kick triggers only the sub band of a bass. The snare triggers only a harsh room resonance. The lead guitar triggers a mid band in keys. This is sidechaining as frequency choreography. It is particularly useful in dense band mixes because every instrument keeps most of its tone most of the time. Start with the narrowest useful problem statement: who masks whom, and where? Then use the minimum reduction that solves that conflict. If you need more than 4-5 dB of dynamic reduction, check arrangement, static EQ, and levels too.",
+            "symbolName": "waveform.path.badge.plus",
+            "visualTitle": "Frequency-Only Ducking",
+            "visualCaption": "Dynamic EQ removes the shared band while leaving the rest alone.",
+            "settings": {
+              "Tools": "Dynamic EQ or multiband compressor",
+              "Reduction": "1-4 dB usually",
+              "Question": "Who masks whom, and where?"
+            },
+            "proTip": "Solo the detector briefly to find the trigger behavior, then make final decisions only in the full mix.",
+            "avoidThis": "Avoid making many tiny sidechain bands before the rough balance works. Complexity cannot replace arrangement clarity.",
+            "checkYourWork": "The masking problem improves without obvious level pumping or tonal collapse.",
+            "stepScreenshot": "/assets/training/sidechaining/16-dynamic-eq-frequency-pocket.png"
+          },
+          {
+            "number": 17,
+            "title": "Example 14: Make Pads Pump with the Groove",
+            "concept": "Creative sidechaining can turn sustained sounds into rhythmic motion.",
+            "actions": [
+              "Place a compressor, tremolo-style volume shaper, or gate on the pad or synth bus.",
+              "Use kick, snare, percussion, or a muted rhythm trigger as the sidechain source.",
+              "Exaggerate threshold, ratio, and release until the movement becomes part of the arrangement."
+            ],
+            "body": "Not every sidechain has to be invisible. Sustained pads, drones, string layers, and synth chords can feel static. Sidechaining them to the kick or a ghost rhythm trigger makes the arrangement breathe with the groove. This is common in electronic music, but it also works subtly in pop, worship, cinematic rock, and ambient transitions. The trigger can be the actual kick, a percussion loop, or a silent MIDI/audio trigger with a custom rhythm. A ghost trigger gives the most control because the audible drums do not have to determine the pumping pattern. Use deeper reduction and slower release for obvious swell. Use lighter reduction for a pad that simply stops masking the transient grid. If the movement makes the track feel smaller, reduce low-frequency content in the pad or limit the sidechain to a mid/high layer.",
+            "symbolName": "metronome",
+            "visualTitle": "Rhythmic Pumping",
+            "visualCaption": "A trigger pattern can animate sustained instruments.",
+            "settings": {
+              "Trigger": "Kick, percussion, or ghost rhythm",
+              "Target": "Pad, drone, strings, synth bus",
+              "Style": "Subtle space or obvious pulse"
+            },
+            "proTip": "A ghost trigger lets you program syncopated sidechain movement without changing the audible drum part.",
+            "avoidThis": "Do not pump full-range pads with lots of sub unless you want the low end to sway dramatically.",
+            "checkYourWork": "The sustained layer gains movement while the groove feels stronger and more intentional.",
+            "stepScreenshot": "/assets/training/sidechaining/17-pad-pumping-groove.png"
+          },
+          {
+            "number": 18,
+            "title": "Build a Repeatable Logic Pro Routing Template",
+            "concept": "Reusable buses make sidechain patches faster, clearer, and safer across sessions.",
+            "actions": [
+              "Create named trigger buses such as SC Kick, SC Vocal, and SC Snare.",
+              "Feed those buses with pre-fader or post-fader sends depending on the goal.",
+              "Color and document sidechain auxiliaries so routing remains readable."
+            ],
+            "body": "Sidechain routing becomes messy when every plugin points directly at random tracks. A template keeps decisions readable. Create a few dedicated sidechain buses: SC Kick, SC Vocal, SC Snare, SC Lead, or SC Narration. Feed them from the sources that should control other processors. In some cases the trigger bus is audible nowhere; it exists only for detection. In other cases it mirrors an existing bus. Pre-fader sends are useful when a trigger must keep working even if the audible source is faded down. Post-fader sends make the sidechain follow the mix balance. There is no universal answer, so label the reason. Keep trigger buses out of the stereo output unless they are meant to be heard. Name auxes clearly, for example 'Vox Verb Duck Comp' or 'Bass DynEQ keyed by Kick.' Future you will thank present you when revisiting the session.",
+            "symbolName": "folder.fill.badge.gearshape",
+            "visualTitle": "Sidechain Bus Template",
+            "visualCaption": "Named trigger buses turn complex patches into a repeatable workflow.",
+            "settings": {
+              "Buses": "SC Kick, SC Vocal, SC Snare",
+              "Pre-Fader": "Independent trigger",
+              "Post-Fader": "Follows source level"
+            },
+            "proTip": "Save a Logic template with common sidechain trigger buses but no active processing, so you start organized without committing to moves.",
+            "avoidThis": "Do not leave unnamed buses feeding hidden processors. Sidechain confusion is a real mix recall problem.",
+            "checkYourWork": "A collaborator can open the mixer and understand which buses are triggers and which are audible returns.",
+            "stepScreenshot": "/assets/training/sidechaining/18-routing-template.png"
+          },
+          {
+            "number": 19,
+            "title": "Troubleshoot Clicks, Pumping, and Missing Impact",
+            "concept": "Most sidechain problems come from timing, detector choice, or asking one move to solve too much.",
+            "actions": [
+              "If the target clicks, slow the attack or release and check plugin lookahead if available.",
+              "If the target pumps too obviously, reduce gain reduction or filter the detector.",
+              "If nothing happens, confirm the sidechain input, trigger level, threshold, and plugin placement."
+            ],
+            "body": "Sidechains fail in predictable ways. Clicking usually means the gain is moving too abruptly, especially on bass and sub material. Slow attack or release, use lookahead if the processor offers it, or reduce the amount of gain reduction. Over-pumping usually means release timing is wrong, threshold is too low, or the detector is reacting to energy that should not control the move. Use the sidechain Listen function and filters. Missing impact can mean the sidechain is patched correctly but the target has makeup gain, parallel paths, or another bus that bypasses the processor. Check routing by muting the target, trigger, and return paths one at a time. Also watch for phase and timing when sidechaining layered drums or parallel bass. A sidechain should solve one clear problem. If you are trying to fix balance, tone, arrangement, and groove at once, split the problem into smaller moves.",
+            "symbolName": "wrench.and.screwdriver.fill",
+            "visualTitle": "Sidechain Debugging",
+            "visualCaption": "Clicks, pumping, and no-response issues usually trace back to timing or routing.",
+            "settings": {
+              "Clicks": "Slow timing or reduce depth",
+              "Pumping": "Release/filter/threshold",
+              "No Response": "Check input and placement"
+            },
+            "proTip": "Temporarily exaggerate threshold and ratio while debugging. Once you hear the route working, back settings down to the musical amount.",
+            "avoidThis": "Do not keep adding processors before proving the first sidechain is patched and timed correctly.",
+            "checkYourWork": "You can deliberately make the sidechain obvious, then reduce it to the intended musical amount without losing the effect.",
+            "stepScreenshot": "/assets/training/sidechaining/19-troubleshooting.png"
+          },
+          {
+            "number": 20,
+            "title": "Verify, Print, and Document the Move",
+            "concept": "A sidechain is finished only when it improves the mix at matched loudness and can be recalled later.",
+            "actions": [
+              "Bypass the sidechain at matched loudness and confirm the mix loses clarity or movement.",
+              "Check low-volume playback, mono playback, and the loudest song section.",
+              "Print or bounce critical sidechain returns when delivery, collaboration, or CPU stability requires it."
+            ],
+            "body": "Sidechaining can feel impressive because meters move. Final verification must be musical. Level-match before and after, then ask whether the song is clearer, groovier, bigger, or more controlled. Check the loudest section because sidechains that work in a verse may overreact in a chorus. Check low volume because over-ducking becomes obvious when the mix is quiet. Check mono because low-end and ambience moves can change translation. If the sidechain uses third-party dynamic EQ, tempo-synced effects, or complex routing, consider printing the return or target to audio before final delivery. Printing does not mean abandoning flexibility; save a muted source track or project alternative so you can revise later. Add short notes in track names or comments: trigger, target, purpose, and approximate depth. A finished sidechain should be repeatable, understandable, and boringly reliable when you reopen the session.",
+            "symbolName": "checkmark.seal.fill",
+            "visualTitle": "Final Sidechain Pass",
+            "visualCaption": "Verification turns clever routing into dependable mix improvement.",
+            "settings": {
+              "A/B": "Matched loudness",
+              "Checks": "Low volume, mono, loudest section",
+              "Notes": "Trigger, target, purpose, depth"
+            },
+            "proTip": "Print only after the arrangement and main balances are stable. Early printing can make simple changes harder than necessary.",
+            "avoidThis": "Do not approve a sidechain because it looks active on a meter. Approve it because bypass makes the music worse.",
+            "checkYourWork": "The sidechain improves the song in context, survives translation checks, and is documented clearly enough to recall.",
+            "stepScreenshot": "/assets/training/sidechaining/20-final-verification.png"
+          }
+        ]
+      },
+      {
         "id": "your-first-mix",
         "title": "Your First Mix",
         "series": "Beginner Mixing Series",
@@ -11106,6 +11593,486 @@
             "avoidThis": "Avoid deciding on compression at one playback level only.",
             "checkYourWork": "Compressed version is clearly better at matched loudness across devices.",
             "stepScreenshot": null
+          }
+        ]
+      },
+      {
+        "id": "frequently-asked-questions",
+        "title": "Frequently Asked Questions",
+        "series": "Essential Knowledge Series",
+        "summary": "Clear answers to the most common Logic Pro workflow questions, from file management and buffer settings to recording techniques and export best practices.",
+        "duration": "25 min read",
+        "symbolName": "questionmark.circle",
+        "badges": [
+          "Essential",
+          "Beginner",
+          "Quick Reference"
+        ],
+        "isFeatured": true,
+        "checklist": [
+          "Understand .logicx packages vs folder bundles for saving projects.",
+          "Know safe storage locations for projects, plugins, and samples.",
+          "Learn when to adjust buffer size for recording vs mixing.",
+          "Discover when stock plugins are sufficient vs when third-party is needed.",
+          "Master the complete export workflow for finished songs.",
+          "Identify healthy waveform levels visually.",
+          "Use comping to compile the best take from multiple recordings.",
+          "Understand bounce behavior and source preservation.",
+          "Know when to mix in mono vs stereo.",
+          "Adjust track zoom and waveform display for editing."
+        ],
+        "steps": [
+          {
+            "number": 1,
+            "title": "Should I save to a .logicx file or to a folder? Does it matter?",
+            "concept": "Logic Pro uses package bundles that appear as single files but actually contain folders. Understanding the format helps with troubleshooting, backup, and collaboration.",
+            "actions": [
+              "Save as .logicx package by default for clean file management.",
+              "Use 'Save As' with appropriate options based on collaboration needs.",
+              "Keep project files organized in dedicated folders with sessions grouped logically."
+            ],
+            "body": "When you save a Logic Pro project, it creates a .logicx package file. This is actually a special folder that macOS treats as a single file in Finder. Inside this package, Logic stores your project settings, plugin states, audio files (if you choose), and other session data.\n\nThe .logicx format keeps everything tidy and portable. When you double-click a .logicx file, Logic opens it directly. You can also right-click (Control-click) and choose 'Show Package Contents' to see what's inside.\n\nPrevious Logic versions used folder bundles or loose folders. While Logic can still open these older formats, new projects default to .logicx packages for better organization.\n\nWhen saving, Logic asks if you want to copy audio and other media into the project. Choosing 'Copy external audio files' makes your project self-contained and easier to move between computers or archive. If you decline, Logic references audio from its original location, which saves disk space but creates dependencies.\n\nFor collaboration, consolidate your project (File > Project Management > Consolidate) to ensure all dependencies are copied into the package. For personal work with trusted backups, referencing external audio is fine and more space-efficient.\n\nAlways save project files to fast local storage, not network drives or cloud-synced folders, to avoid corruption during auto-save operations. Use those locations only for manual backups after closing Logic.",
+            "symbolName": "doc.fill",
+            "visualTitle": "Project File Formats",
+            "visualCaption": "Package format keeps projects organized.",
+            "settings": {
+              "Default Format": ".logicx package",
+              "Legacy Format": "Folder bundle (pre-Logic X)",
+              "Best Practice": "Copy media into package for archiving"
+            },
+            "proTip": "Use File > Save a Copy As... to create an archived version with all assets embedded before moving the project to another system.",
+            "avoidThis": "Don't work directly from cloud-synced folders like Dropbox or iCloud Drive during active sessions—save locally and sync manually after closing.",
+            "checkYourWork": "Your project opens reliably on another Mac without missing file warnings.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq1_save_format_overview.png"
+          },
+          {
+            "number": 1,
+            "title": "Save Format Visual Examples",
+            "concept": "Visual reference showing how Logic packages appear in Finder and what's contained inside.",
+            "actions": [
+              "View package contents to understand internal structure.",
+              "Identify the difference between consolidated and referenced projects.",
+              "Learn to read file paths when troubleshooting missing media."
+            ],
+            "body": "Understanding the internal structure of a .logicx package helps when troubleshooting missing files or migrating projects. The package contains folders like 'Media' for embedded audio, 'Alternatives' for project versions, and various settings files.\n\nWhen you consolidate a project, all external references are copied into these internal folders. This makes the project fully portable but increases its size. Referenced projects remain smaller but depend on external files staying in their original locations.\n\nIf you ever see missing file warnings, showing package contents helps you locate what's missing and either restore it or relink it from backups.",
+            "symbolName": "folder.fill",
+            "visualTitle": "Inside a Logic Package",
+            "visualCaption": "Package contents and structure.",
+            "settings": null,
+            "proTip": "Press Command-R on a selected audio region to reveal its source file location, helping you track down where files actually live.",
+            "avoidThis": "Don't manually move or rename files inside a Logic package while the project is open—use Logic's internal file management instead.",
+            "checkYourWork": "You can locate any project's audio files by examining package contents.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq1_package_contents.png"
+          },
+          {
+            "number": 2,
+            "title": "I have limited hard drive space on my computer, is it okay to save files to a USB drive or network storage? What about plugins or samples?",
+            "concept": "Storage location affects performance, reliability, and workflow speed. Understanding the hierarchy of storage types prevents corruption and frustration.",
+            "actions": [
+              "Keep active projects on internal SSD for best performance.",
+              "Archive finished projects to external drives after completion.",
+              "Install plugins and system samples on internal storage only.",
+              "Use high-quality external SSDs for overflow project storage if needed."
+            ],
+            "body": "Logic Pro performs best when working with files on your Mac's internal SSD. This drive offers the fastest read/write speeds and most reliable operation during auto-save cycles. Working directly from slower storage—especially network drives or USB thumb drives—risks file corruption, sluggish performance, and unexpected crashes.\n\nIf your internal drive is nearly full, consider archiving completed projects to external storage rather than keeping active sessions there. When you need to work on an archived project, copy it back to your internal drive first, make your changes, then archive it again.\n\nFor plugin files and Logic's built-in sound libraries, internal storage is mandatory. macOS expects plugins to live in specific system folders (typically /Library/Audio/Plug-Ins), and scanning plugins over slow connections causes long startup times. Logic's sound library can theoretically be relocated, but it performs better on internal SSDs.\n\nIf you absolutely must expand storage, use a high-quality external Thunderbolt or USB-C SSD (not a spinning hard drive or cheap flash drive). Format it as APFS or HFS+ for Mac compatibility. Even then, understand that performance will be somewhat reduced compared to internal storage.\n\nFor sample libraries from third-party developers (like Kontakt or Omnisphere), these can safely live on external SSDs since they're accessed differently than system-level plugins. Just ensure the drive is always connected when you open those sessions.\n\nNetwork storage (NAS, SMB shares, or cloud-synced folders) should only be used for manual backups or completed project archives, never for active work. The latency and potential interruptions make them unsuitable for real-time audio work.",
+            "symbolName": "internaldrive",
+            "visualTitle": "Storage Hierarchy",
+            "visualCaption": "Internal SSD for active work.",
+            "settings": {
+              "Best: Internal SSD": "Active projects, plugins, system libraries",
+              "OK: External SSD": "Sample libraries, archived projects",
+              "Avoid: Network/Cloud": "Never for active sessions"
+            },
+            "proTip": "Before archiving, run File > Project Management > Clean Up to remove unused audio files and reduce project size.",
+            "avoidThis": "Never run Logic projects directly from Dropbox, Google Drive, OneDrive, or similar sync services—these can corrupt projects mid-save.",
+            "checkYourWork": "Logic's performance meter shows low disk usage and no playback stuttering during heavy sessions.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq2_storage_types.png"
+          },
+          {
+            "number": 2,
+            "title": "Storage Best Practices",
+            "concept": "Practical workflows for managing projects across multiple storage locations.",
+            "actions": [
+              "Set up a logical folder structure for projects.",
+              "Create a workflow for archiving completed work.",
+              "Understand how to relocate Logic's sound library if absolutely necessary."
+            ],
+            "body": "Organize your Logic projects with a consistent folder structure: keep 'Active Projects' on your internal drive, 'Archive' on external storage, and 'Samples & Libraries' on whichever drive has space but preferably internal SSD.\n\nWhen a project is finished, consolidate it, verify the bounce, and then move the entire package to your archive drive. Keep a working backup on a second external drive or cloud storage for redundancy.\n\nIf you must relocate Logic's sound library, go to Logic Pro > Sound Library > Relocate Sound Library, but expect slower load times for patches. Always keep plugins themselves on the internal drive.",
+            "symbolName": "externaldrive",
+            "visualTitle": "Workflow Organization",
+            "visualCaption": "Active internal, archive external.",
+            "settings": {
+              "Active Work": "~/Documents/Logic/Active",
+              "Archive": "/Volumes/ExternalSSD/Logic Archive",
+              "Samples": "/Volumes/SampleDrive/Libraries"
+            },
+            "proTip": "Use Color Tags in Finder to visually mark projects as 'Active' (green), 'Archived' (gray), or 'In Progress' (orange).",
+            "avoidThis": "Don't scatter projects randomly across drives—a consistent structure saves hours of searching later.",
+            "checkYourWork": "You can find any project quickly by following your folder naming convention.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq2_folder_organization.png"
+          },
+          {
+            "number": 3,
+            "title": "Should I change the buffer when mixing or recording?",
+            "concept": "Buffer size balances input monitoring latency against CPU overhead. Recording needs low latency; mixing benefits from high efficiency.",
+            "actions": [
+              "Set buffer to 64-128 samples when recording with live input monitoring.",
+              "Increase buffer to 256-1024 samples when mixing or using heavy plugin counts.",
+              "Test your system to find the highest stable buffer for each task."
+            ],
+            "body": "Buffer size (also called I/O buffer or hardware buffer size) determines how much audio data Logic processes in each cycle. Smaller buffers reduce the delay (latency) between playing a note and hearing it, which is critical when recording with real-time input monitoring. Larger buffers give Logic more time to process each chunk, reducing CPU strain and preventing audio dropouts when running many plugins.\n\nWhen recording vocals, guitars, or MIDI keyboards where you need to hear yourself immediately through Logic's effects, use a buffer of 64 or 128 samples. At 44.1kHz, 64 samples equals roughly 1.5 milliseconds of round-trip latency—low enough that most performers don't notice any delay.\n\nWhen mixing or producing with many tracks and plugins, increase the buffer to 512 or even 1024 samples. This reduces CPU load and prevents crackling or stuttering during playback. You won't notice the latency because you're not actively recording input.\n\nLogic displays the current buffer setting in Preferences > Audio > Devices > I/O Buffer Size. Some interfaces offer additional low-latency monitoring features that bypass Logic entirely, letting you monitor through the hardware while still using high buffer sizes in Logic.\n\nIf you're using software instruments with live MIDI input during composition, you'll want lower buffers for that phase as well. Once the parts are recorded, bump the buffer up for mixing.\n\nWatch Logic's CPU meter in the top-right of the main window. If it's frequently peaking or you hear dropouts, increase the buffer. If input monitoring feels sluggish, decrease it. Modern Macs with Apple Silicon can often run lower buffers with more plugins than Intel Macs could.",
+            "symbolName": "waveform.path",
+            "visualTitle": "Buffer Size Trade-offs",
+            "visualCaption": "Low for recording, high for mixing.",
+            "settings": {
+              "Recording (live monitoring)": "64-128 samples",
+              "Mixing / heavy plugin use": "256-1024 samples",
+              "Typical latency at 128 samples": "~3ms round-trip at 44.1kHz"
+            },
+            "proTip": "Create a custom key command to toggle between your favorite recording and mixing buffer sizes quickly.",
+            "avoidThis": "Don't leave buffer at 64 samples during mixing if you're getting CPU overload warnings—that's unnecessary stress on your system.",
+            "checkYourWork": "No crackling during playback, and input monitoring feels immediate during recording.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq3_buffer_settings.png"
+          },
+          {
+            "number": 3,
+            "title": "Buffer Size in Practice",
+            "concept": "Visual examples of buffer settings for different workflow scenarios.",
+            "actions": [
+              "Identify the buffer setting in Logic's Audio Preferences.",
+              "Understand how your interface's buffer setting interacts with Logic.",
+              "Learn to read the CPU/HD meter to diagnose performance issues."
+            ],
+            "body": "Most audio interfaces have their own control software that also displays buffer size. Ensure Logic's setting matches what you've configured in your interface's driver or control panel.\n\nWhen you change buffer size in Logic, you may hear a brief interruption as the audio engine restarts. This is normal. Some interfaces require you to close and reopen Logic for buffer changes to fully take effect.\n\nIf you're using Logic's built-in Low Latency Mode (Record > Low Latency Mode), Logic temporarily disables certain plugins during recording to reduce latency even further. This is useful when you need to record with effects but can't lower the buffer any more without CPU overload.",
+            "symbolName": "slider.horizontal.3",
+            "visualTitle": "Buffer Configuration",
+            "visualCaption": "Interface and Logic settings.",
+            "settings": {
+              "Logic Preferences": "Audio > Devices > I/O Buffer Size",
+              "Low Latency Mode": "Bypasses high-latency plugins during record"
+            },
+            "proTip": "If using an Apollo or similar DSP interface, monitor through its onboard processing to keep latency ultra-low while using high buffers in Logic.",
+            "avoidThis": "Don't assume one buffer size works for all tasks—switching based on recording vs mixing is standard practice.",
+            "checkYourWork": "You can comfortably record with real-time monitoring and mix without playback interruptions.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq3_latency_comparison.png"
+          },
+          {
+            "number": 4,
+            "title": "Do I really need to buy plugins or can I use the stock plugins?",
+            "concept": "Logic's included plugins are professional-grade tools. Third-party plugins offer different workflows, character, or specialized functions, but aren't required for quality results.",
+            "actions": [
+              "Master Logic's stock EQ, compressor, and reverb before buying alternatives.",
+              "Identify gaps in your workflow before purchasing third-party tools.",
+              "Evaluate plugins with specific use cases in mind, not hype or marketing."
+            ],
+            "body": "Logic Pro ships with one of the most comprehensive plugin suites of any DAW. The Channel EQ, stock compressors (including Vintage models), Space Designer convolution reverb, and ChromaVerb are all studio-quality tools used on professional productions worldwide. Many Grammy-winning records were mixed entirely with Logic's stock plugins.\n\nThe most common reason to buy third-party plugins is workflow preference or specific tonal character. Some engineers prefer the interface or sound of third-party EQs like FabFilter Pro-Q, but Logic's Channel EQ can achieve nearly identical results with more work. Similarly, compressors like the Empirical Labs Distressor or Universal Audio 1176 offer specific color and response curves, but Logic's Vintage VCA and Vintage FET cover similar territory.\n\nSpecialized plugins fill genuine gaps: advanced vocal tuning (like Melodyne), convolution reverb beyond Space Designer's capabilities, sophisticated mastering limiters (though Logic's Adaptive Limiter is quite good), or niche creative effects. Unless you have a specific problem you can't solve with stock tools, hold off on purchases.\n\nBeginner and intermediate producers benefit far more from learning their stock tools deeply than from collecting plugins. Pros who buy third-party gear usually do so for speed—they know a particular plugin's workflow intimately and can work faster with it. They're not getting sounds that are objectively better, just different or more efficient for their process.\n\nThat said, some third-party categories are legitimately superior for specific tasks: saturation/distortion units, advanced spectral processors, and highly specialized instruments. But for foundational mixing tools—EQ, compression, reverb, delay—Logic's stock offerings are legitimately professional.",
+            "symbolName": "puzzlepiece.extension",
+            "visualTitle": "Stock vs Third-Party",
+            "visualCaption": "Stock plugins are professional tools.",
+            "settings": {
+              "Core Stock Tools": "Channel EQ, Compressor, Space Designer, ChromaVerb",
+              "Optional Upgrades": "Melodyne, FabFilter bundle, specific character gear"
+            },
+            "proTip": "Spend six months mixing exclusively with stock plugins to truly understand what you're missing before buying anything.",
+            "avoidThis": "Don't buy plugins based on YouTube hype or producer name-drops—evaluate them against real problems in your work.",
+            "checkYourWork": "You can point to a specific task you can't accomplish with stock tools before considering a purchase.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq4_stock_plugins_overview.png"
+          },
+          {
+            "number": 4,
+            "title": "Essential Stock Plugin Examples",
+            "concept": "Visual tour of Logic's most powerful included plugins and their professional applications.",
+            "actions": [
+              "Explore the Vintage compressor collection.",
+              "Learn Space Designer for convolution reverb.",
+              "Understand when to use Channel EQ vs Vintage EQs."
+            ],
+            "body": "Logic's Vintage Compressor collection emulates classic hardware: Vintage FET (1176-style fast limiter), Vintage VCA (SSL bus compressor character), and Vintage Opto (LA-2A smooth leveling). These cover the vast majority of compression needs.\n\nSpace Designer is a convolution reverb that can load impulse responses from real rooms, chambers, or hardware units. It's powerful enough for film scoring and high-end mixing. ChromaVerb offers algorithmic reverb with a beautiful interface.\n\nThe Channel EQ is clean, precise, and surgical. The Vintage EQs (Vintage Console EQ, Vintage Tube EQ) add harmonic color. Both have their place.\n\nFor dynamics beyond compression, Logic includes the Multipressor (multiband compression), Limiter, Expander, and DeEsser. For creative effects, you get Delay Designer, Pedalboard, Amp Designer, extensive modulation effects, and more.\n\nUnless you need something truly specialized, Logic's bundle is complete.",
+            "symbolName": "square.stack.3d.up",
+            "visualTitle": "Stock Plugin Power",
+            "visualCaption": "Professional tools included.",
+            "settings": {
+              "Vintage Compressors": "FET, VCA, Opto models",
+              "Reverbs": "Space Designer (convolution), ChromaVerb (algorithmic)",
+              "EQs": "Channel EQ (surgical), Vintage models (character)"
+            },
+            "proTip": "Use the Plugin Manager to hide plugins you never use, keeping your insert menus clean and focused.",
+            "avoidThis": "Don't ignore Vintage models thinking they're lesser—they're excellent emulations of legendary hardware.",
+            "checkYourWork": "You can explain what each of Logic's core dynamics and EQ plugins is best suited for.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq4_vintage_compressors.png"
+          },
+          {
+            "number": 5,
+            "title": "I finished a song, how do I export it?",
+            "concept": "Exporting (bouncing) renders your mix to a stereo file. Proper bounce settings preserve quality and ensure compatibility with mastering or distribution.",
+            "actions": [
+              "Use File > Bounce > Project or Section to export your mix.",
+              "Choose WAV or AIFF at 24-bit for mastering, or MP3/AAC for demos.",
+              "Include tail and verify the bounce by reimporting it."
+            ],
+            "body": "Once your mix is complete, exporting it to a stereo file is called 'bouncing.' This renders all tracks, plugins, and automation into a single audio file. Here's the step-by-step process:\n\n1. Set your cycle range to cover the entire song, including any reverb or delay tails at the end. If your song ends at bar 64, extend the cycle to bar 66 to capture those tails.\n\n2. Go to File > Bounce > Project or Section. Logic opens the bounce dialog with format options.\n\n3. For a mix you'll send to mastering or archive, choose:\n   - File Format: WAV or AIFF (lossless)\n   - Bit Depth: 24-bit (maintains quality)\n   - Sample Rate: Match your project (typically 44.1kHz or 48kHz)\n   - File Type: Interleaved (standard stereo file)\n\n4. If exporting for demo purposes, streaming previews, or file sharing, you can choose MP3 (for compatibility) or AAC (for quality at similar file size). Set quality to at least 256 kbps.\n\n5. Enable 'Offline' bounce mode for fastest, most reliable rendering. Real-time bounce is only necessary if you're using hardware processors or certain plugins that don't support offline mode.\n\n6. Choose a destination folder and descriptive filename. Include version numbers or date stamps if you're bouncing multiple iterations.\n\n7. Click OK to start the bounce. Logic renders the file and places it in your chosen location.\n\n8. Import the bounced file back into a fresh Logic project or simply play it in Finder to verify:\n   - No unexpected clipping or distortion\n   - The full length including tails is present\n   - The start isn't truncated\n   - The file sounds like what you heard during mixing\n\nIf you're delivering stems (individual instrument groups), use the same process but solo the groups you want to bounce, or use Track > Bounce Track in Place for each track individually.",
+            "symbolName": "square.and.arrow.up",
+            "visualTitle": "Bounce/Export Process",
+            "visualCaption": "Render to stereo file.",
+            "settings": {
+              "Mastering/Archive": "24-bit WAV, project sample rate",
+              "Demo/Streaming": "MP3 320kbps or AAC 256kbps",
+              "Offline Bounce": "Faster and more reliable for most uses"
+            },
+            "proTip": "Create a Bounce preset in the bounce dialog to quickly apply your standard settings.",
+            "avoidThis": "Don't use lossy formats (MP3/AAC) as your only archive—always keep a lossless 24-bit master.",
+            "checkYourWork": "The bounced file plays correctly from start to finish with all tails intact and no clipping.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq5_bounce_dialog.png"
+          },
+          {
+            "number": 5,
+            "title": "Bounce Settings Explained",
+            "concept": "Understanding each bounce option helps you choose the right settings for different delivery contexts.",
+            "actions": [
+              "Learn the difference between offline and real-time bounce.",
+              "Understand when to use normalize and when to avoid it.",
+              "Know how to create multiple format bounces in one pass."
+            ],
+            "body": "Offline bounce processes your mix as fast as your CPU allows, rendering in less than real-time. It's accurate and efficient for most uses. Real-time bounce plays the project in real-time, which is necessary for external hardware inserts or certain plugins that don't support offline rendering.\n\nNormalize is a post-bounce process that increases gain to bring the peak of your file to a target level (usually 0 dBFS or -0.1 dBFS). Use it cautiously—if your mix has proper headroom for mastering, normalization may push it into clipping range. For mastering-bound mixes, leave normalization off. For demo tracks, it can make them louder for casual listening.\n\nLogic's bounce dialog lets you export multiple formats simultaneously—check multiple format boxes to create WAV, MP3, and AAC versions in one bounce.\n\nIf you plan to send your mix to a mastering engineer, ask for their preferred format. Most prefer 24-bit WAV at the project sample rate with no processing on the master fader (or minimal, transparent processing).\n\nFor streaming upload, most platforms accept WAV, but MP3 or AAC are fine too since they'll be transcoded anyway. Higher bitrate source files generally result in better final quality.",
+            "symbolName": "gearshape.2",
+            "visualTitle": "Bounce Options",
+            "visualCaption": "Format, bit depth, normalization.",
+            "settings": {
+              "Normalize": "Off for mastering, optional for demos",
+              "PCM vs Compressed": "PCM (WAV/AIFF) for quality, MP3/AAC for convenience",
+              "Sample Rate": "Match project or check mastering specs"
+            },
+            "proTip": "Include metadata (song title, artist, album) in the bounce dialog for automatic tagging in MP3/AAC files.",
+            "avoidThis": "Don't normalize mixes intended for mastering—leave headroom for the mastering engineer to work.",
+            "checkYourWork": "You understand what each bounce setting does and can choose appropriate options for any delivery context.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq5_bounce_formats.png"
+          },
+          {
+            "number": 6,
+            "title": "I recorded a track but I barely see the waveform or the waveform is really large, what should I visually be looking for to know the levels are good?",
+            "concept": "Waveform size indicates recording level. Healthy recordings show clear, visible waveforms without clipping. Understanding visual cues prevents problems in mixing.",
+            "actions": [
+              "Aim for waveform peaks around 50-75% of the track height visually.",
+              "Ensure peaks reach roughly -12 to -6 dBFS on the channel meter.",
+              "Avoid flat-topped waveforms (clipping) and barely visible waveforms (too quiet)."
+            ],
+            "body": "When you record audio in Logic, the waveform display provides a quick visual health check. A well-recorded track should have a waveform that's clearly visible but not smashed against the top and bottom of the track lane.\n\nVisually, aim for waveforms that occupy about 50-75% of the vertical track space during louder sections. If the waveform is a thin line barely visible, your input gain was too low. If it's a solid block filling the entire height with flat tops, you've clipped the recording—the peaks were cut off, creating distortion that can't be fixed in mixing.\n\nOn the channel meter (the level meter on the track's channel strip or next to the track in the main window), healthy peaks should hit somewhere between -12 and -6 dBFS. For dynamic sources like vocals or acoustic instruments, seeing peaks around -10 dBFS is great. For dense sources like distorted guitar or highly compressed bass, -6 dBFS is fine. Anything consistently hitting 0 dBFS (red) is clipping and should be re-recorded.\n\nIf you recorded something too quietly, you can use clip gain (select the region, press Command-G) to increase its level before it hits plugins. This is better than cranking the track fader, which only boosts the signal after processing. However, extremely quiet recordings may have audible noise once gained up, so it's always better to set proper input levels during tracking.\n\nIf you recorded something too hot but it's not clipping, simply lower the clip gain or track fader. If it is clipping, you'll need to re-record at a lower input level. There's no way to un-clip a digital recording.\n\nWhen setting input levels before recording, play the loudest section and adjust your interface's input gain so peaks hit around -10 dBFS. This gives you headroom for unexpected loud moments while ensuring a strong, clean signal.",
+            "symbolName": "waveform",
+            "visualTitle": "Waveform Visual Health",
+            "visualCaption": "Clear shape, no clipping.",
+            "settings": {
+              "Visual Target": "50-75% of track height",
+              "Meter Target": "-12 to -6 dBFS peaks",
+              "Clipping Indicator": "Red meter, flat-topped waveform"
+            },
+            "proTip": "Enable Pre-Fader Metering (Control-click the meter and choose Pre) to see the true recorded level before any plugins or fader adjustments.",
+            "avoidThis": "Don't record at maximum levels 'just to be safe'—digital clipping is unforgiving, and you need headroom for peaks.",
+            "checkYourWork": "Your recorded waveforms are easily visible and show natural dynamic variation without clipping indicators.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq6_waveform_good_level.png"
+          },
+          {
+            "number": 6,
+            "title": "Waveform Problems and Solutions",
+            "concept": "Visual examples of too-quiet, too-loud, and properly recorded waveforms with remediation strategies.",
+            "actions": [
+              "Identify clipping visually and on meters.",
+              "Use clip gain to adjust quiet recordings before processing.",
+              "Learn to set input gain properly before recording."
+            ],
+            "body": "A waveform that barely shows up often results from input gain set too low on your audio interface. To fix it, use clip gain (Command-G on the region) or the Gain plugin as the first insert. However, if the original signal was very weak, you may introduce noise floor or hum when gaining it up significantly.\n\nA clipped waveform shows flat tops and bottoms where peaks were cut off. The channel meter shows red overload indicators. Clipping introduces harsh digital distortion. The only fix is to re-record at a lower level. Some light clipping might be salvageable with specialized tools, but prevention is key.\n\nA well-recorded waveform has a natural shape reflecting the dynamics of the performance. Peaks are visible but not flattened. The meter shows healthy levels with occasional peaks near -6 dBFS but rarely hitting 0.\n\nBefore recording, set your interface's input gain by having the performer play the loudest section. Adjust gain until peaks hit around -10 to -6 dBFS. This gives enough headroom for unexpected louder moments without sacrificing signal quality.",
+            "symbolName": "waveform.path.ecg",
+            "visualTitle": "Level Troubleshooting",
+            "visualCaption": "Too quiet, clipped, and correct.",
+            "settings": {
+              "Clip Gain Adjustment": "Select region > Command-G",
+              "Re-recording Threshold": "If clipped or extremely low"
+            },
+            "proTip": "Use Logic's Test Oscillator (utility plugin) to generate a known-level signal (-18 dBFS sine wave) to calibrate your monitoring and level expectations.",
+            "avoidThis": "Don't try to 'fix' clipped recordings with EQ or compression—they'll still sound distorted. Re-record them.",
+            "checkYourWork": "You can distinguish between too-quiet, clipped, and healthy recordings visually and know the appropriate fix.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq6_waveform_comparison.png"
+          },
+          {
+            "number": 7,
+            "title": "Can I record several takes and choose parts of each?",
+            "concept": "Logic's comp recording feature (take folders and comping) allows you to record multiple passes and assemble the best composite performance from them.",
+            "actions": [
+              "Enable Cycle mode and record multiple passes—Logic creates a take folder.",
+              "Use Quick Swipe Comping to select the best segments from each take.",
+              "Flatten the comp to create a final, editable audio region."
+            ],
+            "body": "One of Logic's most powerful recording features is comping: recording multiple takes of the same section and then choosing the best parts of each to create a perfect composite performance. This is especially useful for vocals, solos, and any performance where nailing every phrase in one pass is difficult.\n\nHere's how it works:\n\n1. Set your cycle range over the section you want to record (e.g., a verse or chorus).\n\n2. Enable Cycle mode (press C or click the Cycle button in the control bar).\n\n3. Press Record (R). Logic will record the first pass. When it loops back, it automatically starts recording a second pass without stopping. Keep going as many times as needed.\n\n4. When you're done, press Stop. Logic creates a 'take folder' containing all your passes stacked together.\n\n5. Click the arrow in the top-left corner of the take folder to expand it. You'll see all takes displayed as lanes.\n\n6. Enable Quick Swipe Comping mode (View > Show Quick Swipe Comping or press Shift-click the take folder). Now you can click and drag across portions of different takes to select the segments you want to use.\n\n7. Logic's comp is non-destructive—the unused parts of each take are still there, so you can change your mind anytime.\n\n8. When satisfied, flatten the comp: select the take folder and choose Flatten from the Take Folder menu (or press Command-Control-F). This creates a single audio region from your comp.\n\nComping works with audio and MIDI. For vocals, it's common to record 3-5 complete passes and then comp the best lines. For instruments, you might comp for tuning accuracy or emotional delivery.\n\nYou can also manually create take folders by selecting multiple regions and choosing 'Folder > Pack Take Folder' from the region menu.",
+            "symbolName": "rectangle.stack",
+            "visualTitle": "Comp Recording Workflow",
+            "visualCaption": "Multiple takes, best parts.",
+            "settings": {
+              "Record Mode": "Cycle Recording (C to enable cycle)",
+              "Comp Mode": "Quick Swipe Comping (click take folder arrow)"
+            },
+            "proTip": "Record more takes than you think you need—sometimes the 'safety' take at the end has the most natural, relaxed performance.",
+            "avoidThis": "Don't flatten your comp immediately—leave it as a take folder until final mix so you can adjust comps if needed.",
+            "checkYourWork": "You can record multiple vocal takes, comp the best phrases, and create a seamless final performance.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq7_take_folder_overview.png"
+          },
+          {
+            "number": 7,
+            "title": "Comping in Detail",
+            "concept": "Visual walkthrough of comping techniques, crossfade adjustments, and advanced comp editing.",
+            "actions": [
+              "Learn to adjust comp segment boundaries and crossfades.",
+              "Duplicate a comp to create alternate versions.",
+              "Understand how to export comp alternatives for later decisions."
+            ],
+            "body": "Once you've created a basic comp, you can fine-tune it. Click the border between comp segments to adjust where the transition happens. Logic automatically applies short crossfades to smooth transitions.\n\nIf transitions sound abrupt or phasey, adjust the crossfade length or position. Select the take folder and use the Comp Tool (available when Quick Swipe Comping is active) to tweak segment edges.\n\nTo create alternate comps from the same takes, use Take Folder > Duplicate Comp. This lets you try different combinations without losing your original comp.\n\nIf you're not sure which comp is best, leave them as alternatives. Logic's Alternative system lets you save multiple comps and recall them later.\n\nFor complex vocal productions, some engineers comp multiple take folders—recording verses separately, choruses separately—so each section has its own take folder for maximum flexibility.\n\nOnce you flatten a comp, it becomes a standard region that can be edited, moved, or processed like any other audio. But if you later realize you want to change the comp, you've lost access to the original takes unless you saved a pre-flattened version.",
+            "symbolName": "slider.horizontal.2.rectangle.and.arrow.triangle.2.circlepath",
+            "visualTitle": "Advanced Comping",
+            "visualCaption": "Fine-tune transitions and segments.",
+            "settings": {
+              "Crossfade Length": "Adjustable per transition",
+              "Alternate Comps": "Take Folder > Duplicate Comp"
+            },
+            "proTip": "Name your take folder descriptively (e.g., 'Vocal Verse 1 Comp') before flattening to keep your arrange window organized.",
+            "avoidThis": "Don't flatten comps until you're confident—once flattened, you lose easy access to alternate takes.",
+            "checkYourWork": "Your comped performance sounds natural with smooth transitions and no audible clicks or phase issues.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq7_comping_workflow.png"
+          },
+          {
+            "number": 8,
+            "title": "If I bounce a track do I lose the original?",
+            "concept": "Bouncing in place renders a track to audio but doesn't delete the original. Understanding destructive vs non-destructive processes protects your work.",
+            "actions": [
+              "Use Bounce in Place to render tracks with plugins/sends to audio.",
+              "Understand that bouncing creates new regions; originals remain unless deleted.",
+              "Learn the difference between destructive editing and non-destructive rendering."
+            ],
+            "body": "When people say 'bounce a track,' they might mean two different things: bouncing the entire project to a stereo file (covered in FAQ 5), or using Bounce in Place to render an individual track to audio.\n\nBounce in Place (Track > Bounce in Place, or Control-B) takes a selected track or region, renders it with all active plugins and inserts, and creates a new audio region. This is useful for:\n\n- Committing CPU-heavy software instruments to audio to free up processing power\n- 'Printing' effects like reverb or delay that you want as part of the audio region\n- Creating audio stems from MIDI tracks for collaboration or archive\n\nWhen you bounce a track in place, Logic creates a new audio file and (by default) places it on a new track below the original, muting the original track. The original MIDI or audio track is still there—it's just muted. You can unmute it anytime and delete the bounced version if needed.\n\nLogic's bounce options let you choose:\n\n- Source: Pre-Fader or Post-Fader (include track volume/pan or not)\n- Include inserts, sends, or both\n- Bypass effect plugins (useful when committing just a software instrument without its processing)\n\nThis process is non-destructive—you're creating something new, not destroying the original. The only way to lose the original is to manually delete it.\n\nDestructive editing, by contrast, permanently alters audio files on disk. Logic's edits are almost always non-destructive—even when you trim a region, the full audio file remains intact, and you can extend the region boundaries to reveal 'hidden' audio.\n\nIf you want to fully replace a track with its bounced version and clean up, bounce in place, verify the bounce sounds correct, then delete the original track. But most engineers keep originals until final delivery, just in case.",
+            "symbolName": "arrow.down.doc",
+            "visualTitle": "Bounce in Place Process",
+            "visualCaption": "Render to audio, keep original.",
+            "settings": {
+              "Bounce Source": "Pre-Fader (dry level) or Post-Fader (with volume/pan)",
+              "Include": "Inserts, Sends, or Both",
+              "Original Track": "Muted by default, not deleted"
+            },
+            "proTip": "Before bouncing in place, name your track descriptively—the bounced audio file will inherit that name.",
+            "avoidThis": "Don't delete the original track immediately after bouncing—verify the bounce first, especially if using sends or automation.",
+            "checkYourWork": "You understand that bouncing creates new audio without deleting originals unless you choose to remove them.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq8_bounce_in_place.png"
+          },
+          {
+            "number": 8,
+            "title": "Bounce in Place Options",
+            "concept": "Detailed look at Bounce in Place settings and when to use each option.",
+            "actions": [
+              "Learn when to use Pre-Fader vs Post-Fader.",
+              "Understand how to include or exclude sends.",
+              "Know how to bounce in place with tails for reverb/delay."
+            ],
+            "body": "Pre-Fader bounce captures the track's output just before the fader, at unity gain. Use this when you want a clean audio render at the plugin's output level, ignoring your fader position. Post-Fader includes fader level and pan, baking those settings into the audio.\n\nIf you want to include reverb or delay tails from send effects, choose to include Sends. Logic will render the track with those effects blended in. Be aware: this commits the send levels and can't be undone except by re-bouncing.\n\nWhen bouncing software instruments with long release or reverb tails, ensure your region or cycle range extends beyond the last note to capture the full tail.\n\nBounce in Place is also useful for 'freezing' tracks—rendering them to audio to save CPU without deleting the original. This is similar to Logic's Track Freeze feature, but Bounce in Place gives you more control.\n\nIf you bounce MIDI tracks with plugins, you can later delete the instrument plugin and save CPU, keeping only the audio. The MIDI original remains if you mute instead of delete.",
+            "symbolName": "gearshape.2",
+            "visualTitle": "Bounce Settings Explained",
+            "visualCaption": "Pre/Post Fader, Sends, Tails.",
+            "settings": {
+              "Pre-Fader": "Clean render at plugin output",
+              "Post-Fader": "Includes fader level and pan",
+              "Include Sends": "Bakes in reverb/delay effects"
+            },
+            "proTip": "Use Bounce in Place with 'Bypass Effect Plugins' to commit a software instrument to audio without its processing chain—useful when you want to re-process the dry audio differently.",
+            "avoidThis": "Don't include sends in the bounce if you plan to adjust reverb/delay balance later—keep them on aux returns instead.",
+            "checkYourWork": "You can explain the difference between Pre-Fader and Post-Fader bounce and choose the right option for your needs.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq8_bounce_settings.png"
+          },
+          {
+            "number": 9,
+            "title": "Should I be mixing in mono or stereo?",
+            "concept": "Mixing in mono helps ensure balance and frequency clarity before stereo imaging is applied. Both mono and stereo monitoring are essential at different stages.",
+            "actions": [
+              "Check your mix in mono during balancing and EQ decisions.",
+              "Mix primarily in stereo for final panning, width, and spatial effects.",
+              "Toggle between mono and stereo throughout the mixing process."
+            ],
+            "body": "The short answer: use both. Mixing entirely in mono or entirely in stereo ignores important translation checks.\n\nMono mixing reveals problems that stereo imaging can mask. When you collapse a mix to mono, left and right channels sum together. This exposes:\n\n- Level imbalances: elements that seemed present in stereo may disappear in mono\n- Phase cancellation: stereo-widened or doubled tracks may thin out or vanish\n- Frequency masking: competing instruments that sat in separate stereo positions now directly clash\n\nMany classic mixing engineers built their entire balance in mono first, only adding panning at the end. This forces you to make separation through level, EQ, and depth (reverb) rather than relying on stereo trickery.\n\nHere's a practical workflow:\n\n1. Build your initial rough balance in stereo, panning core elements (kick, snare, bass, lead vocal) to center and supporting elements to sides.\n\n2. Switch to mono and adjust levels and EQ until everything is clear and balanced. If something disappears in mono, investigate phase issues or re-balance its level.\n\n3. Return to stereo and fine-tune panning and width effects.\n\n4. Periodically toggle back to mono throughout the mix to verify translation.\n\nTo check in mono in Logic:\n- Insert the Gain utility plugin on your Stereo Output and enable its 'Mono' button, or\n- Use the 'Mono' button on your audio interface or monitor controller if available, or\n- Hold Control-Command and click the Stereo Output fader, choosing 'Mono'\n\nMany playback systems (phone speakers, some Bluetooth speakers, PA systems) are effectively mono or near-mono. If your mix falls apart in mono, it'll sound weak on those systems.\n\nStereo mixing is essential for creating width, depth, and immersion. Once your mono balance is solid, stereo enhancements add dimension without compromising core translation.\n\nDon't get dogmatic—some genres (electronic, ambient) are stereo-first experiences. But even then, a mono check ensures your mix survives format conversion.",
+            "symbolName": "speaker.wave.2",
+            "visualTitle": "Mono vs Stereo Mixing",
+            "visualCaption": "Check both for translation.",
+            "settings": {
+              "Mono Check Method": "Gain plugin Mono button, or interface control",
+              "Workflow": "Build in stereo, verify in mono, finalize in stereo"
+            },
+            "proTip": "Set up a key command to toggle mono on the Stereo Output so you can quickly check mono with one keystroke.",
+            "avoidThis": "Don't mix entirely in mono thinking it's more 'professional'—you'll miss stereo imaging problems and produce a narrow mix.",
+            "checkYourWork": "Your mix sounds balanced and clear in both mono and stereo, with no elements disappearing in mono.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq9_mono_stereo_comparison.png"
+          },
+          {
+            "number": 9,
+            "title": "Mono Compatibility in Practice",
+            "concept": "Understanding phase correlation, stereo widening tools, and mono-safe mixing techniques.",
+            "actions": [
+              "Use the Correlation Meter to identify phase issues.",
+              "Learn which stereo effects are mono-compatible.",
+              "Test your mix on real mono playback systems."
+            ],
+            "body": "The Correlation Meter (in Logic's Multimeter plugin) shows the phase relationship between left and right channels. +1 means perfectly in-phase (mono), 0 means uncorrelated (wide stereo), and -1 means fully out-of-phase.\n\nIf your correlation meter shows strong negative values during significant parts of your mix, those sections may have phase cancellation issues. In mono playback, they'll sound thin or hollow.\n\nStereo widening plugins (like stereo imagers, mid-side processors, or pseudo-stereo effects) can create width but often sacrifice mono compatibility. Use them sparingly and always check the result in mono.\n\nNatural panning and level differences are mono-safe because they don't introduce phase manipulation—they just place sounds in the stereo field. When summed to mono, all elements remain present, just centered.\n\nSome reverbs and delays create width through slightly different left/right timing or tonality. These usually collapse acceptably to mono, but verify.\n\nDouble-tracked guitars or vocals are naturally mono-compatible if each take is genuinely different. Artificial doubling using delay or pitch shifting often introduces phase issues.\n\nTest your mix on a real mono speaker (phone, laptop, or small Bluetooth speaker) to hear exactly how it translates, not just through a mono button on your studio monitors.",
+            "symbolName": "waveform.and.magnifyingglass",
+            "visualTitle": "Phase and Correlation",
+            "visualCaption": "Mono-safe stereo techniques.",
+            "settings": {
+              "Correlation Meter": "Use Multimeter plugin to monitor phase",
+              "Safe Stereo": "Natural panning, true double-tracking",
+              "Risky Stereo": "Heavy widening plugins, artificial doubling"
+            },
+            "proTip": "If a stereo-widened element disappears in mono, try narrowing the width or re-recording the part differently rather than abandoning the effect entirely.",
+            "avoidThis": "Don't use extreme stereo widening on bass or lead vocals—these core elements must remain strong in mono.",
+            "checkYourWork": "Your correlation meter stays mostly positive, and your mix retains clarity and balance when played through a single speaker.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq9_correlation_meter.png"
+          },
+          {
+            "number": 10,
+            "title": "How do I make the waveform bigger so I can see it?",
+            "concept": "Logic offers multiple zoom controls for waveforms and track heights. Understanding these tools improves editing speed and visual clarity.",
+            "actions": [
+              "Use vertical zoom to adjust track height and waveform size.",
+              "Use the Zoom tool or trackpad gestures for horizontal and vertical zooming.",
+              "Set up key commands for instant zoom presets."
+            ],
+            "body": "Logic provides several ways to adjust waveform display size for easier editing:\n\n1. Vertical Track Zoom (Track Height):\n   - Hover over the lower edge of a track in the track list until the cursor becomes a vertical resize arrow, then click and drag up or down.\n   - This adjusts that track's height. Taller tracks show larger waveforms.\n   - Hold Option while dragging to resize all tracks simultaneously.\n\n2. Waveform Zoom:\n   - Select a region, then use the vertical zoom slider (right side of the main window, below the Inspector) to increase waveform amplitude display without changing track height.\n   - This makes quiet waveforms more visible without affecting actual audio level.\n\n3. Zoom Tool and Shortcuts:\n   - Press Z to activate the Zoom tool. Click and drag to zoom in on a specific area. Option-click to zoom out.\n   - Use Control-Left Arrow / Control-Right Arrow to zoom horizontally.\n   - Use Control-Up Arrow / Control-Down Arrow to zoom vertically.\n   - Trackpad users: pinch to zoom in/out horizontally and vertically.\n\n4. Zoom Presets:\n   - Set zoom levels you use frequently (like 'Full Project View,' 'Region Edit View') and save them as key command presets.\n   - Use View > Create Track Zoom to save and recall specific zoom states.\n\n5. Autoscroll and Link Modes:\n   - Enable autoscroll (View > Autoscroll or press C) to keep the playhead in view.\n   - Link track zoom to arrange zoom for coordinated navigation.\n\nFor detailed editing (like finding exact zero-crossings, fixing clicks, or precise comping), zoom in both horizontally (to see individual samples) and vertically (to see waveform detail).\n\nFor arranging and balancing, zoom out to see the full project or entire song sections at once.\n\nMost engineers develop muscle memory for zoom shortcuts since they zoom in and out constantly during mixing and editing.",
+            "symbolName": "plus.magnifyingglass",
+            "visualTitle": "Zoom and Track Height",
+            "visualCaption": "Adjust display for editing clarity.",
+            "settings": {
+              "Vertical Track Resize": "Drag track lower edge",
+              "Waveform Amplitude Zoom": "Vertical zoom slider (right side)",
+              "Horizontal/Vertical Zoom": "Control + Arrow keys, or trackpad gestures"
+            },
+            "proTip": "Set up a key command for 'Zoom to Fit Selection' to instantly fill the window with a selected region—extremely useful for detailed editing.",
+            "avoidThis": "Don't confuse visual waveform zoom with gain—zooming in on a waveform doesn't make the audio louder, it just makes it easier to see.",
+            "checkYourWork": "You can quickly zoom in for detailed editing and zoom out for big-picture arrangement view without hunting through menus.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq10_track_zoom.png"
+          },
+          {
+            "number": 10,
+            "title": "Zoom Workflows for Editing",
+            "concept": "Practical zoom workflows for common editing tasks: comping, cleaning up, arranging, and mixing.",
+            "actions": [
+              "Use zoom presets for instant task-switching.",
+              "Learn to navigate quickly with key commands.",
+              "Set up screensets for different zoom and window layouts."
+            ],
+            "body": "Different mixing and editing tasks benefit from different zoom levels:\n\n- Comping vocals: Zoom horizontally to see one line or phrase at a time, zoom vertically to see waveform detail for choosing the best take.\n\n- Cleaning up clicks or breaths: Zoom way in horizontally (sample-level view), zoom vertically to see waveform details, use the Fade tool or Scissor tool for precise edits.\n\n- Arranging and structure edits: Zoom out fully to see the entire song, making it easier to move sections or identify repetition.\n\n- Balancing and mixing: Moderate horizontal zoom showing 8-16 bars at a time, moderate track heights so you can see many tracks without scrolling.\n\nScreensets (View > Screensets) let you save different window layouts, zoom levels, and track configurations. Create a 'Comping' screenset with tall track heights and zoomed-in detail, a 'Mixing' screenset with moderate zoom and mixer visible, and an 'Arranging' screenset with full-project zoom and all tracks shown.\n\nIf you work with a trackpad, two-finger pinch gestures for zoom become second nature. If using a mouse, set up key commands for zoom in/out and practice until they're muscle memory.\n\nThe faster you can navigate zoom levels, the more efficient your workflow.",
+            "symbolName": "rectangle.and.hand.point.up.left",
+            "visualTitle": "Task-Based Zoom",
+            "visualCaption": "Different tasks need different views.",
+            "settings": {
+              "Comping": "Horizontal: 1 phrase, Vertical: tall for detail",
+              "Editing": "Sample-level horizontal, waveform detail vertical",
+              "Mixing": "8-16 bars, moderate track height",
+              "Arranging": "Full project visible"
+            },
+            "proTip": "Use 'Zoom to Fit All Contents' (Shift-Z) to instantly see your entire project from start to end—perfect for arrangement overview.",
+            "avoidThis": "Don't work at one zoom level the whole time—constantly adjust zoom to suit the task for maximum efficiency.",
+            "checkYourWork": "You can rapidly switch between detailed editing view and full-project overview using shortcuts or screensets.",
+            "stepScreenshot": "/assets/training/frequently-asked-questions/faq10_zoom_workflows.png"
           }
         ]
       }

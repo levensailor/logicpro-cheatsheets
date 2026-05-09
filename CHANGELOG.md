@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-09 13:15 EDT
+- Add a comprehensive Sidechaining in Logic Pro training lesson with 20 illustrated practical examples and workflows.
+
 ## 2026-05-03 13:04 EST
 - Replace mocked iOS Settings tab with a real Settings screen and a functional Display preferences page.
 - Add persistent iOS appearance (System/Light/Dark) and text size controls that apply app-wide.
