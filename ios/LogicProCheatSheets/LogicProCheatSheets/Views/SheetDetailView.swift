@@ -4,6 +4,7 @@ struct SheetDetailView: View {
     let sheet: CheatSheet
     let sheets: [CheatSheet]
     @Binding var selectedSheetID: CheatSheet.ID?
+    @StateObject private var savedItemsManager = SavedItemsManager.shared
 
     private var currentIndex: Int? {
         sheets.firstIndex { $0.id == sheet.id }
@@ -17,6 +18,10 @@ struct SheetDetailView: View {
     private var nextSheet: CheatSheet? {
         guard let currentIndex, currentIndex < sheets.count - 1 else { return nil }
         return sheets[currentIndex + 1]
+    }
+    
+    private var isSaved: Bool {
+        savedItemsManager.isSaved(id: sheet.id, type: .cheatSheet)
     }
 
     var body: some View {
@@ -34,6 +39,31 @@ struct SheetDetailView: View {
         }
         .navigationTitle(sheet.header.title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    savedItemsManager.toggleSave(
+                        id: sheet.id,
+                        type: .cheatSheet,
+                        title: sheet.header.title,
+                        subtitle: sheet.header.subtitle,
+                        icon: sheet.header.icon
+                    )
+                } label: {
+                    Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
+                        .foregroundStyle(isSaved ? .yellow : .primary)
+                }
+            }
+        }
+        .onDisappear {
+            savedItemsManager.autoSaveLastViewed(
+                id: sheet.id,
+                type: .cheatSheet,
+                title: sheet.header.title,
+                subtitle: sheet.header.subtitle,
+                icon: sheet.header.icon
+            )
+        }
     }
 
     private var header: some View {
