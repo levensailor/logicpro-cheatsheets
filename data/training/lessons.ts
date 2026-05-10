@@ -725,7 +725,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq1_save_format_overview.png"
       },
       {
-        number: 1,
+        number: 2,
         title: "Save Format Visual Examples",
         concept:
           "Visual reference showing how Logic packages appear in Finder and what's contained inside.",
@@ -749,7 +749,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq1_package_contents.png"
       },
       {
-        number: 2,
+        number: 3,
         title: "I have limited hard drive space on my computer, is it okay to save files to a USB drive or network storage? What about plugins or samples?",
         concept:
           "Storage location affects performance, reliability, and workflow speed. Understanding the hierarchy of storage types prevents corruption and frustration.",
@@ -778,7 +778,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq2_storage_types.png"
       },
       {
-        number: 2,
+        number: 4,
         title: "Storage Best Practices",
         concept:
           "Practical workflows for managing projects across multiple storage locations.",
@@ -806,7 +806,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq2_folder_organization.png"
       },
       {
-        number: 3,
+        number: 5,
         title: "Should I change the buffer when mixing or recording?",
         concept:
           "Buffer size balances input monitoring latency against CPU overhead. Recording needs low latency; mixing benefits from high efficiency.",
@@ -834,7 +834,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq3_buffer_settings.png"
       },
       {
-        number: 3,
+        number: 6,
         title: "Buffer Size in Practice",
         concept:
           "Visual examples of buffer settings for different workflow scenarios.",
@@ -861,7 +861,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq3_latency_comparison.png"
       },
       {
-        number: 4,
+        number: 7,
         title: "Do I really need to buy plugins or can I use the stock plugins?",
         concept:
           "Logic's included plugins are professional-grade tools. Third-party plugins offer different workflows, character, or specialized functions, but aren't required for quality results.",
@@ -888,7 +888,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq4_stock_plugins_overview.png"
       },
       {
-        number: 4,
+        number: 8,
         title: "Essential Stock Plugin Examples",
         concept:
           "Visual tour of Logic's most powerful included plugins and their professional applications.",
@@ -916,7 +916,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq4_vintage_compressors.png"
       },
       {
-        number: 5,
+        number: 9,
         title: "I finished a song, how do I export it?",
         concept:
           "Exporting (bouncing) renders your mix to a stereo file. Proper bounce settings preserve quality and ensure compatibility with mastering or distribution.",
@@ -944,7 +944,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq5_bounce_dialog.png"
       },
       {
-        number: 5,
+        number: 10,
         title: "Bounce Settings Explained",
         concept:
           "Understanding each bounce option helps you choose the right settings for different delivery contexts.",
@@ -972,7 +972,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq5_bounce_formats.png"
       },
       {
-        number: 6,
+        number: 11,
         title: "I recorded a track but I barely see the waveform or the waveform is really large, what should I visually be looking for to know the levels are good?",
         concept:
           "Waveform size indicates recording level. Healthy recordings show clear, visible waveforms without clipping. Understanding visual cues prevents problems in mixing.",
@@ -1000,7 +1000,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq6_waveform_good_level.png"
       },
       {
-        number: 6,
+        number: 12,
         title: "Waveform Problems and Solutions",
         concept:
           "Visual examples of too-quiet, too-loud, and properly recorded waveforms with remediation strategies.",
@@ -1027,7 +1027,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq6_waveform_comparison.png"
       },
       {
-        number: 7,
+        number: 13,
         title: "Can I record several takes and choose parts of each?",
         concept:
           "Logic's comp recording feature (take folders and comping) allows you to record multiple passes and assemble the best composite performance from them.",
@@ -1054,7 +1054,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq7_take_folder_overview.png"
       },
       {
-        number: 7,
+        number: 14,
         title: "Comping in Detail",
         concept:
           "Visual walkthrough of comping techniques, crossfade adjustments, and advanced comp editing.",
@@ -1081,7 +1081,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq7_comping_workflow.png"
       },
       {
-        number: 8,
+        number: 15,
         title: "If I bounce a track do I lose the original?",
         concept:
           "Bouncing in place renders a track to audio but doesn't delete the original. Understanding destructive vs non-destructive processes protects your work.",
@@ -1109,7 +1109,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq8_bounce_in_place.png"
       },
       {
-        number: 8,
+        number: 16,
         title: "Bounce in Place Options",
         concept:
           "Detailed look at Bounce in Place settings and when to use each option.",
@@ -1137,7 +1137,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq8_bounce_settings.png"
       },
       {
-        number: 9,
+        number: 17,
         title: "Should I be mixing in mono or stereo?",
         concept:
           "Mixing in mono helps ensure balance and frequency clarity before stereo imaging is applied. Both mono and stereo monitoring are essential at different stages.",
@@ -1164,7 +1164,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq9_mono_stereo_comparison.png"
       },
       {
-        number: 9,
+        number: 18,
         title: "Mono Compatibility in Practice",
         concept:
           "Understanding phase correlation, stereo widening tools, and mono-safe mixing techniques.",
@@ -1192,7 +1192,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq9_correlation_meter.png"
       },
       {
-        number: 10,
+        number: 19,
         title: "How do I make the waveform bigger so I can see it?",
         concept:
           "Logic offers multiple zoom controls for waveforms and track heights. Understanding these tools improves editing speed and visual clarity.",
@@ -1220,7 +1220,7 @@ export const trainingLessons: TrainingLesson[] = [
         stepScreenshot: "/assets/training/frequently-asked-questions/faq10_track_zoom.png"
       },
       {
-        number: 10,
+        number: 20,
         title: "Zoom Workflows for Editing",
         concept:
           "Practical zoom workflows for common editing tasks: comping, cleaning up, arranging, and mixing.",
