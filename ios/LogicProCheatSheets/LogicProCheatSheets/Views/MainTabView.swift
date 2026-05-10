@@ -29,16 +29,7 @@ struct MainTabView: View {
             }
             .tag(AppTab.train)
 
-            MockTabView(
-                title: "Saved",
-                subtitle: "Your most useful handbook pages in one place.",
-                symbolName: "bookmark.fill",
-                cards: [
-                    MockTabCard(title: "Pinned chapters", detail: "Save the sheets you open every session."),
-                    MockTabCard(title: "Favorite settings", detail: "Keep notes on plugin chains, target levels, and routing choices."),
-                    MockTabCard(title: "Offline queue", detail: "Prepare saved references for studio sessions without a connection.")
-                ]
-            )
+            SavedTabView(bundle: bundle, lessons: trainingLessons)
             .tabItem {
                 Label("Saved", systemImage: "bookmark.fill")
             }
@@ -67,6 +58,7 @@ private struct HomeTabView: View {
     let bundle: ContentBundle
     let trainingLessons: [TrainingLesson]
     @Binding var selectedTab: AppTab
+    @EnvironmentObject private var savedPagesStore: SavedPagesStore
 
     var body: some View {
         NavigationStack {
@@ -111,13 +103,18 @@ private struct HomeTabView: View {
             HomeActionCard(title: "Train", detail: "Practice paths", symbolName: "graduationcap.fill") {
                 selectedTab = .train
             }
-            HomeActionCard(title: "Saved", detail: "Pinned pages", symbolName: "bookmark.fill") {
+            HomeActionCard(title: "Saved", detail: savedActionDetail, symbolName: "bookmark.fill") {
                 selectedTab = .saved
             }
             HomeActionCard(title: "Settings", detail: "App controls", symbolName: "gearshape.fill") {
                 selectedTab = .settings
             }
         }
+    }
+
+    private var savedActionDetail: String {
+        let savedCount = savedPagesStore.savedItems.count
+        return savedCount == 1 ? "1 saved page" : "\(savedCount) saved pages"
     }
 
     private var newAndPopular: some View {
@@ -218,6 +215,7 @@ private struct TrainingTabView: View {
 
 private struct TrainingLessonDetailView: View {
     let lesson: TrainingLesson
+    @EnvironmentObject private var savedPagesStore: SavedPagesStore
 
     var body: some View {
         ScrollView {
@@ -235,6 +233,35 @@ private struct TrainingLessonDetailView: View {
         }
         .navigationTitle(lesson.title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            Button {
+                savedPagesStore.toggleSaved(savedPage)
+            } label: {
+                Label(saveButtonTitle, systemImage: isSaved ? "bookmark.fill" : "bookmark")
+            }
+        }
+        .onAppear {
+            savedPagesStore.markLastViewed(savedPage)
+        }
+    }
+
+    private var savedPage: SavedPage {
+        SavedPage(
+            kind: .lesson,
+            contentID: lesson.id,
+            title: lesson.title,
+            subtitle: lesson.summary,
+            iconName: lesson.symbolName,
+            savedAt: Date()
+        )
+    }
+
+    private var isSaved: Bool {
+        savedPagesStore.isSaved(kind: .lesson, contentID: lesson.id)
+    }
+
+    private var saveButtonTitle: String {
+        isSaved ? "Remove from Saved" : "Save Lesson"
     }
 
     private var lessonHeader: some View {
@@ -600,11 +627,10 @@ private struct TroubleshootingRow: View {
     }
 }
 
-private struct MockTabView: View {
-    let title: String
-    let subtitle: String
-    let symbolName: String
-    let cards: [MockTabCard]
+private struct SavedTabView: View {
+    let bundle: ContentBundle
+    let lessons: [TrainingLesson]
+    @EnvironmentObject private var savedPagesStore: SavedPagesStore
 
     var body: some View {
         NavigationStack {
@@ -612,45 +638,50 @@ private struct MockTabView: View {
                 VStack(alignment: .leading, spacing: 18) {
                     header
 
-                    ForEach(cards) { card in
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(card.title)
-                                .font(.headline)
-                            Text(card.detail)
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
-                        .background(.background, in: RoundedRectangle(cornerRadius: 18))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 18)
-                                .stroke(.quaternary)
-                        }
+                    if let lastViewedPage = savedPagesStore.lastViewedPage {
+                        savedSection(title: "Pick up where you left off", pages: [lastViewedPage])
+                    }
+
+                    if savedPagesStore.savedItems.isEmpty {
+                        emptyState
+                    } else {
+                        savedSection(title: "Saved pages", pages: savedPagesStore.savedItems)
                     }
                 }
                 .padding()
             }
-            .navigationTitle(title)
+            .navigationTitle("Saved")
+            .navigationDestination(for: SavedPageDestination.self) { destination in
+                switch destination {
+                case .chapter(let sheetID):
+                    SavedSheetReaderView(bundle: bundle, initialSheetID: sheetID)
+                case .lesson(let lessonID):
+                    if let lesson = lessons.first(where: { $0.id == lessonID }) {
+                        TrainingLessonDetailView(lesson: lesson)
+                    } else {
+                        MissingSavedPageView(title: "Lesson unavailable")
+                    }
+                }
+            }
         }
     }
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Image(systemName: symbolName)
+            Image(systemName: "bookmark.fill")
                 .font(.system(size: 36, weight: .bold))
                 .foregroundStyle(.tint)
                 .frame(width: 64, height: 64)
                 .background(Color.accentColor.opacity(0.12), in: RoundedRectangle(cornerRadius: 18))
 
-            Text(title)
+            Text("Saved")
                 .font(.largeTitle.bold())
 
-            Text(subtitle)
+            Text("Quickly return to bookmarked chapters, lessons, and your latest reading spot.")
                 .font(.headline)
                 .foregroundStyle(.secondary)
 
-            Text("Mocked for now, polished screens coming next.")
+            Text("\(savedPagesStore.savedItems.count) saved")
                 .font(.caption.bold())
                 .foregroundStyle(.secondary)
                 .padding(.horizontal, 10)
@@ -660,6 +691,150 @@ private struct MockTabView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 24))
+    }
+
+    private var emptyState: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Image(systemName: "bookmark")
+                .font(.title2.bold())
+                .foregroundStyle(.tint)
+            Text("No saved pages yet")
+                .font(.headline)
+            Text("Open a Library chapter or Train lesson, then tap the bookmark button to keep it here for quick recall.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(.background, in: RoundedRectangle(cornerRadius: 18))
+        .overlay {
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(.quaternary)
+        }
+    }
+
+    private func savedSection(title: String, pages: [SavedPage]) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(title)
+                .font(.title3.bold())
+
+            ForEach(pages) { page in
+                NavigationLink(value: SavedPageDestination(page: page)) {
+                    SavedPageCard(page: page)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+}
+
+private struct SavedSheetReaderView: View {
+    let bundle: ContentBundle
+    @State private var selectedSheetID: CheatSheet.ID?
+
+    init(bundle: ContentBundle, initialSheetID: CheatSheet.ID) {
+        self.bundle = bundle
+        _selectedSheetID = State(initialValue: initialSheetID)
+    }
+
+    var body: some View {
+        if let selectedSheetID,
+           let sheet = bundle.cheatSheets.first(where: { $0.id == selectedSheetID }) {
+            SheetDetailView(sheet: sheet, sheets: bundle.cheatSheets, selectedSheetID: $selectedSheetID)
+        } else {
+            MissingSavedPageView(title: "Chapter unavailable")
+        }
+    }
+}
+
+private struct SavedPageCard: View {
+    let page: SavedPage
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            SavedPageIcon(page: page)
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text(kindLabel)
+                    .font(.caption.bold())
+                    .foregroundStyle(.secondary)
+                Text(page.title)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                Text(page.subtitle)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+            }
+
+            Spacer()
+
+            Image(systemName: "chevron.right")
+                .font(.caption.bold())
+                .foregroundStyle(.tertiary)
+                .padding(.top, 4)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(.background, in: RoundedRectangle(cornerRadius: 18))
+        .overlay {
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(.quaternary)
+        }
+    }
+
+    private var kindLabel: String {
+        switch page.kind {
+        case .chapter: return "Library chapter"
+        case .lesson: return "Training lesson"
+        }
+    }
+}
+
+private struct SavedPageIcon: View {
+    let page: SavedPage
+
+    var body: some View {
+        Group {
+            switch page.kind {
+            case .chapter:
+                Text(page.iconName)
+                    .font(.title2)
+            case .lesson:
+                Image(systemName: page.iconName)
+                    .font(.title2.bold())
+                    .foregroundStyle(.tint)
+            }
+        }
+        .frame(width: 44, height: 44)
+        .background(Color.accentColor.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
+    }
+}
+
+private struct MissingSavedPageView: View {
+    let title: String
+
+    var body: some View {
+        ContentUnavailableView(
+            title,
+            systemImage: "exclamationmark.triangle",
+            description: Text("This saved item is no longer available in the current content bundle.")
+        )
+        .navigationTitle("Saved")
+    }
+}
+
+private enum SavedPageDestination: Hashable {
+    case chapter(String)
+    case lesson(String)
+
+    init(page: SavedPage) {
+        switch page.kind {
+        case .chapter:
+            self = .chapter(page.contentID)
+        case .lesson:
+            self = .lesson(page.contentID)
+        }
     }
 }
 
@@ -919,10 +1094,4 @@ private struct FocusRow: View {
             }
         }
     }
-}
-
-private struct MockTabCard: Identifiable {
-    var id: String { title }
-    let title: String
-    let detail: String
 }

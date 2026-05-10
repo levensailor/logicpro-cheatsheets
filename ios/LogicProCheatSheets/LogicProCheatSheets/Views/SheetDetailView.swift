@@ -4,6 +4,7 @@ struct SheetDetailView: View {
     let sheet: CheatSheet
     let sheets: [CheatSheet]
     @Binding var selectedSheetID: CheatSheet.ID?
+    @EnvironmentObject private var savedPagesStore: SavedPagesStore
 
     private var currentIndex: Int? {
         sheets.firstIndex { $0.id == sheet.id }
@@ -34,6 +35,38 @@ struct SheetDetailView: View {
         }
         .navigationTitle(sheet.header.title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            Button {
+                savedPagesStore.toggleSaved(savedPage)
+            } label: {
+                Label(saveButtonTitle, systemImage: isSaved ? "bookmark.fill" : "bookmark")
+            }
+        }
+        .onAppear {
+            savedPagesStore.markLastViewed(savedPage)
+        }
+        .onChange(of: sheet.id) {
+            savedPagesStore.markLastViewed(savedPage)
+        }
+    }
+
+    private var savedPage: SavedPage {
+        SavedPage(
+            kind: .chapter,
+            contentID: sheet.id,
+            title: sheet.header.title,
+            subtitle: sheet.header.subtitle,
+            iconName: sheet.header.icon,
+            savedAt: Date()
+        )
+    }
+
+    private var isSaved: Bool {
+        savedPagesStore.isSaved(kind: .chapter, contentID: sheet.id)
+    }
+
+    private var saveButtonTitle: String {
+        isSaved ? "Remove from Saved" : "Save Page"
     }
 
     private var header: some View {
