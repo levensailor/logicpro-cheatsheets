@@ -6,6 +6,14 @@ import { defaultContentLocale, supportedContentLocales } from "@/config/content-
 import type { ContentManifest } from "@/lib/sheet-schema";
 
 const contentDir = path.join(process.cwd(), "public", "content");
+const iosSeedContentPath = path.join(
+  process.cwd(),
+  "ios",
+  "LogicProCheatSheets",
+  "LogicProCheatSheets",
+  "Resources",
+  "SeedContent.json"
+);
 const generatedAt = new Date().toISOString();
 const bundlesByLocale = new Map<
   string,
@@ -66,3 +74,6 @@ for (const [locale, files] of bundlesByLocale.entries()) {
 // Backward-compatible paths for existing clients.
 writeFileSync(path.join(contentDir, "content.json"), defaultLocaleBundle.contentJson);
 writeFileSync(path.join(contentDir, "manifest.json"), `${JSON.stringify(legacyManifest, null, 2)}\n`);
+
+// Keep the bundled iOS fallback aligned with the default web content bundle.
+writeFileSync(iosSeedContentPath, defaultLocaleBundle.contentJson);

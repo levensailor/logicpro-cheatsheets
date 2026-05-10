@@ -2036,7 +2036,7 @@ export const cheatSheets: CheatSheet[] = [
   {
     id: "automation",
     header: {
-      title: "Automation: Beyond Volume",
+      title: "Automation",
       subtitle: "Advanced automation techniques for dynamic, musical mixes",
       icon: "🎛️",
       accent: "purple"

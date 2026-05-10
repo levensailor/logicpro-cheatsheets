@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "20260509T224138Z",
-  "generatedAt": "2026-05-09T22:41:38.696Z",
+  "contentVersion": "20260510T145502Z",
+  "generatedAt": "2026-05-10T14:55:02.700Z",
   "minAppVersion": "1.0.0",
   "navItems": [
     {
@@ -133,8 +133,8 @@
     {
       "id": "automation",
       "href": "/sheets/automation",
-      "label": "Automation: Beyond Volume",
-      "title": "Automation: Beyond Volume",
+      "label": "Automation",
+      "title": "Automation",
       "icon": "🎛️"
     },
     {
@@ -4203,7 +4203,7 @@
     {
       "id": "automation",
       "header": {
-        "title": "Automation: Beyond Volume",
+        "title": "Automation",
         "subtitle": "Advanced automation techniques for dynamic, musical mixes",
         "icon": "🎛️",
         "accent": "purple"

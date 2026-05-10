@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-10 10:53 EST
+- Rename the Automation handbook chapter to avoid conflicting with the Automation: Beyond Volume lesson.
+
 ## 2026-05-03 13:04 EST
 - Replace mocked iOS Settings tab with a real Settings screen and a functional Display preferences page.
 - Add persistent iOS appearance (System/Light/Dark) and text size controls that apply app-wide.
