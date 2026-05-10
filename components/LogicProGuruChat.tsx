@@ -162,7 +162,13 @@ export function LogicProGuruChat({ variant = "full", showPageLink = false }: Log
         }),
       });
 
-      const payload: unknown = await response.json();
+      let payload: unknown;
+
+      try {
+        payload = await response.json();
+      } catch {
+        throw new Error("Logic Pro Guru returned an unreadable response.");
+      }
 
       if (!response.ok) {
         throw new Error(isAgentError(payload) ? payload.error : "Logic Pro Guru could not answer right now.");
@@ -176,6 +182,7 @@ export function LogicProGuruChat({ variant = "full", showPageLink = false }: Log
       setMessages([INITIAL_MESSAGE, ...[...nextMessages, assistantMessage].slice(-MAX_STORED_MESSAGES)]);
     } catch (sendError) {
       setError(sendError instanceof Error ? sendError.message : "Logic Pro Guru could not answer right now.");
+      setInput(trimmedInput);
       setMessages([INITIAL_MESSAGE, ...persistedMessages]);
     } finally {
       setIsSending(false);
