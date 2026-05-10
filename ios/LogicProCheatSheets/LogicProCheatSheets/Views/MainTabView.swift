@@ -29,16 +29,7 @@ struct MainTabView: View {
             }
             .tag(AppTab.train)
 
-            MockTabView(
-                title: "Saved",
-                subtitle: "Your most useful handbook pages in one place.",
-                symbolName: "bookmark.fill",
-                cards: [
-                    MockTabCard(title: "Pinned chapters", detail: "Save the sheets you open every session."),
-                    MockTabCard(title: "Favorite settings", detail: "Keep notes on plugin chains, target levels, and routing choices."),
-                    MockTabCard(title: "Offline queue", detail: "Prepare saved references for studio sessions without a connection.")
-                ]
-            )
+            SavedTabView(bundle: bundle, selectedTab: $selectedTab)
             .tabItem {
                 Label("Saved", systemImage: "bookmark.fill")
             }
@@ -55,7 +46,7 @@ struct MainTabView: View {
     }
 }
 
-private enum AppTab: Hashable {
+enum AppTab: Hashable {
     case home
     case library
     case train
@@ -218,6 +209,11 @@ private struct TrainingTabView: View {
 
 private struct TrainingLessonDetailView: View {
     let lesson: TrainingLesson
+    @StateObject private var savedItemsManager = SavedItemsManager.shared
+    
+    private var isSaved: Bool {
+        savedItemsManager.isSaved(id: lesson.id, type: .trainingLesson)
+    }
 
     var body: some View {
         ScrollView {
@@ -235,6 +231,31 @@ private struct TrainingLessonDetailView: View {
         }
         .navigationTitle(lesson.title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    savedItemsManager.toggleSave(
+                        id: lesson.id,
+                        type: .trainingLesson,
+                        title: lesson.title,
+                        subtitle: lesson.summary,
+                        icon: lesson.symbolName
+                    )
+                } label: {
+                    Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
+                        .foregroundStyle(isSaved ? .yellow : .primary)
+                }
+            }
+        }
+        .onDisappear {
+            savedItemsManager.autoSaveLastViewed(
+                id: lesson.id,
+                type: .trainingLesson,
+                title: lesson.title,
+                subtitle: lesson.summary,
+                icon: lesson.symbolName
+            )
+        }
     }
 
     private var lessonHeader: some View {
