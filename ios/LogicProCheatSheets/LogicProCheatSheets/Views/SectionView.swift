@@ -419,12 +419,14 @@ struct CachedRemoteImage: View {
     var sizing: CachedRemoteImageSizing = .fixedHeight
 
     @StateObject private var loader = CachedRemoteImageLoader()
+    @State private var measuredAvailableWidth: CGFloat = 0
 
     var body: some View {
         content
             .frame(width: displayWidth)
             .frame(maxWidth: .infinity, alignment: .leading)
             .frame(height: displayHeight)
+            .background(widthReader)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .task(id: source) {
                 await loader.load(source: source)
@@ -473,14 +475,13 @@ struct CachedRemoteImage: View {
         }
 
         let aspectRatio = image.size.width / image.size.height
-        let availableWidth = estimatedAvailableWidth
+        let availableWidth = effectiveAvailableWidth
 
         if aspectRatio >= 1 {
-            return min(max(availableWidth / aspectRatio, 220), 520)
+            return max(availableWidth / aspectRatio, 220)
         }
 
-        let portraitWidth = max(availableWidth * 0.28, min(availableWidth * 0.42, 240))
-        return min(max(portraitWidth / aspectRatio, 240), 620)
+        return max(portraitDisplayWidth / aspectRatio, 240)
     }
 
     private var displayWidth: CGFloat? {
@@ -497,12 +498,40 @@ struct CachedRemoteImage: View {
             return nil
         }
 
-        let availableWidth = estimatedAvailableWidth
-        return max(availableWidth * 0.28, min(availableWidth * 0.42, 240))
+        return portraitDisplayWidth
+    }
+
+    private var portraitDisplayWidth: CGFloat {
+        let availableWidth = effectiveAvailableWidth
+        return min(max(availableWidth * 0.34, 160), availableWidth * 0.5)
+    }
+
+    private var effectiveAvailableWidth: CGFloat {
+        measuredAvailableWidth > 0 ? measuredAvailableWidth : estimatedAvailableWidth
     }
 
     private var estimatedAvailableWidth: CGFloat {
         max(280, UIScreen.main.bounds.width - 64)
+    }
+
+    private var widthReader: some View {
+        GeometryReader { proxy in
+            Color.clear
+                .onAppear {
+                    updateMeasuredWidth(proxy.size.width)
+                }
+                .onChange(of: proxy.size.width) { newValue in
+                    updateMeasuredWidth(newValue)
+                }
+        }
+    }
+
+    private func updateMeasuredWidth(_ width: CGFloat) {
+        guard sizing == .stepScreenshot, abs(measuredAvailableWidth - width) > 0.5 else {
+            return
+        }
+
+        measuredAvailableWidth = width
     }
 }
 
