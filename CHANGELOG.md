@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-10 10:09 EST
+- Add Logic Pro Guru AI assistant on the home page and `/agent` with local browser chat history.
+
 ## 2026-05-03 13:04 EST
 - Replace mocked iOS Settings tab with a real Settings screen and a functional Display preferences page.
 - Add persistent iOS appearance (System/Light/Dark) and text size controls that apply app-wide.

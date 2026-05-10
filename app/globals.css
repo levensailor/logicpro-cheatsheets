@@ -467,6 +467,29 @@ a {
   font-size: clamp(1.15rem, 2.5vw, 1.55rem);
 }
 
+.introSectionLead {
+  margin-bottom: 0.9rem;
+}
+
+.introSectionLead h2 {
+  margin-bottom: 0.45rem;
+}
+
+.introSectionLead p:not(.introEyebrow) {
+  max-width: 780px;
+  margin: 0;
+  color: #43577f;
+  line-height: 1.55;
+}
+
+.introAgentSection {
+  display: grid;
+  gap: 0.8rem;
+  background:
+    radial-gradient(circle at top right, rgba(46, 205, 196, 0.16), transparent 36%),
+    var(--surface);
+}
+
 .introGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -549,6 +572,257 @@ a {
 
 .introSteps span {
   color: #4c5f83;
+}
+
+.agentPageMain {
+  width: min(1040px, 96vw);
+  margin: 1rem auto 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.agentHero h1 {
+  max-width: 850px;
+}
+
+.agentChat {
+  display: grid;
+  gap: 0.9rem;
+  border: 1px solid #b8c9eb;
+  border-radius: 18px;
+  padding: clamp(0.85rem, 2vw, 1rem);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 248, 255, 0.92)),
+    var(--surface);
+  box-shadow: 0 16px 36px rgba(23, 59, 115, 0.08);
+}
+
+.agentChatHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.agentChatHeader h2 {
+  margin: 0;
+  color: #122b55;
+  font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+}
+
+.agentChatHeader p {
+  max-width: 690px;
+  margin: 0.35rem 0 0;
+  color: #40577f;
+  line-height: 1.5;
+}
+
+.agentKicker {
+  width: fit-content;
+  margin: 0 0 0.4rem !important;
+  border: 1px solid #bfd1f1;
+  border-radius: 999px;
+  padding: 0.28rem 0.6rem;
+  background: #eef5ff;
+  color: #2f538f !important;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.agentOpenLink,
+.agentPrimaryButton,
+.agentSecondaryButton,
+.agentPromptChips button {
+  font: inherit;
+  font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.agentOpenLink {
+  flex-shrink: 0;
+  border: 1px solid #2f66bf;
+  border-radius: 999px;
+  padding: 0.58rem 0.8rem;
+  background: #235fbd;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(35, 95, 189, 0.16);
+}
+
+.agentOpenLink:hover,
+.agentPrimaryButton:hover:not(:disabled),
+.agentSecondaryButton:hover:not(:disabled),
+.agentPromptChips button:hover {
+  transform: translateY(-1px);
+}
+
+.agentPromptChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.agentPromptChips button {
+  border: 1px solid #c7d7f1;
+  border-radius: 999px;
+  padding: 0.45rem 0.65rem;
+  background: #f8fbff;
+  color: #244574;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+.agentMessages {
+  max-height: 520px;
+  overflow-y: auto;
+  display: grid;
+  gap: 0.7rem;
+  border: 1px solid #d2def2;
+  border-radius: 14px;
+  padding: 0.8rem;
+  background:
+    linear-gradient(rgba(79, 131, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 131, 255, 0.06) 1px, transparent 1px),
+    #f8fbff;
+  background-size: 24px 24px;
+}
+
+.agentChat-compact .agentMessages {
+  max-height: 360px;
+}
+
+.agentMessage {
+  width: min(88%, 720px);
+  border: 1px solid #d3def3;
+  border-radius: 14px;
+  padding: 0.7rem 0.8rem;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(23, 59, 115, 0.06);
+}
+
+.agentMessage-user {
+  justify-self: end;
+  border-color: #b8cef4;
+  background: #eaf2ff;
+}
+
+.agentMessage span {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #2f538f;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.agentMessage p {
+  margin: 0;
+  color: #263f6c;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.agentMessage-loading p {
+  color: #52698f;
+  font-style: italic;
+}
+
+.agentError {
+  margin: 0;
+  border: 1px solid #fac5c5;
+  border-radius: 12px;
+  padding: 0.65rem 0.75rem;
+  background: #fff0f0;
+  color: #a33131;
+  font-weight: 700;
+}
+
+.agentComposer {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.agentComposer label {
+  color: #2b4775;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.agentComposer textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #c4d4ee;
+  border-radius: 13px;
+  padding: 0.75rem;
+  background: #ffffff;
+  color: #203b68;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.agentComposer textarea:focus,
+.agentPromptChips button:focus-visible,
+.agentOpenLink:focus-visible,
+.agentPrimaryButton:focus-visible,
+.agentSecondaryButton:focus-visible {
+  outline: 3px solid rgba(79, 131, 255, 0.28);
+  outline-offset: 2px;
+}
+
+.agentComposerActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.agentPrimaryButton,
+.agentSecondaryButton {
+  border-radius: 999px;
+  padding: 0.68rem 0.95rem;
+  cursor: pointer;
+}
+
+.agentPrimaryButton {
+  border: 1px solid #2f66bf;
+  background: #235fbd;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(35, 95, 189, 0.16);
+}
+
+.agentSecondaryButton {
+  border: 1px solid #c7d7f1;
+  background: #f8fbff;
+  color: #244574;
+}
+
+.agentPrimaryButton:disabled,
+.agentSecondaryButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.agentHelpCard {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  background: var(--surface);
+}
+
+.agentHelpCard h2 {
+  margin: 0 0 0.7rem;
+  color: #173765;
+  font-size: 1.15rem;
+}
+
+.agentHelpCard ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #43577f;
+  line-height: 1.6;
 }
 
 .sheetHeader {
@@ -1254,6 +1528,14 @@ td {
   .introBookCover {
     min-height: 220px;
   }
+
+  .agentChatHeader {
+    display: grid;
+  }
+
+  .agentOpenLink {
+    width: fit-content;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1270,6 +1552,19 @@ td {
 
   .sheetChapterNav {
     grid-template-columns: 1fr;
+  }
+
+  .agentMessage {
+    width: 100%;
+  }
+
+  .agentComposerActions {
+    display: grid;
+  }
+
+  .agentPrimaryButton,
+  .agentSecondaryButton {
+    width: 100%;
   }
 
   .chapterPagerLink.next {
@@ -1457,6 +1752,74 @@ td {
     radial-gradient(circle at top right, rgba(90, 143, 255, 0.15), transparent 36%),
     linear-gradient(135deg, #162236, #0a1628);
   border-color: var(--border);
+}
+
+[data-theme="dark"] .introSectionLead p:not(.introEyebrow),
+[data-theme="dark"] .agentChatHeader p,
+[data-theme="dark"] .agentHelpCard ul {
+  color: #8fa3c0;
+}
+
+[data-theme="dark"] .introAgentSection,
+[data-theme="dark"] .agentChat,
+[data-theme="dark"] .agentHelpCard {
+  background:
+    radial-gradient(circle at top right, rgba(69, 219, 209, 0.1), transparent 36%),
+    #162236;
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .agentChatHeader h2,
+[data-theme="dark"] .agentHelpCard h2 {
+  color: #e8eef7;
+}
+
+[data-theme="dark"] .agentKicker,
+[data-theme="dark"] .agentPromptChips button,
+[data-theme="dark"] .agentSecondaryButton {
+  border-color: #2d3f5a;
+  background: #1a2842;
+  color: #a0b5d3 !important;
+}
+
+[data-theme="dark"] .agentMessages {
+  border-color: #2d3f5a;
+  background:
+    linear-gradient(rgba(90, 143, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 143, 255, 0.08) 1px, transparent 1px),
+    #0f1f38;
+}
+
+[data-theme="dark"] .agentMessage {
+  border-color: #2d3f5a;
+  background: #1a2842;
+  box-shadow: 0 8px 18px rgba(10, 22, 40, 0.28);
+}
+
+[data-theme="dark"] .agentMessage-user {
+  border-color: #3f5f94;
+  background: #243752;
+}
+
+[data-theme="dark"] .agentMessage span {
+  color: #8fb3ff;
+}
+
+[data-theme="dark"] .agentMessage p,
+[data-theme="dark"] .agentComposer label {
+  color: #dce7f6;
+}
+
+[data-theme="dark"] .agentComposer textarea {
+  border-color: #2d3f5a;
+  background: #0f1f38;
+  color: #e8eef7;
+}
+
+[data-theme="dark"] .agentError {
+  border-color: #6a3030;
+  background: #2a1720;
+  color: #ffaaa9;
 }
 
 [data-theme="dark"] .introBookCover {

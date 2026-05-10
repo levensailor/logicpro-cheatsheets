@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogicProGuruChat } from "@/components/LogicProGuruChat";
 import { cheatSheets } from "@/data/sheets";
 
 export default function HomePage() {
@@ -40,6 +41,18 @@ export default function HomePage() {
             <span>📘 Appendix</span>
           </div>
         </aside>
+      </section>
+
+      <section className="introSection introAgentSection">
+        <div className="introSectionLead">
+          <p className="introEyebrow">🤖 Logic Pro Guru AI</p>
+          <h2>Ask for the next practical move</h2>
+          <p>
+            Use the assistant when a chapter gives you the idea, but you want help applying it to your song, source,
+            or Logic Pro session.
+          </p>
+        </div>
+        <LogicProGuruChat variant="compact" showPageLink />
       </section>
 
       <section className="introSection">

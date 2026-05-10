@@ -20,6 +20,9 @@ Levensailor
 4. Deploy to Vercel:
    - Import this repository in [Vercel](https://vercel.com/new)
    - Keep the default Next.js framework settings
+   - Add the required AI assistant environment variables:
+     - `OPENAI_API_KEY`: OpenAI API key used by the server-side Logic Pro Guru assistant route.
+     - `OPENAI_MODEL`: Chat Completions model to use for assistant responses.
    - Deploy from the `main` branch
 
 ## Shared Content
@@ -50,6 +53,7 @@ The iOS app loads bundled seed content first, then checks `/content/manifest.jso
 - Main app: `https://logicpro.guru`
 - Default sheet route: `https://logicpro.guru/sheets/bass-guitar-mixing`
 - Additional routes: `/sheets/<sheet-id>` for each sheet ID in `data/sheets/index.ts`
+- Logic Pro Guru AI assistant: `https://logicpro.guru/agent`
 - Shared content manifest: `https://logicpro.guru/content/manifest.json`
 - Shared content bundle: `https://logicpro.guru/content/content.json`
 - Privacy policy: `https://logicpro.guru/privacy`
@@ -76,4 +80,5 @@ The iOS app loads bundled seed content first, then checks `/content/manifest.jso
 
 ## Login Instructions
 - No login is required.
-- The website is public read-only content intended for quick cheat sheet reference.
+- The website is public content intended for quick cheat sheet reference.
+- The Logic Pro Guru AI assistant stores conversation history in the user's browser on the current device.
