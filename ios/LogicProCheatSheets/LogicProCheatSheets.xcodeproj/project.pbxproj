@@ -24,6 +24,7 @@
 		A0000000000000000000000F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000010 /* Assets.xcassets */; };
 		A00000000000000000000010 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000011 /* MainTabView.swift */; };
 		A00000000000000000000012 /* ContentLocaleResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000012 /* ContentLocaleResolver.swift */; };
+		A00000000000000000000013 /* SavedContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000013 /* SavedContentStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		B00000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B00000000000000000000011 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		B00000000000000000000012 /* ContentLocaleResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLocaleResolver.swift; sourceTree = "<group>"; };
+		B00000000000000000000013 /* SavedContentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedContentStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				B00000000000000000000009 /* ContentSyncService.swift */,
 				B0000000000000000000000A /* ContentRepository.swift */,
 				B00000000000000000000012 /* ContentLocaleResolver.swift */,
+				B00000000000000000000013 /* SavedContentStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				A00000000000000000000009 /* ContentSyncService.swift in Sources */,
 				A0000000000000000000000A /* ContentRepository.swift in Sources */,
 				A00000000000000000000012 /* ContentLocaleResolver.swift in Sources */,
+				A00000000000000000000013 /* SavedContentStore.swift in Sources */,
 				A00000000000000000000010 /* MainTabView.swift in Sources */,
 				A0000000000000000000000B /* SheetListView.swift in Sources */,
 				A0000000000000000000000C /* SheetDetailView.swift in Sources */,

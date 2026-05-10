@@ -1,9 +1,18 @@
 import SwiftUI
 
 struct SheetDetailView: View {
+    @EnvironmentObject private var savedContentStore: SavedContentStore
     let sheet: CheatSheet
     let sheets: [CheatSheet]
     @Binding var selectedSheetID: CheatSheet.ID?
+
+    private var savedReference: SavedContentReference {
+        .sheet(sheet.id)
+    }
+
+    private var isSaved: Bool {
+        savedContentStore.isSaved(savedReference)
+    }
 
     private var currentIndex: Int? {
         sheets.firstIndex { $0.id == sheet.id }
@@ -34,6 +43,20 @@ struct SheetDetailView: View {
         }
         .navigationTitle(sheet.header.title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            Button {
+                savedContentStore.toggleSaved(savedReference)
+            } label: {
+                Label(isSaved ? "Remove from Saved" : "Save", systemImage: isSaved ? "bookmark.fill" : "bookmark")
+            }
+            .accessibilityLabel(isSaved ? "Remove \(sheet.header.title) from Saved" : "Save \(sheet.header.title)")
+        }
+        .onAppear {
+            savedContentStore.recordViewed(savedReference)
+        }
+        .onChange(of: sheet.id) { newSheetID in
+            savedContentStore.recordViewed(.sheet(newSheetID))
+        }
     }
 
     private var header: some View {

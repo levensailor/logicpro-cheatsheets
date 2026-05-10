@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-05-10 10:55 EDT
+- Add persistent iOS saved pages with bookmark controls for handbook chapters and training lessons.
+- Add a Saved tab continue-reading card that restores the last viewed chapter or lesson.
+
 ## 2026-05-03 13:04 EST
 - Replace mocked iOS Settings tab with a real Settings screen and a functional Display preferences page.
 - Add persistent iOS appearance (System/Light/Dark) and text size controls that apply app-wide.
