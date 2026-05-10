@@ -36,6 +36,16 @@ Levensailor
 
 The iOS app loads bundled seed content first, then checks `/content/manifest.json` for newer compatible content. Verified content is cached in Application Support so the latest downloaded content remains available offline.
 
+### iOS App Features
+- **Library**: Browse all chapters organized by category (Tracking, DAW, Mixing, Mastering, Reference)
+- **Train**: Step-by-step training lessons for recording, mixing, and mastering
+- **Saved**: Bookmark chapters and lessons for quick access
+  - Pin favorite content with bookmark button
+  - Auto-saves last viewed page for quick resume
+  - "Pick up where you left off" section
+  - Persistent across app restarts
+- **Settings**: Display preferences and app information
+
 ## Public Assets and URLs
 - Main app: `https://logicpro.guru`
 - Default sheet route: `https://logicpro.guru/sheets/bass-guitar-mixing`
