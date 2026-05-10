@@ -477,7 +477,8 @@ private struct TrainingStepCard: View {
             CachedRemoteImage(
                 source: source,
                 altText: "Screenshot for \(step.title)",
-                height: 170
+                height: 260,
+                sizing: .stepScreenshot
             )
         }
     }

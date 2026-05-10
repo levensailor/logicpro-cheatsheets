@@ -407,14 +407,32 @@ private struct StarRatingView: View {
     }
 }
 
+enum CachedRemoteImageSizing {
+    case fixedHeight
+    case stepScreenshot
+}
+
 struct CachedRemoteImage: View {
     let source: String
     let altText: String
     var height: CGFloat = 180
+    var sizing: CachedRemoteImageSizing = .fixedHeight
 
     @StateObject private var loader = CachedRemoteImageLoader()
 
     var body: some View {
+        content
+            .frame(width: displayWidth)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(height: displayHeight)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .task(id: source) {
+                await loader.load(source: source)
+            }
+    }
+
+    @ViewBuilder
+    private var content: some View {
         Group {
             if let image = loader.image {
                 Image(uiImage: image)
@@ -443,12 +461,48 @@ struct CachedRemoteImage: View {
                     }
             }
         }
-        .frame(maxWidth: .infinity)
-        .frame(height: height)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        .task(id: source) {
-            await loader.load(source: source)
+    }
+
+    private var displayHeight: CGFloat {
+        guard sizing == .stepScreenshot else {
+            return height
         }
+
+        guard let image = loader.image, image.size.width > 0, image.size.height > 0 else {
+            return max(height, 240)
+        }
+
+        let aspectRatio = image.size.width / image.size.height
+        let availableWidth = estimatedAvailableWidth
+
+        if aspectRatio >= 1 {
+            return min(max(availableWidth / aspectRatio, 220), 520)
+        }
+
+        let portraitWidth = max(availableWidth * 0.28, min(availableWidth * 0.42, 240))
+        return min(max(portraitWidth / aspectRatio, 240), 620)
+    }
+
+    private var displayWidth: CGFloat? {
+        guard sizing == .stepScreenshot,
+              let image = loader.image,
+              image.size.width > 0,
+              image.size.height > 0 else {
+            return nil
+        }
+
+        let aspectRatio = image.size.width / image.size.height
+
+        if aspectRatio >= 1 {
+            return nil
+        }
+
+        let availableWidth = estimatedAvailableWidth
+        return max(availableWidth * 0.28, min(availableWidth * 0.42, 240))
+    }
+
+    private var estimatedAvailableWidth: CGFloat {
+        max(280, UIScreen.main.bounds.width - 64)
     }
 }
 
