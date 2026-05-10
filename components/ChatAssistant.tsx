@@ -1,17 +1,19 @@
 'use client';
 
-import { useChat } from 'ai/react';
-import { useEffect, useRef } from 'react';
+import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport } from 'ai';
+import { useEffect, useRef, useState, FormEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faRobot, faUser } from '@fortawesome/free-solid-svg-icons';
 
 export function ChatAssistant() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: '/api/chat',
-    initialMessages: [],
+  const { messages, sendMessage, status } = useChat({
+    transport: new DefaultChatTransport({ api: '/api/chat' }),
   });
   
+  const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const isLoading = status === 'streaming' || status === 'submitted';
   
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -20,6 +22,27 @@ export function ChatAssistant() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+  
+  const getMessageText = (message: typeof messages[0]) => {
+    return message.parts
+      .filter((part) => part.type === 'text')
+      .map((part: any) => part.text)
+      .join('');
+  };
+  
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>, customMessage?: string) => {
+    e.preventDefault();
+    const messageToSend = customMessage || input;
+    if (!messageToSend.trim() || isLoading) return;
+    
+    setInput('');
+    await sendMessage({ text: messageToSend });
+  };
+  
+  const handleSuggestionClick = async (suggestion: string) => {
+    if (isLoading) return;
+    await sendMessage({ text: suggestion });
+  };
   
   return (
     <div className="chatAssistant">
@@ -39,26 +62,23 @@ export function ChatAssistant() {
             <p>Ask me anything about Logic Pro, recording, mixing, or mastering your band.</p>
             <div className="chatSuggestions">
               <button 
-                onClick={() => handleSubmit(new Event('submit') as any, { 
-                  data: { message: 'How do I set up a good vocal chain in Logic Pro?' } 
-                })}
+                onClick={() => handleSuggestionClick('How do I set up a good vocal chain in Logic Pro?')}
                 className="chatSuggestion"
+                disabled={isLoading}
               >
                 How do I set up a good vocal chain?
               </button>
               <button 
-                onClick={() => handleSubmit(new Event('submit') as any, { 
-                  data: { message: 'What are the best stock plugins for mixing drums?' } 
-                })}
+                onClick={() => handleSuggestionClick('What are the best stock plugins for mixing drums?')}
                 className="chatSuggestion"
+                disabled={isLoading}
               >
                 Best stock plugins for mixing drums?
               </button>
               <button 
-                onClick={() => handleSubmit(new Event('submit') as any, { 
-                  data: { message: 'How do I avoid clipping in my mix?' } 
-                })}
+                onClick={() => handleSuggestionClick('How do I avoid clipping in my mix?')}
                 className="chatSuggestion"
+                disabled={isLoading}
               >
                 How do I avoid clipping in my mix?
               </button>
@@ -75,12 +95,12 @@ export function ChatAssistant() {
               <FontAwesomeIcon icon={message.role === 'user' ? faUser : faRobot} />
             </div>
             <div className="chatMessageContent">
-              <div className="chatMessageText">{message.content}</div>
+              <div className="chatMessageText">{getMessageText(message)}</div>
             </div>
           </div>
         ))}
         
-        {isLoading && (
+        {isLoading && messages[messages.length - 1]?.role === 'user' && (
           <div className="chatMessage chatMessageAssistant">
             <div className="chatMessageIcon">
               <FontAwesomeIcon icon={faRobot} />
@@ -102,7 +122,7 @@ export function ChatAssistant() {
         <input
           type="text"
           value={input}
-          onChange={handleInputChange}
+          onChange={(e) => setInput(e.target.value)}
           placeholder="Ask about Logic Pro, mixing, or mastering..."
           className="chatInput"
           disabled={isLoading}
