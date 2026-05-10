@@ -75,6 +75,16 @@ export function TopSheetNav({ sheets }: TopSheetNavProps) {
           );
         })}
         <Link
+          href="/assistant"
+          aria-label="Open Logic Pro Guru Assistant"
+          className={`sheetTab ${pathname === "/assistant" ? "active" : ""}`}
+        >
+          <span className="tabIcon" aria-hidden="true">
+            🤖
+          </span>
+          <span className="tabLabel">AI Assistant</span>
+        </Link>
+        <Link
           href="/settings"
           aria-label="Open settings"
           className={`sheetTab ${pathname === "/settings" ? "active" : ""}`}
