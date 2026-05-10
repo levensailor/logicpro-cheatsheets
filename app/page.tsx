@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cheatSheets } from "@/data/sheets";
+import { ChatAssistant } from "@/components/ChatAssistant";
 
 export default function HomePage() {
   const chapterCount = cheatSheets.length;
@@ -107,6 +108,16 @@ export default function HomePage() {
             <span>Check loudness, translation, and any terms you want to understand more clearly.</span>
           </li>
         </ol>
+      </section>
+
+      <section className="introSection">
+        <h2>🤖 Ask Logic Pro Guru</h2>
+        <p style={{ marginBottom: '1.5rem', color: 'var(--muted)', textAlign: 'center' }}>
+          Get instant help with Logic Pro, mixing, or mastering questions. Your friendly AI assistant is here to guide you.
+        </p>
+        <div style={{ maxWidth: '900px', margin: '0 auto', height: '600px' }}>
+          <ChatAssistant />
+        </div>
       </section>
     </main>
   );

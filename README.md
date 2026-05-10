@@ -12,13 +12,18 @@ Levensailor
 ## Deployment Instructions
 1. Install dependencies:
    - `npm install`
-2. Run locally:
+2. Set up environment variables:
+   - Copy `.env.example` to `.env.local`
+   - Add your OpenAI API key: `OPENAI_API_KEY=your-key-here`
+   - Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+3. Run locally:
    - `npm run dev`
-3. Build for production:
+4. Build for production:
    - `npm run build`
    - The build runs `npm run export:content` first, which writes static JSON to `public/content`.
-4. Deploy to Vercel:
+5. Deploy to Vercel:
    - Import this repository in [Vercel](https://vercel.com/new)
+   - Add the `OPENAI_API_KEY` environment variable in Vercel project settings
    - Keep the default Next.js framework settings
    - Deploy from the `main` branch
 
@@ -27,6 +32,23 @@ Levensailor
 - Static content bundle: `/content/content.json`
 - iOS bundled seed content: `ios/LogicProCheatSheets/LogicProCheatSheets/Resources/SeedContent.json`
 - Content source of truth: `data/sheets/index.ts`
+
+## Features
+
+### AI Assistant (Logic Pro Guru)
+The app includes an AI-powered assistant that helps users with:
+- Logic Pro workflows and troubleshooting
+- Recording, mixing, and mastering guidance
+- Plugin recommendations and settings
+- Signal flow and routing questions
+- Beginner-friendly explanations of audio engineering concepts
+
+The assistant is available:
+- On the home page for quick questions
+- At `/assistant` for dedicated chat sessions
+- Accessible via the navigation menu
+
+The AI assistant maintains conversation history during the session and provides practical, step-by-step guidance tailored for beginners and novice engineers working with Logic Pro.
 
 ## iOS App
 1. Open `ios/LogicProCheatSheets/LogicProCheatSheets.xcodeproj` in Xcode.
