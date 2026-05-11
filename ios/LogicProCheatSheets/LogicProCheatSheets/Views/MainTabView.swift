@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 struct MainTabView: View {
@@ -232,7 +233,6 @@ private struct MessageBubble: View {
         Group {
             if message.role == .assistant {
                 Text(Self.attributedMarkdown(from: message.text))
-                    .font(.body)
                     .tint(Color.accentColor)
                     .multilineTextAlignment(.leading)
                     .textSelection(.enabled)
@@ -253,15 +253,76 @@ private struct MessageBubble: View {
         )
     }
 
-    /// Parses assistant replies as Markdown (headings, lists, bold, code fences, links). Falls back to plain text if parsing fails.
+    /// Parses assistant replies as Markdown. Normalizes single newlines to paragraph breaks (outside ``` fences) so CommonMark does not collapse them. Applies fonts for `#` headers because SwiftUI does not style header presentation intents by default.
     private static func attributedMarkdown(from source: String) -> AttributedString {
-        let options = AttributedString.MarkdownParsingOptions(interpretedSyntax: .full)
-        if let parsed = try? AttributedString(markdown: source, options: options) {
-            return parsed
+        let normalized = normalizeMarkdownPreservingCodeFences(source)
+        var options = AttributedString.MarkdownParsingOptions()
+        options.interpretedSyntax = .full
+        options.allowsExtendedAttributes = true
+
+        guard var output = try? AttributedString(markdown: normalized, options: options) else {
+            var plain = AttributedString(source)
+            plain.font = .body
+            return plain
         }
-        var plain = AttributedString(source)
-        plain.font = .body
-        return plain
+
+        applyHeadingFonts(to: &output)
+
+        var base = AttributeContainer()
+        base.font = .body
+        output.mergeAttributes(base, mergePolicy: .keepNew)
+
+        return output
+    }
+
+    /// CommonMark treats a single newline as a space. Double newlines create paragraphs. This expands lone `\n` to `\n\n` only outside fenced code blocks.
+    private static func normalizeMarkdownPreservingCodeFences(_ raw: String) -> String {
+        let unified = raw.replacingOccurrences(of: "\r\n", with: "\n")
+        let pieces = unified.components(separatedBy: "```")
+        guard pieces.count > 1 else {
+            return expandSingleNewlinesToParagraphBreaks(unified)
+        }
+        var built = ""
+        for (index, piece) in pieces.enumerated() {
+            if index % 2 == 0 {
+                built += expandSingleNewlinesToParagraphBreaks(piece)
+            } else {
+                built += "```" + piece + "```"
+            }
+        }
+        return built
+    }
+
+    private static func expandSingleNewlinesToParagraphBreaks(_ chunk: String) -> String {
+        guard let regex = try? NSRegularExpression(pattern: "\n(?!\n)", options: []) else {
+            return chunk
+        }
+        let range = NSRange(chunk.startIndex..<chunk.endIndex, in: chunk)
+        return regex.stringByReplacingMatches(in: chunk, options: [], range: range, withTemplate: "\n\n")
+    }
+
+    /// SwiftUI `Text` ignores presentation intent for headers unless explicit fonts are set on those runs.
+    private static func applyHeadingFonts(to output: inout AttributedString) {
+        let key = AttributeScopes.FoundationAttributes.PresentationIntentAttribute.self
+        let runs: [(PresentationIntent?, Range<AttributedString.Index>)] = Array(output.runs[key])
+        for (block, range) in runs.reversed() {
+            guard let block else { continue }
+            for intent in block.components {
+                guard case .header(let level) = intent.kind else { continue }
+                switch level {
+                case 1:
+                    output[range].font = .largeTitle.bold()
+                case 2:
+                    output[range].font = .title.bold()
+                case 3:
+                    output[range].font = .title2.bold()
+                case 4:
+                    output[range].font = .title3.bold()
+                default:
+                    output[range].font = .headline.bold()
+                }
+            }
+        }
     }
 }
 

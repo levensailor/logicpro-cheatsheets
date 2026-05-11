@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 15:00 EST
+- iOS Ask tab: normalize single newlines to Markdown paragraph breaks outside code fences; apply explicit title fonts for `#` heading presentation intents (SwiftUI does not style headers by default).
+
 ## 2026-05-11 14:00 EST
 - iOS Ask tab: render assistant replies with native Markdown via `AttributedString` (`interpretedSyntax: .full`); user bubbles stay plain text.
 
