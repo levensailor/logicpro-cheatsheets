@@ -217,7 +217,7 @@ private struct MessageBubble: View {
     let message: AssistantMessage
 
     var body: some View {
-        HStack {
+        HStack(alignment: .top, spacing: 0) {
             if message.role == .assistant {
                 bubbleContent
                 Spacer(minLength: 36)
@@ -229,17 +229,39 @@ private struct MessageBubble: View {
     }
 
     private var bubbleContent: some View {
-        Text(message.text)
-            .font(.body)
-            .foregroundStyle(message.role == .assistant ? Color.primary : Color.white)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 10)
-            .background(
-                message.role == .assistant
-                ? AnyShapeStyle(Color(.secondarySystemBackground))
-                : AnyShapeStyle(Color.accentColor),
-                in: RoundedRectangle(cornerRadius: 14)
-            )
+        Group {
+            if message.role == .assistant {
+                Text(Self.attributedMarkdown(from: message.text))
+                    .font(.body)
+                    .tint(Color.accentColor)
+                    .multilineTextAlignment(.leading)
+                    .textSelection(.enabled)
+            } else {
+                Text(message.text)
+                    .font(.body)
+                    .foregroundStyle(Color.white)
+                    .multilineTextAlignment(.leading)
+            }
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .background(
+            message.role == .assistant
+            ? AnyShapeStyle(Color(.secondarySystemBackground))
+            : AnyShapeStyle(Color.accentColor),
+            in: RoundedRectangle(cornerRadius: 14)
+        )
+    }
+
+    /// Parses assistant replies as Markdown (headings, lists, bold, code fences, links). Falls back to plain text if parsing fails.
+    private static func attributedMarkdown(from source: String) -> AttributedString {
+        let options = AttributedString.MarkdownParsingOptions(interpretedSyntax: .full)
+        if let parsed = try? AttributedString(markdown: source, options: options) {
+            return parsed
+        }
+        var plain = AttributedString(source)
+        plain.font = .body
+        return plain
     }
 }
 

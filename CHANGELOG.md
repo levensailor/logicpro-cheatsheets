@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 14:00 EST
+- iOS Ask tab: render assistant replies with native Markdown via `AttributedString` (`interpretedSyntax: .full`); user bubbles stay plain text.
+
 ## 2026-05-11 13:00 EST
 - Render Logic Pro Guru chat replies with GitHub-flavored markdown (headings, lists, code, tables, links) via `react-markdown` and `remark-gfm`.
 
