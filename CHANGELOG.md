@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 18:00 EST
+- iOS: replace MarkdownUI with [Textual](https://github.com/gonzalezreal/textual) `StructuredText` for Ask-tab assistant markdown; raise minimum iOS to **18** (required by Textual); update `Package.resolved` (Textual, SwiftUIMath, ConcurrencyExtras).
+
 ## 2026-05-11 17:00 EST
 - iOS Ask tab: render assistant replies with [MarkdownUI](https://github.com/gonzalezreal/swift-markdown-ui) (GitHub-flavored Markdown via cmark-gfm); SPM dependency and shared `Package.resolved`; keep LLM newline-healing preprocessor before parsing.
 

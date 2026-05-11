@@ -53,6 +53,8 @@ The AI assistant maintains conversation history during the session and provides 
 Chat requests go through **Vercel AI Gateway** using the Vercel AI SDK (`streamText` on the server, `useChat` in the browser). The iOS app calls the same `/api/chat` route and expects the same streamed text response.
 
 ## iOS App
+Minimum **iOS 18** (the Ask tab assistant uses [Textual](https://github.com/gonzalezreal/textual) for markdown rendering).
+
 1. Open `ios/LogicProCheatSheets/LogicProCheatSheets.xcodeproj` in Xcode.
 2. Set the `ContentBaseURL` build setting / Info value to your deployed Vercel URL.
 3. Select a development team and bundle identifier for your Apple Developer account.
@@ -61,6 +63,7 @@ Chat requests go through **Vercel AI Gateway** using the Vercel AI SDK (`streamT
 The iOS app loads bundled seed content first, then checks `/content/manifest.json` for newer compatible content. Verified content is cached in Application Support so the latest downloaded content remains available offline.
 
 ### iOS App Features
+- **Ask**: Logic Pro Guru chat against the site’s `/api/chat` with GitHub-style markdown via Textual
 - **Library**: Browse all chapters organized by category (Tracking, DAW, Mixing, Mastering, Reference)
 - **Train**: Step-by-step training lessons for recording, mixing, and mastering
 - **Saved**: Bookmark chapters and lessons for quick access

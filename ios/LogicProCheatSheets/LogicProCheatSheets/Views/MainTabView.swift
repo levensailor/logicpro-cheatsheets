@@ -1,6 +1,6 @@
 import Foundation
-import MarkdownUI
 import SwiftUI
+import Textual
 
 struct MainTabView: View {
     let bundle: ContentBundle
@@ -233,12 +233,10 @@ private struct MessageBubble: View {
     private var bubbleContent: some View {
         Group {
             if message.role == .assistant {
-                Markdown(Self.assistantMarkdownSource(from: message.text))
-                    .markdownTheme(.gitHub)
-                    .markdownTextStyle(\.link) {
-                        ForegroundColor(Color.accentColor)
-                    }
-                    .textSelection(.enabled)
+                StructuredText(markdown: Self.assistantMarkdownSource(from: message.text))
+                    .textual.structuredTextStyle(.gitHub)
+                    .tint(Color.accentColor)
+                    .textual.textSelection(.enabled)
                     .frame(maxWidth: .infinity, alignment: .leading)
             } else {
                 Text(message.text)
@@ -257,7 +255,7 @@ private struct MessageBubble: View {
         )
     }
 
-    /// Prepares raw assistant text for [MarkdownUI](https://github.com/gonzalezreal/swift-markdown-ui) (GFM): heal common LLM glue, then paragraph breaks outside ``` fences.
+    /// Prepares raw assistant text for [Textual](https://github.com/gonzalezreal/textual) `StructuredText`: heal common LLM glue, then paragraph breaks outside ``` fences.
     private static func assistantMarkdownSource(from source: String) -> String {
         normalizeMarkdownPreservingCodeFences(source)
     }
