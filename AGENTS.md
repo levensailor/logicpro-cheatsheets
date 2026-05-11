@@ -9,6 +9,8 @@
 - When sheets recommend plugins, show a screenshot or product-style image next to each plugin name (not names alone); local plugin image filenames may not exactly match plugin names, so fuzzy-match when clearly intended and ask the user to confirm when ambiguous.
 - For training lessons, prefer real, topic-relevant screenshots over placeholder or generic images.
 - Prefers compact, visually appealing reference layouts over verbose repeated-label tables; use compact tiles or detail-card layouts for dense cheat-sheet data when possible.
+- Prefers the iOS AI assistant as an in-app bottom tab labeled Ask with native chat UI, not opening the web assistant in a browser-style sheet or stacked window-with-close navigation.
+- For iOS Home, prefers a non-repetitive layout: avoid a second grid of links that mostly duplicate tab destinations, and keep the hero minimal (no extra banner subtitle lines that restate chapter counts or workflow arcs).
 
 ## Learned Workspace Facts
 
@@ -22,5 +24,5 @@
 - The project originated from PNG cheat sheet assets, which were transcribed into structured data for the web app.
 - Shared content is exported as static JSON under `public/content/`, with locale-aware bundles for iOS fallback and legacy `content.json`/`manifest.json` paths retained for compatibility.
 - A SwiftUI iOS app lives under `ios/LogicProCheatSheets`, is branded `Logic Pro.Guru`, and loads bundled, cached, and remote web-served content for offline use.
-- The iOS app uses a bottom tab navigation with Home, Library, Train, Saved, and Settings sections; the Library tab preserves the handbook chapter navigation, while other tabs host focused features like structured training lessons.
+- The iOS app uses bottom tabs for Home, Library, Train, Ask (native assistant chat), and Settings; Saved is reached from Settings under a Library section (not its own tab). The Library tab preserves handbook chapter navigation grouped by `ChapterCategory` with Fundamentals ordered before Tracking.
 - The iOS `HeaderLogo` asset uses appearance-aware light and dark banner variants through the asset catalog.
