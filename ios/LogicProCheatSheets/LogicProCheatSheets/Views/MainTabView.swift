@@ -369,9 +369,7 @@ private struct HomeTabView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    compactHero
-                    startWithSection
-                    jumpIntoSection
+                    homeHeroBanner
                     askAICallout
                     chaptersSection
                 }
@@ -380,86 +378,25 @@ private struct HomeTabView: View {
         }
     }
 
-    private var compactHero: some View {
-        HStack(alignment: .center, spacing: 12) {
+    private var homeHeroBanner: some View {
+        VStack(alignment: .leading, spacing: 14) {
             Image("HeaderLogo")
                 .resizable()
                 .scaledToFit()
-                .frame(maxHeight: 56)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .clipShape(RoundedRectangle(cornerRadius: 18))
+                .shadow(color: .blue.opacity(0.2), radius: 16, y: 8)
                 .accessibilityLabel("Logic Pro Guru")
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Band handbook")
-                    .font(.headline.bold())
-                Text("\(bundle.cheatSheets.count) chapters · fundamentals → tracking → mix → master")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-            Spacer(minLength: 0)
-        }
-        .padding(12)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
-    }
 
-    private var startWithSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Start with")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .textCase(.uppercase)
-            Button {
-                selectedSheetID = "tracking-band"
-                selectedTab = .library
-            } label: {
-                Label("Tracking band session", systemImage: "mic.fill")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .buttonStyle(.borderedProminent)
-            Text("Capture clean takes and gain before you mix.")
-                .font(.caption)
+            Text("Record, mix, and master with a studio-ready reference book.")
+                .font(.title.bold())
+
+            Text("\(bundle.cheatSheets.count) chapters · fundamentals → tracking → mix → master")
+                .font(.headline)
                 .foregroundStyle(.secondary)
         }
-    }
-
-    private var jumpIntoSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Jump into")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .textCase(.uppercase)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8) {
-                    jumpChip(title: "Ask", symbol: "bubble.left.and.bubble.right.fill") {
-                        selectedTab = .assistant
-                    }
-                    jumpChip(title: "Train", symbol: "graduationcap.fill") {
-                        selectedTab = .train
-                    }
-                    jumpChip(title: "Saved", symbol: "bookmark.fill") {
-                        selectedTab = .settings
-                    }
-                    jumpChip(title: "Library", symbol: "books.vertical.fill") {
-                        selectedTab = .library
-                    }
-                }
-            }
-        }
-    }
-
-    private func jumpChip(title: String, symbol: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Label(title, systemImage: symbol)
-                .font(.caption.weight(.semibold))
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
-                .background(.background, in: Capsule())
-                .overlay {
-                    Capsule()
-                        .stroke(Color.secondary.opacity(0.22), lineWidth: 1)
-                }
-        }
-        .buttonStyle(.plain)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 24))
     }
 
     private var askAICallout: some View {
@@ -527,11 +464,13 @@ private struct HomeTabView: View {
                                             .font(.subheadline.weight(.semibold))
                                             .foregroundStyle(.primary)
                                             .multilineTextAlignment(.leading)
-                                        Text(sheet.header.subtitle)
-                                            .font(.caption2)
-                                            .foregroundStyle(.secondary)
-                                            .lineLimit(2)
-                                            .multilineTextAlignment(.leading)
+                                        if category != .mixing {
+                                            Text(sheet.header.subtitle)
+                                                .font(.caption2)
+                                                .foregroundStyle(.secondary)
+                                                .lineLimit(2)
+                                                .multilineTextAlignment(.leading)
+                                        }
                                     }
                                     Spacer(minLength: 4)
                                     Image(systemName: "chevron.right")

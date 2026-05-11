@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 10:45 EST
+- iOS Home: restore full-width logo banner; remove Start with and Jump into blocks; hide subtitles under Mixing chapter rows.
+
 ## 2026-05-11 10:15 EST
 - Rename Library/Home chapter group DAW to Fundamentals and list it before Tracking.
 - Add Home callout for Ask AI describing Logic Pro, plugin-vendor docs, and industry-standard training context.
