@@ -266,11 +266,10 @@ private struct MessageBubble: View {
             return plain
         }
 
-        applyHeadingFonts(to: &output)
-
         var base = AttributeContainer()
         base.font = .body
         output.mergeAttributes(base, mergePolicy: .keepNew)
+        applyHeadingFonts(to: &output)
 
         return output
     }
