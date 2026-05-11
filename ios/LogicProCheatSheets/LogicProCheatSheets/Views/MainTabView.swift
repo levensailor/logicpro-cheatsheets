@@ -389,10 +389,6 @@ private struct HomeTabView: View {
 
             Text("Record, mix, and master with a studio-ready reference book.")
                 .font(.title.bold())
-
-            Text("\(bundle.cheatSheets.count) chapters · fundamentals → tracking → mix → master")
-                .font(.headline)
-                .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()

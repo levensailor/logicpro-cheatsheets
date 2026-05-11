@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 11:00 EST
+- iOS Home banner: remove chapter-count and workflow subtitle line under the main title.
+
 ## 2026-05-11 10:45 EST
 - iOS Home: restore full-width logo banner; remove Start with and Jump into blocks; hide subtitles under Mixing chapter rows.
 
