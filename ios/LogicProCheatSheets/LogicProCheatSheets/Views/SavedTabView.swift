@@ -6,25 +6,23 @@ struct SavedTabView: View {
     @Binding var selectedTab: AppTab
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 18) {
-                    header
-                    
-                    if let lastViewed = savedItemsManager.lastViewedItem {
-                        pickUpWhereYouLeftOff(lastViewed)
-                    }
-                    
-                    if !savedItemsManager.pinnedItems.isEmpty {
-                        pinnedSection
-                    } else {
-                        emptyState
-                    }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
+                header
+                
+                if let lastViewed = savedItemsManager.lastViewedItem {
+                    pickUpWhereYouLeftOff(lastViewed)
                 }
-                .padding()
+                
+                if !savedItemsManager.pinnedItems.isEmpty {
+                    pinnedSection
+                } else {
+                    emptyState
+                }
             }
-            .navigationTitle("Saved")
+            .padding()
         }
+        .navigationTitle("Saved")
     }
     
     private var header: some View {

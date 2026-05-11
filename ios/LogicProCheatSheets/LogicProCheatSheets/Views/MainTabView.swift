@@ -3,7 +3,6 @@ import SwiftUI
 struct MainTabView: View {
     let bundle: ContentBundle
     @State private var selectedTab: AppTab = .home
-    @State private var isAssistantPresented = false
     @AppStorage(SettingsPreferences.themeStorageKey) private var preferredTheme: String = SettingsPreferences.systemTheme
     @AppStorage(SettingsPreferences.textSizeStorageKey) private var preferredTextSize: String = SettingsPreferences.mediumTextSize
     private var trainingLessons: [TrainingLesson] {
@@ -15,8 +14,7 @@ struct MainTabView: View {
             HomeTabView(
                 bundle: bundle,
                 trainingLessons: trainingLessons,
-                selectedTab: $selectedTab,
-                onOpenAssistant: { isAssistantPresented = true }
+                selectedTab: $selectedTab
             )
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
@@ -35,13 +33,13 @@ struct MainTabView: View {
             }
             .tag(AppTab.train)
 
-            SavedTabView(bundle: bundle, selectedTab: $selectedTab)
+            AssistantTabView()
             .tabItem {
-                Label("Saved", systemImage: "bookmark.fill")
+                Label("Ask", systemImage: "bubble.left.and.bubble.right.fill")
             }
-            .tag(AppTab.saved)
+            .tag(AppTab.assistant)
 
-            SettingsTabView()
+            SettingsTabView(bundle: bundle, selectedTab: $selectedTab)
             .tabItem {
                 Label("Settings", systemImage: "gearshape.fill")
             }
@@ -49,11 +47,6 @@ struct MainTabView: View {
         }
         .preferredColorScheme(SettingsPreferences.colorScheme(for: preferredTheme))
         .dynamicTypeSize(SettingsPreferences.dynamicTypeSize(for: preferredTextSize))
-        .sheet(isPresented: $isAssistantPresented) {
-            NavigationStack {
-                AssistantWebSheetView()
-            }
-        }
     }
 }
 
@@ -61,31 +54,27 @@ enum AppTab: Hashable {
     case home
     case library
     case train
-    case saved
+    case assistant
     case settings
 }
 
-private struct AssistantWebSheetView: View {
-    @Environment(\.dismiss) private var dismiss
+private struct AssistantTabView: View {
     @StateObject private var viewModel = AssistantChatViewModel()
 
     var body: some View {
-        AssistantChatView(viewModel: viewModel)
-            .navigationTitle("AI Assistant")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Done") {
-                        dismiss()
+        NavigationStack {
+            AssistantChatView(viewModel: viewModel)
+                .navigationTitle("AI Assistant")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Clear") {
+                            viewModel.clearConversation()
+                        }
+                        .disabled(viewModel.messages.isEmpty || viewModel.isLoading)
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Clear") {
-                        viewModel.clearConversation()
-                    }
-                    .disabled(viewModel.messages.isEmpty || viewModel.isLoading)
-                }
-            }
+        }
     }
 }
 
@@ -374,7 +363,6 @@ private struct HomeTabView: View {
     let bundle: ContentBundle
     let trainingLessons: [TrainingLesson]
     @Binding var selectedTab: AppTab
-    let onOpenAssistant: () -> Void
 
     var body: some View {
         NavigationStack {
@@ -420,10 +408,10 @@ private struct HomeTabView: View {
                 selectedTab = .train
             }
             HomeActionCard(title: "Saved", detail: "Pinned pages", symbolName: "bookmark.fill") {
-                selectedTab = .saved
+                selectedTab = .settings
             }
             HomeActionCard(title: "AI Assistant", detail: "Get mixing help", symbolName: "bubble.left.and.bubble.right.fill") {
-                onOpenAssistant()
+                selectedTab = .assistant
             }
             HomeActionCard(title: "Settings", detail: "App controls", symbolName: "gearshape.fill") {
                 selectedTab = .settings
@@ -1040,6 +1028,8 @@ private enum SettingsPreferences {
 }
 
 private struct SettingsTabView: View {
+    let bundle: ContentBundle
+    @Binding var selectedTab: AppTab
     private let privacyURL = URL(string: "https://logicpro.guru/privacy")
     private let termsURL = URL(string: "https://logicpro.guru/terms")
     private let contactURL = URL(string: "https://logicpro.guru/contact")
@@ -1055,6 +1045,18 @@ private struct SettingsTabView: View {
                             title: "Display",
                             detail: "Adjust theme and reading size for studio sessions.",
                             symbolName: "textformat.size"
+                        )
+                    }
+                }
+
+                Section("Library") {
+                    NavigationLink {
+                        SavedTabView(bundle: bundle, selectedTab: $selectedTab)
+                    } label: {
+                        SettingsRow(
+                            title: "Saved",
+                            detail: "Open your pinned chapters and lessons.",
+                            symbolName: "bookmark.fill"
                         )
                     }
                 }
