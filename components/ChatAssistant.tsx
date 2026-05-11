@@ -29,31 +29,50 @@ function downloadTextFile(filename: string, body: string) {
   URL.revokeObjectURL(url);
 }
 
-/** Collapses spaces inside `** … **` so GFM parses strong (models often emit `** Channel EQ **`). */
+/** Maps fullwidth / typographic asterisk-like characters to ASCII `*` so `**…**` parses (e.g. U+FF0A `＊`). */
+function normalizeMarkdownAsteriskDelimiters(piece: string): string {
+  return piece.replace(/[\uFF0A\uFE61\u2217\u204E\u066D]/g, '*');
+}
+
+/** Removes zero-width / BOM characters that break emphasis runs when pasted between `*` and text. */
+function stripInvisibleMarkdownBreakers(piece: string): string {
+  return piece.replace(/[\u200B-\u200D\uFEFF]/g, '');
+}
+
+/**
+ * CommonMark does not treat `**` as strong if there is whitespace after `**` or before `**`.
+ * Models often emit only one side of padding (`** EQ**`, `**EQ **`, `**  word**`).
+ */
 function tightenGfmBoldSpans(raw: string): string {
   let s = raw;
   let prev = '';
-  const re = /\*\*\s+([^*\n]+?)\s+\*\*/g;
+  const patterns = [
+    /\*\*\s+([^*\n]+?)\s+\*\*/g,
+    /\*\*\s+([^*\n]+?)\*\*/g,
+    /\*\*([^*\n]+?)\s+\*\*/g,
+  ];
   while (s !== prev) {
     prev = s;
-    s = s.replace(re, '**$1**');
+    for (const re of patterns) {
+      s = s.replace(re, '**$1**');
+    }
   }
   return s;
 }
 
-function tightenGfmBoldSpansOutsideFences(raw: string): string {
+function prepareAssistantMarkdownOutsideFences(raw: string): string {
+  const transform = (piece: string) =>
+    tightenGfmBoldSpans(stripInvisibleMarkdownBreakers(normalizeMarkdownAsteriskDelimiters(piece)));
   const pieces = raw.split('```');
   if (pieces.length === 1) {
-    return tightenGfmBoldSpans(raw);
+    return transform(raw);
   }
-  return pieces
-    .map((piece, i) => (i % 2 === 0 ? tightenGfmBoldSpans(piece) : piece))
-    .join('```');
+  return pieces.map((piece, i) => (i % 2 === 0 ? transform(piece) : piece)).join('```');
 }
 
 function ChatMessageMarkdown({ text }: { text: string }) {
   if (!text.trim()) return null;
-  const markdown = tightenGfmBoldSpansOutsideFences(text);
+  const markdown = prepareAssistantMarkdownOutsideFences(text);
   return (
     <div className="chatMessageMarkdown">
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>

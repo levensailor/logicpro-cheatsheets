@@ -272,15 +272,15 @@ private struct MessageBubble: View {
         let unified = raw.replacingOccurrences(of: "\r\n", with: "\n")
         let pieces = unified.components(separatedBy: "```")
         guard pieces.count > 1 else {
-            let tightened = tightenGfmBoldSpans(unified)
-            let healed = insertParagraphBreaksForCommonLLMPatterns(tightened)
+            let prepared = prepareAssistantMarkdownChunk(unified)
+            let healed = insertParagraphBreaksForCommonLLMPatterns(prepared)
             return expandSingleNewlinesToParagraphBreaks(healed)
         }
         var built = ""
         for (index, piece) in pieces.enumerated() {
             if index % 2 == 0 {
-                let tightened = tightenGfmBoldSpans(piece)
-                let healed = insertParagraphBreaksForCommonLLMPatterns(tightened)
+                let prepared = prepareAssistantMarkdownChunk(piece)
+                let healed = insertParagraphBreaksForCommonLLMPatterns(prepared)
                 built += expandSingleNewlinesToParagraphBreaks(healed)
             } else {
                 built += "```" + piece + "```"
@@ -289,17 +289,46 @@ private struct MessageBubble: View {
         return built
     }
 
-    /// Collapses spaces inside `** … **` so Markdown parses as strong (LLMs often emit `** Channel EQ **`).
-    private static func tightenGfmBoldSpans(_ chunk: String) -> String {
-        guard let regex = try? NSRegularExpression(pattern: #"\*\*\s+([^*\n]+?)\s+\*\*"#, options: []) else {
+    private static func prepareAssistantMarkdownChunk(_ chunk: String) -> String {
+        tightenGfmBoldSpans(stripInvisibleMarkdownBreakers(normalizeMarkdownAsteriskDelimiters(chunk)))
+    }
+
+    /// Fullwidth / typographic asterisks do not act as CommonMark emphasis delimiters.
+    private static func normalizeMarkdownAsteriskDelimiters(_ chunk: String) -> String {
+        var s = chunk
+        for scalar in ["\u{FF0A}", "\u{FE61}", "\u{2217}", "\u{204E}", "\u{066D}"] {
+            s = s.replacingOccurrences(of: scalar, with: "*")
+        }
+        return s
+    }
+
+    private static func stripInvisibleMarkdownBreakers(_ chunk: String) -> String {
+        guard let regex = try? NSRegularExpression(pattern: "[\u{200B}-\u{200D}\u{FEFF}]", options: []) else {
             return chunk
         }
+        let range = NSRange(chunk.startIndex..<chunk.endIndex, in: chunk)
+        return regex.stringByReplacingMatches(in: chunk, options: [], range: range, withTemplate: "")
+    }
+
+    /// CommonMark rejects `**` as strong if whitespace sits inside the delimiters (often only on one side).
+    private static func tightenGfmBoldSpans(_ chunk: String) -> String {
+        let patterns = [
+            #"\*\*\s+([^*\n]+?)\s+\*\*"#,
+            #"\*\*\s+([^*\n]+?)\*\*"#,
+            #"\*\*([^*\n]+?)\s+\*\*"#,
+        ]
+        let regexes: [NSRegularExpression] = patterns.compactMap {
+            try? NSRegularExpression(pattern: $0, options: [])
+        }
+        guard !regexes.isEmpty else { return chunk }
         var s = chunk
         var previous = ""
         while s != previous {
             previous = s
-            let range = NSRange(s.startIndex..<s.endIndex, in: s)
-            s = regex.stringByReplacingMatches(in: s, options: [], range: range, withTemplate: "**$1**")
+            for regex in regexes {
+                let range = NSRange(s.startIndex..<s.endIndex, in: s)
+                s = regex.stringByReplacingMatches(in: s, options: [], range: range, withTemplate: "**$1**")
+            }
         }
         return s
     }
