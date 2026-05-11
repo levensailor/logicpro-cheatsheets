@@ -14,8 +14,8 @@ Levensailor
    - `npm install`
 2. Set up environment variables:
    - Copy `.env.example` to `.env.local`
-   - Add your OpenAI API key: `OPENAI_API_KEY=your-key-here`
-   - Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+   - Add your [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) API key: `AI_GATEWAY_API_KEY=your-key-here`
+   - On Vercel deployments, Gateway can also authenticate via OIDC when no API key is set (see Vercel AI Gateway docs)
 3. Run locally:
    - `npm run dev`
 4. Build for production:
@@ -23,7 +23,7 @@ Levensailor
    - The build runs `npm run export:content` first, which writes static JSON to `public/content`.
 5. Deploy to Vercel:
    - Import this repository in [Vercel](https://vercel.com/new)
-   - Add the `OPENAI_API_KEY` environment variable in Vercel project settings
+   - Add the `AI_GATEWAY_API_KEY` environment variable in Vercel project settings (or rely on platform OIDC for Gateway per Vercel docs)
    - Keep the default Next.js framework settings
    - Deploy from the `main` branch
 
@@ -49,6 +49,8 @@ The assistant is available:
 - Accessible via the navigation menu
 
 The AI assistant maintains conversation history during the session and provides practical, step-by-step guidance tailored for beginners and novice engineers working with Logic Pro.
+
+Chat requests go through **Vercel AI Gateway** using the Vercel AI SDK (`streamText` on the server, `useChat` in the browser). The iOS app calls the same `/api/chat` route and expects the same streamed text response.
 
 ## iOS App
 1. Open `ios/LogicProCheatSheets/LogicProCheatSheets.xcodeproj` in Xcode.

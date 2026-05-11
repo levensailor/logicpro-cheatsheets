@@ -1,4 +1,4 @@
-import { openai } from '@ai-sdk/openai';
+import { gateway } from '@ai-sdk/gateway';
 import { streamText, convertToModelMessages } from 'ai';
 
 export const runtime = 'edge';
@@ -86,7 +86,7 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
 
   const result = streamText({
-    model: openai('gpt-4o'),
+    model: gateway('openai/gpt-4o'),
     system: SYSTEM_PROMPT,
     messages: await convertToModelMessages(messages),
   });

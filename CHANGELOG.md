@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 12:00 EST
+- Route `/api/chat` through Vercel AI Gateway (`gateway('openai/gpt-4o')`) instead of direct `@ai-sdk/openai`; document `AI_GATEWAY_API_KEY` and remove unused `openai` / `@ai-sdk/openai` packages.
+
 ## 2026-05-11 11:00 EST
 - iOS Home banner: remove chapter-count and workflow subtitle line under the main title.
 
