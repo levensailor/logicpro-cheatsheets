@@ -2,11 +2,11 @@
 
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
-import { useEffect, useRef, useState, FormEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, FormEvent } from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane, faRobot, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faFileArrowDown, faPaperPlane, faRobot, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const markdownComponents: Components = {
   a: ({ href, children, ...props }) => (
@@ -15,6 +15,19 @@ const markdownComponents: Components = {
     </a>
   ),
 };
+
+function downloadTextFile(filename: string, body: string) {
+  const blob = new Blob([body], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.rel = 'noopener';
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+  URL.revokeObjectURL(url);
+}
 
 function ChatMessageMarkdown({ text }: { text: string }) {
   if (!text.trim()) return null;
@@ -44,13 +57,24 @@ export function ChatAssistant() {
     scrollToBottom();
   }, [messages]);
   
-  const getMessageText = (message: typeof messages[0]) => {
+  const getMessageText = useCallback((message: (typeof messages)[0]) => {
     return message.parts
       .filter((part) => part.type === 'text')
-      .map((part: any) => part.text)
+      .map((part: { text: string }) => part.text)
       .join('');
-  };
-  
+  }, []);
+
+  const lastAssistantRawText = useMemo(() => {
+    for (let i = messages.length - 1; i >= 0; i -= 1) {
+      const message = messages[i];
+      if (message.role === 'assistant') {
+        const text = getMessageText(message);
+        if (text.trim()) return text;
+      }
+    }
+    return null;
+  }, [messages, getMessageText]);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>, customMessage?: string) => {
     e.preventDefault();
     const messageToSend = customMessage || input;
@@ -68,11 +92,27 @@ export function ChatAssistant() {
   return (
     <div className="chatAssistant">
       <div className="chatHeader">
-        <FontAwesomeIcon icon={faRobot} className="chatHeaderIcon" />
-        <div>
-          <h2 className="chatHeaderTitle">Logic Pro Guru</h2>
-          <p className="chatHeaderSubtitle">Your friendly Logic Pro assistant</p>
+        <div className="chatHeaderMain">
+          <FontAwesomeIcon icon={faRobot} className="chatHeaderIcon" />
+          <div>
+            <h2 className="chatHeaderTitle">Logic Pro Guru</h2>
+            <p className="chatHeaderSubtitle">Your friendly Logic Pro assistant</p>
+          </div>
         </div>
+        <button
+          type="button"
+          className="chatHeaderRawDownload"
+          disabled={!lastAssistantRawText || isLoading}
+          title="Download the last assistant reply as plain text (exact markdown from the model) to compare with what you see rendered."
+          onClick={() => {
+            if (!lastAssistantRawText) return;
+            const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+            downloadTextFile(`logic-pro-guru-raw-reply-${stamp}.txt`, lastAssistantRawText);
+          }}
+        >
+          <FontAwesomeIcon icon={faFileArrowDown} aria-hidden />
+          <span className="chatHeaderRawDownloadLabel">Raw reply</span>
+        </button>
       </div>
       
       <div className="chatMessages">

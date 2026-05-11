@@ -71,6 +71,13 @@ private struct AssistantTabView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
+                        if let url = viewModel.lastRawAssistantReplyFileURL {
+                            ShareLink(item: url, preview: SharePreview("Raw assistant reply")) {
+                                Label("Raw", systemImage: "arrow.down.doc")
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Clear") {
                             viewModel.clearConversation()
                         }
@@ -346,8 +353,17 @@ private final class AssistantChatViewModel: ObservableObject {
     @Published private(set) var messages: [AssistantMessage] = []
     @Published private(set) var isLoading = false
     @Published var errorMessage: String?
+    /// Latest assistant reply written to Documents as plain UTF-8 (exact bytes from `/api/chat`) for debugging vs on-screen rendering.
+    @Published private(set) var lastRawAssistantReplyFileURL: URL?
 
     private var chatTask: Task<Void, Never>?
+
+    private static let rawAssistantReplyDebugRelativePath = "LogicProGuruDebug/last-assistant-reply-raw.txt"
+
+    private static var rawAssistantReplyDebugFileURL: URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent(rawAssistantReplyDebugRelativePath)
+    }
 
     func send(text: String) {
         guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
@@ -370,6 +386,8 @@ private final class AssistantChatViewModel: ObservableObject {
         messages = []
         errorMessage = nil
         isLoading = false
+        lastRawAssistantReplyFileURL = nil
+        try? FileManager.default.removeItem(at: Self.rawAssistantReplyDebugFileURL)
     }
 
     private func requestAssistantReply() async {
@@ -418,10 +436,23 @@ private final class AssistantChatViewModel: ObservableObject {
                     text: assistantText
                 )
             )
+            persistRawAssistantReplyForDebugging(assistantText)
         } catch is CancellationError {
             // Ignore cancellation to avoid flashing stale errors.
         } catch {
             errorMessage = "Assistant unavailable right now. Please try again."
+        }
+    }
+
+    private func persistRawAssistantReplyForDebugging(_ text: String) {
+        let url = Self.rawAssistantReplyDebugFileURL
+        let directory = url.deletingLastPathComponent()
+        do {
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+            try Data(text.utf8).write(to: url, options: .atomic)
+            lastRawAssistantReplyFileURL = url
+        } catch {
+            lastRawAssistantReplyFileURL = nil
         }
     }
 }
