@@ -274,14 +274,16 @@ private struct MessageBubble: View {
         guard pieces.count > 1 else {
             let prepared = prepareAssistantMarkdownChunk(unified)
             let healed = insertParagraphBreaksForCommonLLMPatterns(prepared)
-            return expandSingleNewlinesToParagraphBreaks(healed)
+            let foundationSafe = healBoldSpansForFoundationMarkdown(healed)
+            return expandSingleNewlinesToParagraphBreaks(foundationSafe)
         }
         var built = ""
         for (index, piece) in pieces.enumerated() {
             if index % 2 == 0 {
                 let prepared = prepareAssistantMarkdownChunk(piece)
                 let healed = insertParagraphBreaksForCommonLLMPatterns(prepared)
-                built += expandSingleNewlinesToParagraphBreaks(healed)
+                let foundationSafe = healBoldSpansForFoundationMarkdown(healed)
+                built += expandSingleNewlinesToParagraphBreaks(foundationSafe)
             } else {
                 built += "```" + piece + "```"
             }
@@ -291,6 +293,61 @@ private struct MessageBubble: View {
 
     private static func prepareAssistantMarkdownChunk(_ chunk: String) -> String {
         tightenGfmBoldSpans(stripInvisibleMarkdownBreakers(normalizeMarkdownAsteriskDelimiters(chunk)))
+    }
+
+    /// `AttributedString` markdown treats `\\n\\n` inside `**…**` as ending emphasis, leaving literal stars. Collapse
+    /// newline runs inside bold (outside inline code) before `expandSingleNewlinesToParagraphBreaks`, then re-tighten.
+    private static func healBoldSpansForFoundationMarkdown(_ chunk: String) -> String {
+        let collapsed = collapseNewlinesInsideBoldOutsideInlineCode(chunk)
+        return tightenGfmBoldSpans(collapsed)
+    }
+
+    /// Replaces each run of newlines inside a `**…**` region with a single space so paragraph expansion cannot break strong.
+    private static func collapseNewlinesInsideBoldOutsideInlineCode(_ chunk: String) -> String {
+        var result = ""
+        result.reserveCapacity(chunk.count)
+        var i = chunk.startIndex
+        var boldDepth = 0
+        var inlineCode = false
+
+        while i < chunk.endIndex {
+            let c = chunk[i]
+            if c == "`" {
+                inlineCode.toggle()
+                result.append(c)
+                i = chunk.index(after: i)
+                continue
+            }
+            if inlineCode {
+                result.append(c)
+                i = chunk.index(after: i)
+                continue
+            }
+            if c == "*", chunk.index(after: i) < chunk.endIndex, chunk[chunk.index(after: i)] == "*" {
+                result.append("**")
+                i = chunk.index(i, offsetBy: 2)
+                boldDepth ^= 1
+                continue
+            }
+            if boldDepth == 1, c == "\n" || c == "\r" {
+                while i < chunk.endIndex {
+                    if chunk[i] == "\r", chunk.index(after: i) < chunk.endIndex, chunk[chunk.index(after: i)] == "\n" {
+                        i = chunk.index(i, offsetBy: 2)
+                    } else if chunk[i] == "\n" || chunk[i] == "\r" {
+                        i = chunk.index(after: i)
+                    } else {
+                        break
+                    }
+                }
+                if !result.hasSuffix(" ") {
+                    result.append(" ")
+                }
+                continue
+            }
+            result.append(c)
+            i = chunk.index(after: i)
+        }
+        return result
     }
 
     /// Fullwidth / typographic asterisks do not act as CommonMark emphasis delimiters.
