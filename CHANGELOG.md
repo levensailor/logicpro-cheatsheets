@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 13:00 EST
+- Render Logic Pro Guru chat replies with GitHub-flavored markdown (headings, lists, code, tables, links) via `react-markdown` and `remark-gfm`.
+
 ## 2026-05-11 12:00 EST
 - Route `/api/chat` through Vercel AI Gateway (`gateway('openai/gpt-4o')`) instead of direct `@ai-sdk/openai`; document `AI_GATEWAY_API_KEY` and remove unused `openai` / `@ai-sdk/openai` packages.
 

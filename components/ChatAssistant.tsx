@@ -3,8 +3,29 @@
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
 import { useEffect, useRef, useState, FormEvent } from 'react';
+import ReactMarkdown, { type Components } from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faRobot, faUser } from '@fortawesome/free-solid-svg-icons';
+
+const markdownComponents: Components = {
+  a: ({ href, children, ...props }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+      {children}
+    </a>
+  ),
+};
+
+function ChatMessageMarkdown({ text }: { text: string }) {
+  if (!text.trim()) return null;
+  return (
+    <div className="chatMessageMarkdown">
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+        {text}
+      </ReactMarkdown>
+    </div>
+  );
+}
 
 export function ChatAssistant() {
   const { messages, sendMessage, status } = useChat({
@@ -95,7 +116,9 @@ export function ChatAssistant() {
               <FontAwesomeIcon icon={message.role === 'user' ? faUser : faRobot} />
             </div>
             <div className="chatMessageContent">
-              <div className="chatMessageText">{getMessageText(message)}</div>
+              <div className="chatMessageText">
+                <ChatMessageMarkdown text={getMessageText(message)} />
+              </div>
             </div>
           </div>
         ))}
