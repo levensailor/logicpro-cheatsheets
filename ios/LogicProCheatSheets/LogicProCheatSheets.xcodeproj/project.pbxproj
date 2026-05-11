@@ -27,6 +27,7 @@
 		A00000000000000000000013 /* SavedItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000013 /* SavedItemsManager.swift */; };
 		A00000000000000000000014 /* SavedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000014 /* SavedTabView.swift */; };
 		A00000000000000000000015 /* ChapterCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000015 /* ChapterCategory.swift */; };
+		A00000000000000000000016 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = SP000000000000000000002 /* MarkdownUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A00000000000000000000016 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +157,9 @@
 			dependencies = (
 			);
 			name = LogicProCheatSheets;
+			packageProductDependencies = (
+				SP000000000000000000002 /* MarkdownUI */,
+			);
 			productName = LogicProCheatSheets;
 			productReference = B0000000000000000000000F /* LogicProCheatSheets.app */;
 			productType = "com.apple.product-type.application";
@@ -183,6 +188,9 @@
 				Base,
 			);
 			mainGroup = D00000000000000000000001;
+			packageReferences = (
+				SP000000000000000000001 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+			);
 			productRefGroup = D00000000000000000000007 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -426,6 +434,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		SP000000000000000000001 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		SP000000000000000000002 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = SP000000000000000000001 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E00000000000000000000002 /* Project object */;
 }

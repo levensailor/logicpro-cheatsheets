@@ -1,4 +1,5 @@
 import Foundation
+import MarkdownUI
 import SwiftUI
 
 struct MainTabView: View {
@@ -232,10 +233,13 @@ private struct MessageBubble: View {
     private var bubbleContent: some View {
         Group {
             if message.role == .assistant {
-                Text(Self.attributedMarkdown(from: message.text))
-                    .tint(Color.accentColor)
-                    .multilineTextAlignment(.leading)
+                Markdown(Self.assistantMarkdownSource(from: message.text))
+                    .markdownTheme(.gitHub)
+                    .markdownTextStyle(\.link) {
+                        ForegroundColor(Color.accentColor)
+                    }
                     .textSelection(.enabled)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             } else {
                 Text(message.text)
                     .font(.body)
@@ -253,25 +257,9 @@ private struct MessageBubble: View {
         )
     }
 
-    /// Parses assistant replies as Markdown. Normalizes single newlines to paragraph breaks (outside ``` fences) so CommonMark does not collapse them. Applies fonts for `#` headers because SwiftUI does not style header presentation intents by default.
-    private static func attributedMarkdown(from source: String) -> AttributedString {
-        let normalized = normalizeMarkdownPreservingCodeFences(source)
-        var options = AttributedString.MarkdownParsingOptions()
-        options.interpretedSyntax = .full
-        options.allowsExtendedAttributes = true
-
-        guard var output = try? AttributedString(markdown: normalized, options: options) else {
-            var plain = AttributedString(source)
-            plain.font = .body
-            return plain
-        }
-
-        var base = AttributeContainer()
-        base.font = .body
-        output.mergeAttributes(base, mergePolicy: .keepNew)
-        applyHeadingFonts(to: &output)
-
-        return output
+    /// Prepares raw assistant text for [MarkdownUI](https://github.com/gonzalezreal/swift-markdown-ui) (GFM): heal common LLM glue, then paragraph breaks outside ``` fences.
+    private static func assistantMarkdownSource(from source: String) -> String {
+        normalizeMarkdownPreservingCodeFences(source)
     }
 
     /// CommonMark treats a single newline as a space. Double newlines create paragraphs. This expands lone `\n` to `\n\n` only outside fenced code blocks.
@@ -326,30 +314,6 @@ private struct MessageBubble: View {
         }
         let range = NSRange(chunk.startIndex..<chunk.endIndex, in: chunk)
         return regex.stringByReplacingMatches(in: chunk, options: [], range: range, withTemplate: "\n\n")
-    }
-
-    /// SwiftUI `Text` ignores presentation intent for headers unless explicit fonts are set on those runs.
-    private static func applyHeadingFonts(to output: inout AttributedString) {
-        let key = AttributeScopes.FoundationAttributes.PresentationIntentAttribute.self
-        let runs: [(PresentationIntent?, Range<AttributedString.Index>)] = Array(output.runs[key])
-        for (block, range) in runs.reversed() {
-            guard let block else { continue }
-            for intent in block.components {
-                guard case .header(let level) = intent.kind else { continue }
-                switch level {
-                case 1:
-                    output[range].font = .largeTitle.bold()
-                case 2:
-                    output[range].font = .title.bold()
-                case 3:
-                    output[range].font = .title2.bold()
-                case 4:
-                    output[range].font = .title3.bold()
-                default:
-                    output[range].font = .headline.bold()
-                }
-            }
-        }
     }
 }
 

@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 17:00 EST
+- iOS Ask tab: render assistant replies with [MarkdownUI](https://github.com/gonzalezreal/swift-markdown-ui) (GitHub-flavored Markdown via cmark-gfm); SPM dependency and shared `Package.resolved`; keep LLM newline-healing preprocessor before parsing.
+
 ## 2026-05-11 16:00 EST
 - iOS Ask tab: insert paragraph breaks for common LLM markdown glues (no newline before `1.` after `:`/`;`, `**label**Purpose`, `word.2. Next` list runs, list after bold with spaces).
 

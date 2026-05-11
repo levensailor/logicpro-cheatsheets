@@ -22,6 +22,9 @@ pnpm-debug.log*
 .DS_Store
 *.pem
 
+# Xcode local SwiftPM clone (optional xcodebuild -clonedSourcePackagesDirPath)
+ios/**/.spm/
+
 # typescript
 *.tsbuildinfo
 
