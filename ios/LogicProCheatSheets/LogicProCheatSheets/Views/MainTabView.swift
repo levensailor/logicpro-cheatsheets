@@ -1,5 +1,4 @@
 import SwiftUI
-import WebKit
 
 struct MainTabView: View {
     let bundle: ContentBundle
@@ -68,13 +67,10 @@ enum AppTab: Hashable {
 
 private struct AssistantWebSheetView: View {
     @Environment(\.dismiss) private var dismiss
-
-    private var assistantURL: URL {
-        ContentConfiguration.remoteBaseURL.appendingPathComponent("assistant")
-    }
+    @StateObject private var viewModel = AssistantChatViewModel()
 
     var body: some View {
-        AssistantWebView(url: assistantURL)
+        AssistantChatView(viewModel: viewModel)
             .navigationTitle("AI Assistant")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -83,42 +79,295 @@ private struct AssistantWebSheetView: View {
                         dismiss()
                     }
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Clear") {
+                        viewModel.clearConversation()
+                    }
+                    .disabled(viewModel.messages.isEmpty || viewModel.isLoading)
+                }
             }
     }
 }
 
-private struct AssistantWebView: UIViewRepresentable {
-    let url: URL
+private struct AssistantChatView: View {
+    @ObservedObject var viewModel: AssistantChatViewModel
+    @State private var draft = ""
 
-    func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
-        webView.allowsBackForwardNavigationGestures = true
-        webView.scrollView.contentInsetAdjustmentBehavior = .never
-        webView.navigationDelegate = context.coordinator
-        return webView
-    }
+    private let suggestionPrompts = [
+        "How do I build a good vocal chain in Logic Pro?",
+        "What stock plugins should I use for punchy drums?",
+        "How can I avoid clipping while keeping my mix loud?"
+    ]
 
-    func updateUIView(_ webView: WKWebView, context: Context) {
-        guard webView.url != url else {
-            return
+    var body: some View {
+        VStack(spacing: 0) {
+            if viewModel.messages.isEmpty {
+                welcomeView
+            } else {
+                conversationView
+            }
+
+            if let errorMessage = viewModel.errorMessage {
+                Text(errorMessage)
+                    .font(.caption)
+                    .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    .padding(.top, 4)
+            }
+
+            composer
         }
-
-        webView.load(URLRequest(url: url))
+        .background(Color(.systemGroupedBackground))
     }
 
-    func makeCoordinator() -> AssistantWebCoordinator {
-        AssistantWebCoordinator()
+    private var welcomeView: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack(spacing: 10) {
+                    Image(systemName: "bubble.left.and.bubble.right.fill")
+                        .font(.title2)
+                        .foregroundStyle(.tint)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Logic Pro Guru")
+                            .font(.headline.bold())
+                        Text("Ask anything about recording, mixing, and mastering.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .padding()
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+
+                Text("Try one of these:")
+                    .font(.caption.bold())
+                    .foregroundStyle(.secondary)
+
+                ForEach(suggestionPrompts, id: \.self) { suggestion in
+                    Button {
+                        viewModel.send(text: suggestion)
+                    } label: {
+                        Text(suggestion)
+                            .font(.subheadline)
+                            .foregroundStyle(.primary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .background(.background, in: RoundedRectangle(cornerRadius: 14))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 14)
+                                    .stroke(Color.secondary.opacity(0.2))
+                            }
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(viewModel.isLoading)
+                }
+            }
+            .padding()
+        }
+    }
+
+    private var conversationView: some View {
+        ScrollViewReader { proxy in
+            ScrollView {
+                LazyVStack(spacing: 10) {
+                    ForEach(viewModel.messages) { message in
+                        MessageBubble(message: message)
+                            .id(message.id)
+                    }
+
+                    if viewModel.isLoading {
+                        HStack(spacing: 8) {
+                            ProgressView()
+                                .controlSize(.small)
+                            Text("Thinking...")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                    }
+                }
+                .padding()
+            }
+            .onChange(of: viewModel.messages.count) { _ in
+                if let last = viewModel.messages.last {
+                    withAnimation(.easeOut(duration: 0.2)) {
+                        proxy.scrollTo(last.id, anchor: .bottom)
+                    }
+                }
+            }
+        }
+    }
+
+    private var composer: some View {
+        HStack(alignment: .bottom, spacing: 8) {
+            TextField("Ask about Logic Pro...", text: $draft, axis: .vertical)
+                .lineLimit(1...5)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 10)
+                .background(.background, in: RoundedRectangle(cornerRadius: 14))
+
+            Button {
+                let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
+                guard !text.isEmpty else { return }
+                draft = ""
+                viewModel.send(text: text)
+            } label: {
+                Image(systemName: "arrow.up.circle.fill")
+                    .font(.system(size: 28))
+            }
+            .disabled(viewModel.isLoading || draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        }
+        .padding()
+        .background(.ultraThinMaterial)
     }
 }
 
-private final class AssistantWebCoordinator: NSObject, WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        print("Assistant navigation failed: \(error.localizedDescription)")
+private struct MessageBubble: View {
+    let message: AssistantMessage
+
+    var body: some View {
+        HStack {
+            if message.role == .assistant {
+                bubbleContent
+                Spacer(minLength: 36)
+            } else {
+                Spacer(minLength: 36)
+                bubbleContent
+            }
+        }
     }
 
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        print("Assistant provisional navigation failed: \(error.localizedDescription)")
+    private var bubbleContent: some View {
+        Text(message.text)
+            .font(.body)
+            .foregroundStyle(message.role == .assistant ? .primary : .white)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .background(
+                message.role == .assistant
+                ? AnyShapeStyle(Color(.secondarySystemBackground))
+                : AnyShapeStyle(Color.accentColor),
+                in: RoundedRectangle(cornerRadius: 14)
+            )
     }
+}
+
+private enum AssistantRole: String {
+    case user
+    case assistant
+}
+
+private struct AssistantMessage: Identifiable {
+    let id: UUID
+    let role: AssistantRole
+    let text: String
+}
+
+private struct AssistantApiMessagePart: Encodable {
+    let type: String
+    let text: String
+}
+
+private struct AssistantApiMessage: Encodable {
+    let id: String
+    let role: String
+    let parts: [AssistantApiMessagePart]
+}
+
+private struct AssistantApiRequest: Encodable {
+    let messages: [AssistantApiMessage]
+}
+
+@MainActor
+private final class AssistantChatViewModel: ObservableObject {
+    @Published private(set) var messages: [AssistantMessage] = []
+    @Published private(set) var isLoading = false
+    @Published var errorMessage: String?
+
+    private var chatTask: Task<Void, Never>?
+
+    func send(text: String) {
+        guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            return
+        }
+
+        chatTask?.cancel()
+        errorMessage = nil
+
+        let userMessage = AssistantMessage(id: UUID(), role: .user, text: text)
+        messages.append(userMessage)
+
+        chatTask = Task {
+            await requestAssistantReply()
+        }
+    }
+
+    func clearConversation() {
+        chatTask?.cancel()
+        messages = []
+        errorMessage = nil
+        isLoading = false
+    }
+
+    private func requestAssistantReply() async {
+        isLoading = true
+        defer { isLoading = false }
+
+        do {
+            let requestMessages = messages.map { message in
+                AssistantApiMessage(
+                    id: message.id.uuidString.lowercased(),
+                    role: message.role.rawValue,
+                    parts: [AssistantApiMessagePart(type: "text", text: message.text)]
+                )
+            }
+
+            let payload = AssistantApiRequest(messages: requestMessages)
+            let data = try JSONEncoder().encode(payload)
+
+            let endpoint = ContentConfiguration.remoteBaseURL.appendingPathComponent("api/chat")
+            var request = URLRequest(url: endpoint)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = data
+
+            let (responseData, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw AssistantChatError.invalidResponse
+            }
+
+            guard (200...299).contains(httpResponse.statusCode) else {
+                let serverText = String(data: responseData, encoding: .utf8) ?? "Unknown server error."
+                throw AssistantChatError.serverError("Status \(httpResponse.statusCode): \(serverText)")
+            }
+
+            let assistantText = String(data: responseData, encoding: .utf8)?
+                .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+
+            guard !assistantText.isEmpty else {
+                throw AssistantChatError.emptyReply
+            }
+
+            messages.append(
+                AssistantMessage(
+                    id: UUID(),
+                    role: .assistant,
+                    text: assistantText
+                )
+            )
+        } catch is CancellationError {
+            // Ignore cancellation to avoid flashing stale errors.
+        } catch {
+            errorMessage = "Assistant unavailable right now. Please try again."
+        }
+    }
+}
+
+private enum AssistantChatError: Error {
+    case invalidResponse
+    case emptyReply
+    case serverError(String)
 }
 
 private struct HomeTabView: View {
