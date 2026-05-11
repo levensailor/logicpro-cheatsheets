@@ -3,6 +3,7 @@ import SwiftUI
 struct MainTabView: View {
     let bundle: ContentBundle
     @State private var selectedTab: AppTab = .home
+    @State private var isAssistantPresented = false
     @AppStorage(SettingsPreferences.themeStorageKey) private var preferredTheme: String = SettingsPreferences.systemTheme
     @AppStorage(SettingsPreferences.textSizeStorageKey) private var preferredTextSize: String = SettingsPreferences.mediumTextSize
     private var trainingLessons: [TrainingLesson] {
@@ -11,7 +12,12 @@ struct MainTabView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            HomeTabView(bundle: bundle, trainingLessons: trainingLessons, selectedTab: $selectedTab)
+            HomeTabView(
+                bundle: bundle,
+                trainingLessons: trainingLessons,
+                selectedTab: $selectedTab,
+                onOpenAssistant: { isAssistantPresented = true }
+            )
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
@@ -43,6 +49,11 @@ struct MainTabView: View {
         }
         .preferredColorScheme(SettingsPreferences.colorScheme(for: preferredTheme))
         .dynamicTypeSize(SettingsPreferences.dynamicTypeSize(for: preferredTextSize))
+        .sheet(isPresented: $isAssistantPresented) {
+            NavigationStack {
+                AIAssistantView()
+            }
+        }
     }
 }
 
@@ -58,6 +69,7 @@ private struct HomeTabView: View {
     let bundle: ContentBundle
     let trainingLessons: [TrainingLesson]
     @Binding var selectedTab: AppTab
+    let onOpenAssistant: () -> Void
 
     var body: some View {
         NavigationStack {
@@ -104,6 +116,9 @@ private struct HomeTabView: View {
             }
             HomeActionCard(title: "Saved", detail: "Pinned pages", symbolName: "bookmark.fill") {
                 selectedTab = .saved
+            }
+            HomeActionCard(title: "AI Assistant", detail: "Get mixing help", symbolName: "bubble.left.and.bubble.right.fill") {
+                onOpenAssistant()
             }
             HomeActionCard(title: "Settings", detail: "App controls", symbolName: "gearshape.fill") {
                 selectedTab = .settings

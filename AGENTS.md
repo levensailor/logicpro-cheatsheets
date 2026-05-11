@@ -7,6 +7,7 @@
 - When following an attached implementation plan, do not modify the plan file itself; execute it directly against existing todos without recreating them.
 - For Font Awesome SVG usage in this project, import Font Awesome’s base stylesheet so icons size correctly; the user was satisfied with the pre-tuning icon scale once core styles were fixed.
 - When sheets recommend plugins, show a screenshot or product-style image next to each plugin name (not names alone); local plugin image filenames may not exactly match plugin names, so fuzzy-match when clearly intended and ask the user to confirm when ambiguous.
+- For training lessons, prefer real, topic-relevant screenshots over placeholder or generic images.
 - Prefers compact, visually appealing reference layouts over verbose repeated-label tables; use compact tiles or detail-card layouts for dense cheat-sheet data when possible.
 
 ## Learned Workspace Facts
