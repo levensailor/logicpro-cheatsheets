@@ -93,7 +93,7 @@ struct SavedTabView: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 20))
         .overlay {
             RoundedRectangle(cornerRadius: 20)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
     
@@ -156,7 +156,7 @@ struct SavedTabView: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 20))
         .overlay {
             RoundedRectangle(cornerRadius: 20)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
 }
@@ -206,7 +206,7 @@ private struct SavedItemCardContent: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 14))
         .overlay {
             RoundedRectangle(cornerRadius: 14)
-                .stroke(isLastViewed ? Color.accentColor.opacity(0.3) : Color.quaternary)
+                .stroke(isLastViewed ? Color.accentColor.opacity(0.3) : Color.secondary.opacity(0.2))
         }
     }
     

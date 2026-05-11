@@ -137,7 +137,7 @@ private struct HomeTabView: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 20))
         .overlay {
             RoundedRectangle(cornerRadius: 20)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
 
@@ -157,7 +157,7 @@ private struct HomeTabView: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 20))
         .overlay {
             RoundedRectangle(cornerRadius: 20)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
 }
@@ -207,7 +207,7 @@ private struct TrainingTabView: View {
     }
 }
 
-private struct TrainingLessonDetailView: View {
+struct TrainingLessonDetailView: View {
     let lesson: TrainingLesson
     @StateObject private var savedItemsManager = SavedItemsManager.shared
     
@@ -306,7 +306,7 @@ private struct TrainingLessonDetailView: View {
         )
         .overlay {
             RoundedRectangle(cornerRadius: 18)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
 
@@ -326,7 +326,7 @@ private struct TrainingLessonDetailView: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 18))
         .overlay {
             RoundedRectangle(cornerRadius: 18)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
 }
@@ -366,7 +366,7 @@ private struct TrainingStepCard: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 22))
         .overlay {
             RoundedRectangle(cornerRadius: 22)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
 
@@ -646,7 +646,7 @@ private struct MockTabView: View {
                         .background(.background, in: RoundedRectangle(cornerRadius: 18))
                         .overlay {
                             RoundedRectangle(cornerRadius: 18)
-                                .stroke(.quaternary)
+                                .stroke(Color.secondary.opacity(0.2))
                         }
                     }
                 }
@@ -860,7 +860,7 @@ private struct HomeActionCard: View {
             .background(.background, in: RoundedRectangle(cornerRadius: 18))
             .overlay {
                 RoundedRectangle(cornerRadius: 18)
-                    .stroke(.quaternary)
+                    .stroke(Color.secondary.opacity(0.2))
             }
         }
         .buttonStyle(.plain)
@@ -913,7 +913,7 @@ private struct FeaturedLessonCard: View {
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20))
         .overlay {
             RoundedRectangle(cornerRadius: 20)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
 }

@@ -45,7 +45,7 @@ private struct SectionCard<Content: View>: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 16))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
 }

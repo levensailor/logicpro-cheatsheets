@@ -119,7 +119,7 @@ struct SheetDetailView: View {
         .background(.background, in: RoundedRectangle(cornerRadius: 14))
         .overlay {
             RoundedRectangle(cornerRadius: 14)
-                .stroke(.quaternary)
+                .stroke(Color.secondary.opacity(0.2))
         }
     }
 }

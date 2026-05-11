@@ -271,7 +271,7 @@ private struct HomeView: View {
             .background(.background, in: RoundedRectangle(cornerRadius: 18))
             .overlay {
                 RoundedRectangle(cornerRadius: 18)
-                    .stroke(.quaternary)
+                    .stroke(Color.secondary.opacity(0.2))
             }
         }
         .buttonStyle(.plain)
