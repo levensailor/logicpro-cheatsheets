@@ -28,3 +28,5 @@ pnpm-debug.log*
 # python
 .venv/
 venv/
+.vercel
+.env*.local
