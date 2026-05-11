@@ -1962,6 +1962,18 @@ td {
   font-size: 0.9375rem;
 }
 
+.chatMessageMarkdown strong {
+  font-weight: 700;
+}
+
+.chatMessageMarkdown em {
+  font-style: italic;
+}
+
+.chatMessageUser .chatMessageMarkdown strong {
+  font-weight: 700;
+}
+
 .chatMessageMarkdown > *:first-child {
   margin-top: 0;
 }

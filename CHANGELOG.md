@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 20:00 EST
+- Chat (web + iOS): normalize spaced `** … **` into tight `**…**` outside fenced code so bold parses and asterisks are not shown; explicit `strong`/`em` styles in web chat markdown.
+
 ## 2026-05-11 19:00 EST
 - `/api/chat` system prompt: require blank-line Markdown (paragraphs, headings, lists) so web and iOS Textual clients parse replies reliably.
 

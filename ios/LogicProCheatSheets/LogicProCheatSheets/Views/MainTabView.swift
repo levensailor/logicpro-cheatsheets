@@ -272,19 +272,36 @@ private struct MessageBubble: View {
         let unified = raw.replacingOccurrences(of: "\r\n", with: "\n")
         let pieces = unified.components(separatedBy: "```")
         guard pieces.count > 1 else {
-            let healed = insertParagraphBreaksForCommonLLMPatterns(unified)
+            let tightened = tightenGfmBoldSpans(unified)
+            let healed = insertParagraphBreaksForCommonLLMPatterns(tightened)
             return expandSingleNewlinesToParagraphBreaks(healed)
         }
         var built = ""
         for (index, piece) in pieces.enumerated() {
             if index % 2 == 0 {
-                let healed = insertParagraphBreaksForCommonLLMPatterns(piece)
+                let tightened = tightenGfmBoldSpans(piece)
+                let healed = insertParagraphBreaksForCommonLLMPatterns(tightened)
                 built += expandSingleNewlinesToParagraphBreaks(healed)
             } else {
                 built += "```" + piece + "```"
             }
         }
         return built
+    }
+
+    /// Collapses spaces inside `** … **` so Markdown parses as strong (LLMs often emit `** Channel EQ **`).
+    private static func tightenGfmBoldSpans(_ chunk: String) -> String {
+        guard let regex = try? NSRegularExpression(pattern: #"\*\*\s+([^*\n]+?)\s+\*\*"#, options: []) else {
+            return chunk
+        }
+        var s = chunk
+        var previous = ""
+        while s != previous {
+            previous = s
+            let range = NSRange(s.startIndex..<s.endIndex, in: s)
+            s = regex.stringByReplacingMatches(in: s, options: [], range: range, withTemplate: "**$1**")
+        }
+        return s
     }
 
     /// Models often omit newlines before numbered lists (`mix:1. Channel`) or after bold labels (`**EQ**Purpose`), or glue list items (`EQ.2. Item`).

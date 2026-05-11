@@ -29,12 +29,35 @@ function downloadTextFile(filename: string, body: string) {
   URL.revokeObjectURL(url);
 }
 
+/** Collapses spaces inside `** … **` so GFM parses strong (models often emit `** Channel EQ **`). */
+function tightenGfmBoldSpans(raw: string): string {
+  let s = raw;
+  let prev = '';
+  const re = /\*\*\s+([^*\n]+?)\s+\*\*/g;
+  while (s !== prev) {
+    prev = s;
+    s = s.replace(re, '**$1**');
+  }
+  return s;
+}
+
+function tightenGfmBoldSpansOutsideFences(raw: string): string {
+  const pieces = raw.split('```');
+  if (pieces.length === 1) {
+    return tightenGfmBoldSpans(raw);
+  }
+  return pieces
+    .map((piece, i) => (i % 2 === 0 ? tightenGfmBoldSpans(piece) : piece))
+    .join('```');
+}
+
 function ChatMessageMarkdown({ text }: { text: string }) {
   if (!text.trim()) return null;
+  const markdown = tightenGfmBoldSpansOutsideFences(text);
   return (
     <div className="chatMessageMarkdown">
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
-        {text}
+        {markdown}
       </ReactMarkdown>
     </div>
   );
