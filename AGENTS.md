@@ -17,7 +17,7 @@
 - Primary sheet navigation is a sticky left sidebar on desktop; on narrow viewports it falls back to a horizontal sticky bar.
 - Mobile/book UX includes chapter navigation, previous/next page controls, table/card responsive behavior, and PWA/iOS-readiness metadata.
 - Sheets are data-driven: routes live under `/sheets/[sheetId]`, with definitions in `data/sheets/` and shared rendering components under `components/`.
-- The app includes DAW/reference chapters beyond instrument sheets, including Audio Routing, Interfaces, Monitoring, Logic Pro Workflow, Automation, Plugins, Gain Staging & LUFS, and Appendix Audio Terms.
+- The app includes Fundamentals (routing, interfaces, monitoring, workflow, automation, plugins, gain/LUFS) and reference chapters beyond instrument sheets, plus Appendix Audio Terms.
 - App Store support/legal surfaces are built into the site as `/privacy`, `/terms`, and `/contact` pages, with shared footer links.
 - The project originated from PNG cheat sheet assets, which were transcribed into structured data for the web app.
 - Shared content is exported as static JSON under `public/content/`, with locale-aware bundles for iOS fallback and legacy `content.json`/`manifest.json` paths retained for compatibility.

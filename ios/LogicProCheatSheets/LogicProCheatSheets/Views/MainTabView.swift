@@ -372,6 +372,7 @@ private struct HomeTabView: View {
                     compactHero
                     startWithSection
                     jumpIntoSection
+                    askAICallout
                     chaptersSection
                 }
                 .padding()
@@ -390,7 +391,7 @@ private struct HomeTabView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Band handbook")
                     .font(.headline.bold())
-                Text("\(bundle.cheatSheets.count) chapters · tracking → mix → master")
+                Text("\(bundle.cheatSheets.count) chapters · fundamentals → tracking → mix → master")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -459,6 +460,46 @@ private struct HomeTabView: View {
                 }
         }
         .buttonStyle(.plain)
+    }
+
+    private var askAICallout: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top, spacing: 8) {
+                Image(systemName: "sparkles")
+                    .font(.title3)
+                    .foregroundStyle(.tint)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("New: Ask AI")
+                        .font(.subheadline.weight(.bold))
+                    Text("The assistant is tuned on Logic Pro, documentation from popular plugin vendors, and common industry standards—so answers stay practical for real sessions.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            Button {
+                selectedTab = .assistant
+            } label: {
+                Label("Open Ask", systemImage: "bubble.left.and.bubble.right.fill")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.regular)
+        }
+        .padding(14)
+        .background(
+            LinearGradient(
+                colors: [Color.accentColor.opacity(0.14), Color.purple.opacity(0.08)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            in: RoundedRectangle(cornerRadius: 16)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.secondary.opacity(0.2))
+        }
     }
 
     private var chaptersSection: some View {

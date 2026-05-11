@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-05-11 10:15 EST
+- Rename Library/Home chapter group DAW to Fundamentals and list it before Tracking.
+- Add Home callout for Ask AI describing Logic Pro, plugin-vendor docs, and industry-standard training context.
+
 ## 2026-05-11 09:40 EST
 - Condense iOS Home tab: Start with tracking, horizontal Jump into chips, and grouped chapter list that opens Library on the selected sheet.
 - Lift Library chapter selection to MainTabView so Home and Library share one selected chapter state.

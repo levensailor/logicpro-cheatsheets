@@ -2,8 +2,8 @@ import Foundation
 
 /// Canonical chapter grouping for handbook navigation (Library sidebar + Home chapter index).
 enum ChapterCategory: String, CaseIterable, Identifiable {
+    case fundamentals
     case tracking
-    case daw
     case mixing
     case mastering
     case reference
@@ -12,8 +12,8 @@ enum ChapterCategory: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
+        case .fundamentals: return "Fundamentals"
         case .tracking: return "Tracking"
-        case .daw: return "DAW"
         case .mixing: return "Mixing"
         case .mastering: return "Mastering"
         case .reference: return "Reference"
@@ -22,9 +22,7 @@ enum ChapterCategory: String, CaseIterable, Identifiable {
 
     var sheetIDs: [String] {
         switch self {
-        case .tracking:
-            return ["tracking-band"]
-        case .daw:
+        case .fundamentals:
             return [
                 "audio-routing",
                 "interfaces",
@@ -34,6 +32,8 @@ enum ChapterCategory: String, CaseIterable, Identifiable {
                 "plugins-reference",
                 "gain-staging-lufs"
             ]
+        case .tracking:
+            return ["tracking-band"]
         case .mixing:
             return [
                 "bass-guitar-mixing",
