@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-05-11 09:40 EST
+- Condense iOS Home tab: Start with tracking, horizontal Jump into chips, and grouped chapter list that opens Library on the selected sheet.
+- Lift Library chapter selection to MainTabView so Home and Library share one selected chapter state.
+- Extract shared `ChapterCategory` model; simplify Library empty-detail placeholder to avoid duplicating Home onboarding.
+
 ## 2026-05-03 13:04 EST
 - Replace mocked iOS Settings tab with a real Settings screen and a functional Display preferences page.
 - Add persistent iOS appearance (System/Light/Dark) and text size controls that apply app-wide.
