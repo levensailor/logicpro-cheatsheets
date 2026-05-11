@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 16:00 EST
+- iOS Ask tab: insert paragraph breaks for common LLM markdown glues (no newline before `1.` after `:`/`;`, `**label**Purpose`, `word.2. Next` list runs, list after bold with spaces).
+
 ## 2026-05-11 15:00 EST
 - iOS Ask tab: normalize single newlines to Markdown paragraph breaks outside code fences; apply explicit title fonts for `#` heading presentation intents (SwiftUI does not style headers by default); merge default body font before heading styles so merges do not strip header fonts.
 

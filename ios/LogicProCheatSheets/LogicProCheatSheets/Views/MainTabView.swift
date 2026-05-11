@@ -279,17 +279,45 @@ private struct MessageBubble: View {
         let unified = raw.replacingOccurrences(of: "\r\n", with: "\n")
         let pieces = unified.components(separatedBy: "```")
         guard pieces.count > 1 else {
-            return expandSingleNewlinesToParagraphBreaks(unified)
+            let healed = insertParagraphBreaksForCommonLLMPatterns(unified)
+            return expandSingleNewlinesToParagraphBreaks(healed)
         }
         var built = ""
         for (index, piece) in pieces.enumerated() {
             if index % 2 == 0 {
-                built += expandSingleNewlinesToParagraphBreaks(piece)
+                let healed = insertParagraphBreaksForCommonLLMPatterns(piece)
+                built += expandSingleNewlinesToParagraphBreaks(healed)
             } else {
                 built += "```" + piece + "```"
             }
         }
         return built
+    }
+
+    /// Models often omit newlines before numbered lists (`mix:1. Channel`) or after bold labels (`**EQ**Purpose`), or glue list items (`EQ.2. Item`).
+    private static func insertParagraphBreaksForCommonLLMPatterns(_ chunk: String) -> String {
+        var s = chunk
+        // **Channel EQ**Purpose -> **Channel EQ**\n\nPurpose
+        if let re = try? NSRegularExpression(pattern: #"(\*\*[^*]+\*\*)([A-Za-z])"#, options: []) {
+            let range = NSRange(s.startIndex..<s.endIndex, in: s)
+            s = re.stringByReplacingMatches(in: s, options: [], range: range, withTemplate: "$1\n\n$2")
+        }
+        // **Channel EQ** 1. Next — optional space before list after bold block
+        if let re = try? NSRegularExpression(pattern: #"(\*\*[^*]+\*\*)\s+(\d{1,2}\.\s+[A-Z])"#, options: []) {
+            let range = NSRange(s.startIndex..<s.endIndex, in: s)
+            s = re.stringByReplacingMatches(in: s, options: [], range: range, withTemplate: "$1\n\n$2")
+        }
+        // mix:1. Channel / step;2. Next — colon/semicolon then ordered list
+        if let re = try? NSRegularExpression(pattern: #"([:;])\s*(\d{1,2}\.\s+[A-Z])"#, options: []) {
+            let range = NSRange(s.startIndex..<s.endIndex, in: s)
+            s = re.stringByReplacingMatches(in: s, options: [], range: range, withTemplate: "$1\n\n$2")
+        }
+        // Channel EQ.2. Compressor — period after word, then next list item
+        if let re = try? NSRegularExpression(pattern: #"([A-Za-z])\.(\d{1,2}\.\s+[A-Z])"#, options: []) {
+            let range = NSRange(s.startIndex..<s.endIndex, in: s)
+            s = re.stringByReplacingMatches(in: s, options: [], range: range, withTemplate: "$1.\n\n$2")
+        }
+        return s
     }
 
     private static func expandSingleNewlinesToParagraphBreaks(_ chunk: String) -> String {
