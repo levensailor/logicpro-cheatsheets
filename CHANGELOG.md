@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-11 19:00 EST
+- `/api/chat` system prompt: require blank-line Markdown (paragraphs, headings, lists) so web and iOS Textual clients parse replies reliably.
+
 ## 2026-05-11 18:00 EST
 - iOS: replace MarkdownUI with [Textual](https://github.com/gonzalezreal/textual) `StructuredText` for Ask-tab assistant markdown; raise minimum iOS to **18** (required by Textual); update `Package.resolved` (Textual, SwiftUIMath, ConcurrencyExtras).
 
