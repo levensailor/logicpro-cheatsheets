@@ -111,9 +111,9 @@ export default function HomePage() {
       </section>
 
       <section className="introSection">
-        <h2>🤖 Ask Logic Pro Guru</h2>
+        <h2>🤖 Logic Pro Guru</h2>
         <p style={{ marginBottom: '1.5rem', color: 'var(--muted)', textAlign: 'center' }}>
-          Get instant help with Logic Pro, mixing, or mastering questions. Your friendly AI assistant is here to guide you.
+          Get instant help with Logic Pro, mixing, or mastering questions. Your friendly Guru is here to guide you.
         </p>
         <div style={{ maxWidth: '900px', margin: '0 auto', height: '600px' }}>
           <ChatAssistant />

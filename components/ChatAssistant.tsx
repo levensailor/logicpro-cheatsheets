@@ -138,7 +138,7 @@ export function ChatAssistant() {
           <FontAwesomeIcon icon={faRobot} className="chatHeaderIcon" />
           <div>
             <h2 className="chatHeaderTitle">Logic Pro Guru</h2>
-            <p className="chatHeaderSubtitle">Your friendly Logic Pro assistant</p>
+            <p className="chatHeaderSubtitle">Your friendly Logic Pro Guru</p>
           </div>
         </div>
         <button
@@ -162,7 +162,7 @@ export function ChatAssistant() {
           <div className="chatWelcome">
             <FontAwesomeIcon icon={faRobot} className="chatWelcomeIcon" />
             <h3>Welcome to Logic Pro Guru!</h3>
-            <p>Ask me anything about Logic Pro, recording, mixing, or mastering your band.</p>
+            <p>Chat with Guru about Logic Pro, recording, mixing, or mastering your band.</p>
             <div className="chatSuggestions">
               <button 
                 onClick={() => handleSuggestionClick('How do I set up a good vocal chain in Logic Pro?')}
@@ -228,7 +228,7 @@ export function ChatAssistant() {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask about Logic Pro, mixing, or mastering..."
+          placeholder="Chat with Guru about Logic Pro, mixing, or mastering..."
           className="chatInput"
           disabled={isLoading}
         />

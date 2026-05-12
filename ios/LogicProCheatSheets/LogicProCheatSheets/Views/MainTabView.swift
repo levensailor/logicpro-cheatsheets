@@ -38,7 +38,7 @@ struct MainTabView: View {
 
             AssistantTabView()
             .tabItem {
-                Label("Ask", systemImage: "bubble.left.and.bubble.right.fill")
+                Label("Guru", systemImage: "bubble.left.and.bubble.right.fill")
             }
             .tag(AppTab.assistant)
 
@@ -67,7 +67,7 @@ private struct AssistantTabView: View {
     var body: some View {
         NavigationStack {
             AssistantChatView(viewModel: viewModel)
-                .navigationTitle("AI Assistant")
+                .navigationTitle("Logic Pro Guru")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -130,7 +130,7 @@ private struct AssistantChatView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Logic Pro Guru")
                             .font(.headline.bold())
-                        Text("Ask anything about recording, mixing, and mastering.")
+                        Text("Chat with Guru about recording, mixing, and mastering.")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -200,7 +200,7 @@ private struct AssistantChatView: View {
 
     private var composer: some View {
         HStack(alignment: .bottom, spacing: 8) {
-            TextField("Ask about Logic Pro...", text: $draft, axis: .vertical)
+            TextField("Chat with Guru about Logic Pro...", text: $draft, axis: .vertical)
                 .lineLimit(1...5)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 10)
@@ -608,7 +608,7 @@ private struct HomeTabView: View {
                     .font(.title3)
                     .foregroundStyle(.tint)
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("New: Ask AI")
+                    Text("New: Guru")
                         .font(.subheadline.weight(.bold))
                     Text("The assistant is tuned on Logic Pro, documentation from popular plugin vendors, and common industry standards—so answers stay practical for real sessions.")
                         .font(.caption)
@@ -619,7 +619,7 @@ private struct HomeTabView: View {
             Button {
                 selectedTab = .assistant
             } label: {
-                Label("Open Ask", systemImage: "bubble.left.and.bubble.right.fill")
+                Label("Open Guru", systemImage: "bubble.left.and.bubble.right.fill")
                     .font(.subheadline.weight(.semibold))
                     .frame(maxWidth: .infinity)
             }
