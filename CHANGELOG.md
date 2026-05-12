@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-05-12 11:59 EST
+- Automation visuals quality pass: replace `03-vocal-rider-plugin.png` with an actual Waves Vocal Rider plugin interface image and update replacement checklist source metadata.
+
+## 2026-05-12 11:56 EST
+- Automation chapter visuals: replace all 32 missing `/images/automation/*` image references with concrete assets and add `public/images/automation/PLACEHOLDER_IMAGE_CHECKLIST.md` documenting per-file replacements.
+
 ## 2026-05-12 10:58 EST
 - Deep Dive on MIDI training assets: replace 10 empty step PNG placeholders with real sourced images and document source links in the lesson assets README.
 
