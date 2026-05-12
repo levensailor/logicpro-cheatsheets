@@ -188,11 +188,13 @@ private struct AssistantChatView: View {
                 }
                 .padding()
             }
-            .onChange(of: viewModel.messages.count) { _ in
-                if let last = viewModel.messages.last {
-                    withAnimation(.easeOut(duration: 0.2)) {
-                        proxy.scrollTo(last.id, anchor: .bottom)
-                    }
+            .onChange(of: viewModel.messages.last?.id) { _ in
+                guard let last = viewModel.messages.last else {
+                    return
+                }
+                // Defers scrolling until after the current layout pass to avoid repeated per-frame updates.
+                DispatchQueue.main.async {
+                    proxy.scrollTo(last.id, anchor: .bottom)
                 }
             }
         }

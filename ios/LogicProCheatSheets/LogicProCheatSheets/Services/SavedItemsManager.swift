@@ -15,6 +15,11 @@ struct SavedItem: Codable, Identifiable, Equatable {
     let savedAt: Date
     let isAutoSaved: Bool
     
+    /// Stable identity for mixed item types in SwiftUI collections.
+    var stableID: String {
+        "\(type.rawValue)::\(id)"
+    }
+    
     static func == (lhs: SavedItem, rhs: SavedItem) -> Bool {
         lhs.id == rhs.id && lhs.type == rhs.type
     }
@@ -37,7 +42,7 @@ class SavedItemsManager: ObservableObject {
     private func loadSavedItems() {
         if let data = UserDefaults.standard.data(forKey: savedItemsKey),
            let items = try? JSONDecoder().decode([SavedItem].self, from: data) {
-            savedItems = items.sorted { $0.savedAt > $1.savedAt }
+            savedItems = deduplicated(items).sorted { $0.savedAt > $1.savedAt }
         }
         
         if let data = UserDefaults.standard.data(forKey: lastViewedItemKey),
@@ -88,17 +93,14 @@ class SavedItemsManager: ObservableObject {
             savedAt: Date(),
             isAutoSaved: true
         )
-        
-        if let existingIndex = savedItems.firstIndex(where: { $0.id == id && $0.type == type }) {
-            savedItems.remove(at: existingIndex)
-        }
-        
+
+        // Keep pinned entries intact; this only tracks recency.
         lastViewedItem = newItem
         saveToDisk()
     }
     
     func removeSavedItem(_ item: SavedItem) {
-        if let index = savedItems.firstIndex(of: item) {
+        if let index = savedItems.firstIndex(where: { $0.stableID == item.stableID }) {
             savedItems.remove(at: index)
             saveToDisk()
         }
@@ -106,5 +108,16 @@ class SavedItemsManager: ObservableObject {
     
     var pinnedItems: [SavedItem] {
         savedItems.filter { !$0.isAutoSaved }
+    }
+
+    private func deduplicated(_ items: [SavedItem]) -> [SavedItem] {
+        var seen = Set<String>()
+        var unique: [SavedItem] = []
+        for item in items {
+            if seen.insert(item.stableID).inserted {
+                unique.append(item)
+            }
+        }
+        return unique
     }
 }

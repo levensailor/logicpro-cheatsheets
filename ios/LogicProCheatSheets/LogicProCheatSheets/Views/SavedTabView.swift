@@ -82,7 +82,7 @@ struct SavedTabView: View {
                     .foregroundStyle(.secondary)
             }
             
-            ForEach(savedItemsManager.pinnedItems) { item in
+            ForEach(savedItemsManager.pinnedItems, id: \.stableID) { item in
                 savedItemCard(item, isLastViewed: false)
             }
         }
@@ -210,7 +210,11 @@ private struct SavedItemCardContent: View {
     
     private func timeAgo(from date: Date) -> String {
         let now = Date()
-        let interval = now.timeIntervalSince(date)
+        let rawInterval = now.timeIntervalSince(date)
+        guard rawInterval.isFinite else {
+            return "Recently"
+        }
+        let interval = max(0, rawInterval)
         
         if interval < 60 {
             return "Just now"
