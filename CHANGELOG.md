@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-12 10:58 EST
+- Deep Dive on MIDI training assets: replace 10 empty step PNG placeholders with real sourced images and document source links in the lesson assets README.
+
 ## 2026-05-11 20:00 EST
 - Chat (web + iOS): normalize spaced `** … **` into tight `**…**` outside fenced code so bold parses and asterisks are not shown; explicit `strong`/`em` styles in web chat markdown.
 

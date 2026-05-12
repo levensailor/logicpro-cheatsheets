@@ -10,16 +10,35 @@ The following SVG diagrams have been created as informative visual aids:
 - `step5_mackie_control_setup.svg` - Complete MCU setup workflow
 - `step8_latency_settings.svg` - Complete buffer size and latency optimization guide
 
-## Remaining Assets (Placeholders)
+## Replaced PNG Assets
 
-The following PNG files are currently empty placeholders and should be replaced with actual screenshots or diagrams:
+All ten lesson PNG files now contain real sourced images:
 
-1. `step2_logic_midi_recording.png` - Logic Pro MIDI recording interface
-2. `step3_piano_roll_editing.png` - Piano Roll editor with note editing examples
-3. `step6_control_surface_connection.png` - Physical connection setup photos/diagrams
-4. `step7_midi_learn_mapping.png` - MIDI Learn interface in Logic Pro
-5. `step9_troubleshooting.png` - Common MIDI problems and solutions flowchart
-6. `step10_advanced_midi.png` - MPE, MIDI 2.0, and Scripter examples
+1. `step1_midi_protocol.png` - MIDI IN/OUT schematic
+2. `step2_logic_midi_recording.png` - Logic Pro X tutorial screenshot
+3. `step3_piano_roll_editing.png` - Piano roll editor screenshot
+4. `step4_controller_types.png` - MIDI keyboard controller photo
+5. `step5_mackie_control_setup.png` - Control surface + keyboard setup photo
+6. `step6_control_surface_connection.png` - MIDI ports and cable photo
+7. `step7_midi_learn_mapping.png` - USB MIDI controller photo
+8. `step8_latency_settings.png` - Logic Pro X meter screenshot
+9. `step9_troubleshooting.png` - MIDI-to-control-voltage troubleshooting setup
+10. `step10_advanced_midi.png` - TB-303 with MIDI interface
+
+## Source Links
+
+Images were sourced from Wikimedia Commons (publicly redistributable with attribution under each file's license):
+
+- `step1_midi_protocol.png` -> https://commons.wikimedia.org/wiki/File:MIDI_IN_OUT_schematic.svg
+- `step2_logic_midi_recording.png` -> https://commons.wikimedia.org/wiki/File:Logic_PRO_X_Tutorial.png
+- `step3_piano_roll_editing.png` -> https://commons.wikimedia.org/wiki/File:LMMS_Piano_Roll.png
+- `step4_controller_types.png` -> https://commons.wikimedia.org/wiki/File:Alesis_Q25_MIDI_Controller.jpg
+- `step5_mackie_control_setup.png` -> https://commons.wikimedia.org/wiki/File:Steinberg_CC121_Cubase_control_surface_and_M-Audio_Oxygen_MIDI_keyboard_controller_(2013-03-02_by_martinezdj).jpg
+- `step6_control_surface_connection.png` -> https://commons.wikimedia.org/wiki/File:Midi_ports_and_cable.jpg
+- `step7_midi_learn_mapping.png` -> https://commons.wikimedia.org/wiki/File:M-Audio_X-Session_Pro_USB_MIDI_DJ_Controller_(front_view).jpg
+- `step8_latency_settings.png` -> https://commons.wikimedia.org/wiki/File:Logic_Pro_X_Correlation_Meter.png
+- `step9_troubleshooting.png` -> https://commons.wikimedia.org/wiki/File:Arduino_MIDI_to_Control_Voltage.jpg
+- `step10_advanced_midi.png` -> https://commons.wikimedia.org/wiki/File:TB303-midi-frontview.png
 
 ## Recommended Visual Content
 
