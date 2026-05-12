@@ -188,7 +188,7 @@ private struct AssistantChatView: View {
                 }
                 .padding()
             }
-            .onChange(of: viewModel.messages.last?.id) { _ in
+            .onChange(of: viewModel.messages.last?.id) {
                 guard let last = viewModel.messages.last else {
                     return
                 }
