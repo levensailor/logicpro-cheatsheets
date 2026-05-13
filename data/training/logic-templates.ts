@@ -257,7 +257,7 @@ export const logicTemplatesLesson: TrainingLesson = {
         "Do not use folder stacks when you expect bus EQ, bus compression, or shared sends on the group. Use a summing stack for that.",
       checkYourWork:
         "With all stacks collapsed, the project still communicates the whole session structure at a glance.",
-      stepScreenshot: "/assets/training/logic-templates/step8_track_stacks_colors.png"
+      stepScreenshot: "/assets/training/logic-templates/step7_track_stacks_colors.png"
     },
     {
       number: 8,
@@ -327,7 +327,7 @@ export const logicTemplatesLesson: TrainingLesson = {
         "Do not label a preset chain as an exact Albini sound. Treat it as an inspired workflow focused on natural capture and restraint.",
       checkYourWork:
         "A band can walk in, line check, hear a headphone mix, and record a complete live take without you creating new core tracks.",
-      stepScreenshot: "/assets/training/logic-templates/step10_rock_band_template.png"
+      stepScreenshot: "/assets/training/logic-templates/step9_rock_band_template.png"
     },
     {
       number: 10,

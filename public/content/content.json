@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "20260513T154322Z",
-  "generatedAt": "2026-05-13T15:43:22.627Z",
+  "contentVersion": "20260513T160325Z",
+  "generatedAt": "2026-05-13T16:03:25.931Z",
   "minAppVersion": "1.0.0",
   "navItems": [
     {
@@ -10679,7 +10679,7 @@
             "proTip": "Create the stack first, then route and color the child tracks. It is easier to audit one family at a time than to fix a fully built template later.",
             "avoidThis": "Do not use folder stacks when you expect bus EQ, bus compression, or shared sends on the group. Use a summing stack for that.",
             "checkYourWork": "With all stacks collapsed, the project still communicates the whole session structure at a glance.",
-            "stepScreenshot": "/assets/training/logic-templates/step8_track_stacks_colors.png"
+            "stepScreenshot": "/assets/training/logic-templates/step7_track_stacks_colors.png"
           },
           {
             "number": 8,
@@ -10726,7 +10726,7 @@
             "proTip": "Put a phase-check reminder in the DRUMS stack note. Before EQ, compare kick in/out, snare top/bottom, overheads, and rooms at matched level.",
             "avoidThis": "Do not label a preset chain as an exact Albini sound. Treat it as an inspired workflow focused on natural capture and restraint.",
             "checkYourWork": "A band can walk in, line check, hear a headphone mix, and record a complete live take without you creating new core tracks.",
-            "stepScreenshot": "/assets/training/logic-templates/step10_rock_band_template.png"
+            "stepScreenshot": "/assets/training/logic-templates/step9_rock_band_template.png"
           },
           {
             "number": 10,
