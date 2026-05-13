@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-05-13 10:32 EST
+- Logic templates lesson: add a 7,000+ word training guide with template workflow screenshots, exported content bundles, and iOS deep-dive lesson body rendering.
+
 ## 2026-05-12 11:59 EST
 - Automation visuals quality pass: replace `03-vocal-rider-plugin.png` with an actual Waves Vocal Rider plugin interface image and update replacement checklist source metadata.
 
