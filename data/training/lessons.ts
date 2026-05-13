@@ -1,6 +1,8 @@
 import type { TrainingLesson } from "@/lib/sheet-schema";
+import { logicTemplatesLesson } from "./logic-templates";
 
 export const trainingLessons: TrainingLesson[] = [
+  logicTemplatesLesson,
   {
     id: "your-first-mix",
     title: "Your First Mix",

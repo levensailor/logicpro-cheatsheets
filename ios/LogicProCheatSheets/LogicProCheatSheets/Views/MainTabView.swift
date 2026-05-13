@@ -852,7 +852,7 @@ struct TrainingLessonDetailView: View {
 
     private var checklist: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("First Mix Completion Checklist")
+            Text("\(lesson.title) Completion Checklist")
                 .font(.title3.bold())
 
             ForEach(lesson.checklist, id: \.self) { item in
@@ -1004,7 +1004,7 @@ private struct TrainingStepCard: View {
         } label: {
             HStack {
                 Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                Text(isExpanded ? "Show Less" : "Pro Tips & Common Mistakes")
+                Text(isExpanded ? "Show Less" : "Deep Dive, Pro Tips & Common Mistakes")
                     .font(.caption.bold())
             }
             .foregroundStyle(.tint)
@@ -1014,6 +1014,8 @@ private struct TrainingStepCard: View {
 
     private var expandedContent: some View {
         VStack(alignment: .leading, spacing: 12) {
+            lessonBodySection
+
             if let proTip = step.proTip {
                 ProTipCard(text: proTip)
             }
@@ -1022,6 +1024,22 @@ private struct TrainingStepCard: View {
                 WarningCard(text: avoidThis)
             }
         }
+    }
+
+    private var lessonBodySection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Deep Dive")
+                .font(.caption.bold())
+                .foregroundStyle(.tint)
+
+            StructuredText(markdown: step.body)
+                .textual.structuredTextStyle(.gitHub)
+                .tint(Color.accentColor)
+                .textual.textSelection(.enabled)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(10)
+        .background(Color.accentColor.opacity(0.08), in: RoundedRectangle(cornerRadius: 12))
     }
 
     private func screenshotThumbnail(_ source: String) -> some View {
