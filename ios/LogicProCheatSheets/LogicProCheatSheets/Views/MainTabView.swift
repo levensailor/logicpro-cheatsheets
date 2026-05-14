@@ -91,6 +91,7 @@ private struct AssistantTabView: View {
 private struct AssistantChatView: View {
     @ObservedObject var viewModel: AssistantChatViewModel
     @State private var draft = ""
+    @FocusState private var isComposerFocused: Bool
 
     private let suggestionPrompts = [
         "How do I build a good vocal chain in Logic Pro?",
@@ -118,6 +119,15 @@ private struct AssistantChatView: View {
             composer
         }
         .background(Color(.systemGroupedBackground))
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    dismissKeyboard()
+                }
+                .accessibilityLabel("Dismiss keyboard")
+            }
+        }
     }
 
     private var welcomeView: some View {
@@ -163,6 +173,7 @@ private struct AssistantChatView: View {
             }
             .padding()
         }
+        .scrollDismissesKeyboard(.interactively)
     }
 
     private var conversationView: some View {
@@ -188,6 +199,7 @@ private struct AssistantChatView: View {
                 }
                 .padding()
             }
+            .scrollDismissesKeyboard(.interactively)
             .onChange(of: viewModel.messages.last?.id) {
                 guard let last = viewModel.messages.last else {
                     return
@@ -203,6 +215,7 @@ private struct AssistantChatView: View {
     private var composer: some View {
         HStack(alignment: .bottom, spacing: 8) {
             TextField("Chat with Guru about Logic Pro...", text: $draft, axis: .vertical)
+                .focused($isComposerFocused)
                 .lineLimit(1...5)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 10)
@@ -212,6 +225,7 @@ private struct AssistantChatView: View {
                 let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
                 guard !text.isEmpty else { return }
                 draft = ""
+                dismissKeyboard()
                 viewModel.send(text: text)
             } label: {
                 Image(systemName: "arrow.up.circle.fill")
@@ -221,6 +235,10 @@ private struct AssistantChatView: View {
         }
         .padding()
         .background(.ultraThinMaterial)
+    }
+
+    private func dismissKeyboard() {
+        isComposerFocused = false
     }
 }
 
