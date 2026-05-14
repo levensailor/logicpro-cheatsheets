@@ -91,6 +91,7 @@ private struct AssistantTabView: View {
 private struct AssistantChatView: View {
     @ObservedObject var viewModel: AssistantChatViewModel
     @State private var draft = ""
+    @FocusState private var isInputFocused: Bool
 
     private let suggestionPrompts = [
         "How do I build a good vocal chain in Logic Pro?",
@@ -163,6 +164,9 @@ private struct AssistantChatView: View {
             }
             .padding()
         }
+        .onTapGesture {
+            isInputFocused = false
+        }
     }
 
     private var conversationView: some View {
@@ -188,6 +192,10 @@ private struct AssistantChatView: View {
                 }
                 .padding()
             }
+            .scrollDismissesKeyboard(.interactively)
+            .onTapGesture {
+                isInputFocused = false
+            }
             .onChange(of: viewModel.messages.last?.id) {
                 guard let last = viewModel.messages.last else {
                     return
@@ -207,11 +215,21 @@ private struct AssistantChatView: View {
                 .padding(.horizontal, 12)
                 .padding(.vertical, 10)
                 .background(.background, in: RoundedRectangle(cornerRadius: 14))
+                .focused($isInputFocused)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            isInputFocused = false
+                        }
+                    }
+                }
 
             Button {
                 let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
                 guard !text.isEmpty else { return }
                 draft = ""
+                isInputFocused = false
                 viewModel.send(text: text)
             } label: {
                 Image(systemName: "arrow.up.circle.fill")
